@@ -460,7 +460,7 @@ void PacketDump::udpDump(bool l2r, const char *label, UDPPacket* udppkt,
     std::ostream& out = *outp;
 
     char buf[30];
-    sprintf(buf, "[%.3f%s] ", simulation.getSimTime().dbl(), label);
+    sprintf(buf, "[%.6f%s] ", simulation.getSimTime().dbl(), label);
     out << buf;
 
 #ifndef WITH_UDP
@@ -483,7 +483,7 @@ void PacketDump::udpDump(bool l2r, const char *label, UDPPacket* udppkt,
     }
 
     //out << endl;
-    out << "UDP: Payload length=" << udppkt->getByteLength() - 8 << endl;
+    out << "UDP: length=" << udppkt->getByteLength() - 8 << endl;
 
 #ifdef WITH_SCTP
     if (udppkt->getSourcePort() == 9899 || udppkt->getDestinationPort() == 9899)
@@ -499,16 +499,16 @@ void PacketDump::udpDump(bool l2r, const char *label, UDPPacket* udppkt,
     if (comment)
         out << "# " << comment;
 
-    out << endl;
+    // out << endl;
 }
 
-void PacketDump::homaDump(bool l2r, const char *label, UDPPacket* udppkt,
+void PacketDump::homaDump(bool l2r, const char *label, UDPPacket* udppkt, HomaPkt* homapkt,
         const std::string& srcAddr, const std::string& destAddr, const char *comment)
 {
     std::ostream& out = *outp;
 
     char buf[30];
-    sprintf(buf, "[%.3f%s] ", simulation.getSimTime().dbl(), label);
+    sprintf(buf, "[%.6f%s] ", simulation.getSimTime().dbl(), label);
     out << buf;
 
 #ifndef WITH_UDP
@@ -518,36 +518,35 @@ void PacketDump::homaDump(bool l2r, const char *label, UDPPacket* udppkt,
         out << "[Homa] "<< destAddr << " < " << srcAddr << ": ";
 #else
     // seq and time (not part of the tcpdump format)
-    // src/dest
-    if (l2r)
-    {
-        out << srcAddr << "." << udppkt->getSourcePort() << " > ";
-        out << destAddr << "." << udppkt->getDestinationPort() << ": ";
-    }
-    else
-    {
-        out << destAddr << "." << udppkt->getDestinationPort() << " < ";
-        out << srcAddr << "." << udppkt->getSourcePort() << ": ";
+    // always src to dst
+    out << srcAddr << "." << udppkt->getSourcePort() << " > ";
+    out << destAddr << "." << udppkt->getDestinationPort() << ": ";
+
+    out << "Homa: MsgId=" << homapkt->getMsgId() << " ";
+    out << "PktType=";
+    switch (homapkt->getPktType()) {
+    case PktType::REQUEST:
+        out << "REQUEST [" << homapkt->getUnschedFields().firstByte << ":" << homapkt->getUnschedFields().lastByte << "] ";
+        break;
+    case PktType::GRANT:
+        out << "GRANT [" << homapkt->getGrantFields().offset << "] ";
+        break;
+    case PktType::SCHED_DATA:
+        out << "SCHED [" << homapkt->getSchedDataFields().firstByte << ":" << homapkt->getSchedDataFields().lastByte << "] ";
+        break;
+    case PktType::UNSCHED_DATA:
+        out << "UNSCHED [" << homapkt->getUnschedFields().firstByte << ":" << homapkt->getUnschedFields().lastByte << "] ";
+        break;
+    default:
+        out << "UNKNOWN []";
+        break;
     }
 
-    //out << endl;
-    out << "Homa: Payload length=" << udppkt->getByteLength() - 8 << endl;
+    out << "Priority=" << homapkt->getPriority() << " ";
 
-#ifdef WITH_SCTP
-    if (udppkt->getSourcePort() == 9899 || udppkt->getDestinationPort() == 9899)
-    {
-        if (dynamic_cast<SCTPMessage *>(udppkt->getEncapsulatedPacket()))
-            sctpDump("", (SCTPMessage *)(udppkt->getEncapsulatedPacket()),
-                    std::string(l2r?"A":"B"), std::string(l2r?"B" : "A"));
-    }
+    out << "Length=" << homapkt->getByteLength() << endl;
+
 #endif
-#endif
-
-    // comment
-    if (comment)
-        out << "# " << comment;
-
-    out << endl;
 }
 
 void PacketDump::dumpARP(bool l2r, const char *label, ARPPacket *dgram, const char *comment)
@@ -581,8 +580,10 @@ void PacketDump::dumpIPv4(bool l2r, const char *label, IPv4Datagram *dgram, cons
 #ifdef WITH_UDP
     if (dynamic_cast<UDPPacket *>(encapmsg))
     {
-        if (dynamic_cast<HomaPkt *>(encapmsg)) {
-            homaDump(l2r, label, (UDPPacket *)encapmsg, dgram->getSrcAddress().str(),
+        cPacket* pkt = HomaPkt::searchEncapHomaPkt(dgram);
+        if (pkt) {
+            HomaPkt* homaPkt = check_and_cast<HomaPkt*>(pkt);
+            homaDump(l2r, label, (UDPPacket *)encapmsg, homaPkt, dgram->getSrcAddress().str(),
                     dgram->getDestAddress().str(), comment);
         } else {
             udpDump(l2r, label, (UDPPacket *)encapmsg, dgram->getSrcAddress().str(),

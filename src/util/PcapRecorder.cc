@@ -48,8 +48,15 @@ void PcapRecorder::initialize()
     const char* file = par("pcapFile");
     snaplen = this->par("snaplen");
     dumpBadFrames = par("dumpBadFrames").boolValue();
+
+    // QZ: redefine packet dumper
+    std::string packetDumpPath(file);
+    packetDumpPath.replace(packetDumpPath.find(".pcap"), 5, ".pdmp");
+    // std::cout << "QZ: packetDumpPath = " << packetDumpPath << endl;
+    packetDumpStream = new std::ofstream(packetDumpPath.c_str());
+
     packetDumper.setVerbose(par("verbose").boolValue());
-    packetDumper.setOutStream(EVSTREAM);
+    packetDumper.setOutStream(*packetDumpStream);
     signalList.clear();
 
     {
@@ -128,11 +135,15 @@ void PcapRecorder::receiveSignal(cComponent *source, simsignal_t signalID, cObje
 
 void PcapRecorder::recordPacket(cPacket *msg, bool l2r)
 {
+    /*
     if (!ev.isDisabled())
     {
         EV << "PcapRecorder::recordPacket(" << msg->getFullPath() << ", " << l2r << ")\n";
         packetDumper.dumpPacket(l2r, msg);
     }
+    */
+    
+    packetDumper.dumpPacket(l2r, msg);
 
 #if defined(WITH_IPv4) || defined(WITH_IPv6)
     if (!pcapDumper.isOpen())
@@ -184,5 +195,9 @@ void PcapRecorder::finish()
 {
      packetDumper.dump("", "pcapRecorder finished");
      pcapDumper.closePcap();
+
+     // QZ: release ostream
+     packetDumpStream->close();
+     delete packetDumpStream;
 }
 

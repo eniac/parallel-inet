@@ -27,6 +27,8 @@
 #include "PacketDump.h"
 #include "PcapDump.h"
 
+#include <fstream>
+
 
 /**
  * Dumps every packet using the PcapDump and PacketDump classes
@@ -41,6 +43,8 @@ class INET_API PcapRecorder : public cSimpleModule, protected cListener
         unsigned int snaplen;
         unsigned long first, last, space;
         bool dumpBadFrames;
+        // QZ: add output stream for packet dump
+        std::ofstream* packetDumpStream;
     public:
         PcapRecorder();
         ~PcapRecorder();

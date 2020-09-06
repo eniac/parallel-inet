@@ -122,7 +122,7 @@ class INET_API PacketDump
         /*
          * Dumps info about the given Homa packet.
          * */ 
-        void homaDump(bool l2r, const char *label, UDPPacket* udppkt, const std::string& srcAddr,
+        void homaDump(bool l2r, const char *label, UDPPacket* udppkt, HomaPkt* homapkt, const std::string& srcAddr,
                 const std::string& destAddr, const char *comment);
 };
 
