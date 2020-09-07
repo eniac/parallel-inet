@@ -1,1 +1,3 @@
-make MODE=release CFLAGS+="-std=c++14 -fPIC" -j8
+make makefiles
+make MODE=release CFLAGS+="-std=c++14 -fPIC" -j
+

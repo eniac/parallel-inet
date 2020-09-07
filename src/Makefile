@@ -2,14 +2,156 @@
 # OMNeT++/OMNEST Makefile for libinet
 #
 # This file was generated with the command:
-#  opp_makemake -f --deep --make-so -o inet -O out -pINET --no-deep-includes -I. -I/bigdisk/mimic/3_simulate/common/homatransport/src -Xapplications/voipstream -Xtransport/tcp_lwip -Xtransport/tcp_nsc -DWITH_TCP_COMMON -DWITH_TCP_INET -DWITH_IPv4 -DWITH_IPv6 -DWITH_UDP -DWITH_RTP -DWITH_SCTP -DWITH_DHCP -DWITH_ETHERNET -DWITH_PPP -DWITH_EXT_IF -DWITH_MPLS -DWITH_OSPFv2 -DWITH_BGPv4 -DWITH_TRACI -DWITH_MANET -DWITH_xMIPv6 -DWITH_AODV -DWITH_RIP -DWITH_RADIO -DWITH_IEEE80211
+#  opp_makemake -f --deep --make-so -o inet -O out -pINET -Xapplications/voipstream -Xtransport/tcp_lwip -Xtransport/tcp_nsc -DWITH_TCP_COMMON -DWITH_TCP_INET -DWITH_IPv4 -DWITH_IPv6 -DWITH_UDP -DWITH_RTP -DWITH_SCTP -DWITH_DHCP -DWITH_ETHERNET -DWITH_PPP -DWITH_EXT_IF -DWITH_MPLS -DWITH_OSPFv2 -DWITH_BGPv4 -DWITH_TRACI -DWITH_MANET -DWITH_xMIPv6 -DWITH_AODV -DWITH_RIP -DWITH_RADIO -DWITH_IEEE80211 -I/bigdisk/mimic/3_simulate/homatransport/src
 #
 
 # Name of target to be created (-o option)
 TARGET = libinet$(SHARED_LIB_SUFFIX)
 
 # C++ include paths (with -I)
-INCLUDE_PATH = -I. -I/bigdisk/mimic/3_simulate/common/homatransport/src
+INCLUDE_PATH = \
+    -I/bigdisk/mimic/3_simulate/homatransport/src \
+    -I. \
+    -Iapplications \
+    -Iapplications/backbone \
+    -Iapplications/common \
+    -Iapplications/dhcp \
+    -Iapplications/ethernet \
+    -Iapplications/generic \
+    -Iapplications/httptools \
+    -Iapplications/pingapp \
+    -Iapplications/rtpapp \
+    -Iapplications/sctpapp \
+    -Iapplications/tcpapp \
+    -Iapplications/traci \
+    -Iapplications/udpapp \
+    -Iapplications/voip \
+    -Ibase \
+    -Ibattery \
+    -Ibattery/models \
+    -Ilinklayer \
+    -Ilinklayer/common \
+    -Ilinklayer/configurator \
+    -Ilinklayer/contract \
+    -Ilinklayer/ethernet \
+    -Ilinklayer/ethernet/switch \
+    -Ilinklayer/ext \
+    -Ilinklayer/idealwireless \
+    -Ilinklayer/ieee80211 \
+    -Ilinklayer/ieee80211/mac \
+    -Ilinklayer/ieee80211/mgmt \
+    -Ilinklayer/ieee80211/radio \
+    -Ilinklayer/ieee80211/radio/errormodel \
+    -Ilinklayer/ieee8021d \
+    -Ilinklayer/ieee8021d/common \
+    -Ilinklayer/ieee8021d/relay \
+    -Ilinklayer/ieee8021d/rstp \
+    -Ilinklayer/ieee8021d/stp \
+    -Ilinklayer/ieee8021d/tester \
+    -Ilinklayer/loopback \
+    -Ilinklayer/ppp \
+    -Ilinklayer/queue \
+    -Ilinklayer/radio \
+    -Ilinklayer/radio/propagation \
+    -Imobility \
+    -Imobility/common \
+    -Imobility/contract \
+    -Imobility/group \
+    -Imobility/single \
+    -Imobility/static \
+    -Inetworklayer \
+    -Inetworklayer/arp \
+    -Inetworklayer/autorouting \
+    -Inetworklayer/autorouting/ipv4 \
+    -Inetworklayer/autorouting/ipv6 \
+    -Inetworklayer/bgpv4 \
+    -Inetworklayer/bgpv4/BGPMessage \
+    -Inetworklayer/common \
+    -Inetworklayer/contract \
+    -Inetworklayer/diffserv \
+    -Inetworklayer/icmpv6 \
+    -Inetworklayer/internetcloud \
+    -Inetworklayer/ipv4 \
+    -Inetworklayer/ipv6 \
+    -Inetworklayer/ipv6tunneling \
+    -Inetworklayer/ldp \
+    -Inetworklayer/manetrouting \
+    -Inetworklayer/manetrouting/aodv-uu \
+    -Inetworklayer/manetrouting/aodv-uu/aodv-uu \
+    -Inetworklayer/manetrouting/base \
+    -Inetworklayer/manetrouting/batman \
+    -Inetworklayer/manetrouting/batman/batmand \
+    -Inetworklayer/manetrouting/batman/batmand/orig \
+    -Inetworklayer/manetrouting/dsdv \
+    -Inetworklayer/manetrouting/dsr \
+    -Inetworklayer/manetrouting/dsr/dsr-uu \
+    -Inetworklayer/manetrouting/dymo \
+    -Inetworklayer/manetrouting/dymo/dymoum \
+    -Inetworklayer/manetrouting/dymo_fau \
+    -Inetworklayer/manetrouting/olsr \
+    -Inetworklayer/mpls \
+    -Inetworklayer/ospfv2 \
+    -Inetworklayer/ospfv2/interface \
+    -Inetworklayer/ospfv2/messagehandler \
+    -Inetworklayer/ospfv2/neighbor \
+    -Inetworklayer/ospfv2/router \
+    -Inetworklayer/routing \
+    -Inetworklayer/routing/aodv \
+    -Inetworklayer/routing/dymo \
+    -Inetworklayer/routing/gpsr \
+    -Inetworklayer/routing/rip \
+    -Inetworklayer/rsvp_te \
+    -Inetworklayer/ted \
+    -Inetworklayer/xmipv6 \
+    -Inodes \
+    -Inodes/aodv \
+    -Inodes/bgp \
+    -Inodes/dymo \
+    -Inodes/ethernet \
+    -Inodes/gpsr \
+    -Inodes/httptools \
+    -Inodes/inet \
+    -Inodes/internetcloud \
+    -Inodes/ipv6 \
+    -Inodes/mpls \
+    -Inodes/ospfv2 \
+    -Inodes/rip \
+    -Inodes/rtp \
+    -Inodes/wireless \
+    -Inodes/xmipv6 \
+    -Istatus \
+    -Itransport \
+    -Itransport/contract \
+    -Itransport/rtp \
+    -Itransport/rtp/profiles \
+    -Itransport/rtp/profiles/avprofile \
+    -Itransport/sctp \
+    -Itransport/tcp \
+    -Itransport/tcp/flavours \
+    -Itransport/tcp/queues \
+    -Itransport/tcp_common \
+    -Itransport/udp \
+    -Iutil \
+    -Iutil/headerserializers \
+    -Iutil/headerserializers/headers \
+    -Iutil/headerserializers/ipv4 \
+    -Iutil/headerserializers/ipv4/headers \
+    -Iutil/headerserializers/ipv6 \
+    -Iutil/headerserializers/ipv6/headers \
+    -Iutil/headerserializers/sctp \
+    -Iutil/headerserializers/sctp/headers \
+    -Iutil/headerserializers/tcp \
+    -Iutil/headerserializers/tcp/headers \
+    -Iutil/headerserializers/udp \
+    -Iutil/headerserializers/udp/headers \
+    -Iutil/messageprinters \
+    -Iworld \
+    -Iworld/annotations \
+    -Iworld/httptools \
+    -Iworld/obstacles \
+    -Iworld/radio \
+    -Iworld/scenario \
+    -Iworld/traci
 
 # Additional object and library files to link with
 EXTRA_OBJS =
@@ -957,280 +1099,1004 @@ depend:
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
 $O/applications/backbone/UDPBackboneApp.o: applications/backbone/UDPBackboneApp.cc \
-  applications/backbone/UDPBackboneApp.h
+  applications/backbone/UDPBackboneApp.h \
+  base/ILifecycle.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/autorouting/ipv4/IPv4NetworkConfiguratorState.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/IPv4Route.h \
+  transport/contract/UDPControlInfo_m.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  networklayer/autorouting/ipv4/IPv4NetworkConfigurator.h \
+  base/Topology.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  base/INotifiable.h \
+  networklayer/ipv4/RoutingTable.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/INETDefs.h \
+  util/PatternMatcher.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/common/InterfaceTable.h \
+  transport/contract/UDPSocket.h \
+  base/NotificationBoard.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  linklayer/contract/MACAddress.h
 $O/applications/common/ApplicationBase.o: applications/common/ApplicationBase.cc \
-  applications/common/ApplicationBase.h
+  base/INETDefs.h \
+  base/OperationalBase.h \
+  base/NodeOperations.h \
+  base/LifecycleOperation.h \
+  applications/common/ApplicationBase.h \
+  base/ILifecycle.h \
+  base/Compat.h
 $O/applications/dhcp/DHCPClient.o: applications/dhcp/DHCPClient.cc \
+  base/NotificationBoard.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/common/InterfaceTable.h \
+  transport/contract/UDPSocket.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/RoutingTable.h \
   applications/dhcp/DHCPLease.h \
+  base/INETDefs.h \
+  networklayer/arp/ARP.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  base/INotifiable.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  networklayer/arp/IARPCache.h \
   applications/dhcp/DHCPMessage_m.h \
-  applications/dhcp/DHCPClient.h
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/IInterfaceTable.h \
+  base/LifecycleOperation.h \
+  applications/dhcp/DHCPClient.h \
+  networklayer/common/InterfaceEntry.h \
+  base/NodeOperations.h \
+  base/ILifecycle.h
 $O/applications/dhcp/DHCPMessage_m.o: applications/dhcp/DHCPMessage_m.cc \
-  applications/dhcp/DHCPMessage_m.h
+  applications/dhcp/DHCPMessage_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  linklayer/contract/MACAddress.h \
+  base/INETDefs.h
 $O/applications/dhcp/DHCPServer.o: applications/dhcp/DHCPServer.cc \
-  applications/dhcp/DHCPServer.h \
+  base/NodeOperations.h \
+  networklayer/common/InterfaceEntry.h \
+  base/LifecycleOperation.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  status/NodeStatus.h \
+  base/ILifecycle.h \
+  networklayer/arp/IARPCache.h \
+  transport/contract/UDPControlInfo_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  applications/dhcp/DHCPMessage_m.h \
   applications/dhcp/DHCPLease.h \
-  applications/dhcp/DHCPMessage_m.h
+  base/INETDefs.h \
+  base/INotifiable.h \
+  applications/dhcp/DHCPServer.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/arp/ARP.h \
+  networklayer/common/InterfaceToken.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  base/ModuleAccess.h \
+  transport/contract/UDPSocket.h \
+  networklayer/common/InterfaceTable.h
 $O/applications/ethernet/EtherAppCli.o: applications/ethernet/EtherAppCli.cc \
+  base/Compat.h \
+  applications/ethernet/EtherAppCli.h \
+  status/NodeStatus.h \
+  base/LifecycleOperation.h \
+  base/NodeOperations.h \
+  base/ILifecycle.h \
+  base/ModuleAccess.h \
+  linklayer/contract/MACAddress.h \
   applications/ethernet/EtherApp_m.h \
-  applications/ethernet/EtherAppCli.h
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h
 $O/applications/ethernet/EtherAppSrv.o: applications/ethernet/EtherAppSrv.cc \
+  applications/ethernet/EtherAppSrv.h \
   applications/ethernet/EtherApp_m.h \
-  applications/ethernet/EtherAppSrv.h
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
+  base/ModuleAccess.h \
+  linklayer/contract/MACAddress.h \
+  base/ILifecycle.h \
+  status/NodeStatus.h \
+  base/LifecycleOperation.h \
+  base/NodeOperations.h \
+  base/Compat.h
 $O/applications/ethernet/EtherApp_m.o: applications/ethernet/EtherApp_m.cc \
-  applications/ethernet/EtherApp_m.h
-$O/applications/ethernet/EtherTrafGen.o: applications/ethernet/EtherTrafGen.cc \
-  applications/ethernet/EtherTrafGen.h
-$O/applications/ethernet/EthernetApplication.o: applications/ethernet/EthernetApplication.cc \
   applications/ethernet/EtherApp_m.h \
-  applications/ethernet/EthernetApplication.h
+  base/INETDefs.h \
+  base/Compat.h
+$O/applications/ethernet/EtherTrafGen.o: applications/ethernet/EtherTrafGen.cc \
+  base/Compat.h \
+  base/ILifecycle.h \
+  base/LifecycleOperation.h \
+  status/NodeStatus.h \
+  base/NodeOperations.h \
+  linklayer/contract/MACAddress.h \
+  base/ModuleAccess.h \
+  base/INETDefs.h \
+  applications/ethernet/EtherTrafGen.h \
+  linklayer/contract/Ieee802Ctrl_m.h
+$O/applications/ethernet/EthernetApplication.o: applications/ethernet/EthernetApplication.cc \
+  applications/ethernet/EthernetApplication.h \
+  base/Compat.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
+  applications/ethernet/EtherApp_m.h \
+  linklayer/contract/MACAddress.h
 $O/applications/generic/IPvXTrafGen.o: applications/generic/IPvXTrafGen.cc \
+  applications/generic/IPvXTrafGen.h \
+  linklayer/contract/MACAddress.h \
+  base/ModuleAccess.h \
   applications/generic/IPvXTrafSink.h \
-  applications/generic/IPvXTrafGen.h
+  networklayer/contract/IPProtocolId_m.h \
+  base/INETDefs.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPv6Address.h \
+  base/LifecycleOperation.h \
+  networklayer/contract/IPSocket.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  base/NodeOperations.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  base/ILifecycle.h \
+  networklayer/contract/IPv6ControlInfo_m.h
 $O/applications/generic/IPvXTrafSink.o: applications/generic/IPvXTrafSink.cc \
+  base/ILifecycle.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
+  base/NodeOperations.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  base/LifecycleOperation.h \
+  networklayer/contract/IPSocket.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
+  networklayer/contract/IPProtocolId_m.h \
   applications/generic/IPvXTrafSink.h \
+  linklayer/contract/MACAddress.h \
+  base/ModuleAccess.h \
   applications/generic/IPvXTrafGen.h
 $O/applications/httptools/HttpBrowser.o: applications/httptools/HttpBrowser.cc \
   applications/httptools/HttpBrowserBase.h \
-  applications/httptools/HttpNodeBase.h \
+  applications/httptools/HttpUtils.h \
   applications/httptools/HttpRandom.h \
+  base/INETDefs.h \
+  transport/contract/TCPCommand_m.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
   applications/httptools/HttpMessages_m.h \
+  applications/httptools/HttpNodeBase.h \
+  networklayer/contract/IPv6Address.h \
+  transport/contract/TCPSocket.h \
+  world/httptools/HttpController.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  base/LifecycleOperation.h \
   applications/httptools/HttpBrowser.h \
-  applications/httptools/HttpUtils.h
+  applications/httptools/HttpEventMessages_m.h \
+  base/ILifecycle.h \
+  transport/contract/TCPSocketMap.h
 $O/applications/httptools/HttpBrowserBase.o: applications/httptools/HttpBrowserBase.cc \
+  base/Compat.h \
+  applications/httptools/HttpNodeBase.h \
   applications/httptools/HttpMessages_m.h \
-  applications/httptools/HttpUtils.h \
-  applications/httptools/HttpRandom.h \
-  applications/httptools/HttpNodeBase.h \
-  applications/httptools/HttpBrowserBase.h
-$O/applications/httptools/HttpBrowserDirect.o: applications/httptools/HttpBrowserDirect.cc \
-  applications/httptools/HttpBrowserDirect.h \
+  base/LifecycleOperation.h \
+  world/httptools/HttpController.h \
+  status/NodeStatus.h \
+  base/ILifecycle.h \
+  applications/httptools/HttpEventMessages_m.h \
+  base/ModuleAccess.h \
   applications/httptools/HttpBrowserBase.h \
-  applications/httptools/HttpRandom.h \
-  applications/httptools/HttpServerBase.h \
-  applications/httptools/HttpNodeBase.h \
+  base/INETDefs.h \
   applications/httptools/HttpUtils.h \
-  applications/httptools/HttpMessages_m.h
+  applications/httptools/HttpRandom.h
+$O/applications/httptools/HttpBrowserDirect.o: applications/httptools/HttpBrowserDirect.cc \
+  applications/httptools/HttpEventMessages_m.h \
+  base/ILifecycle.h \
+  world/httptools/HttpController.h \
+  base/LifecycleOperation.h \
+  applications/httptools/HttpNodeBase.h \
+  applications/httptools/HttpMessages_m.h \
+  base/Compat.h \
+  applications/httptools/HttpServerBase.h \
+  base/INETDefs.h \
+  applications/httptools/HttpUtils.h \
+  applications/httptools/HttpRandom.h \
+  applications/httptools/HttpBrowserDirect.h \
+  applications/httptools/HttpBrowserBase.h
 $O/applications/httptools/HttpEventMessages_m.o: applications/httptools/HttpEventMessages_m.cc \
   applications/httptools/HttpEventMessages_m.h
 $O/applications/httptools/HttpMessages_m.o: applications/httptools/HttpMessages_m.cc \
   applications/httptools/HttpMessages_m.h
 $O/applications/httptools/HttpNodeBase.o: applications/httptools/HttpNodeBase.cc \
   applications/httptools/HttpRandom.h \
-  applications/httptools/HttpNodeBase.h \
+  applications/httptools/HttpUtils.h \
+  base/INETDefs.h \
+  base/ILifecycle.h \
+  applications/httptools/HttpEventMessages_m.h \
+  base/LifecycleOperation.h \
+  world/httptools/HttpController.h \
   applications/httptools/HttpMessages_m.h \
-  applications/httptools/HttpUtils.h
+  applications/httptools/HttpNodeBase.h \
+  base/Compat.h
 $O/applications/httptools/HttpRandom.o: applications/httptools/HttpRandom.cc \
   applications/httptools/HttpMessages_m.h \
-  applications/httptools/HttpUtils.h \
-  applications/httptools/HttpRandom.h
-$O/applications/httptools/HttpServer.o: applications/httptools/HttpServer.cc \
-  applications/httptools/HttpServer.h \
-  applications/httptools/HttpServerBase.h \
+  base/Compat.h \
+  base/INETDefs.h \
   applications/httptools/HttpRandom.h \
-  applications/httptools/HttpNodeBase.h \
-  applications/httptools/HttpMessages_m.h \
   applications/httptools/HttpUtils.h
-$O/applications/httptools/HttpServerBase.o: applications/httptools/HttpServerBase.cc \
+$O/applications/httptools/HttpServer.o: applications/httptools/HttpServer.cc \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
   applications/httptools/HttpMessages_m.h \
+  applications/httptools/HttpNodeBase.h \
+  networklayer/contract/IPv6Address.h \
+  applications/httptools/HttpServer.h \
+  base/LifecycleOperation.h \
+  world/httptools/HttpController.h \
+  transport/contract/TCPSocket.h \
+  networklayer/contract/IPvXAddress.h \
+  base/ILifecycle.h \
+  transport/contract/TCPSocketMap.h \
+  applications/httptools/HttpEventMessages_m.h \
+  applications/httptools/HttpRandom.h \
   applications/httptools/HttpUtils.h \
-  applications/httptools/HttpRandom.h \
-  applications/httptools/HttpNodeBase.h \
-  applications/httptools/HttpServerBase.h
-$O/applications/httptools/HttpServerDirect.o: applications/httptools/HttpServerDirect.cc \
-  applications/httptools/HttpServerDirect.h \
-  applications/httptools/HttpNodeBase.h \
+  base/INETDefs.h \
   applications/httptools/HttpServerBase.h \
+  transport/contract/TCPCommand_m.h
+$O/applications/httptools/HttpServerBase.o: applications/httptools/HttpServerBase.cc \
   applications/httptools/HttpRandom.h \
+  applications/httptools/HttpUtils.h \
+  base/INETDefs.h \
+  applications/httptools/HttpServerBase.h \
+  base/ModuleAccess.h \
+  status/NodeStatus.h \
+  world/httptools/HttpController.h \
+  base/LifecycleOperation.h \
+  applications/httptools/HttpEventMessages_m.h \
+  base/ILifecycle.h \
+  base/Compat.h \
   applications/httptools/HttpMessages_m.h \
+  applications/httptools/HttpNodeBase.h
+$O/applications/httptools/HttpServerDirect.o: applications/httptools/HttpServerDirect.cc \
+  base/ILifecycle.h \
+  applications/httptools/HttpServerDirect.h \
+  applications/httptools/HttpEventMessages_m.h \
+  base/LifecycleOperation.h \
+  world/httptools/HttpController.h \
+  applications/httptools/HttpNodeBase.h \
+  applications/httptools/HttpMessages_m.h \
+  base/Compat.h \
+  applications/httptools/HttpServerBase.h \
+  base/INETDefs.h \
+  applications/httptools/HttpRandom.h \
   applications/httptools/HttpUtils.h
 $O/applications/httptools/HttpServerDirectEvilA.o: applications/httptools/HttpServerDirectEvilA.cc \
-  applications/httptools/HttpUtils.h \
-  applications/httptools/HttpMessages_m.h \
-  applications/httptools/HttpRandom.h \
   applications/httptools/HttpNodeBase.h \
-  applications/httptools/HttpServerBase.h \
+  applications/httptools/HttpMessages_m.h \
+  base/Compat.h \
+  applications/httptools/HttpEventMessages_m.h \
   applications/httptools/HttpServerDirect.h \
-  applications/httptools/HttpServerDirectEvilA.h
+  base/ILifecycle.h \
+  world/httptools/HttpController.h \
+  base/LifecycleOperation.h \
+  applications/httptools/HttpServerDirectEvilA.h \
+  applications/httptools/HttpServerBase.h \
+  base/INETDefs.h \
+  applications/httptools/HttpUtils.h \
+  applications/httptools/HttpRandom.h
 $O/applications/httptools/HttpServerDirectEvilB.o: applications/httptools/HttpServerDirectEvilB.cc \
-  applications/httptools/HttpMessages_m.h \
-  applications/httptools/HttpUtils.h \
+  applications/httptools/HttpEventMessages_m.h \
+  base/ILifecycle.h \
   applications/httptools/HttpServerDirect.h \
-  applications/httptools/HttpRandom.h \
-  applications/httptools/HttpServerBase.h \
+  world/httptools/HttpController.h \
+  base/LifecycleOperation.h \
+  applications/httptools/HttpMessages_m.h \
   applications/httptools/HttpNodeBase.h \
+  base/Compat.h \
+  applications/httptools/HttpServerBase.h \
+  applications/httptools/HttpUtils.h \
+  applications/httptools/HttpRandom.h \
+  base/INETDefs.h \
   applications/httptools/HttpServerDirectEvilB.h
 $O/applications/httptools/HttpServerEvilA.o: applications/httptools/HttpServerEvilA.cc \
-  applications/httptools/HttpNodeBase.h \
-  applications/httptools/HttpServerBase.h \
-  applications/httptools/HttpRandom.h \
-  applications/httptools/HttpServer.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
   applications/httptools/HttpMessages_m.h \
+  applications/httptools/HttpServer.h \
+  networklayer/contract/IPv6Address.h \
+  applications/httptools/HttpNodeBase.h \
+  transport/contract/TCPSocket.h \
+  networklayer/contract/IPvXAddress.h \
+  world/httptools/HttpController.h \
+  applications/httptools/HttpServerEvilA.h \
+  base/LifecycleOperation.h \
+  applications/httptools/HttpEventMessages_m.h \
+  base/ILifecycle.h \
+  transport/contract/TCPSocketMap.h \
+  applications/httptools/HttpRandom.h \
   applications/httptools/HttpUtils.h \
-  applications/httptools/HttpServerEvilA.h
+  base/INETDefs.h \
+  transport/contract/TCPCommand_m.h \
+  applications/httptools/HttpServerBase.h
 $O/applications/httptools/HttpServerEvilB.o: applications/httptools/HttpServerEvilB.cc \
-  applications/httptools/HttpServer.h \
-  applications/httptools/HttpNodeBase.h \
-  applications/httptools/HttpServerBase.h \
-  applications/httptools/HttpRandom.h \
-  applications/httptools/HttpMessages_m.h \
+  applications/httptools/HttpEventMessages_m.h \
+  transport/contract/TCPSocketMap.h \
+  base/ILifecycle.h \
   applications/httptools/HttpServerEvilB.h \
-  applications/httptools/HttpUtils.h
+  networklayer/contract/IPvXAddress.h \
+  transport/contract/TCPSocket.h \
+  world/httptools/HttpController.h \
+  base/LifecycleOperation.h \
+  applications/httptools/HttpMessages_m.h \
+  applications/httptools/HttpServer.h \
+  networklayer/contract/IPv6Address.h \
+  applications/httptools/HttpNodeBase.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  transport/contract/TCPCommand_m.h \
+  applications/httptools/HttpServerBase.h \
+  applications/httptools/HttpUtils.h \
+  applications/httptools/HttpRandom.h \
+  base/INETDefs.h
 $O/applications/httptools/HttpUtils.o: applications/httptools/HttpUtils.cc \
   applications/httptools/HttpMessages_m.h \
   applications/httptools/HttpUtils.h
 $O/applications/pingapp/PingApp.o: applications/pingapp/PingApp.cc \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INETDefs.h \
+  base/ModuleAccess.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
+  base/ILifecycle.h \
   applications/pingapp/PingPayload_m.h \
-  applications/pingapp/PingApp.h
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  base/LifecycleOperation.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  base/NodeOperations.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPv6Address.h \
+  applications/pingapp/PingApp.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  networklayer/contract/IPv6ControlInfo.h
 $O/applications/pingapp/PingPayload_m.o: applications/pingapp/PingPayload_m.cc \
+  base/INETDefs.h \
+  base/Compat.h \
   applications/pingapp/PingPayload_m.h
 $O/applications/pingapp/PingTestApp.o: applications/pingapp/PingTestApp.cc \
+  networklayer/ipv6/IPv6InterfaceData.h \
+  base/ModuleAccess.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  base/INotifiable.h \
+  base/INETDefs.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
   applications/pingapp/PingPayload_m.h \
-  applications/pingapp/PingTestApp.h
+  networklayer/contract/IPv6ControlInfo_m.h \
+  base/ILifecycle.h \
+  applications/pingapp/PingTestApp.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  base/LifecycleOperation.h \
+  networklayer/common/IInterfaceTable.h
 $O/applications/rtpapp/RTPApplication.o: applications/rtpapp/RTPApplication.cc \
-  applications/rtpapp/RTPApplication.h
+  base/INETDefs.h \
+  base/ModuleAccess.h \
+  applications/rtpapp/RTPApplication.h \
+  base/LifecycleOperation.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  status/NodeStatus.h \
+  base/ILifecycle.h \
+  transport/rtp/RTPInterfacePacket_m.h \
+  transport/rtp/RTPSenderStatusMessage_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv6Address.h \
+  transport/rtp/RTPSenderControlMessage_m.h
 $O/applications/sctpapp/SCTPClient.o: applications/sctpapp/SCTPClient.cc \
-  applications/sctpapp/SCTPClient.h
+  base/ILifecycle.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  base/LifecycleOperation.h \
+  networklayer/common/IInterfaceTable.h \
+  transport/sctp/SCTP.h \
+  transport/sctp/SCTPAssociation.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  transport/contract/SCTPCommand_m.h \
+  transport/sctp/SCTPReceiveStream.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPv6Address.h \
+  transport/sctp/SCTPMessage_m.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  transport/sctp/SCTPMessage.h \
+  transport/contract/SCTPCommand.h \
+  transport/sctp/SCTPSendStream.h \
+  base/INotifiable.h \
+  applications/sctpapp/SCTPClient.h \
+  networklayer/common/InterfaceTableAccess.h \
+  transport/contract/SCTPSocket.h \
+  networklayer/common/InterfaceTable.h \
+  transport/sctp/SCTPGapList.h \
+  transport/contract/UDPSocket.h \
+  base/ModuleAccess.h \
+  transport/sctp/SCTPQueue.h \
+  networklayer/common/InterfaceToken.h
 $O/applications/sctpapp/SCTPNatPeer.o: applications/sctpapp/SCTPNatPeer.cc \
-  applications/sctpapp/SCTPNatPeer.h
+  transport/sctp/SCTPMessage_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  transport/contract/SCTPCommand_m.h \
+  transport/sctp/SCTPReceiveStream.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  transport/contract/SCTPSocket.h \
+  networklayer/common/InterfaceTableAccess.h \
+  transport/sctp/SCTPGapList.h \
+  networklayer/common/InterfaceTable.h \
+  transport/contract/UDPSocket.h \
+  base/ModuleAccess.h \
+  transport/sctp/SCTPQueue.h \
+  networklayer/common/InterfaceToken.h \
+  transport/sctp/SCTPMessage.h \
+  transport/contract/SCTPCommand.h \
+  base/INotifiable.h \
+  transport/sctp/SCTPSendStream.h \
+  transport/sctp/SCTP.h \
+  base/ILifecycle.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  networklayer/common/IInterfaceTable.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  applications/sctpapp/SCTPNatPeer.h \
+  transport/sctp/SCTPAssociation.h \
+  base/INETDefs.h
 $O/applications/sctpapp/SCTPNatServer.o: applications/sctpapp/SCTPNatServer.cc \
-  applications/sctpapp/SCTPNatServer.h
+  applications/sctpapp/SCTPNatServer.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  transport/sctp/SCTPAssociation.h \
+  transport/sctp/SCTPNatTable.h \
+  transport/sctp/SCTP.h \
+  base/ILifecycle.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/contract/SCTPSocket.h \
+  networklayer/common/InterfaceTableAccess.h \
+  transport/contract/UDPSocket.h \
+  transport/sctp/SCTPGapList.h \
+  networklayer/common/InterfaceTable.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  transport/sctp/SCTPQueue.h \
+  transport/sctp/SCTPSendStream.h \
+  base/INotifiable.h \
+  transport/contract/SCTPCommand.h \
+  transport/sctp/SCTPMessage.h \
+  transport/sctp/SCTPMessage_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  transport/sctp/SCTPReceiveStream.h \
+  transport/contract/SCTPCommand_m.h \
+  networklayer/contract/IPvXAddressResolver.h
 $O/applications/sctpapp/SCTPPeer.o: applications/sctpapp/SCTPPeer.cc \
-  applications/sctpapp/SCTPPeer.h
+  transport/sctp/SCTPReceiveStream.h \
+  transport/contract/SCTPCommand_m.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  transport/sctp/SCTPMessage_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  transport/contract/SCTPCommand.h \
+  base/INotifiable.h \
+  transport/sctp/SCTPSendStream.h \
+  transport/sctp/SCTPMessage.h \
+  transport/contract/SCTPSocket.h \
+  networklayer/common/InterfaceTableAccess.h \
+  transport/contract/UDPSocket.h \
+  transport/sctp/SCTPGapList.h \
+  networklayer/common/InterfaceTable.h \
+  networklayer/common/InterfaceToken.h \
+  transport/sctp/SCTPQueue.h \
+  applications/sctpapp/SCTPPeer.h \
+  base/ModuleAccess.h \
+  base/ILifecycle.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/common/IInterfaceTable.h \
+  base/LifecycleOperation.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  transport/sctp/SCTP.h \
+  base/INETDefs.h \
+  transport/sctp/SCTPAssociation.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h
 $O/applications/sctpapp/SCTPServer.o: applications/sctpapp/SCTPServer.cc \
-  applications/sctpapp/SCTPServer.h
+  transport/sctp/SCTPMessage.h \
+  transport/contract/SCTPCommand.h \
+  transport/sctp/SCTPSendStream.h \
+  base/INotifiable.h \
+  networklayer/common/InterfaceTableAccess.h \
+  transport/contract/SCTPSocket.h \
+  transport/sctp/SCTPGapList.h \
+  networklayer/common/InterfaceTable.h \
+  transport/contract/UDPSocket.h \
+  base/ModuleAccess.h \
+  transport/sctp/SCTPQueue.h \
+  networklayer/common/InterfaceToken.h \
+  transport/contract/SCTPCommand_m.h \
+  transport/sctp/SCTPReceiveStream.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  transport/sctp/SCTPMessage_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  transport/sctp/SCTPAssociation.h \
+  base/INETDefs.h \
+  applications/sctpapp/SCTPServer.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  base/ILifecycle.h \
+  networklayer/common/InterfaceEntry.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/IInterfaceTable.h \
+  base/LifecycleOperation.h \
+  transport/sctp/SCTP.h
 $O/applications/tcpapp/GenericAppMsg_m.o: applications/tcpapp/GenericAppMsg_m.cc \
+  base/Compat.h \
+  base/INETDefs.h \
   applications/tcpapp/GenericAppMsg_m.h
 $O/applications/tcpapp/TCPAppBase.o: applications/tcpapp/TCPAppBase.cc \
-  applications/tcpapp/TCPAppBase.h
-$O/applications/tcpapp/TCPBasicClientApp.o: applications/tcpapp/TCPBasicClientApp.cc \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv6Address.h \
   applications/tcpapp/TCPAppBase.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  transport/contract/TCPSocket.h \
+  networklayer/contract/IPvXAddress.h \
+  base/INETDefs.h \
+  transport/contract/TCPCommand_m.h
+$O/applications/tcpapp/TCPBasicClientApp.o: applications/tcpapp/TCPBasicClientApp.cc \
+  transport/contract/TCPCommand_m.h \
+  applications/tcpapp/TCPBasicClientApp.h \
+  base/INETDefs.h \
   applications/tcpapp/GenericAppMsg_m.h \
-  applications/tcpapp/TCPBasicClientApp.h
+  base/ILifecycle.h \
+  base/NodeOperations.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  base/LifecycleOperation.h \
+  base/ModuleAccess.h \
+  applications/tcpapp/TCPAppBase.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  transport/contract/TCPSocket.h
 $O/applications/tcpapp/TCPEchoApp.o: applications/tcpapp/TCPEchoApp.cc \
-  applications/tcpapp/TCPEchoApp.h
+  base/ILifecycle.h \
+  base/NodeOperations.h \
+  base/LifecycleOperation.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  base/ByteArray.h \
+  transport/contract/TCPCommand_m.h \
+  applications/tcpapp/TCPEchoApp.h \
+  base/INETDefs.h \
+  base/ByteArrayMessage.h \
+  transport/contract/TCPSocket.h \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArray_m.h \
+  base/ByteArrayMessage_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  base/ModuleAccess.h
 $O/applications/tcpapp/TCPGenericSrvApp.o: applications/tcpapp/TCPGenericSrvApp.cc \
+  transport/contract/TCPCommand_m.h \
+  base/INETDefs.h \
+  base/ILifecycle.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  base/LifecycleOperation.h \
   applications/tcpapp/GenericAppMsg_m.h \
-  applications/tcpapp/TCPGenericSrvApp.h
+  base/ModuleAccess.h \
+  transport/contract/TCPSocket.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  applications/tcpapp/TCPGenericSrvApp.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h
 $O/applications/tcpapp/TCPGenericSrvThread.o: applications/tcpapp/TCPGenericSrvThread.cc \
   applications/tcpapp/TCPSrvHostApp.h \
-  applications/tcpapp/TCPGenericSrvThread.h \
-  applications/tcpapp/GenericAppMsg_m.h
+  transport/contract/TCPSocketMap.h \
+  transport/contract/TCPSocket.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  transport/contract/TCPCommand_m.h \
+  base/INETDefs.h \
+  base/ILifecycle.h \
+  networklayer/contract/IPvXAddress.h \
+  base/LifecycleOperation.h \
+  applications/tcpapp/GenericAppMsg_m.h \
+  applications/tcpapp/TCPGenericSrvThread.h
 $O/applications/tcpapp/TCPSessionApp.o: applications/tcpapp/TCPSessionApp.cc \
+  transport/contract/TCPCommand_m.h \
+  base/INETDefs.h \
+  base/ByteArrayMessage.h \
+  base/ILifecycle.h \
+  base/LifecycleOperation.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  base/NodeOperations.h \
+  base/ByteArray.h \
+  base/ModuleAccess.h \
+  applications/tcpapp/TCPSessionApp.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  transport/contract/TCPSocket.h \
+  networklayer/contract/IPv6Address.h \
   applications/tcpapp/TCPAppBase.h \
-  applications/tcpapp/TCPSessionApp.h
+  base/ByteArray_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  base/ByteArrayMessage_m.h
 $O/applications/tcpapp/TCPSinkApp.o: applications/tcpapp/TCPSinkApp.cc \
-  applications/tcpapp/TCPSinkApp.h
+  base/LifecycleOperation.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  base/ILifecycle.h \
+  applications/tcpapp/TCPSinkApp.h \
+  base/INETDefs.h \
+  transport/contract/TCPCommand_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv6Address.h \
+  transport/contract/TCPSocket.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  base/ModuleAccess.h
 $O/applications/tcpapp/TCPSrvHostApp.o: applications/tcpapp/TCPSrvHostApp.cc \
+  base/LifecycleOperation.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  base/ILifecycle.h \
+  base/INETDefs.h \
+  transport/contract/TCPCommand_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  transport/contract/TCPSocket.h \
+  transport/contract/TCPSocketMap.h \
+  base/ModuleAccess.h \
   applications/tcpapp/TCPSrvHostApp.h
 $O/applications/tcpapp/TelnetApp.o: applications/tcpapp/TelnetApp.cc \
   applications/tcpapp/GenericAppMsg_m.h \
+  base/LifecycleOperation.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  base/NodeOperations.h \
+  base/ILifecycle.h \
+  base/INETDefs.h \
+  applications/tcpapp/TelnetApp.h \
+  transport/contract/TCPCommand_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv6Address.h \
   applications/tcpapp/TCPAppBase.h \
-  applications/tcpapp/TelnetApp.h
+  transport/contract/TCPSocket.h \
+  base/ModuleAccess.h
 $O/applications/traci/TraCIDemo.o: applications/traci/TraCIDemo.cc \
+  base/ModuleAccess.h \
   ./mobility/single/TraCIMobility.h \
-  ./applications/traci/TraCIDemo.h \
-  ./world/traci/TraCIScenarioManager.h
-$O/applications/traci/TraCITestApp.o: applications/traci/TraCITestApp.cc \
+  transport/contract/UDPSocket.h \
+  base/Coord.h \
   ./world/traci/TraCIScenarioManager.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  ./applications/traci/TraCIDemo.h \
+  mobility/common/MobilityBase.h \
+  base/INETDefs.h \
+  mobility/contract/IMobility.h \
+  util/FWMath.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  base/LifecycleOperation.h \
+  base/ILifecycle.h
+$O/applications/traci/TraCITestApp.o: applications/traci/TraCITestApp.cc \
+  mobility/common/MobilityBase.h \
+  base/INETDefs.h \
+  mobility/contract/IMobility.h \
+  util/FWMath.h \
+  base/LifecycleOperation.h \
+  status/NodeStatus.h \
+  base/ILifecycle.h \
+  base/ModuleAccess.h \
+  ./applications/traci/TraCITestApp.h \
   ./mobility/single/TraCIMobility.h \
-  ./applications/traci/TraCITestApp.h
+  base/Coord.h \
+  ./world/traci/TraCIScenarioManager.h \
+  base/Compat.h
 $O/applications/udpapp/UDPBasicApp.o: applications/udpapp/UDPBasicApp.cc \
+  base/LifecycleOperation.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPvXAddress.h \
+  base/NodeOperations.h \
+  base/OperationalBase.h \
+  networklayer/common/InterfaceEntry.h \
+  base/ILifecycle.h \
+  applications/common/ApplicationBase.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/application/MsgSizeDistributions.h \
   applications/udpapp/UDPBasicApp.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/common/Minimal.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/application/MsgSizeDistributions.h
+  base/INETDefs.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  transport/contract/UDPControlInfo_m.h \
+  networklayer/contract/IPv6Address.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/common/Minimal.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  transport/contract/UDPSocket.h \
+  networklayer/common/InterfaceTableAccess.h
 $O/applications/udpapp/UDPBasicBurst.o: applications/udpapp/UDPBasicBurst.cc \
-  applications/udpapp/UDPBasicBurst.h
+  networklayer/ipv4/IRoutingTable.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  base/OperationalBase.h \
+  base/NodeOperations.h \
+  networklayer/contract/IPvXAddress.h \
+  base/LifecycleOperation.h \
+  applications/common/ApplicationBase.h \
+  base/ILifecycle.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ipv6/RoutingTable6Access.h \
+  applications/udpapp/UDPBasicBurst.h \
+  base/INotifiable.h \
+  base/ModuleAccess.h \
+  networklayer/ipv6/RoutingTable6.h \
+  transport/contract/UDPSocket.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  transport/contract/UDPControlInfo_m.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h
 $O/applications/udpapp/UDPEchoApp.o: applications/udpapp/UDPEchoApp.cc \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  transport/contract/UDPControlInfo_m.h \
+  transport/contract/UDPSocket.h \
+  base/ILifecycle.h \
+  applications/common/ApplicationBase.h \
+  networklayer/contract/IPvXAddress.h \
+  base/LifecycleOperation.h \
+  base/OperationalBase.h \
+  base/NodeOperations.h \
+  base/INETDefs.h \
   applications/udpapp/UDPEchoApp.h
 $O/applications/udpapp/UDPSink.o: applications/udpapp/UDPSink.cc \
-  applications/udpapp/UDPSink.h
+  base/NodeOperations.h \
+  base/OperationalBase.h \
+  base/LifecycleOperation.h \
+  networklayer/contract/IPvXAddress.h \
+  applications/common/ApplicationBase.h \
+  base/ILifecycle.h \
+  base/INETDefs.h \
+  transport/contract/UDPControlInfo_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv6Address.h \
+  applications/udpapp/UDPSink.h \
+  transport/contract/UDPSocket.h
 $O/applications/udpapp/UDPVideoStreamCli.o: applications/udpapp/UDPVideoStreamCli.cc \
-  applications/udpapp/UDPVideoStreamCli.h
+  networklayer/contract/IPvXAddressResolver.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  transport/contract/UDPControlInfo_m.h \
+  networklayer/contract/IPv6Address.h \
+  transport/contract/UDPSocket.h \
+  base/LifecycleOperation.h \
+  networklayer/contract/IPvXAddress.h \
+  applications/udpapp/UDPVideoStreamCli.h \
+  base/NodeOperations.h \
+  base/OperationalBase.h \
+  base/ILifecycle.h \
+  applications/common/ApplicationBase.h \
+  base/INETDefs.h
 $O/applications/udpapp/UDPVideoStreamSvr.o: applications/udpapp/UDPVideoStreamSvr.cc \
-  applications/udpapp/UDPVideoStreamSvr.h
+  transport/contract/UDPSocket.h \
+  transport/contract/UDPControlInfo_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv6Address.h \
+  base/INETDefs.h \
+  base/NodeOperations.h \
+  base/OperationalBase.h \
+  base/LifecycleOperation.h \
+  networklayer/contract/IPvXAddress.h \
+  applications/common/ApplicationBase.h \
+  applications/udpapp/UDPVideoStreamSvr.h \
+  base/ILifecycle.h
 $O/applications/voip/SimpleVoIPPacket_m.o: applications/voip/SimpleVoIPPacket_m.cc \
   applications/voip/SimpleVoIPPacket_m.h
 $O/applications/voip/SimpleVoIPReceiver.o: applications/voip/SimpleVoIPReceiver.cc \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  transport/contract/UDPSocket.h \
+  base/ModuleAccess.h \
+  base/ILifecycle.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  base/LifecycleOperation.h \
   applications/voip/SimpleVoIPPacket_m.h \
+  base/INETDefs.h \
   applications/voip/SimpleVoIPReceiver.h
 $O/applications/voip/SimpleVoIPSender.o: applications/voip/SimpleVoIPSender.cc \
-  applications/voip/SimpleVoIPPacket_m.h \
-  applications/voip/SimpleVoIPSender.h
-$O/base/AbstractQueue.o: base/AbstractQueue.cc \
+  base/ModuleAccess.h \
+  transport/contract/UDPSocket.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv6Address.h \
   base/INETDefs.h \
+  applications/voip/SimpleVoIPPacket_m.h \
+  base/LifecycleOperation.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  applications/voip/SimpleVoIPSender.h \
+  base/ILifecycle.h
+$O/base/AbstractQueue.o: base/AbstractQueue.cc \
   base/AbstractQueue.h \
+  base/INETDefs.h \
   base/Compat.h
 $O/base/BasicModule.o: base/BasicModule.cc \
-  base/ModuleAccess.h \
-  base/INotifiable.h \
-  base/NotifierConsts.h \
-  base/Compat.h \
   base/INETDefs.h \
+  base/NotificationBoard.h \
   base/BasicModule.h \
-  base/NotificationBoard.h
+  base/INotifiable.h \
+  base/ModuleAccess.h \
+  base/Compat.h \
+  base/NotifierConsts.h
 $O/base/ByteArray.o: base/ByteArray.cc \
   base/Compat.h \
   base/ByteArray_m.h \
   base/ByteArray.h \
   base/INETDefs.h
 $O/base/ByteArrayBuffer.o: base/ByteArrayBuffer.cc \
-  base/Compat.h \
-  base/ByteArrayBuffer.h \
-  base/ByteArray.h \
   base/ByteArray_m.h \
+  base/Compat.h \
+  base/ByteArray.h \
+  base/ByteArrayBuffer.h \
   base/INETDefs.h
 $O/base/ByteArrayMessage.o: base/ByteArrayMessage.cc \
-  base/INETDefs.h \
-  base/ByteArray_m.h \
-  base/ByteArray.h \
   base/ByteArrayMessage.h \
-  base/ByteArrayMessage_m.h \
-  base/Compat.h
-$O/base/ByteArrayMessage_m.o: base/ByteArrayMessage_m.cc \
+  base/INETDefs.h \
   base/ByteArray.h \
+  base/Compat.h \
+  base/ByteArrayMessage_m.h \
+  base/ByteArray_m.h
+$O/base/ByteArrayMessage_m.o: base/ByteArrayMessage_m.cc \
+  base/ByteArrayMessage_m.h \
+  base/Compat.h \
   base/ByteArray_m.h \
   base/INETDefs.h \
-  base/Compat.h \
-  base/ByteArrayMessage_m.h
+  base/ByteArray.h
 $O/base/ByteArray_m.o: base/ByteArray_m.cc \
+  base/ByteArray_m.h \
   base/Compat.h \
-  base/INETDefs.h \
-  base/ByteArray_m.h
+  base/INETDefs.h
 $O/base/Compat.o: base/Compat.cc \
   base/Compat.h
 $O/base/Coord.o: base/Coord.cc \
+  util/FWMath.h \
   base/INETDefs.h \
-  base/Coord.h \
-  base/Compat.h
+  base/Compat.h \
+  base/Coord.h
 $O/base/InterfaceOperations.o: base/InterfaceOperations.cc
 $O/base/Join.o: base/Join.cc \
   base/Compat.h \
   base/INETDefs.h
 $O/base/LifecycleController.o: base/LifecycleController.cc \
+  networklayer/common/IInterfaceTable.h \
+  base/LifecycleOperation.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  base/ILifecycle.h \
   base/LifecycleController.h \
   base/INETDefs.h \
-  base/LifecycleOperation.h \
+  linklayer/contract/MACAddress.h \
+  base/IScriptable.h \
+  networklayer/contract/IPvXAddressResolver.h \
   base/Compat.h \
-  base/ILifecycle.h \
-  base/IScriptable.h
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/common/InterfaceToken.h
 $O/base/ModuleAccess.o: base/ModuleAccess.cc \
   base/INETDefs.h \
-  base/Compat.h \
-  base/ModuleAccess.h
-$O/base/NedFunctions.o: base/NedFunctions.cc \
-  base/INETDefs.h \
+  base/ModuleAccess.h \
   base/Compat.h
+$O/base/NedFunctions.o: base/NedFunctions.cc \
+  base/Compat.h \
+  base/INETDefs.h
 $O/base/NodeOperations.o: base/NodeOperations.cc \
-  base/INETDefs.h \
+  base/Compat.h \
+  base/ModuleAccess.h \
   base/LifecycleOperation.h \
-  base/Compat.h \
-  base/ModuleAccess.h \
-  base/NodeOperations.h
+  base/NodeOperations.h \
+  base/INETDefs.h
 $O/base/NotificationBoard.o: base/NotificationBoard.cc \
-  base/Compat.h \
-  base/INotifiable.h \
   base/NotifierConsts.h \
+  base/Compat.h \
   base/ModuleAccess.h \
+  base/INotifiable.h \
   base/NotificationBoard.h \
   base/INETDefs.h
 $O/base/NotifierConsts.o: base/NotifierConsts.cc \
@@ -1238,1889 +2104,6245 @@ $O/base/NotifierConsts.o: base/NotifierConsts.cc \
   base/Compat.h \
   base/NotifierConsts.h
 $O/base/OperationalBase.o: base/OperationalBase.cc \
-  base/ILifecycle.h \
   base/Compat.h \
-  base/LifecycleOperation.h \
-  base/NodeOperations.h \
   base/ModuleAccess.h \
   base/OperationalBase.h \
+  base/NodeOperations.h \
+  status/NodeStatus.h \
+  base/LifecycleOperation.h \
+  base/ILifecycle.h \
   base/INETDefs.h
 $O/base/PassiveQueueBase.o: base/PassiveQueueBase.cc \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/transport/HomaConfigDepot.h \
-  base/IPassiveQueue.h \
   base/PassiveQueueBase.h \
   base/Compat.h \
-  base/INETDefs.h \
-  ./networklayer/contract/IPv6Address.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/transport/HomaPkt_m.h \
   ./networklayer/contract/IPvXAddress.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/common/Minimal.h \
+  ./networklayer/contract/IPv6Address.h \
   ./networklayer/contract/IPv4Address.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/transport/HomaPkt_m.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/common/Minimal.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/transport/HomaPkt.h
-$O/base/ProtocolMap.o: base/ProtocolMap.cc \
-  base/ProtocolMap.h \
-  base/Compat.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/transport/HomaPkt.h \
+  base/IPassiveQueue.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/transport/HomaConfigDepot.h \
   base/INETDefs.h
+$O/base/ProtocolMap.o: base/ProtocolMap.cc \
+  base/INETDefs.h \
+  base/ProtocolMap.h \
+  base/Compat.h
 $O/base/QueueBase.o: base/QueueBase.cc \
-  base/Compat.h \
   base/QueueBase.h \
   base/INETDefs.h \
-  base/AbstractQueue.h
+  base/AbstractQueue.h \
+  base/Compat.h
 $O/base/ReassemblyBuffer.o: base/ReassemblyBuffer.cc \
   base/INETDefs.h \
-  base/Compat.h \
-  base/ReassemblyBuffer.h
+  base/ReassemblyBuffer.h \
+  base/Compat.h
 $O/base/ResultFilters.o: base/ResultFilters.cc \
   base/ResultFilters.h \
-  base/Compat.h \
+  util/FWMath.h \
+  mobility/contract/IMobility.h \
   base/INETDefs.h \
+  base/Compat.h \
   base/Coord.h
 $O/base/Sink.o: base/Sink.cc \
-  base/INETDefs.h \
-  base/Sink.h \
-  base/Compat.h
-$O/base/Topology.o: base/Topology.cc \
-  base/INETDefs.h \
   base/Compat.h \
-  base/Topology.h
+  base/INETDefs.h \
+  base/Sink.h
+$O/base/Topology.o: base/Topology.cc \
+  base/Topology.h \
+  base/Compat.h \
+  util/PatternMatcher.h \
+  util/stlutils.h \
+  base/INETDefs.h
 $O/base/UnimplementedModule.o: base/UnimplementedModule.cc \
   base/UnimplementedModule.h \
-  base/INETDefs.h \
-  base/Compat.h
+  base/Compat.h \
+  base/INETDefs.h
 $O/base/erfc.o: base/erfc.cc \
   base/INETDefs.h \
   base/Compat.h
 $O/battery/models/BasicBattery.o: battery/models/BasicBattery.cc \
-  battery/models/BasicBattery.h
+  battery/models/BasicBattery.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  base/INotifiable.h \
+  base/ModuleAccess.h
 $O/battery/models/InetSimpleBattery.o: battery/models/InetSimpleBattery.cc \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  base/ModuleAccess.h \
+  base/INotifiable.h \
+  linklayer/contract/RadioState.h \
+  battery/models/Energy.h \
   battery/models/BasicBattery.h \
   battery/models/InetSimpleBattery.h \
-  battery/models/Energy.h
+  base/NotificationBoard.h \
+  base/INETDefs.h
 $O/linklayer/common/MACBase.o: linklayer/common/MACBase.cc \
-  linklayer/common/MACBase.h
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/INotifiable.h \
+  base/NodeOperations.h \
+  networklayer/common/InterfaceEntry.h \
+  base/LifecycleOperation.h \
+  networklayer/common/IInterfaceTable.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  linklayer/common/MACBase.h \
+  base/ILifecycle.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h
 $O/linklayer/common/WirelessMacBase.o: linklayer/common/WirelessMacBase.cc \
-  linklayer/common/WirelessMacBase.h \
-  linklayer/common/MACBase.h
+  base/LifecycleOperation.h \
+  status/NodeStatus.h \
+  base/NodeOperations.h \
+  networklayer/common/InterfaceEntry.h \
+  base/ILifecycle.h \
+  linklayer/common/MACBase.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  base/INotifiable.h \
+  linklayer/common/WirelessMacBase.h
 $O/linklayer/configurator/Ieee8021dInterfaceData.o: linklayer/configurator/Ieee8021dInterfaceData.cc \
-  linklayer/configurator/Ieee8021dInterfaceData.h
+  networklayer/common/InterfaceEntry.h \
+  base/INETDefs.h \
+  linklayer/contract/MACAddress.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  linklayer/configurator/Ieee8021dInterfaceData.h \
+  networklayer/common/InterfaceToken.h
 $O/linklayer/configurator/L2NetworkConfigurator.o: linklayer/configurator/L2NetworkConfigurator.cc \
+  linklayer/configurator/Ieee8021dInterfaceData.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
   linklayer/configurator/L2NetworkConfigurator.h \
-  linklayer/configurator/Ieee8021dInterfaceData.h
+  util/PatternMatcher.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  base/Topology.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  base/INETDefs.h \
+  linklayer/contract/MACAddress.h \
+  util/stlutils.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/IInterfaceTable.h
 $O/linklayer/configurator/L2NodeConfigurator.o: linklayer/configurator/L2NodeConfigurator.cc \
   linklayer/configurator/Ieee8021dInterfaceData.h \
-  linklayer/configurator/L2NodeConfigurator.h \
-  linklayer/configurator/L2NetworkConfigurator.h
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  linklayer/configurator/L2NetworkConfigurator.h \
+  networklayer/common/InterfaceTableAccess.h \
+  util/PatternMatcher.h \
+  base/Compat.h \
+  base/Topology.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  base/INETDefs.h \
+  linklayer/contract/MACAddress.h \
+  base/NodeOperations.h \
+  networklayer/common/InterfaceEntry.h \
+  base/LifecycleOperation.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  base/ILifecycle.h \
+  linklayer/configurator/L2NodeConfigurator.h
 $O/linklayer/contract/Ieee802Ctrl_m.o: linklayer/contract/Ieee802Ctrl_m.cc \
+  linklayer/contract/MACAddress.h \
   linklayer/contract/Ieee802Ctrl_m.h \
-  linklayer/contract/MACAddress.h
+  base/INETDefs.h \
+  base/Compat.h
 $O/linklayer/contract/MACAddress.o: linklayer/contract/MACAddress.cc \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  networklayer/common/InterfaceToken.h \
+  base/INETDefs.h \
   linklayer/contract/MACAddress.h
 $O/linklayer/contract/PhyControlInfo_m.o: linklayer/contract/PhyControlInfo_m.cc \
+  base/Compat.h \
+  base/INETDefs.h \
   linklayer/contract/PhyControlInfo_m.h
 $O/linklayer/ethernet/EtherBus.o: linklayer/ethernet/EtherBus.cc \
-  linklayer/ethernet/EtherBus.h
+  base/INETDefs.h \
+  linklayer/ethernet/EtherBus.h \
+  base/Compat.h
 $O/linklayer/ethernet/EtherEncap.o: linklayer/ethernet/EtherEncap.cc \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/common/InterfaceEntry.h \
+  linklayer/contract/MACAddress.h \
   linklayer/ethernet/EtherFrame.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
+  networklayer/contract/IPv4Address.h \
+  linklayer/ethernet/EtherEncap.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
   linklayer/ethernet/EtherFrame_m.h \
-  linklayer/ethernet/Ethernet.h \
-  linklayer/ethernet/EtherEncap.h
+  networklayer/common/InterfaceToken.h \
+  linklayer/ethernet/Ethernet.h
 $O/linklayer/ethernet/EtherFrameClassifier.o: linklayer/ethernet/EtherFrameClassifier.cc \
-  linklayer/ethernet/Ethernet.h \
-  linklayer/ethernet/EtherFrame_m.h \
+  linklayer/contract/MACAddress.h \
+  linklayer/ethernet/EtherFrameClassifier.h \
   linklayer/ethernet/EtherFrame.h \
-  linklayer/ethernet/EtherFrameClassifier.h
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
+  linklayer/ethernet/EtherFrame_m.h \
+  linklayer/ethernet/Ethernet.h \
+  base/Compat.h
 $O/linklayer/ethernet/EtherFrame_m.o: linklayer/ethernet/EtherFrame_m.cc \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  linklayer/contract/MACAddress.h \
+  base/Compat.h \
   linklayer/ethernet/Ethernet.h \
   linklayer/ethernet/EtherFrame_m.h
 $O/linklayer/ethernet/EtherHub.o: linklayer/ethernet/EtherHub.cc \
+  base/INETDefs.h \
+  base/Compat.h \
   linklayer/ethernet/EtherHub.h
 $O/linklayer/ethernet/EtherLLC.o: linklayer/ethernet/EtherLLC.cc \
+  base/LifecycleOperation.h \
+  status/NodeStatus.h \
+  base/NodeOperations.h \
+  base/ILifecycle.h \
+  linklayer/contract/MACAddress.h \
+  linklayer/ethernet/EtherFrame.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/Compat.h \
   linklayer/ethernet/EtherFrame_m.h \
+  base/ModuleAccess.h \
   linklayer/ethernet/Ethernet.h \
-  linklayer/ethernet/EtherLLC.h \
-  linklayer/ethernet/EtherFrame.h
+  linklayer/ethernet/EtherLLC.h
 $O/linklayer/ethernet/EtherMAC.o: linklayer/ethernet/EtherMAC.cc \
-  linklayer/ethernet/EtherMACState.h \
+  linklayer/ethernet/EtherMACBase.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
   linklayer/ethernet/EtherMAC.h \
-  linklayer/ethernet/EtherMACBase.h \
-  linklayer/ethernet/EtherFrame.h \
+  networklayer/common/InterfaceToken.h \
   linklayer/ethernet/EtherFrame_m.h \
-  linklayer/ethernet/Ethernet.h
-$O/linklayer/ethernet/EtherMACBase.o: linklayer/ethernet/EtherMACBase.cc \
-  linklayer/ethernet/EtherMACBase.h \
-  linklayer/ethernet/EtherFrame.h \
-  linklayer/ethernet/EtherFrame_m.h \
-  linklayer/ethernet/Ethernet.h
-$O/linklayer/ethernet/EtherMACFullDuplex.o: linklayer/ethernet/EtherMACFullDuplex.cc \
+  base/INotifiable.h \
+  linklayer/ethernet/Ethernet.h \
   linklayer/ethernet/EtherMACState.h \
-  linklayer/ethernet/EtherMACBase.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/transport/HomaConfigDepot.h \
-  linklayer/ethernet/EtherMACFullDuplex.h \
+  linklayer/common/MACBase.h \
+  base/ILifecycle.h \
+  base/IPassiveQueue.h \
+  networklayer/common/InterfaceEntry.h \
+  status/NodeStatus.h \
   linklayer/ethernet/EtherFrame.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/transport/HomaPkt.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/common/Minimal.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/transport/HomaPkt_m.h \
-  ./networklayer/contract/IPv4Address.h \
+  linklayer/contract/MACAddress.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h
+$O/linklayer/ethernet/EtherMACBase.o: linklayer/ethernet/EtherMACBase.cc \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  linklayer/ethernet/EtherFrame.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  linklayer/common/MACBase.h \
+  base/ILifecycle.h \
+  base/NodeOperations.h \
+  networklayer/common/InterfaceEntry.h \
+  base/IPassiveQueue.h \
+  base/LifecycleOperation.h \
+  networklayer/common/IInterfaceTable.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  base/INotifiable.h \
+  linklayer/ethernet/Ethernet.h \
+  util/opp_utils.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
   linklayer/ethernet/EtherFrame_m.h \
+  networklayer/contract/IPv6Address.h \
+  linklayer/ethernet/EtherMACBase.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h
+$O/linklayer/ethernet/EtherMACFullDuplex.o: linklayer/ethernet/EtherMACFullDuplex.cc \
+  /bigdisk/mimic/3_simulate/homatransport/src/transport/HomaPkt_m.h \
   ./networklayer/contract/IPvXAddress.h \
+  linklayer/ethernet/EtherMACBase.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  base/INotifiable.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/common/Minimal.h \
+  linklayer/ethernet/Ethernet.h \
+  linklayer/ethernet/EtherFrame_m.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  base/ILifecycle.h \
+  linklayer/common/MACBase.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/transport/HomaPkt.h \
+  status/NodeStatus.h \
+  networklayer/common/InterfaceEntry.h \
+  base/IPassiveQueue.h \
   ./networklayer/contract/IPv6Address.h \
-  linklayer/ethernet/Ethernet.h
+  linklayer/ethernet/EtherMACState.h \
+  ./networklayer/contract/IPv4Address.h \
+  linklayer/ethernet/EtherMACFullDuplex.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/transport/HomaConfigDepot.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  linklayer/ethernet/EtherFrame.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h
 $O/linklayer/ethernet/EtherMACState.o: linklayer/ethernet/EtherMACState.cc \
   linklayer/ethernet/EtherMACState.h
 $O/linklayer/ethernet/switch/MACAddressTable.o: linklayer/ethernet/switch/MACAddressTable.cc \
-  linklayer/ethernet/switch/MACAddressTable.h \
-  linklayer/ethernet/switch/IMACAddressTable.h
+  linklayer/ethernet/switch/IMACAddressTable.h \
+  base/Compat.h \
+  base/INETDefs.h \
+  linklayer/contract/MACAddress.h \
+  linklayer/ethernet/switch/MACAddressTable.h
 $O/linklayer/ethernet/switch/MACRelayUnit.o: linklayer/ethernet/switch/MACRelayUnit.cc \
+  linklayer/ethernet/Ethernet.h \
   linklayer/ethernet/switch/MACRelayUnit.h \
-  linklayer/ethernet/switch/IMACAddressTable.h
+  base/INotifiable.h \
+  linklayer/ethernet/EtherFrame_m.h \
+  base/ModuleAccess.h \
+  linklayer/ethernet/switch/IMACAddressTable.h \
+  base/Compat.h \
+  linklayer/ethernet/EtherMACBase.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  linklayer/contract/MACAddress.h \
+  linklayer/ethernet/EtherFrame.h \
+  base/LifecycleOperation.h \
+  status/NodeStatus.h \
+  base/NodeOperations.h \
+  base/IPassiveQueue.h \
+  base/ILifecycle.h \
+  linklayer/common/MACBase.h
 $O/linklayer/ext/ExtFrame_m.o: linklayer/ext/ExtFrame_m.cc \
   linklayer/ext/ExtFrame_m.h
 $O/linklayer/ext/ExtInterface.o: linklayer/ext/ExtInterface.cc \
-  linklayer/ext/ExtFrame_m.h \
+  base/INETDefs.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  base/ILifecycle.h \
+  linklayer/common/MACBase.h \
+  util/headerserializers/ipv4/IPv4Serializer.h \
+  networklayer/contract/IPProtocolId_m.h \
   linklayer/ext/ExtInterface.h \
-  linklayer/ext/cSocketRTScheduler.h
-$O/linklayer/ext/cSocketRTScheduler.o: linklayer/ext/cSocketRTScheduler.cc \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  base/INotifiable.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  util/headerserializers/headers/bsdint.h \
   linklayer/ext/cSocketRTScheduler.h \
-  linklayer/ext/ExtFrame_m.h
+  networklayer/common/InterfaceTable.h \
+  util/opp_utils.h \
+  networklayer/common/InterfaceTableAccess.h \
+  linklayer/ext/ExtFrame_m.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv6Address.h
+$O/linklayer/ext/cSocketRTScheduler.o: linklayer/ext/cSocketRTScheduler.cc \
+  base/Compat.h \
+  linklayer/ext/ExtFrame_m.h \
+  util/headerserializers/headers/bsdint.h \
+  linklayer/ext/cSocketRTScheduler.h \
+  util/headerserializers/headers/ethernet.h \
+  base/INETDefs.h
 $O/linklayer/idealwireless/IdealWirelessFrame_m.o: linklayer/idealwireless/IdealWirelessFrame_m.cc \
-  linklayer/idealwireless/IdealWirelessFrame_m.h
+  base/Compat.h \
+  linklayer/idealwireless/IdealWirelessFrame_m.h \
+  base/INETDefs.h \
+  linklayer/contract/MACAddress.h
 $O/linklayer/idealwireless/IdealWirelessMac.o: linklayer/idealwireless/IdealWirelessMac.cc \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  linklayer/common/WirelessMacBase.h \
+  base/INotifiable.h \
+  linklayer/contract/RadioState.h \
+  world/radio/IdealChannelModel.h \
+  base/Coord.h \
+  linklayer/radio/IdealAirFrame_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  util/opp_utils.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/BasicModule.h \
+  base/ILifecycle.h \
+  linklayer/common/MACBase.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/IInterfaceTable.h \
+  base/LifecycleOperation.h \
+  networklayer/common/InterfaceEntry.h \
+  base/IPassiveQueue.h \
+  base/NodeOperations.h \
   linklayer/idealwireless/IdealWirelessMac.h \
-  linklayer/idealwireless/IdealWirelessFrame_m.h
+  util/FWMath.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  linklayer/idealwireless/IdealWirelessFrame_m.h \
+  base/INETDefs.h \
+  linklayer/radio/IdealRadio.h \
+  world/radio/IdealChannelModelAccess.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h
 $O/linklayer/ieee80211/mac/Ieee80211DataRate.o: linklayer/ieee80211/mac/Ieee80211DataRate.cc \
+  linklayer/ieee80211/radio/WifiPreambleType.h \
+  base/INETDefs.h \
   linklayer/ieee80211/mac/Ieee80211DataRate.h \
-  linklayer/ieee80211/mac/WifiMode.h
+  linklayer/radio/ModulationType.h \
+  linklayer/ieee80211/mac/WifiMode.h \
+  base/Compat.h
 $O/linklayer/ieee80211/mac/Ieee80211Frame_m.o: linklayer/ieee80211/mac/Ieee80211Frame_m.cc \
-  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
-  linklayer/ieee80211/mac/Ieee80211Consts.h
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  linklayer/contract/MACAddress.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  base/Compat.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h
 $O/linklayer/ieee80211/mac/Ieee80211Mac.o: linklayer/ieee80211/mac/Ieee80211Mac.cc \
+  linklayer/radio/Radio80211aControlInfo_m.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  linklayer/radio/ModulationType.h \
+  linklayer/ieee80211/mac/IQoSClassifier.h \
   linklayer/ieee80211/mac/Ieee80211Mac.h \
+  linklayer/ieee80211/mac/Ieee80211DataRate.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  linklayer/ieee80211/mac/Ieee80211eClassifier.h \
+  linklayer/ieee80211/radio/WifiPreambleType.h \
+  base/INETDefs.h \
+  linklayer/contract/PhyControlInfo_m.h \
+  util/FWMath.h \
+  base/ILifecycle.h \
+  linklayer/common/MACBase.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  networklayer/common/IInterfaceTable.h \
+  base/LifecycleOperation.h \
+  base/IPassiveQueue.h \
+  networklayer/common/InterfaceEntry.h \
+  base/NodeOperations.h \
+  base/Coord.h \
+  networklayer/common/InterfaceTableAccess.h \
+  util/opp_utils.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/INotifiable.h \
+  linklayer/common/WirelessMacBase.h \
+  linklayer/contract/RadioState.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  base/Compat.h \
+  linklayer/ieee80211/mac/WifiMode.h \
+  linklayer/radio/AirFrame_m.h \
+  base/FSMA.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h
+$O/linklayer/ieee80211/mac/Ieee80211eClassifier.o: linklayer/ieee80211/mac/Ieee80211eClassifier.cc \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
   linklayer/ieee80211/mac/Ieee80211eClassifier.h \
   linklayer/ieee80211/mac/IQoSClassifier.h \
+  base/ByteArray.h \
+  networklayer/icmpv6/ICMPv6Message_m.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  transport/udp/UDPPacket_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  base/Compat.h \
+  transport/tcp_common/TCPSegment.h \
+  networklayer/contract/IPv4Address.h \
   linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArray_m.h \
   linklayer/ieee80211/mac/Ieee80211Consts.h \
-  linklayer/ieee80211/mac/Ieee80211DataRate.h \
-  linklayer/ieee80211/mac/WifiMode.h
-$O/linklayer/ieee80211/mac/Ieee80211eClassifier.o: linklayer/ieee80211/mac/Ieee80211eClassifier.cc \
-  linklayer/ieee80211/mac/Ieee80211Consts.h \
-  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
-  linklayer/ieee80211/mac/IQoSClassifier.h \
-  linklayer/ieee80211/mac/Ieee80211eClassifier.h
+  networklayer/ipv4/ICMPMessage_m.h \
+  transport/tcp_common/TCPSegment_m.h
 $O/linklayer/ieee80211/mac/WifiMode.o: linklayer/ieee80211/mac/WifiMode.cc \
+  base/Compat.h \
+  linklayer/ieee80211/mac/WifiMode.h \
   linklayer/ieee80211/mac/Ieee80211DataRate.h \
-  linklayer/ieee80211/mac/WifiMode.h
+  base/INETDefs.h \
+  linklayer/ieee80211/radio/WifiPreambleType.h \
+  linklayer/radio/ModulationType.h
 $O/linklayer/ieee80211/mgmt/Ieee80211AgentSTA.o: linklayer/ieee80211/mgmt/Ieee80211AgentSTA.cc \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
+  util/opp_utils.h \
+  networklayer/common/InterfaceTable.h \
+  base/INotifiable.h \
+  base/Compat.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
   linklayer/ieee80211/mgmt/Ieee80211AgentSTA.h \
-  linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.h \
-  linklayer/ieee80211/mgmt/Ieee80211Primitives_m.h
+  linklayer/ieee80211/mgmt/Ieee80211Primitives_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPvXAddress.h \
+  base/ILifecycle.h
 $O/linklayer/ieee80211/mgmt/Ieee80211MgmtAP.o: linklayer/ieee80211/mgmt/Ieee80211MgmtAP.cc \
-  linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  linklayer/ethernet/EtherFrame.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/IPassiveQueue.h \
+  base/ILifecycle.h \
+  base/ModuleAccess.h \
+  linklayer/ethernet/EtherFrame_m.h \
+  linklayer/contract/RadioState.h \
+  linklayer/ethernet/Ethernet.h \
   linklayer/ieee80211/mgmt/Ieee80211MgmtAP.h \
+  base/INotifiable.h \
   linklayer/ieee80211/mgmt/Ieee80211MgmtAPBase.h \
+  base/Compat.h \
+  linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.h \
+  base/NotifierConsts.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  base/PassiveQueueBase.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
   linklayer/ieee80211/mgmt/Ieee80211MgmtBase.h
 $O/linklayer/ieee80211/mgmt/Ieee80211MgmtAPBase.o: linklayer/ieee80211/mgmt/Ieee80211MgmtAPBase.cc \
-  linklayer/ieee80211/mgmt/Ieee80211MgmtBase.h \
+  base/INotifiable.h \
   linklayer/ieee80211/mgmt/Ieee80211MgmtAPBase.h \
-  linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.h
+  linklayer/ethernet/Ethernet.h \
+  base/ModuleAccess.h \
+  linklayer/ethernet/EtherFrame_m.h \
+  linklayer/ieee80211/mgmt/Ieee80211MgmtBase.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  base/PassiveQueueBase.h \
+  base/Compat.h \
+  linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  base/NotifierConsts.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  linklayer/ethernet/EtherFrame.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  base/ILifecycle.h \
+  base/IPassiveQueue.h
 $O/linklayer/ieee80211/mgmt/Ieee80211MgmtAPSimplified.o: linklayer/ieee80211/mgmt/Ieee80211MgmtAPSimplified.cc \
-  linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.h \
-  linklayer/ieee80211/mgmt/Ieee80211MgmtAPBase.h \
   linklayer/ieee80211/mgmt/Ieee80211MgmtAPSimplified.h \
-  linklayer/ieee80211/mgmt/Ieee80211MgmtBase.h
-$O/linklayer/ieee80211/mgmt/Ieee80211MgmtAdhoc.o: linklayer/ieee80211/mgmt/Ieee80211MgmtAdhoc.cc \
+  linklayer/ethernet/EtherFrame_m.h \
+  base/ModuleAccess.h \
+  linklayer/ieee80211/mgmt/Ieee80211MgmtAPBase.h \
+  base/INotifiable.h \
+  linklayer/ethernet/Ethernet.h \
+  base/PassiveQueueBase.h \
+  base/NotifierConsts.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.h \
+  base/Compat.h \
   linklayer/ieee80211/mgmt/Ieee80211MgmtBase.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  linklayer/ethernet/EtherFrame.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
+  base/ILifecycle.h \
+  base/IPassiveQueue.h
+$O/linklayer/ieee80211/mgmt/Ieee80211MgmtAdhoc.o: linklayer/ieee80211/mgmt/Ieee80211MgmtAdhoc.cc \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  linklayer/ieee80211/mgmt/Ieee80211MgmtBase.h \
+  base/Compat.h \
   linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.h \
-  linklayer/ieee80211/mgmt/Ieee80211MgmtAdhoc.h
+  base/NotifierConsts.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  base/PassiveQueueBase.h \
+  base/INotifiable.h \
+  base/ModuleAccess.h \
+  base/IPassiveQueue.h \
+  base/ILifecycle.h \
+  linklayer/ieee80211/mgmt/Ieee80211MgmtAdhoc.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h
 $O/linklayer/ieee80211/mgmt/Ieee80211MgmtBase.o: linklayer/ieee80211/mgmt/Ieee80211MgmtBase.cc \
+  base/ModuleAccess.h \
+  base/INotifiable.h \
+  base/PassiveQueueBase.h \
   linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.h \
-  linklayer/ieee80211/mgmt/Ieee80211MgmtBase.h
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  linklayer/ieee80211/mgmt/Ieee80211MgmtBase.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
+  base/ILifecycle.h \
+  base/IPassiveQueue.h \
+  base/NodeOperations.h \
+  status/NodeStatus.h \
+  base/LifecycleOperation.h
 $O/linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.o: linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.cc \
-  linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.h
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.h \
+  base/Compat.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  linklayer/contract/MACAddress.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h
 $O/linklayer/ieee80211/mgmt/Ieee80211MgmtSTA.o: linklayer/ieee80211/mgmt/Ieee80211MgmtSTA.cc \
   linklayer/ieee80211/mgmt/Ieee80211MgmtSTA.h \
-  linklayer/ieee80211/mgmt/Ieee80211MgmtBase.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  linklayer/radio/Radio80211aControlInfo_m.h \
+  world/radio/ChannelAccess.h \
+  linklayer/radio/ModulationType.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  util/FWMath.h \
   linklayer/ieee80211/mgmt/Ieee80211Primitives_m.h \
-  linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.h
-$O/linklayer/ieee80211/mgmt/Ieee80211MgmtSTASimplified.o: linklayer/ieee80211/mgmt/Ieee80211MgmtSTASimplified.cc \
+  linklayer/contract/PhyControlInfo_m.h \
+  base/ILifecycle.h \
+  base/BasicModule.h \
+  base/IPassiveQueue.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPvXAddress.h \
+  util/opp_utils.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/Coord.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  base/INotifiable.h \
+  world/radio/IChannelControl.h \
+  linklayer/contract/RadioState.h \
+  networklayer/contract/IPv6Address.h \
+  base/PassiveQueueBase.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
   linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.h \
+  base/NotifierConsts.h \
+  linklayer/ieee80211/mgmt/Ieee80211MgmtBase.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h
+$O/linklayer/ieee80211/mgmt/Ieee80211MgmtSTASimplified.o: linklayer/ieee80211/mgmt/Ieee80211MgmtSTASimplified.cc \
+  base/INotifiable.h \
+  base/ModuleAccess.h \
+  linklayer/ieee80211/mgmt/Ieee80211MgmtBase.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  base/PassiveQueueBase.h \
+  base/Compat.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.h \
+  base/NotifierConsts.h \
   linklayer/ieee80211/mgmt/Ieee80211MgmtSTASimplified.h \
-  linklayer/ieee80211/mgmt/Ieee80211MgmtBase.h
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  base/ILifecycle.h \
+  base/IPassiveQueue.h
 $O/linklayer/ieee80211/mgmt/Ieee80211Primitives_m.o: linklayer/ieee80211/mgmt/Ieee80211Primitives_m.cc \
   linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.h \
-  linklayer/ieee80211/mgmt/Ieee80211Primitives_m.h
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  base/Compat.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  linklayer/ieee80211/mgmt/Ieee80211Primitives_m.h \
+  linklayer/contract/MACAddress.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h
 $O/linklayer/ieee80211/radio/BerParseFile.o: linklayer/ieee80211/radio/BerParseFile.cc \
+  base/INETDefs.h \
+  base/Compat.h \
   linklayer/ieee80211/radio/BerParseFile.h
 $O/linklayer/ieee80211/radio/Ieee80211RadioModel.o: linklayer/ieee80211/radio/Ieee80211RadioModel.cc \
-  linklayer/ieee80211/radio/Ieee80211RadioModel.h \
+  base/Compat.h \
+  linklayer/ieee80211/mac/WifiMode.h \
+  linklayer/radio/AirFrame_m.h \
   linklayer/ieee80211/radio/BerParseFile.h \
-  linklayer/ieee80211/radio/WifiPreambleType.h
-$O/linklayer/ieee80211/radio/errormodel/dsss-error-rate-model.o: linklayer/ieee80211/radio/errormodel/dsss-error-rate-model.cc \
-  linklayer/ieee80211/radio/errormodel/dsss-error-rate-model.h
-$O/linklayer/ieee80211/radio/errormodel/nist-error-rate-model.o: linklayer/ieee80211/radio/errormodel/nist-error-rate-model.cc \
-  linklayer/ieee80211/radio/errormodel/IErrorModel.h \
-  linklayer/ieee80211/radio/errormodel/nist-error-rate-model.h \
-  linklayer/ieee80211/radio/errormodel/dsss-error-rate-model.h
-$O/linklayer/ieee80211/radio/errormodel/yans-error-rate-model.o: linklayer/ieee80211/radio/errormodel/yans-error-rate-model.cc \
+  linklayer/ieee80211/radio/Ieee80211RadioModel.h \
   linklayer/ieee80211/radio/errormodel/dsss-error-rate-model.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  base/Coord.h \
+  linklayer/radio/SnrList.h \
+  linklayer/radio/IRadioModel.h \
+  linklayer/contract/PhyControlInfo_m.h \
+  util/FWMath.h \
+  linklayer/ieee80211/radio/errormodel/IErrorModel.h \
   linklayer/ieee80211/radio/errormodel/yans-error-rate-model.h \
+  linklayer/ieee80211/radio/errormodel/nist-error-rate-model.h \
+  linklayer/radio/ModulationType.h \
+  linklayer/ieee80211/radio/WifiPreambleType.h \
+  base/INETDefs.h
+$O/linklayer/ieee80211/radio/errormodel/dsss-error-rate-model.o: linklayer/ieee80211/radio/errormodel/dsss-error-rate-model.cc \
+  linklayer/ieee80211/radio/errormodel/dsss-error-rate-model.h \
+  base/Compat.h \
+  base/INETDefs.h
+$O/linklayer/ieee80211/radio/errormodel/nist-error-rate-model.o: linklayer/ieee80211/radio/errormodel/nist-error-rate-model.cc \
+  linklayer/ieee80211/radio/errormodel/dsss-error-rate-model.h \
+  linklayer/ieee80211/mac/WifiMode.h \
+  base/Compat.h \
+  linklayer/radio/ModulationType.h \
+  linklayer/ieee80211/radio/WifiPreambleType.h \
+  base/INETDefs.h \
+  linklayer/ieee80211/radio/errormodel/nist-error-rate-model.h \
   linklayer/ieee80211/radio/errormodel/IErrorModel.h
+$O/linklayer/ieee80211/radio/errormodel/yans-error-rate-model.o: linklayer/ieee80211/radio/errormodel/yans-error-rate-model.cc \
+  base/Compat.h \
+  linklayer/ieee80211/mac/WifiMode.h \
+  linklayer/ieee80211/radio/errormodel/dsss-error-rate-model.h \
+  linklayer/ieee80211/radio/errormodel/IErrorModel.h \
+  linklayer/ieee80211/radio/errormodel/yans-error-rate-model.h \
+  linklayer/ieee80211/radio/WifiPreambleType.h \
+  base/INETDefs.h \
+  linklayer/radio/ModulationType.h
 $O/linklayer/ieee8021d/common/Ieee8021dBPDU_m.o: linklayer/ieee8021d/common/Ieee8021dBPDU_m.cc \
-  linklayer/ieee8021d/common/Ieee8021dBPDU_m.h
+  base/INETDefs.h \
+  linklayer/contract/MACAddress.h \
+  linklayer/ieee8021d/common/Ieee8021dBPDU_m.h \
+  base/Compat.h
 $O/linklayer/ieee8021d/common/STPBase.o: linklayer/ieee8021d/common/STPBase.cc \
-  linklayer/ieee8021d/common/STPBase.h
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  networklayer/common/IInterfaceTable.h \
+  base/LifecycleOperation.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  base/NodeOperations.h \
+  networklayer/common/InterfaceEntry.h \
+  base/ILifecycle.h \
+  networklayer/common/InterfaceToken.h \
+  linklayer/ieee8021d/common/STPBase.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTable.h \
+  base/INotifiable.h \
+  linklayer/configurator/Ieee8021dInterfaceData.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv6Address.h \
+  linklayer/ethernet/switch/IMACAddressTable.h
 $O/linklayer/ieee8021d/relay/Ieee8021dRelay.o: linklayer/ieee8021d/relay/Ieee8021dRelay.cc \
-  linklayer/ieee8021d/relay/Ieee8021dRelay.h
+  linklayer/ethernet/switch/IMACAddressTable.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  base/INotifiable.h \
+  linklayer/configurator/Ieee8021dInterfaceData.h \
+  linklayer/ethernet/Ethernet.h \
+  networklayer/common/InterfaceTable.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  linklayer/ethernet/EtherFrame_m.h \
+  linklayer/ieee8021d/relay/Ieee8021dRelay.h \
+  base/ILifecycle.h \
+  base/NodeOperations.h \
+  networklayer/common/InterfaceEntry.h \
+  base/LifecycleOperation.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  linklayer/ieee8021d/common/Ieee8021dBPDU_m.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h
 $O/linklayer/ieee8021d/rstp/RSTP.o: linklayer/ieee8021d/rstp/RSTP.cc \
-  linklayer/ieee8021d/rstp/RSTP.h
+  linklayer/configurator/Ieee8021dInterfaceData.h \
+  base/INotifiable.h \
+  linklayer/ethernet/Ethernet.h \
+  networklayer/common/InterfaceTable.h \
+  linklayer/ieee8021d/common/STPBase.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  linklayer/ethernet/EtherFrame_m.h \
+  linklayer/ethernet/switch/IMACAddressTable.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
+  linklayer/ethernet/EtherFrame.h \
+  linklayer/ieee8021d/common/Ieee8021dBPDU_m.h \
+  linklayer/ethernet/switch/MACAddressTable.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  linklayer/ieee8021d/rstp/RSTP.h \
+  base/ILifecycle.h \
+  networklayer/common/InterfaceEntry.h \
+  base/NodeOperations.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  base/LifecycleOperation.h \
+  networklayer/common/IInterfaceTable.h
 $O/linklayer/ieee8021d/stp/STP.o: linklayer/ieee8021d/stp/STP.cc \
-  linklayer/ieee8021d/stp/STP.h
+  networklayer/common/InterfaceTable.h \
+  networklayer/common/InterfaceToken.h \
+  linklayer/ieee8021d/common/STPBase.h \
+  base/ModuleAccess.h \
+  linklayer/ethernet/EtherFrame_m.h \
+  base/INotifiable.h \
+  linklayer/configurator/Ieee8021dInterfaceData.h \
+  linklayer/ethernet/Ethernet.h \
+  networklayer/contract/IPv6Address.h \
+  linklayer/ieee8021d/stp/STP.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  linklayer/ethernet/switch/IMACAddressTable.h \
+  linklayer/ethernet/EtherFrame.h \
+  linklayer/ieee8021d/common/Ieee8021dBPDU_m.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/ILifecycle.h \
+  base/NodeOperations.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/common/IInterfaceTable.h \
+  base/LifecycleOperation.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h
 $O/linklayer/ieee8021d/tester/STPTester.o: linklayer/ieee8021d/tester/STPTester.cc \
-  linklayer/ieee8021d/tester/STPTester.h
+  linklayer/ethernet/switch/IMACAddressTable.h \
+  base/Topology.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv6Address.h \
+  linklayer/ieee8021d/stp/STP.h \
+  base/INotifiable.h \
+  linklayer/configurator/Ieee8021dInterfaceData.h \
+  linklayer/ieee8021d/tester/STPTester.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  linklayer/ieee8021d/common/STPBase.h \
+  networklayer/common/InterfaceTable.h \
+  base/NodeOperations.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/common/IInterfaceTable.h \
+  base/LifecycleOperation.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  base/ILifecycle.h \
+  base/INETDefs.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  linklayer/ieee8021d/common/Ieee8021dBPDU_m.h
 $O/linklayer/loopback/Loopback.o: linklayer/loopback/Loopback.cc \
-  linklayer/loopback/Loopback.h
+  linklayer/contract/TxNotifDetails.h \
+  linklayer/common/MACBase.h \
+  base/ILifecycle.h \
+  networklayer/common/InterfaceEntry.h \
+  base/IPassiveQueue.h \
+  linklayer/loopback/Loopback.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/IInterfaceTable.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  base/INETDefs.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  networklayer/common/InterfaceTableAccess.h \
+  util/opp_utils.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/INotifiable.h
 $O/linklayer/ppp/PPP.o: linklayer/ppp/PPP.cc \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  base/IPassiveQueue.h \
+  base/NodeOperations.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  base/LifecycleOperation.h \
+  networklayer/common/IInterfaceTable.h \
+  linklayer/common/MACBase.h \
+  base/ILifecycle.h \
   linklayer/ppp/PPP.h \
-  linklayer/ppp/PPPFrame_m.h
+  linklayer/ppp/PPPFrame_m.h \
+  linklayer/contract/TxNotifDetails.h \
+  base/INotifiable.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  util/opp_utils.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h
 $O/linklayer/ppp/PPPFrame_m.o: linklayer/ppp/PPPFrame_m.cc \
-  linklayer/ppp/PPPFrame_m.h
+  linklayer/ppp/PPPFrame_m.h \
+  base/INETDefs.h \
+  base/Compat.h
 $O/linklayer/queue/AlgorithmicDropperBase.o: linklayer/queue/AlgorithmicDropperBase.cc \
+  base/INETDefs.h \
+  linklayer/queue/IQueueAccess.h \
   linklayer/queue/AlgorithmicDropperBase.h \
-  linklayer/queue/IQueueAccess.h
+  base/Compat.h
 $O/linklayer/queue/DropTailQueue.o: linklayer/queue/DropTailQueue.cc \
   ./networklayer/contract/IPv6Address.h \
-  ./linklayer/queue/DropTailQueue.h \
-  ./networklayer/contract/IPvXAddress.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/transport/HomaPkt.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/common/Minimal.h \
-  ./linklayer/ethernet/Ethernet.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/transport/HomaPkt_m.h \
   ./networklayer/contract/IPv4Address.h \
+  linklayer/common/MACBase.h \
+  base/ILifecycle.h \
+  base/IPassiveQueue.h \
+  status/NodeStatus.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/transport/HomaPkt.h \
+  linklayer/contract/MACAddress.h \
   ./linklayer/ethernet/EtherMACBase.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/transport/HomaConfigDepot.h
+  /bigdisk/mimic/3_simulate/homatransport/src/transport/HomaConfigDepot.h \
+  ./linklayer/queue/DropTailQueue.h \
+  base/INETDefs.h \
+  ./linklayer/ethernet/Ethernet.h \
+  base/PassiveQueueBase.h \
+  base/Compat.h \
+  ./networklayer/contract/IPvXAddress.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/transport/HomaPkt_m.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/common/Minimal.h \
+  base/INotifiable.h
 $O/linklayer/queue/FIFOQueue.o: linklayer/queue/FIFOQueue.cc \
+  base/INETDefs.h \
+  linklayer/queue/FIFOQueue.h \
+  base/IPassiveQueue.h \
   linklayer/queue/IQueueAccess.h \
-  linklayer/queue/FIFOQueue.h
+  base/PassiveQueueBase.h \
+  base/Compat.h
 $O/linklayer/queue/PriorityScheduler.o: linklayer/queue/PriorityScheduler.cc \
   linklayer/queue/SchedulerBase.h \
-  linklayer/queue/PriorityScheduler.h
+  base/Compat.h \
+  base/INETDefs.h \
+  linklayer/queue/PriorityScheduler.h \
+  base/IPassiveQueue.h
 $O/linklayer/queue/REDDropper.o: linklayer/queue/REDDropper.cc \
-  linklayer/queue/IQueueAccess.h \
-  linklayer/queue/REDDropper.h \
-  linklayer/queue/AlgorithmicDropperBase.h
-$O/linklayer/queue/SchedulerBase.o: linklayer/queue/SchedulerBase.cc \
-  linklayer/queue/SchedulerBase.h
-$O/linklayer/queue/ThresholdDropper.o: linklayer/queue/ThresholdDropper.cc \
-  linklayer/queue/IQueueAccess.h \
+  base/Compat.h \
   linklayer/queue/AlgorithmicDropperBase.h \
-  linklayer/queue/ThresholdDropper.h
+  linklayer/queue/IQueueAccess.h \
+  util/opp_utils.h \
+  base/INETDefs.h \
+  linklayer/queue/REDDropper.h
+$O/linklayer/queue/SchedulerBase.o: linklayer/queue/SchedulerBase.cc \
+  base/Compat.h \
+  linklayer/queue/SchedulerBase.h \
+  base/IPassiveQueue.h \
+  base/INETDefs.h
+$O/linklayer/queue/ThresholdDropper.o: linklayer/queue/ThresholdDropper.cc \
+  base/INETDefs.h \
+  linklayer/queue/ThresholdDropper.h \
+  linklayer/queue/AlgorithmicDropperBase.h \
+  base/Compat.h \
+  linklayer/queue/IQueueAccess.h
 $O/linklayer/queue/WRRScheduler.o: linklayer/queue/WRRScheduler.cc \
+  util/opp_utils.h \
+  linklayer/queue/SchedulerBase.h \
+  base/Compat.h \
   linklayer/queue/WRRScheduler.h \
-  linklayer/queue/SchedulerBase.h
+  base/INETDefs.h \
+  base/IPassiveQueue.h
 $O/linklayer/radio/AirFrame_m.o: linklayer/radio/AirFrame_m.cc \
+  base/Coord.h \
+  base/Compat.h \
   linklayer/radio/AirFrame_m.h \
-  linklayer/radio/ModulationType.h
+  linklayer/radio/ModulationType.h \
+  base/INETDefs.h \
+  util/FWMath.h
 $O/linklayer/radio/GenericRadioModel.o: linklayer/radio/GenericRadioModel.cc \
+  util/FWMath.h \
+  linklayer/contract/PhyControlInfo_m.h \
   linklayer/radio/GenericRadioModel.h \
-  linklayer/radio/SnrList.h \
+  linklayer/radio/ModulationType.h \
+  base/INETDefs.h \
+  base/Compat.h \
   linklayer/radio/IModulation.h \
   linklayer/radio/AirFrame_m.h \
+  base/Coord.h \
   linklayer/radio/Modulation.h \
   linklayer/radio/IRadioModel.h \
-  linklayer/radio/ModulationType.h
+  linklayer/radio/SnrList.h
 $O/linklayer/radio/IdealAirFrame_m.o: linklayer/radio/IdealAirFrame_m.cc \
-  linklayer/radio/IdealAirFrame_m.h
+  linklayer/radio/IdealAirFrame_m.h \
+  base/Coord.h \
+  base/Compat.h \
+  base/INETDefs.h \
+  util/FWMath.h
 $O/linklayer/radio/IdealRadio.o: linklayer/radio/IdealRadio.cc \
   linklayer/radio/IdealAirFrame_m.h \
-  linklayer/radio/IdealRadio.h
+  base/Coord.h \
+  base/ModuleAccess.h \
+  base/INotifiable.h \
+  world/radio/IdealChannelModel.h \
+  linklayer/contract/RadioState.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  linklayer/radio/IdealRadio.h \
+  world/radio/IdealChannelModelAccess.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  util/FWMath.h \
+  base/ILifecycle.h \
+  base/BasicModule.h \
+  base/NodeOperations.h \
+  base/LifecycleOperation.h \
+  status/NodeStatus.h
 $O/linklayer/radio/Modulation.o: linklayer/radio/Modulation.cc \
   linklayer/radio/IModulation.h \
-  linklayer/radio/Modulation.h
+  base/Compat.h \
+  linklayer/radio/Modulation.h \
+  base/INETDefs.h
 $O/linklayer/radio/Radio.o: linklayer/radio/Radio.cc \
-  linklayer/radio/ModulationType.h \
+  base/INotifiable.h \
+  world/radio/IChannelControl.h \
+  linklayer/contract/RadioState.h \
+  base/Coord.h \
+  base/ModuleAccess.h \
   linklayer/radio/IRadioModel.h \
-  linklayer/radio/Radio.h \
-  linklayer/radio/INoiseGenerator.h \
-  linklayer/radio/AirFrame_m.h \
   linklayer/radio/SnrList.h \
-  linklayer/radio/Radio80211aControlInfo_m.h
+  ./world/annotations/AnnotationManager.h \
+  linklayer/radio/AirFrame_m.h \
+  world/obstacles/ObstacleControl.h \
+  linklayer/radio/propagation/IReceptionModel.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  world/radio/ChannelAccess.h \
+  linklayer/radio/ModulationType.h \
+  linklayer/radio/INoiseGenerator.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  linklayer/radio/Radio.h \
+  linklayer/radio/Radio80211aControlInfo_m.h \
+  ./world/obstacles/Obstacle.h \
+  base/BasicModule.h \
+  base/ILifecycle.h \
+  base/NodeOperations.h \
+  status/NodeStatus.h \
+  base/LifecycleOperation.h \
+  util/FWMath.h \
+  battery/models/BasicBattery.h \
+  linklayer/contract/PhyControlInfo_m.h
 $O/linklayer/radio/Radio80211aControlInfo_m.o: linklayer/radio/Radio80211aControlInfo_m.cc \
   linklayer/radio/ModulationType.h \
   linklayer/radio/Radio80211aControlInfo_m.h
 $O/linklayer/radio/propagation/FreeSpaceModel.o: linklayer/radio/propagation/FreeSpaceModel.cc \
+  world/radio/ChannelAccess.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
   linklayer/radio/propagation/FreeSpaceModel.h \
-  linklayer/radio/propagation/IReceptionModel.h
-$O/linklayer/radio/propagation/LogNormalShadowingModel.o: linklayer/radio/propagation/LogNormalShadowingModel.cc \
-  linklayer/radio/propagation/LogNormalShadowingModel.h \
+  base/BasicModule.h \
+  util/FWMath.h \
+  base/INotifiable.h \
+  world/radio/IChannelControl.h \
+  base/Coord.h \
+  base/ModuleAccess.h \
+  base/Compat.h \
   linklayer/radio/propagation/IReceptionModel.h \
-  linklayer/radio/propagation/FreeSpaceModel.h
+  base/NotifierConsts.h
+$O/linklayer/radio/propagation/LogNormalShadowingModel.o: linklayer/radio/propagation/LogNormalShadowingModel.cc \
+  linklayer/radio/propagation/FreeSpaceModel.h \
+  util/FWMath.h \
+  base/INETDefs.h \
+  linklayer/radio/propagation/LogNormalShadowingModel.h \
+  base/Compat.h \
+  linklayer/radio/propagation/IReceptionModel.h
 $O/linklayer/radio/propagation/NakagamiModel.o: linklayer/radio/propagation/NakagamiModel.cc \
   linklayer/radio/propagation/FreeSpaceModel.h \
-  linklayer/radio/propagation/IReceptionModel.h \
-  linklayer/radio/propagation/NakagamiModel.h
+  util/FWMath.h \
+  base/INETDefs.h \
+  linklayer/radio/propagation/NakagamiModel.h \
+  base/Compat.h \
+  linklayer/radio/propagation/IReceptionModel.h
 $O/linklayer/radio/propagation/RayleighModel.o: linklayer/radio/propagation/RayleighModel.cc \
+  base/Compat.h \
+  linklayer/radio/propagation/IReceptionModel.h \
+  linklayer/radio/propagation/RayleighModel.h \
+  util/FWMath.h \
   linklayer/radio/propagation/FreeSpaceModel.h \
-  linklayer/radio/propagation/IReceptionModel.h \
-  linklayer/radio/propagation/RayleighModel.h
+  base/INETDefs.h
 $O/linklayer/radio/propagation/RiceModel.o: linklayer/radio/propagation/RiceModel.cc \
-  linklayer/radio/propagation/RiceModel.h \
+  base/Compat.h \
   linklayer/radio/propagation/IReceptionModel.h \
+  linklayer/radio/propagation/RiceModel.h \
+  base/INETDefs.h \
+  util/FWMath.h \
   linklayer/radio/propagation/FreeSpaceModel.h
 $O/linklayer/radio/propagation/SUIModel.o: linklayer/radio/propagation/SUIModel.cc \
-  linklayer/radio/propagation/IReceptionModel.h \
+  base/INETDefs.h \
+  linklayer/radio/propagation/FreeSpaceModel.h \
+  util/FWMath.h \
   linklayer/radio/propagation/SUIModel.h \
-  linklayer/radio/propagation/FreeSpaceModel.h
-$O/linklayer/radio/propagation/TwoRayGroundModel.o: linklayer/radio/propagation/TwoRayGroundModel.cc \
-  linklayer/radio/propagation/TwoRayGroundModel.h \
   linklayer/radio/propagation/IReceptionModel.h \
-  linklayer/radio/propagation/FreeSpaceModel.h
+  base/Compat.h
+$O/linklayer/radio/propagation/TwoRayGroundModel.o: linklayer/radio/propagation/TwoRayGroundModel.cc \
+  base/Compat.h \
+  linklayer/radio/propagation/IReceptionModel.h \
+  util/FWMath.h \
+  linklayer/radio/propagation/FreeSpaceModel.h \
+  linklayer/radio/propagation/TwoRayGroundModel.h \
+  base/INETDefs.h
 $O/mobility/common/LineSegmentsMobilityBase.o: mobility/common/LineSegmentsMobilityBase.cc \
+  mobility/contract/IMobility.h \
+  base/INETDefs.h \
   mobility/common/MobilityBase.h \
+  util/FWMath.h \
   mobility/common/MovingMobilityBase.h \
-  mobility/common/LineSegmentsMobilityBase.h
+  mobility/common/LineSegmentsMobilityBase.h \
+  base/ModuleAccess.h \
+  base/Coord.h \
+  base/Compat.h
 $O/mobility/common/MobilityAccess.o: mobility/common/MobilityAccess.cc \
-  mobility/common/MobilityAccess.h
+  base/ModuleAccess.h \
+  base/Coord.h \
+  base/Compat.h \
+  mobility/contract/IMobility.h \
+  base/INETDefs.h \
+  mobility/common/MobilityAccess.h \
+  util/FWMath.h
 $O/mobility/common/MobilityBase.o: mobility/common/MobilityBase.cc \
-  mobility/common/MobilityBase.h
+  util/FWMath.h \
+  mobility/common/MobilityBase.h \
+  base/INETDefs.h \
+  mobility/contract/IMobility.h \
+  base/Compat.h \
+  base/Coord.h \
+  base/ModuleAccess.h
 $O/mobility/common/MovingMobilityBase.o: mobility/common/MovingMobilityBase.cc \
+  base/ModuleAccess.h \
+  base/Coord.h \
   mobility/common/MovingMobilityBase.h \
-  mobility/common/MobilityBase.h
+  base/Compat.h \
+  mobility/common/MobilityBase.h \
+  base/INETDefs.h \
+  mobility/contract/IMobility.h \
+  util/FWMath.h
 $O/mobility/contract/IMobility.o: mobility/contract/IMobility.cc \
-  mobility/contract/IMobility.h
+  base/INETDefs.h \
+  mobility/contract/IMobility.h \
+  util/FWMath.h \
+  base/Coord.h \
+  base/Compat.h
 $O/mobility/group/MoBANCoordinator.o: mobility/group/MoBANCoordinator.cc \
   mobility/group/MoBANCoordinator.h \
+  mobility/common/MobilityBase.h \
+  base/INETDefs.h \
+  mobility/contract/IMobility.h \
   mobility/group/PostureTransition.h \
+  util/FWMath.h \
+  mobility/common/MobilityAccess.h \
+  base/ModuleAccess.h \
   mobility/group/MoBANLocal.h \
-  mobility/group/Posture.h
+  base/Coord.h \
+  mobility/group/Posture.h \
+  mobility/common/LineSegmentsMobilityBase.h \
+  mobility/common/MovingMobilityBase.h \
+  base/Compat.h
 $O/mobility/group/MoBANLocal.o: mobility/group/MoBANLocal.cc \
-  mobility/group/MoBANCoordinator.h \
+  mobility/contract/IMobility.h \
+  base/INETDefs.h \
   mobility/group/PostureTransition.h \
+  mobility/common/MobilityBase.h \
+  mobility/group/MoBANCoordinator.h \
+  util/FWMath.h \
+  mobility/common/MovingMobilityBase.h \
+  mobility/common/LineSegmentsMobilityBase.h \
+  mobility/group/Posture.h \
+  base/ModuleAccess.h \
   mobility/group/MoBANLocal.h \
-  mobility/group/Posture.h
+  base/Coord.h \
+  base/Compat.h
 $O/mobility/group/Posture.o: mobility/group/Posture.cc \
-  mobility/group/Posture.h
-$O/mobility/group/PostureTransition.o: mobility/group/PostureTransition.cc
+  base/Compat.h \
+  base/Coord.h \
+  mobility/group/Posture.h \
+  util/FWMath.h \
+  base/INETDefs.h
+$O/mobility/group/PostureTransition.o: mobility/group/PostureTransition.cc \
+  mobility/group/PostureTransition.h \
+  base/INETDefs.h \
+  util/FWMath.h \
+  base/Coord.h \
+  base/Compat.h
 $O/mobility/single/ANSimMobility.o: mobility/single/ANSimMobility.cc \
-  mobility/single/ANSimMobility.h
+  base/Compat.h \
+  mobility/common/LineSegmentsMobilityBase.h \
+  mobility/common/MovingMobilityBase.h \
+  base/Coord.h \
+  base/ModuleAccess.h \
+  mobility/single/ANSimMobility.h \
+  util/FWMath.h \
+  base/INETDefs.h \
+  mobility/contract/IMobility.h \
+  mobility/common/MobilityBase.h
 $O/mobility/single/BonnMotionFileCache.o: mobility/single/BonnMotionFileCache.cc \
-  mobility/single/BonnMotionFileCache.h
+  base/INETDefs.h \
+  mobility/single/BonnMotionFileCache.h \
+  base/Compat.h
 $O/mobility/single/BonnMotionMobility.o: mobility/single/BonnMotionMobility.cc \
+  mobility/common/MobilityBase.h \
+  mobility/contract/IMobility.h \
+  base/INETDefs.h \
+  util/FWMath.h \
+  base/Coord.h \
+  base/ModuleAccess.h \
+  mobility/common/MovingMobilityBase.h \
+  mobility/common/LineSegmentsMobilityBase.h \
   mobility/single/BonnMotionMobility.h \
+  base/Compat.h \
   mobility/single/BonnMotionFileCache.h
 $O/mobility/single/ChiangMobility.o: mobility/single/ChiangMobility.cc \
-  mobility/single/ChiangMobility.h
+  base/Compat.h \
+  base/Coord.h \
+  base/ModuleAccess.h \
+  mobility/common/LineSegmentsMobilityBase.h \
+  mobility/common/MovingMobilityBase.h \
+  util/FWMath.h \
+  mobility/single/ChiangMobility.h \
+  mobility/common/MobilityBase.h \
+  base/INETDefs.h \
+  mobility/contract/IMobility.h
 $O/mobility/single/CircleMobility.o: mobility/single/CircleMobility.cc \
-  mobility/single/CircleMobility.h
+  base/INETDefs.h \
+  mobility/contract/IMobility.h \
+  mobility/common/MobilityBase.h \
+  util/FWMath.h \
+  mobility/single/CircleMobility.h \
+  mobility/common/MovingMobilityBase.h \
+  base/ModuleAccess.h \
+  base/Coord.h \
+  base/Compat.h
 $O/mobility/single/ConstSpeedMobility.o: mobility/single/ConstSpeedMobility.cc \
-  mobility/single/ConstSpeedMobility.h
+  mobility/common/LineSegmentsMobilityBase.h \
+  mobility/common/MovingMobilityBase.h \
+  base/Coord.h \
+  base/ModuleAccess.h \
+  base/Compat.h \
+  base/INETDefs.h \
+  mobility/contract/IMobility.h \
+  mobility/common/MobilityBase.h \
+  mobility/single/ConstSpeedMobility.h \
+  util/FWMath.h
 $O/mobility/single/GaussMarkovMobility.o: mobility/single/GaussMarkovMobility.cc \
+  base/Coord.h \
+  base/ModuleAccess.h \
+  mobility/common/MovingMobilityBase.h \
+  mobility/common/LineSegmentsMobilityBase.h \
+  base/Compat.h \
+  mobility/common/MobilityBase.h \
+  mobility/contract/IMobility.h \
+  base/INETDefs.h \
+  util/FWMath.h \
   mobility/single/GaussMarkovMobility.h
 $O/mobility/single/LinearMobility.o: mobility/single/LinearMobility.cc \
-  mobility/single/LinearMobility.h
+  base/ModuleAccess.h \
+  base/Coord.h \
+  mobility/common/MovingMobilityBase.h \
+  base/Compat.h \
+  mobility/single/LinearMobility.h \
+  mobility/common/MobilityBase.h \
+  mobility/contract/IMobility.h \
+  base/INETDefs.h \
+  util/FWMath.h
 $O/mobility/single/LinearNodeDistributionMobility.o: mobility/single/LinearNodeDistributionMobility.cc \
-  mobility/single/LinearNodeDistributionMobility.h
+  base/Compat.h \
+  mobility/single/LinearNodeDistributionMobility.h \
+  base/ModuleAccess.h \
+  base/Coord.h \
+  util/FWMath.h \
+  mobility/static/StationaryMobility.h \
+  base/INETDefs.h \
+  mobility/contract/IMobility.h \
+  mobility/common/MobilityBase.h
 $O/mobility/single/MassMobility.o: mobility/single/MassMobility.cc \
-  mobility/single/MassMobility.h
+  mobility/common/MovingMobilityBase.h \
+  mobility/common/LineSegmentsMobilityBase.h \
+  base/ModuleAccess.h \
+  base/Coord.h \
+  base/Compat.h \
+  mobility/single/MassMobility.h \
+  base/INETDefs.h \
+  mobility/contract/IMobility.h \
+  mobility/common/MobilityBase.h \
+  util/FWMath.h
 $O/mobility/single/Ns2MotionMobility.o: mobility/single/Ns2MotionMobility.cc \
-  mobility/single/Ns2MotionMobility.h
+  base/ModuleAccess.h \
+  base/Coord.h \
+  mobility/common/LineSegmentsMobilityBase.h \
+  mobility/common/MovingMobilityBase.h \
+  base/Compat.h \
+  mobility/common/MobilityBase.h \
+  mobility/contract/IMobility.h \
+  base/INETDefs.h \
+  mobility/single/Ns2MotionMobility.h \
+  util/FWMath.h
 $O/mobility/single/RandomWPMobility.o: mobility/single/RandomWPMobility.cc \
-  mobility/single/RandomWPMobility.h
+  mobility/common/MobilityBase.h \
+  mobility/contract/IMobility.h \
+  base/INETDefs.h \
+  util/FWMath.h \
+  base/Coord.h \
+  base/ModuleAccess.h \
+  mobility/common/LineSegmentsMobilityBase.h \
+  mobility/common/MovingMobilityBase.h \
+  mobility/single/RandomWPMobility.h \
+  base/Compat.h
 $O/mobility/single/RectangleMobility.o: mobility/single/RectangleMobility.cc \
+  base/ModuleAccess.h \
+  base/Coord.h \
+  mobility/common/MovingMobilityBase.h \
+  base/Compat.h \
+  mobility/common/MobilityBase.h \
+  base/INETDefs.h \
+  mobility/contract/IMobility.h \
+  util/FWMath.h \
   mobility/single/RectangleMobility.h
 $O/mobility/single/TraCIMobility.o: mobility/single/TraCIMobility.cc \
+  base/Compat.h \
+  base/ModuleAccess.h \
+  base/Coord.h \
+  ./mobility/single/TraCIMobility.h \
   ./world/traci/TraCIScenarioManager.h \
-  ./mobility/single/TraCIMobility.h
+  util/FWMath.h \
+  mobility/common/MobilityBase.h \
+  mobility/contract/IMobility.h \
+  base/INETDefs.h
 $O/mobility/single/TractorMobility.o: mobility/single/TractorMobility.cc \
+  mobility/common/MobilityBase.h \
+  mobility/contract/IMobility.h \
+  base/INETDefs.h \
+  util/FWMath.h \
+  base/ModuleAccess.h \
+  base/Coord.h \
+  mobility/common/LineSegmentsMobilityBase.h \
+  mobility/common/MovingMobilityBase.h \
+  base/Compat.h \
   mobility/single/TractorMobility.h
 $O/mobility/single/TurtleMobility.o: mobility/single/TurtleMobility.cc \
-  mobility/single/TurtleMobility.h
+  base/Compat.h \
+  mobility/common/LineSegmentsMobilityBase.h \
+  mobility/common/MovingMobilityBase.h \
+  mobility/single/TurtleMobility.h \
+  base/Coord.h \
+  base/ModuleAccess.h \
+  util/FWMath.h \
+  base/INETDefs.h \
+  mobility/contract/IMobility.h \
+  mobility/common/MobilityBase.h
 $O/mobility/static/StaticGridMobility.o: mobility/static/StaticGridMobility.cc \
+  base/ModuleAccess.h \
+  base/Coord.h \
+  mobility/static/StaticGridMobility.h \
+  base/Compat.h \
+  mobility/common/MobilityBase.h \
+  base/INETDefs.h \
   mobility/static/StationaryMobility.h \
-  mobility/static/StaticGridMobility.h
+  mobility/contract/IMobility.h \
+  util/FWMath.h
 $O/mobility/static/StationaryMobility.o: mobility/static/StationaryMobility.cc \
-  mobility/static/StationaryMobility.h
+  base/Compat.h \
+  base/Coord.h \
+  base/ModuleAccess.h \
+  util/FWMath.h \
+  mobility/common/MobilityBase.h \
+  base/INETDefs.h \
+  mobility/static/StationaryMobility.h \
+  mobility/contract/IMobility.h
 $O/networklayer/arp/ARP.o: networklayer/arp/ARP.cc \
-  networklayer/arp/ARP.h \
   networklayer/arp/IARPCache.h \
-  networklayer/arp/ARPPacket_m.h
+  networklayer/ipv4/IPv4Route.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/IInterfaceTable.h \
+  base/LifecycleOperation.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  base/NodeOperations.h \
+  base/ILifecycle.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/INETDefs.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/arp/ARPPacket_m.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/arp/ARP.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  base/INotifiable.h
 $O/networklayer/arp/ARPPacket_m.o: networklayer/arp/ARPPacket_m.cc \
+  linklayer/contract/MACAddress.h \
+  base/INETDefs.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
   networklayer/arp/ARPPacket_m.h
 $O/networklayer/arp/IARPCache.o: networklayer/arp/IARPCache.cc \
+  base/ModuleAccess.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  linklayer/contract/MACAddress.h \
+  base/INETDefs.h \
   networklayer/arp/IARPCache.h
 $O/networklayer/autorouting/ipv4/FlatNetworkConfigurator.o: networklayer/autorouting/ipv4/FlatNetworkConfigurator.cc \
-  networklayer/autorouting/ipv4/FlatNetworkConfigurator.h
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  base/INotifiable.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/autorouting/ipv4/FlatNetworkConfigurator.h \
+  networklayer/common/InterfaceEntry.h
 $O/networklayer/autorouting/ipv4/HostAutoConfigurator.o: networklayer/autorouting/ipv4/HostAutoConfigurator.cc \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  base/INotifiable.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/common/InterfaceEntry.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/INETDefs.h \
   networklayer/autorouting/ipv4/HostAutoConfigurator.h
 $O/networklayer/autorouting/ipv4/IPv4NetworkConfigurator.o: networklayer/autorouting/ipv4/IPv4NetworkConfigurator.cc \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  util/stlutils.h \
+  networklayer/ipv4/RoutingTable.h \
+  networklayer/ipv4/IRoutingTable.h \
+  util/XMLUtils.h \
+  base/INETDefs.h \
+  networklayer/autorouting/ipv4/IPv4NetworkConfigurator.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
   networklayer/autorouting/ipv4/IPv4NetworkConfiguratorState.h \
-  networklayer/autorouting/ipv4/IPv4NetworkConfigurator.h
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  util/PatternMatcher.h \
+  networklayer/common/InterfaceTable.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  base/INotifiable.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  base/Topology.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPvXAddressResolver.h
 $O/networklayer/autorouting/ipv4/IPv4NetworkConfiguratorState.o: networklayer/autorouting/ipv4/IPv4NetworkConfiguratorState.cc \
   networklayer/autorouting/ipv4/IPv4NetworkConfiguratorState.h
 $O/networklayer/autorouting/ipv4/IPv4NodeConfigurator.o: networklayer/autorouting/ipv4/IPv4NodeConfigurator.cc \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
   networklayer/autorouting/ipv4/IPv4NetworkConfiguratorState.h \
+  networklayer/common/IInterfaceTable.h \
+  base/LifecycleOperation.h \
+  networklayer/common/InterfaceEntry.h \
+  base/NodeOperations.h \
+  base/ILifecycle.h \
+  networklayer/autorouting/ipv4/IPv4NetworkConfigurator.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/RoutingTable.h \
   networklayer/autorouting/ipv4/IPv4NodeConfigurator.h \
-  networklayer/autorouting/ipv4/IPv4NetworkConfigurator.h
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  base/Topology.h \
+  base/Compat.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  base/INotifiable.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  util/PatternMatcher.h \
+  networklayer/common/InterfaceTableAccess.h
 $O/networklayer/autorouting/ipv6/FlatNetworkConfigurator6.o: networklayer/autorouting/ipv6/FlatNetworkConfigurator6.cc \
-  networklayer/autorouting/ipv6/FlatNetworkConfigurator6.h
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ipv6/RoutingTable6.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  base/INotifiable.h \
+  base/ILifecycle.h \
+  networklayer/autorouting/ipv6/FlatNetworkConfigurator6.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ipv6/IPv6InterfaceData.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h
 $O/networklayer/bgpv4/BGPFSM.o: networklayer/bgpv4/BGPFSM.cc \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/bgpv4/BGPMessage/BGPOpen.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  base/ILifecycle.h \
   networklayer/bgpv4/BGPSession.h \
-  networklayer/bgpv4/BGPCommon.h \
   networklayer/bgpv4/BGPFSM.h \
+  base/NotificationBoard.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/bgpv4/BGPMessage/BGPUpdate.h \
+  networklayer/ospfv2/router/LSA.h \
+  networklayer/ipv4/RoutingTable.h \
+  networklayer/ipv4/IRoutingTable.h \
   networklayer/bgpv4/BGPRouting.h \
-  networklayer/bgpv4/BGPRoutingTableEntry.h
+  base/INETDefs.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/bgpv4/BGPMessage/BGPASPathSegment_m.h \
+  networklayer/bgpv4/BGPMessage/BGPKeepAlive.h \
+  transport/contract/TCPCommand_m.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/bgpv4/BGPRoutingTableEntry.h \
+  networklayer/contract/IPv6Address.h \
+  transport/contract/TCPSocket.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/bgpv4/BGPMessage/BGPOpen_m.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/ospfv2/OSPFRouting.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  transport/contract/TCPSocketMap.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/bgpv4/BGPMessage/BGPUpdatePathAttributes_m.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/bgpv4/BGPMessage/BGPUpdate_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ospfv2/OSPFRoutingAccess.h \
+  networklayer/bgpv4/BGPMessage/BGPHeader_m.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  util/Macho.h \
+  base/INotifiable.h \
+  networklayer/bgpv4/BGPCommon.h \
+  networklayer/bgpv4/BGPMessage/BGPKeepAlive_m.h
 $O/networklayer/bgpv4/BGPRouting.o: networklayer/bgpv4/BGPRouting.cc \
-  networklayer/bgpv4/BGPRoutingTableEntry.h \
-  networklayer/bgpv4/BGPFSM.h \
-  networklayer/bgpv4/BGPRouting.h \
-  networklayer/bgpv4/BGPSession.h \
-  networklayer/bgpv4/BGPCommon.h
-$O/networklayer/bgpv4/BGPSession.o: networklayer/bgpv4/BGPSession.cc \
-  networklayer/bgpv4/BGPRoutingTableEntry.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/bgpv4/BGPMessage/BGPUpdate_m.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/bgpv4/BGPMessage/BGPUpdatePathAttributes_m.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ospfv2/OSPFRoutingAccess.h \
+  networklayer/bgpv4/BGPMessage/BGPHeader_m.h \
+  base/INotifiable.h \
   networklayer/bgpv4/BGPCommon.h \
-  networklayer/bgpv4/BGPSession.h \
+  networklayer/bgpv4/BGPMessage/BGPKeepAlive_m.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  util/Macho.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/bgpv4/BGPRoutingTableEntry.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  transport/contract/TCPSocketMap.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  transport/contract/TCPSocket.h \
+  networklayer/bgpv4/BGPMessage/BGPOpen_m.h \
+  networklayer/ospfv2/OSPFRouting.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/bgpv4/BGPMessage/BGPUpdate.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  base/NotificationBoard.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/bgpv4/BGPMessage/BGPKeepAlive.h \
+  networklayer/bgpv4/BGPMessage/BGPASPathSegment_m.h \
+  transport/contract/TCPCommand_m.h \
+  networklayer/ospfv2/router/LSA.h \
   networklayer/bgpv4/BGPRouting.h \
-  networklayer/bgpv4/BGPFSM.h
+  base/INETDefs.h \
+  networklayer/ipv4/RoutingTable.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  base/ILifecycle.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/bgpv4/BGPFSM.h \
+  networklayer/bgpv4/BGPSession.h \
+  networklayer/common/IInterfaceTable.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/bgpv4/BGPMessage/BGPOpen.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h
+$O/networklayer/bgpv4/BGPSession.o: networklayer/bgpv4/BGPSession.cc \
+  networklayer/bgpv4/BGPMessage/BGPUpdate.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  base/NotificationBoard.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  transport/contract/TCPCommand_m.h \
+  networklayer/bgpv4/BGPMessage/BGPKeepAlive.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/bgpv4/BGPMessage/BGPASPathSegment_m.h \
+  base/INETDefs.h \
+  networklayer/bgpv4/BGPRouting.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/RoutingTable.h \
+  networklayer/ospfv2/router/LSA.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/bgpv4/BGPSession.h \
+  networklayer/bgpv4/BGPFSM.h \
+  base/ILifecycle.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/bgpv4/BGPMessage/BGPOpen.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/bgpv4/BGPMessage/BGPUpdate_m.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/bgpv4/BGPMessage/BGPUpdatePathAttributes_m.h \
+  base/ModuleAccess.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/bgpv4/BGPCommon.h \
+  base/INotifiable.h \
+  networklayer/bgpv4/BGPMessage/BGPKeepAlive_m.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  util/Macho.h \
+  networklayer/bgpv4/BGPMessage/BGPHeader_m.h \
+  networklayer/ospfv2/OSPFRoutingAccess.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/bgpv4/BGPRoutingTableEntry.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  transport/contract/TCPSocketMap.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/ospfv2/OSPFRouting.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  transport/contract/TCPSocket.h \
+  networklayer/bgpv4/BGPMessage/BGPOpen_m.h \
+  networklayer/contract/IPvXAddressResolver.h
 $O/networklayer/bgpv4/BGPMessage/BGPASPathSegment_m.o: networklayer/bgpv4/BGPMessage/BGPASPathSegment_m.cc \
   networklayer/bgpv4/BGPMessage/BGPASPathSegment_m.h
 $O/networklayer/bgpv4/BGPMessage/BGPHeader_m.o: networklayer/bgpv4/BGPMessage/BGPHeader_m.cc \
   networklayer/bgpv4/BGPMessage/BGPHeader_m.h
 $O/networklayer/bgpv4/BGPMessage/BGPKeepAlive_m.o: networklayer/bgpv4/BGPMessage/BGPKeepAlive_m.cc \
-  networklayer/bgpv4/BGPMessage/BGPHeader_m.h \
-  networklayer/bgpv4/BGPMessage/BGPKeepAlive_m.h
+  networklayer/bgpv4/BGPMessage/BGPKeepAlive_m.h \
+  networklayer/bgpv4/BGPMessage/BGPHeader_m.h
 $O/networklayer/bgpv4/BGPMessage/BGPOpen_m.o: networklayer/bgpv4/BGPMessage/BGPOpen_m.cc \
+  base/INETDefs.h \
   networklayer/bgpv4/BGPMessage/BGPOpen_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
   networklayer/bgpv4/BGPMessage/BGPHeader_m.h
 $O/networklayer/bgpv4/BGPMessage/BGPUpdate.o: networklayer/bgpv4/BGPMessage/BGPUpdate.cc \
+  networklayer/bgpv4/BGPMessage/BGPUpdate_m.h \
+  networklayer/bgpv4/BGPMessage/BGPUpdatePathAttributes_m.h \
   networklayer/bgpv4/BGPMessage/BGPHeader_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/bgpv4/BGPMessage/BGPUpdate.h \
+  networklayer/bgpv4/BGPMessage/BGPASPathSegment_m.h \
+  base/INETDefs.h
+$O/networklayer/bgpv4/BGPMessage/BGPUpdatePathAttributes_m.o: networklayer/bgpv4/BGPMessage/BGPUpdatePathAttributes_m.cc \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
   networklayer/bgpv4/BGPMessage/BGPUpdatePathAttributes_m.h \
   networklayer/bgpv4/BGPMessage/BGPASPathSegment_m.h \
-  networklayer/bgpv4/BGPMessage/BGPUpdate.h \
-  networklayer/bgpv4/BGPMessage/BGPUpdate_m.h
-$O/networklayer/bgpv4/BGPMessage/BGPUpdatePathAttributes_m.o: networklayer/bgpv4/BGPMessage/BGPUpdatePathAttributes_m.cc \
-  networklayer/bgpv4/BGPMessage/BGPASPathSegment_m.h \
-  networklayer/bgpv4/BGPMessage/BGPUpdatePathAttributes_m.h
+  base/INETDefs.h
 $O/networklayer/bgpv4/BGPMessage/BGPUpdate_m.o: networklayer/bgpv4/BGPMessage/BGPUpdate_m.cc \
+  base/INETDefs.h \
   networklayer/bgpv4/BGPMessage/BGPASPathSegment_m.h \
-  networklayer/bgpv4/BGPMessage/BGPUpdate_m.h \
   networklayer/bgpv4/BGPMessage/BGPHeader_m.h \
-  networklayer/bgpv4/BGPMessage/BGPUpdatePathAttributes_m.h
+  networklayer/bgpv4/BGPMessage/BGPUpdatePathAttributes_m.h \
+  networklayer/bgpv4/BGPMessage/BGPUpdate_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h
 $O/networklayer/common/InterfaceEntry.o: networklayer/common/InterfaceEntry.cc \
   networklayer/common/InterfaceTable.h \
+  base/ModuleAccess.h \
   networklayer/common/InterfaceToken.h \
-  networklayer/common/InterfaceEntry.h \
-  networklayer/common/IInterfaceTable.h
+  networklayer/ipv4/IPv4InterfaceData.h \
+  base/INotifiable.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/ipv6/IPv6InterfaceData.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  base/INETDefs.h \
+  base/ILifecycle.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/common/InterfaceEntry.h
 $O/networklayer/common/InterfaceMatcher.o: networklayer/common/InterfaceMatcher.cc \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  util/PatternMatcher.h \
   networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceMatcher.h \
   networklayer/common/InterfaceEntry.h \
   networklayer/common/IInterfaceTable.h \
-  networklayer/common/InterfaceMatcher.h
+  networklayer/contract/IPvXAddress.h \
+  util/stlutils.h \
+  linklayer/contract/MACAddress.h \
+  base/INETDefs.h
 $O/networklayer/common/InterfaceTable.o: networklayer/common/InterfaceTable.cc \
-  networklayer/common/IInterfaceTable.h \
-  networklayer/common/InterfaceEntry.h \
+  networklayer/common/InterfaceTable.h \
   networklayer/common/InterfaceToken.h \
-  networklayer/common/InterfaceTable.h
+  base/ModuleAccess.h \
+  base/INotifiable.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  networklayer/ipv6/IPv6InterfaceData.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  base/LifecycleOperation.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  base/NodeOperations.h \
+  networklayer/common/InterfaceEntry.h
 $O/networklayer/contract/IPProtocolId_m.o: networklayer/contract/IPProtocolId_m.cc \
-  networklayer/contract/IPProtocolId_m.h
+  networklayer/contract/IPProtocolId_m.h \
+  base/Compat.h \
+  base/INETDefs.h
 $O/networklayer/contract/IPSocket.o: networklayer/contract/IPSocket.cc \
+  base/INETDefs.h \
   networklayer/contract/IPSocket.h \
-  networklayer/contract/IPProtocolId_m.h
+  networklayer/contract/IPProtocolId_m.h \
+  base/Compat.h
 $O/networklayer/contract/IPv4Address.o: networklayer/contract/IPv4Address.cc \
-  networklayer/contract/IPv4Address.h
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  base/INETDefs.h
 $O/networklayer/contract/IPv4ControlInfo.o: networklayer/contract/IPv4ControlInfo.cc \
   networklayer/contract/IPv4ControlInfo.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
   networklayer/contract/IPProtocolId_m.h \
   networklayer/contract/IPv4ControlInfo_m.h \
-  networklayer/contract/IPv4Address.h
+  linklayer/contract/MACAddress.h \
+  base/INETDefs.h
 $O/networklayer/contract/IPv4ControlInfo_m.o: networklayer/contract/IPv4ControlInfo_m.cc \
-  networklayer/contract/IPProtocolId_m.h \
+  base/INETDefs.h \
+  linklayer/contract/MACAddress.h \
   networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/Compat.h \
   networklayer/contract/IPv4Address.h
 $O/networklayer/contract/IPv6Address.o: networklayer/contract/IPv6Address.cc \
-  networklayer/contract/IPv6Address.h
-$O/networklayer/contract/IPv6ControlInfo.o: networklayer/contract/IPv6ControlInfo.cc \
-  networklayer/contract/IPv6ControlInfo.h \
+  networklayer/common/InterfaceToken.h \
   networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  base/INETDefs.h
+$O/networklayer/contract/IPv6ControlInfo.o: networklayer/contract/IPv6ControlInfo.cc \
+  networklayer/ipv6/IPv6Datagram.h \
+  base/INETDefs.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  networklayer/contract/IPv6ControlInfo.h \
   networklayer/contract/IPProtocolId_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
   networklayer/contract/IPv6ControlInfo_m.h
 $O/networklayer/contract/IPv6ControlInfo_m.o: networklayer/contract/IPv6ControlInfo_m.cc \
   networklayer/contract/IPProtocolId_m.h \
+  base/Compat.h \
   networklayer/contract/IPv6Address.h \
-  networklayer/contract/IPv6ControlInfo_m.h
+  networklayer/contract/IPv6ControlInfo_m.h \
+  base/INETDefs.h
 $O/networklayer/contract/IPvXAddress.o: networklayer/contract/IPvXAddress.cc \
-  networklayer/contract/IPv4Address.h \
-  networklayer/contract/IPvXAddress.h \
-  networklayer/contract/IPv6Address.h
-$O/networklayer/contract/IPvXAddressResolver.o: networklayer/contract/IPvXAddressResolver.cc \
-  networklayer/contract/IPvXAddressResolver.h \
   networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
   networklayer/contract/IPvXAddress.h \
-  networklayer/contract/IPv4Address.h
+  base/INETDefs.h
+$O/networklayer/contract/IPvXAddressResolver.o: networklayer/contract/IPvXAddressResolver.cc \
+  networklayer/autorouting/ipv4/IPv4NetworkConfigurator.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/autorouting/ipv4/IPv4NetworkConfiguratorState.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv6/IPv6InterfaceData.h \
+  networklayer/ipv4/RoutingTable.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/INETDefs.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  base/Topology.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  util/PatternMatcher.h \
+  networklayer/ipv6/RoutingTable6.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  base/INotifiable.h
 $O/networklayer/diffserv/BehaviorAggregateClassifier.o: networklayer/diffserv/BehaviorAggregateClassifier.cc \
-  networklayer/diffserv/BehaviorAggregateClassifier.h \
-  networklayer/diffserv/DiffservUtil.h
-$O/networklayer/diffserv/DSCPMarker.o: networklayer/diffserv/DSCPMarker.cc \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  transport/udp/UDPPacket_m.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  transport/tcp_common/TCPSegment_m.h \
   networklayer/diffserv/DiffservUtil.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  base/ByteArray_m.h \
+  networklayer/contract/IPv6Address.h \
+  transport/tcp_common/TCPSegment.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  base/INETDefs.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  transport/udp/UDPPacket.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/diffserv/BehaviorAggregateClassifier.h \
+  base/ByteArray.h
+$O/networklayer/diffserv/DSCPMarker.o: networklayer/diffserv/DSCPMarker.cc \
+  networklayer/diffserv/DSCPMarker.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  base/INETDefs.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/diffserv/DiffservUtil.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/contract/IPProtocolId_m.h \
   networklayer/diffserv/DSCP_m.h \
-  networklayer/diffserv/DSCPMarker.h
+  networklayer/ipv4/IPv4Datagram_m.h
 $O/networklayer/diffserv/DSCP_m.o: networklayer/diffserv/DSCP_m.cc \
-  networklayer/diffserv/DSCP_m.h
-$O/networklayer/diffserv/DiffservUtil.o: networklayer/diffserv/DiffservUtil.cc \
+  base/Compat.h \
   networklayer/diffserv/DSCP_m.h \
-  networklayer/diffserv/DiffservUtil.h
+  base/INETDefs.h
+$O/networklayer/diffserv/DiffservUtil.o: networklayer/diffserv/DiffservUtil.cc \
+  util/opp_utils.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/diffserv/DSCP_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/diffserv/DiffservUtil.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  base/INETDefs.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h
 $O/networklayer/diffserv/MultiFieldClassifier.o: networklayer/diffserv/MultiFieldClassifier.cc \
+  transport/udp/UDPPacket.h \
+  networklayer/contract/IPvXAddress.h \
+  base/ByteArray.h \
+  base/INETDefs.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  transport/tcp_common/TCPSegment_m.h \
+  networklayer/diffserv/DiffservUtil.h \
+  networklayer/contract/IPvXAddressResolver.h \
   networklayer/diffserv/MultiFieldClassifier.h \
-  networklayer/diffserv/DiffservUtil.h
+  networklayer/contract/IPv4Address.h \
+  transport/tcp_common/TCPSegment.h \
+  base/Compat.h \
+  base/ByteArray_m.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  transport/udp/UDPPacket_m.h
 $O/networklayer/diffserv/SingleRateThreeColorMeter.o: networklayer/diffserv/SingleRateThreeColorMeter.cc \
   networklayer/diffserv/DiffservUtil.h \
-  networklayer/diffserv/SingleRateThreeColorMeter.h
+  base/Compat.h \
+  networklayer/diffserv/SingleRateThreeColorMeter.h \
+  base/INETDefs.h
 $O/networklayer/diffserv/TokenBucketMeter.o: networklayer/diffserv/TokenBucketMeter.cc \
+  base/INETDefs.h \
   networklayer/diffserv/TokenBucketMeter.h \
+  base/Compat.h \
   networklayer/diffserv/DiffservUtil.h
 $O/networklayer/diffserv/TwoRateThreeColorMeter.o: networklayer/diffserv/TwoRateThreeColorMeter.cc \
+  base/INETDefs.h \
+  base/Compat.h \
   networklayer/diffserv/DiffservUtil.h \
   networklayer/diffserv/TwoRateThreeColorMeter.h
 $O/networklayer/icmpv6/ICMPv6.o: networklayer/icmpv6/ICMPv6.cc \
-  networklayer/icmpv6/ICMPv6Message_m.h \
-  networklayer/icmpv6/ICMPv6.h
-$O/networklayer/icmpv6/ICMPv6Message_m.o: networklayer/icmpv6/ICMPv6Message_m.cc \
-  networklayer/icmpv6/ICMPv6Message_m.h
-$O/networklayer/icmpv6/IPv6NDMessage_m.o: networklayer/icmpv6/IPv6NDMessage_m.cc \
-  networklayer/icmpv6/ICMPv6Message_m.h \
-  networklayer/icmpv6/IPv6NDMessage_m.h
-$O/networklayer/icmpv6/IPv6NeighbourCache.o: networklayer/icmpv6/IPv6NeighbourCache.cc \
-  networklayer/icmpv6/IPv6NeighbourCache.h
-$O/networklayer/icmpv6/IPv6NeighbourDiscovery.o: networklayer/icmpv6/IPv6NeighbourDiscovery.cc \
-  networklayer/icmpv6/ICMPv6Access.h \
-  networklayer/icmpv6/IPv6NeighbourCache.h \
-  networklayer/icmpv6/ICMPv6Message_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/contract/IPv6ControlInfo.h \
   networklayer/icmpv6/ICMPv6.h \
+  networklayer/icmpv6/ICMPv6Message_m.h \
+  base/ILifecycle.h \
+  applications/pingapp/PingPayload_m.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ipv6/IPv6InterfaceData.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  base/INETDefs.h
+$O/networklayer/icmpv6/ICMPv6Message_m.o: networklayer/icmpv6/ICMPv6Message_m.cc \
+  base/INETDefs.h \
+  networklayer/icmpv6/ICMPv6Message_m.h \
+  base/Compat.h
+$O/networklayer/icmpv6/IPv6NDMessage_m.o: networklayer/icmpv6/IPv6NDMessage_m.cc \
+  networklayer/icmpv6/IPv6NDMessage_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  linklayer/contract/MACAddress.h \
+  base/INETDefs.h \
+  networklayer/icmpv6/ICMPv6Message_m.h
+$O/networklayer/icmpv6/IPv6NeighbourCache.o: networklayer/icmpv6/IPv6NeighbourCache.cc \
+  networklayer/contract/IPv6Address.h \
+  networklayer/icmpv6/IPv6NeighbourCache.h \
+  base/Compat.h \
+  base/INETDefs.h \
+  linklayer/contract/MACAddress.h
+$O/networklayer/icmpv6/IPv6NeighbourDiscovery.o: networklayer/icmpv6/IPv6NeighbourDiscovery.cc \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ipv6/RoutingTable6.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/icmpv6/IPv6NDMessage_m.h \
+  base/INotifiable.h \
   networklayer/icmpv6/IPv6NeighbourDiscovery.h \
-  networklayer/icmpv6/IPv6NDMessage_m.h
+  networklayer/xmipv6/xMIPv6Access.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/icmpv6/IPv6NeighbourCache.h \
+  base/NotifierConsts.h \
+  networklayer/xmipv6/MobilityHeader_m.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
+  networklayer/icmpv6/ICMPv6Access.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  networklayer/ipv6/IPv6InterfaceData.h \
+  networklayer/xmipv6/BindingUpdateList.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv6/IPv6ExtensionHeaders_m.h \
+  networklayer/xmipv6/MobilityHeader.h \
+  networklayer/xmipv6/xMIPv6.h \
+  base/INETDefs.h \
+  networklayer/ipv6/IPv6ExtensionHeaders.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  networklayer/ipv6/RoutingTable6Access.h \
+  networklayer/icmpv6/ICMPv6.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  networklayer/ipv6tunneling/IPv6Tunneling.h \
+  base/ILifecycle.h \
+  networklayer/icmpv6/ICMPv6Message_m.h \
+  networklayer/common/InterfaceEntry.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/IInterfaceTable.h
 $O/networklayer/internetcloud/CloudDelayerBase.o: networklayer/internetcloud/CloudDelayerBase.cc \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/common/InterfaceEntry.h \
+  base/ILifecycle.h \
+  networklayer/arp/IARPCache.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/INETDefs.h \
+  base/QueueBase.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  linklayer/contract/MACAddress.h \
+  base/ReassemblyBuffer.h \
   networklayer/internetcloud/CloudDelayerBase.h
 $O/networklayer/internetcloud/MatrixCloudDelayer.o: networklayer/internetcloud/MatrixCloudDelayer.cc \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPvXAddress.h \
+  util/XMLUtils.h \
+  base/INETDefs.h \
+  linklayer/contract/MACAddress.h \
   networklayer/internetcloud/CloudDelayerBase.h \
-  networklayer/internetcloud/MatrixCloudDelayer.h
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/internetcloud/MatrixCloudDelayer.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/InterfaceTableAccess.h \
+  util/PatternMatcher.h
 $O/networklayer/ipv4/ErrorHandling.o: networklayer/ipv4/ErrorHandling.cc \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/ipv4/ICMPMessage.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4Datagram.h \
   networklayer/ipv4/ErrorHandling.h \
-  networklayer/ipv4/ICMPMessage_m.h \
-  networklayer/ipv4/ICMPMessage.h \
-  networklayer/ipv4/IPv4Datagram_m.h \
-  networklayer/ipv4/IPv4Datagram.h
+  base/INETDefs.h
 $O/networklayer/ipv4/ICMP.o: networklayer/ipv4/ICMP.cc \
-  networklayer/ipv4/ICMPMessage_m.h \
-  networklayer/ipv4/ICMPMessage.h \
-  networklayer/ipv4/IRoutingTable.h \
+  networklayer/contract/IPProtocolId_m.h \
   networklayer/ipv4/IPv4Datagram_m.h \
-  networklayer/ipv4/IPv4Datagram.h \
-  networklayer/ipv4/IPv4Route.h \
+  base/INotifiable.h \
   networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
   networklayer/ipv4/ICMP.h \
-  networklayer/ipv4/RoutingTableAccess.h
-$O/networklayer/ipv4/ICMPMessage_m.o: networklayer/ipv4/ICMPMessage_m.cc \
-  networklayer/ipv4/ICMPMessage_m.h
-$O/networklayer/ipv4/IGMPMessage_m.o: networklayer/ipv4/IGMPMessage_m.cc \
-  networklayer/ipv4/IGMPMessage_m.h
-$O/networklayer/ipv4/IGMPv2.o: networklayer/ipv4/IGMPv2.cc \
-  networklayer/ipv4/IPv4Route.h \
-  networklayer/ipv4/IGMPv2.h \
-  networklayer/ipv4/IGMPMessage_m.h \
-  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4ControlInfo.h \
   networklayer/ipv4/RoutingTableAccess.h \
-  networklayer/ipv4/IPv4InterfaceData.h
-$O/networklayer/ipv4/IPv4.o: networklayer/ipv4/IPv4.cc \
+  networklayer/contract/IPv6Address.h \
+  base/INETDefs.h \
   networklayer/ipv4/IRoutingTable.h \
-  networklayer/ipv4/IPv4Datagram_m.h \
-  networklayer/ipv4/ICMPMessage.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  networklayer/contract/IPSocket.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  applications/pingapp/PingPayload_m.h \
+  networklayer/ipv4/IPv4Route.h
+$O/networklayer/ipv4/ICMPMessage_m.o: networklayer/ipv4/ICMPMessage_m.cc \
   networklayer/ipv4/ICMPMessage_m.h \
-  networklayer/ipv4/IPv4FragBuf.h \
+  base/Compat.h \
+  base/INETDefs.h
+$O/networklayer/ipv4/IGMPMessage_m.o: networklayer/ipv4/IGMPMessage_m.cc \
+  base/INETDefs.h \
+  networklayer/ipv4/IGMPMessage_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h
+$O/networklayer/ipv4/IGMPv2.o: networklayer/ipv4/IGMPv2.cc \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPSocket.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/ipv4/IGMPv2.h \
   networklayer/ipv4/IPv4Route.h \
-  networklayer/ipv4/ICMPAccess.h \
-  networklayer/ipv4/IPv4Datagram.h \
-  networklayer/ipv4/ICMP.h \
+  base/INETDefs.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/IGMPMessage_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
   networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h
+$O/networklayer/ipv4/IPv4.o: networklayer/ipv4/IPv4.cc \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  base/ILifecycle.h \
+  base/NodeOperations.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  base/LifecycleOperation.h \
+  networklayer/contract/IPSocket.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/arp/IARPCache.h \
+  base/INotifiable.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/arp/ARPPacket_m.h \
+  networklayer/ipv4/ICMPMessage_m.h \
   networklayer/ipv4/IPv4.h \
-  networklayer/ipv4/RoutingTableAccess.h
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/ICMPMessage.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h
 $O/networklayer/ipv4/IPv4Datagram.o: networklayer/ipv4/IPv4Datagram.cc \
   networklayer/ipv4/IPv4Datagram.h \
-  networklayer/ipv4/IPv4Datagram_m.h
-$O/networklayer/ipv4/IPv4Datagram_m.o: networklayer/ipv4/IPv4Datagram_m.cc \
-  networklayer/ipv4/IPv4Datagram_m.h
-$O/networklayer/ipv4/IPv4FragBuf.o: networklayer/ipv4/IPv4FragBuf.cc \
-  networklayer/ipv4/ICMP.h \
-  networklayer/ipv4/RoutingTableAccess.h \
-  networklayer/ipv4/ICMPMessage_m.h \
-  networklayer/ipv4/ICMPMessage.h \
-  networklayer/ipv4/IRoutingTable.h \
   networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h
+$O/networklayer/ipv4/IPv4Datagram_m.o: networklayer/ipv4/IPv4Datagram_m.cc \
+  base/INETDefs.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h
+$O/networklayer/ipv4/IPv4FragBuf.o: networklayer/ipv4/IPv4FragBuf.cc \
   networklayer/ipv4/IPv4Datagram.h \
-  networklayer/ipv4/IPv4Route.h \
-  networklayer/ipv4/IPv4FragBuf.h
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  base/Compat.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  base/ReassemblyBuffer.h \
+  base/INETDefs.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/IPv4Route.h
 $O/networklayer/ipv4/IPv4InterfaceData.o: networklayer/ipv4/IPv4InterfaceData.cc \
+  networklayer/common/InterfaceEntry.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  base/INotifiable.h \
   networklayer/ipv4/IPv4InterfaceData.h
 $O/networklayer/ipv4/IPv4Route.o: networklayer/ipv4/IPv4Route.cc \
-  networklayer/ipv4/IRoutingTable.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  networklayer/routing/aodv/AODVRouteData.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  base/INotifiable.h \
   networklayer/ipv4/IPv4Route.h \
-  networklayer/ipv4/IPv4InterfaceData.h
+  networklayer/common/InterfaceEntry.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/INETDefs.h
 $O/networklayer/ipv4/NetworkInfo.o: networklayer/ipv4/NetworkInfo.cc \
-  networklayer/ipv4/IRoutingTable.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
   networklayer/ipv4/IPv4Route.h \
-  networklayer/ipv4/NetworkInfo.h
+  networklayer/ipv4/IRoutingTable.h \
+  base/INETDefs.h \
+  base/IScriptable.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  networklayer/ipv4/NetworkInfo.h \
+  networklayer/common/InterfaceToken.h
 $O/networklayer/ipv4/RoutingTable.o: networklayer/ipv4/RoutingTable.cc \
   networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/RoutingTable.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  base/ILifecycle.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/IInterfaceTable.h \
+  base/LifecycleOperation.h \
+  networklayer/common/InterfaceEntry.h \
+  base/NodeOperations.h \
   networklayer/ipv4/IPv4Route.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  base/INotifiable.h \
+  networklayer/common/InterfaceTableAccess.h \
+  util/opp_utils.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/contract/IPv6Address.h \
   networklayer/ipv4/RoutingTableParser.h \
-  networklayer/ipv4/RoutingTable.h \
-  networklayer/ipv4/IPv4InterfaceData.h
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  base/Compat.h
 $O/networklayer/ipv4/RoutingTableParser.o: networklayer/ipv4/RoutingTableParser.cc \
+  networklayer/ipv4/IPv4Route.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
   networklayer/ipv4/RoutingTable.h \
-  networklayer/ipv4/IPv4InterfaceData.h \
   networklayer/ipv4/IRoutingTable.h \
-  networklayer/ipv4/IPv4Route.h \
-  networklayer/ipv4/RoutingTableParser.h
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/RoutingTableParser.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  base/INotifiable.h \
+  networklayer/ipv4/IPv4InterfaceData.h
 $O/networklayer/ipv4/RoutingTableRecorder.o: networklayer/ipv4/RoutingTableRecorder.cc \
-  networklayer/ipv4/IPv4Route.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/RoutingTableRecorder.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
   networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  base/INotifiable.h \
   networklayer/ipv4/IPv4InterfaceData.h \
-  networklayer/ipv4/RoutingTableRecorder.h
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h
 $O/networklayer/ipv6/IPv6.o: networklayer/ipv6/IPv6.cc \
+  networklayer/icmpv6/ICMPv6Access.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
   networklayer/ipv6/IPv6FragBuf.h \
-  networklayer/ipv6/IPv6InterfaceData.h \
-  networklayer/ipv6/IPv6Datagram_m.h \
+  networklayer/contract/IPv6Address.h \
   networklayer/ipv6/IPv6.h \
-  networklayer/ipv6/IPv6Datagram.h \
-  networklayer/ipv6/RoutingTable6Access.h \
+  networklayer/xmipv6/MobilityHeader_m.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/icmpv6/IPv6NeighbourCache.h \
+  base/INotifiable.h \
+  networklayer/icmpv6/IPv6NeighbourDiscovery.h \
+  networklayer/contract/IPProtocolId_m.h \
   networklayer/ipv6/RoutingTable6.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/icmpv6/IPv6NDMessage_m.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/ILifecycle.h \
+  networklayer/icmpv6/ICMPv6Message_m.h \
+  networklayer/ipv6tunneling/IPv6Tunneling.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  networklayer/icmpv6/IPv6NeighbourDiscoveryAccess.h \
+  networklayer/contract/IPSocket.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ipv6tunneling/IPv6TunnelingAccess.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ipv6/RoutingTable6Access.h \
+  base/AbstractQueue.h \
+  networklayer/icmpv6/ICMPv6.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  base/ProtocolMap.h \
+  base/QueueBase.h \
+  networklayer/ipv6/IPv6ExtensionHeaders.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  networklayer/xmipv6/MobilityHeader.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
+  networklayer/ipv6/IPv6InterfaceData.h \
+  networklayer/ipv6/IPv6Datagram.h \
   networklayer/ipv6/IPv6ExtensionHeaders_m.h \
-  networklayer/ipv6/IPv6ExtensionHeaders.h
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h
 $O/networklayer/ipv6/IPv6Datagram.o: networklayer/ipv6/IPv6Datagram.cc \
-  networklayer/ipv6/IPv6Datagram_m.h \
-  networklayer/ipv6/IPv6Datagram.h \
   networklayer/ipv6/IPv6ExtensionHeaders_m.h \
-  networklayer/ipv6/IPv6ExtensionHeaders.h
-$O/networklayer/ipv6/IPv6Datagram_m.o: networklayer/ipv6/IPv6Datagram_m.cc \
-  networklayer/ipv6/IPv6Datagram_m.h
-$O/networklayer/ipv6/IPv6ErrorHandling.o: networklayer/ipv6/IPv6ErrorHandling.cc \
-  networklayer/ipv6/IPv6Datagram_m.h \
-  networklayer/ipv6/IPv6ErrorHandling.h \
-  networklayer/ipv6/IPv6Datagram.h
-$O/networklayer/ipv6/IPv6ExtensionHeaders.o: networklayer/ipv6/IPv6ExtensionHeaders.cc \
-  networklayer/ipv6/IPv6Datagram_m.h \
-  networklayer/ipv6/IPv6Datagram.h \
-  networklayer/ipv6/IPv6ExtensionHeaders_m.h \
-  networklayer/ipv6/IPv6ExtensionHeaders.h
-$O/networklayer/ipv6/IPv6ExtensionHeaders_m.o: networklayer/ipv6/IPv6ExtensionHeaders_m.cc \
-  networklayer/ipv6/IPv6ExtensionHeaders_m.h \
-  networklayer/ipv6/IPv6Datagram.h \
-  networklayer/ipv6/IPv6Datagram_m.h
-$O/networklayer/ipv6/IPv6FragBuf.o: networklayer/ipv6/IPv6FragBuf.cc \
-  networklayer/ipv6/IPv6Datagram_m.h \
-  networklayer/ipv6/IPv6FragBuf.h \
   networklayer/ipv6/IPv6Datagram.h \
   networklayer/ipv6/IPv6ExtensionHeaders.h \
-  networklayer/ipv6/IPv6ExtensionHeaders_m.h
+  networklayer/ipv6/IPv6Datagram_m.h \
+  base/INETDefs.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPProtocolId_m.h
+$O/networklayer/ipv6/IPv6Datagram_m.o: networklayer/ipv6/IPv6Datagram_m.cc \
+  networklayer/contract/IPProtocolId_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  base/INETDefs.h
+$O/networklayer/ipv6/IPv6ErrorHandling.o: networklayer/ipv6/IPv6ErrorHandling.cc \
+  networklayer/icmpv6/ICMPv6Message_m.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  base/INETDefs.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv6/IPv6ErrorHandling.h
+$O/networklayer/ipv6/IPv6ExtensionHeaders.o: networklayer/ipv6/IPv6ExtensionHeaders.cc \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv6/IPv6ExtensionHeaders_m.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  base/INETDefs.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  networklayer/ipv6/IPv6ExtensionHeaders.h
+$O/networklayer/ipv6/IPv6ExtensionHeaders_m.o: networklayer/ipv6/IPv6ExtensionHeaders_m.cc \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  base/INETDefs.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  networklayer/ipv6/IPv6ExtensionHeaders_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  networklayer/contract/IPProtocolId_m.h
+$O/networklayer/ipv6/IPv6FragBuf.o: networklayer/ipv6/IPv6FragBuf.cc \
+  networklayer/ipv6/IPv6FragBuf.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/icmpv6/ICMPv6Message_m.h \
+  base/ILifecycle.h \
+  networklayer/icmpv6/ICMPv6.h \
+  base/INETDefs.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  networklayer/ipv6/IPv6ExtensionHeaders.h \
+  base/ReassemblyBuffer.h \
+  networklayer/ipv6/IPv6ExtensionHeaders_m.h \
+  networklayer/ipv6/IPv6Datagram.h
 $O/networklayer/ipv6/IPv6InterfaceData.o: networklayer/ipv6/IPv6InterfaceData.cc \
   networklayer/ipv6/IPv6InterfaceData.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  base/INETDefs.h \
+  networklayer/ipv6/RoutingTable6Access.h \
+  base/ILifecycle.h \
+  networklayer/common/InterfaceEntry.h \
   networklayer/ipv6/RoutingTable6.h \
-  networklayer/ipv6/RoutingTable6Access.h
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/INotifiable.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  base/Compat.h
 $O/networklayer/ipv6/RoutingTable6.o: networklayer/ipv6/RoutingTable6.cc \
+  base/INotifiable.h \
   networklayer/ipv6/RoutingTable6.h \
-  networklayer/ipv6/IPv6InterfaceData.h
+  util/opp_utils.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
+  networklayer/ipv6/IPv6InterfaceData.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  base/ILifecycle.h \
+  networklayer/ipv6tunneling/IPv6Tunneling.h \
+  networklayer/common/IInterfaceTable.h \
+  base/LifecycleOperation.h \
+  networklayer/contract/IPvXAddress.h \
+  base/NodeOperations.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ipv6tunneling/IPv6TunnelingAccess.h
 $O/networklayer/ipv6tunneling/IPv6Tunneling.o: networklayer/ipv6tunneling/IPv6Tunneling.cc \
-  networklayer/ipv6tunneling/IPv6Tunneling.h
+  networklayer/ipv6/IPv6Datagram.h \
+  networklayer/xmipv6/BindingUpdateList.h \
+  networklayer/ipv6/IPv6InterfaceData.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  networklayer/ipv6/IPv6ExtensionHeaders_m.h \
+  networklayer/xmipv6/xMIPv6.h \
+  base/INETDefs.h \
+  networklayer/xmipv6/MobilityHeader.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  networklayer/ipv6/IPv6ExtensionHeaders.h \
+  networklayer/ipv6/RoutingTable6Access.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  networklayer/ipv6tunneling/IPv6Tunneling.h \
+  base/ILifecycle.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/common/IInterfaceTable.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ipv6/RoutingTable6.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  base/INotifiable.h \
+  networklayer/xmipv6/xMIPv6Access.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  networklayer/xmipv6/MobilityHeader_m.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6ControlInfo_m.h
 $O/networklayer/ldp/LDP.o: networklayer/ldp/LDP.cc \
+  networklayer/ldp/LDPPacket_m.h \
+  networklayer/mpls/IClassifier.h \
+  base/ByteArray.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ted/TED_m.h \
+  networklayer/common/InterfaceEntry.h \
+  base/NodeOperations.h \
+  transport/udp/UDPPacket.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  base/LifecycleOperation.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/rsvp_te/IntServ_m.h \
+  base/ILifecycle.h \
+  base/NotificationBoard.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ted/TED.h \
+  networklayer/mpls/LIBTable.h \
   networklayer/ldp/LDP.h \
-  networklayer/ldp/LDPPacket_m.h
+  networklayer/ipv4/IRoutingTable.h \
+  base/INETDefs.h \
+  networklayer/mpls/ConstType.h \
+  networklayer/rsvp_te/IntServ.h \
+  transport/contract/TCPCommand_m.h \
+  transport/contract/UDPControlInfo_m.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv4Address.h \
+  transport/tcp_common/TCPSegment.h \
+  base/Compat.h \
+  base/ByteArray_m.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  transport/tcp_common/TCPSegment_m.h \
+  transport/contract/TCPSocket.h \
+  transport/contract/TCPSocketMap.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  transport/udp/UDPPacket_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  transport/contract/UDPSocket.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ted/TEDAccess.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  base/INotifiable.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/mpls/LIBTableAccess.h
 $O/networklayer/ldp/LDPPacket_m.o: networklayer/ldp/LDPPacket_m.cc \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
+  base/INETDefs.h \
   networklayer/ldp/LDPPacket_m.h
 $O/networklayer/manetrouting/aodv-uu/aodv_msg_struct.o: networklayer/manetrouting/aodv-uu/aodv_msg_struct.cc \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  transport/udp/UDPPacket_m.h \
+  networklayer/common/InterfaceTable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  base/INotifiable.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/aodv-uu/aodv_msg_struct_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
+  linklayer/contract/MACAddress.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  networklayer/ipv4/RoutingTable.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/ICMPAccess.h \
   networklayer/manetrouting/aodv-uu/aodv_msg_struct.h \
-  networklayer/manetrouting/aodv-uu/aodv_msg_struct_m.h
+  base/ProtocolMap.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/IInterfaceTable.h \
+  transport/udp/UDPPacket.h \
+  networklayer/contract/IPvXAddress.h \
+  base/ILifecycle.h
 $O/networklayer/manetrouting/aodv-uu/aodv_msg_struct_m.o: networklayer/manetrouting/aodv-uu/aodv_msg_struct_m.cc \
   networklayer/manetrouting/aodv-uu/aodv_msg_struct.h \
   networklayer/manetrouting/aodv-uu/aodv_msg_struct_m.h
 $O/networklayer/manetrouting/aodv-uu/aodv_uu_omnet.o: networklayer/manetrouting/aodv-uu/aodv_uu_omnet.cc \
-  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_neighbor.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.h \
-  networklayer/manetrouting/aodv-uu/aodv_msg_struct.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/locality.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/packet_queue_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv_uu_omnet.h \
+  transport/udp/UDPPacket_m.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rreq.h \
+  base/Coord.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
+  base/QueueBase.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/manetrouting/aodv-uu/aodv_msg_struct.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/udp/UDPPacket.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.h \
+  networklayer/manetrouting/base/ControlManetRouting_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/aodv-uu/packet_queue_omnet.h \
+  base/INotifiable.h \
+  networklayer/arp/ARP.h \
   networklayer/manetrouting/aodv-uu/aodv_msg_struct_m.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/list.h
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/manetrouting/aodv-uu/aodv_uu_omnet.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_neighbor.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/locality.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.h \
+  base/ILifecycle.h
 $O/networklayer/manetrouting/aodv-uu/packet_queue_omnet.o: networklayer/manetrouting/aodv-uu/packet_queue_omnet.cc \
-  networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_neighbor.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/locality.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv_msg_struct.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/contract/IPv4Address.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/packet_queue_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
+  networklayer/ipv4/ICMPMessage.h \
   networklayer/manetrouting/aodv-uu/aodv_msg_struct_m.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/ICMPMessage_m.h \
   networklayer/manetrouting/aodv-uu/aodv_uu_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rreq.h
-$O/networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.o: networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.cc \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rreq.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h
-$O/networklayer/manetrouting/aodv-uu/aodv-uu/aodv_neighbor.o: networklayer/manetrouting/aodv-uu/aodv-uu/aodv_neighbor.cc \
-  networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/manetrouting/aodv-uu/packet_queue_omnet.h \
+  networklayer/contract/IPProtocolId_m.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_neighbor.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h
-$O/networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.o: networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.cc \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
+  networklayer/manetrouting/base/compatibility.h \
+  base/ILifecycle.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/params.h
-$O/networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.o: networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.cc \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_neighbor.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h
-$O/networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rreq.o: networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rreq.cc \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/ReassemblyBuffer.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/locality.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rreq.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h
-$O/networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.o: networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.cc \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/aodv_neighbor.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rreq.h \
+  base/Coord.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
+  networklayer/common/InterfaceEntry.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv_msg_struct.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/QueueBase.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rreq.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/list.h
-$O/networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.o: networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.cc \
-  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_neighbor.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/nl.h \
+  networklayer/ipv4/IRoutingTable.h
+$O/networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.o: networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.cc \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/arp/ARP.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
+  base/INotifiable.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
+  networklayer/common/IInterfaceTable.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rreq.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h
-$O/networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.o: networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.cc \
-  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
+  base/ILifecycle.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
+  networklayer/manetrouting/base/compatibility.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rreq.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
+  networklayer/ipv4/ICMP.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.h \
+  base/Coord.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rreq.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
+  base/AbstractQueue.h \
+  base/QueueBase.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  linklayer/contract/MACAddress.h
+$O/networklayer/manetrouting/aodv-uu/aodv-uu/aodv_neighbor.o: networklayer/manetrouting/aodv-uu/aodv-uu/aodv_neighbor.cc \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
+  base/QueueBase.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMP.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  base/NotifierConsts.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
+  networklayer/ipv4/RoutingTableAccess.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
+  base/Coord.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
+  networklayer/ipv4/IPv4FragBuf.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_neighbor.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
+  base/INotifiable.h \
+  networklayer/arp/ARP.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h
+$O/networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.o: networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.cc \
+  base/Coord.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
+  linklayer/contract/MACAddress.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/QueueBase.h \
+  networklayer/ipv4/IRoutingTable.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
+  base/AbstractQueue.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/arp/ARP.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
+  networklayer/common/IInterfaceTable.h
+$O/networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.o: networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.cc \
+  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/arp/ARP.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
+  base/INotifiable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_neighbor.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
+  base/Coord.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
+  base/AbstractQueue.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
+  networklayer/common/InterfaceEntry.h \
+  linklayer/contract/MACAddress.h \
+  base/QueueBase.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h
+$O/networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rreq.o: networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rreq.cc \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  base/Coord.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rreq.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
+  base/NotifierConsts.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  base/QueueBase.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
+  base/AbstractQueue.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/arp/ARP.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
+  base/INotifiable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/locality.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h
+$O/networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.o: networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.cc \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
+  networklayer/contract/IPvXAddress.h \
+  base/AbstractQueue.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
+  networklayer/ipv4/IPv4Route.h \
+  util/FWMath.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  base/Coord.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rreq.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_neighbor.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
+  base/INotifiable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
+  networklayer/arp/ARP.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h
+$O/networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.o: networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.cc \
+  base/QueueBase.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/nl.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rreq.h \
+  base/Coord.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
+  networklayer/contract/IPv6Address.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_neighbor.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h
+$O/networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.o: networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.cc \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
+  linklayer/contract/MACAddress.h \
+  base/QueueBase.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  base/Coord.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rreq.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  base/NotifierConsts.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h
 $O/networklayer/manetrouting/aodv-uu/aodv-uu/list.o: networklayer/manetrouting/aodv-uu/aodv-uu/list.cc \
   networklayer/manetrouting/aodv-uu/aodv-uu/list.h
 $O/networklayer/manetrouting/aodv-uu/aodv-uu/locality.o: networklayer/manetrouting/aodv-uu/aodv-uu/locality.cc \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
+  networklayer/arp/ARP.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
+  networklayer/ipv4/ICMPMessage_m.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/NotificationBoard.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/locality.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  base/Coord.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  networklayer/ipv4/ICMP.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  base/AbstractQueue.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h
+  networklayer/ipv4/IPv4Route.h
 $O/networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.o: networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.cc \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/nl.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_neighbor.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/ICMPMessage.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h
-$O/networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.o: networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.cc \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.h \
+  base/INotifiable.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
+  networklayer/arp/ARP.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
+  networklayer/manetrouting/base/compatibility.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
+  base/ILifecycle.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_neighbor.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
+  base/Coord.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_hello.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/routing_table.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rrep.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  base/AbstractQueue.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h
-$O/networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.o: networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.cc \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/nl.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_rerr.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h
+$O/networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.o: networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.cc \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  util/FWMath.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
+  networklayer/arp/IARPCache.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/QueueBase.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h \
+  networklayer/ipv4/RoutingTableAccess.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
   networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
-  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  base/Coord.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/aodv_timeout.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/params.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
+  networklayer/manetrouting/base/compatibility.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/seek_list.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h
+$O/networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.o: networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.cc \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/list.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/debug_aodv.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/locality.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_uu_omnet.h \
+  base/ILifecycle.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/timer_queue_aodv.h \
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/list.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_neighbor.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/params.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/defs_aodv.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_hello.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rrep.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/seek_list.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rreq.h \
+  linklayer/contract/MACAddress.h \
+  base/QueueBase.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/routing_table.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_rerr.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_timeout.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv_msg_struct_m.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/timer_queue_aodv.h \
+  networklayer/common/InterfaceEntry.h \
+  base/Coord.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/defs_aodv.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/debug_aodv.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../packet_queue_omnet.h \
+  networklayer/manetrouting/aodv-uu/aodv-uu/../aodv-uu/aodv_socket.h
 $O/networklayer/manetrouting/base/ControlInfoBreakLink_m.o: networklayer/manetrouting/base/ControlInfoBreakLink_m.cc \
+  base/INETDefs.h \
+  base/Compat.h \
+  linklayer/contract/MACAddress.h \
   networklayer/manetrouting/base/ControlInfoBreakLink_m.h
 $O/networklayer/manetrouting/base/ControlManetRouting_m.o: networklayer/manetrouting/base/ControlManetRouting_m.cc \
   networklayer/manetrouting/base/ControlManetRouting_m.h \
-  networklayer/manetrouting/base/ManetAddress.h
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPvXAddress.h
 $O/networklayer/manetrouting/base/ManetAddress.o: networklayer/manetrouting/base/ManetAddress.cc \
-  networklayer/manetrouting/base/ManetAddress.h
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPvXAddress.h
 $O/networklayer/manetrouting/base/ManetNetfilterHook.o: networklayer/manetrouting/base/ManetNetfilterHook.cc \
   networklayer/manetrouting/base/ControlManetRouting_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
   networklayer/manetrouting/base/ManetNetfilterHook.h \
-  networklayer/manetrouting/base/ManetAddress.h
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
+  networklayer/manetrouting/base/compatibility_dsr.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/dsr/dsr-uu/timer.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
+  networklayer/manetrouting/dsr/dsr-pkt_omnet.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  util/headerserializers/ipv4/headers/ip.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/arp/IARPCache.h
 $O/networklayer/manetrouting/base/ManetRoutingBase.o: networklayer/manetrouting/base/ManetRoutingBase.cc \
-  networklayer/manetrouting/base/compatibility.h \
-  networklayer/manetrouting/base/ManetNetfilterHook.h \
-  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  transport/udp/UDPPacket_m.h \
+  base/Coord.h \
+  linklayer/ieee80211/mgmt/Ieee80211MgmtBase.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
   networklayer/manetrouting/base/ControlInfoBreakLink_m.h \
-  networklayer/manetrouting/base/ManetAddress.h
+  linklayer/contract/MACAddress.h \
+  base/IPassiveQueue.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/udp/UDPPacket.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPProtocolId_m.h \
+  linklayer/ieee80211/mgmt/Ieee80211MgmtAPBase.h \
+  base/INotifiable.h \
+  linklayer/ieee80211/mgmt/Ieee80211MgmtAP.h \
+  networklayer/arp/ARP.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  linklayer/ieee80211/mgmt/Ieee80211MgmtFrames_m.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  base/PassiveQueueBase.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
+  mobility/contract/IMobility.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPSocket.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/base/compatibility.h
 $O/networklayer/manetrouting/base/MeshControlInfo_m.o: networklayer/manetrouting/base/MeshControlInfo_m.cc \
-  networklayer/manetrouting/base/MeshControlInfo_m.h
+  linklayer/contract/MACAddress.h \
+  base/Compat.h \
+  networklayer/manetrouting/base/MeshControlInfo_m.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h
 $O/networklayer/manetrouting/batman/BatmanMain.o: networklayer/manetrouting/batman/BatmanMain.cc \
-  networklayer/manetrouting/batman/BatmanMain.h
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/batman/BatmanMsg.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/manetrouting/batman/batmand/batman.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  base/ProtocolMap.h \
+  networklayer/manetrouting/batman/BatmanMain.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/QueueBase.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  base/Coord.h \
+  transport/udp/UDPPacket_m.h \
+  networklayer/manetrouting/batman/BatmanMsg_m.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h
 $O/networklayer/manetrouting/batman/BatmanMsg_m.o: networklayer/manetrouting/batman/BatmanMsg_m.cc \
-  networklayer/manetrouting/batman/BatmanMsg_m.h
+  networklayer/contract/IPvXAddress.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/batman/BatmanMsg_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  base/INETDefs.h \
+  networklayer/contract/IPv4Address.h
 $O/networklayer/manetrouting/batman/batmand/batman.o: networklayer/manetrouting/batman/batmand/batman.cc \
-  networklayer/manetrouting/batman/batmand/batman.h
-$O/networklayer/manetrouting/batman/batmand/bitarray.o: networklayer/manetrouting/batman/batmand/bitarray.cc
-$O/networklayer/manetrouting/batman/batmand/hna.o: networklayer/manetrouting/batman/batmand/hna.cc
+  base/Coord.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  networklayer/manetrouting/batman/BatmanMsg_m.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/ICMPAccess.h \
+  networklayer/manetrouting/batman/BatmanMain.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/manetrouting/batman/batmand/batman.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/INotifiable.h \
+  networklayer/arp/ARP.h \
+  networklayer/manetrouting/batman/BatmanMsg.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/base/compatibility.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h
+$O/networklayer/manetrouting/batman/batmand/bitarray.o: networklayer/manetrouting/batman/batmand/bitarray.cc \
+  networklayer/manetrouting/batman/BatmanMsg_m.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  base/Coord.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  networklayer/manetrouting/batman/BatmanMain.h \
+  base/QueueBase.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/batman/BatmanMsg.h \
+  networklayer/manetrouting/batman/batmand/batman.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/base/compatibility.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h
+$O/networklayer/manetrouting/batman/batmand/hna.o: networklayer/manetrouting/batman/batmand/hna.cc \
+  base/Coord.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  networklayer/manetrouting/batman/BatmanMsg_m.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/ICMPAccess.h \
+  networklayer/manetrouting/batman/BatmanMain.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/manetrouting/batman/batmand/batman.h \
+  base/INotifiable.h \
+  networklayer/arp/ARP.h \
+  networklayer/manetrouting/batman/BatmanMsg.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/base/compatibility.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h
 $O/networklayer/manetrouting/batman/batmand/originator.o: networklayer/manetrouting/batman/batmand/originator.cc \
-  networklayer/manetrouting/batman/batmand/batman.h
+  base/Coord.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/batman/BatmanMsg_m.h \
+  linklayer/contract/MACAddress.h \
+  base/QueueBase.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/ProtocolMap.h \
+  networklayer/manetrouting/batman/BatmanMain.h \
+  networklayer/ipv4/ICMPAccess.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/manetrouting/batman/batmand/batman.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/batman/BatmanMsg.h \
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h
 $O/networklayer/manetrouting/batman/batmand/os.o: networklayer/manetrouting/batman/batmand/os.cc \
-  networklayer/manetrouting/batman/batmand/batman.h
-$O/networklayer/manetrouting/batman/batmand/ring_buffer.o: networklayer/manetrouting/batman/batmand/ring_buffer.cc
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/manetrouting/batman/BatmanMsg.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
+  networklayer/arp/ARP.h \
+  networklayer/manetrouting/batman/batmand/batman.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/base/compatibility.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/batman/BatmanMsg_m.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  base/Coord.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  networklayer/manetrouting/batman/BatmanMain.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  linklayer/contract/MACAddress.h
+$O/networklayer/manetrouting/batman/batmand/ring_buffer.o: networklayer/manetrouting/batman/batmand/ring_buffer.cc \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/batman/BatmanMain.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  base/Coord.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/manetrouting/batman/BatmanMsg_m.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/base/compatibility.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/manetrouting/batman/batmand/batman.h \
+  networklayer/common/InterfaceToken.h \
+  base/INotifiable.h \
+  networklayer/arp/ARP.h \
+  networklayer/manetrouting/batman/BatmanMsg.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage_m.h
 $O/networklayer/manetrouting/batman/batmand/schedule.o: networklayer/manetrouting/batman/batmand/schedule.cc \
-  networklayer/manetrouting/batman/batmand/batman.h
+  networklayer/common/InterfaceToken.h \
+  networklayer/manetrouting/batman/batmand/batman.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/batman/BatmanMsg.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/base/compatibility.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  base/Coord.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/manetrouting/batman/BatmanMsg_m.h \
+  linklayer/contract/MACAddress.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  networklayer/manetrouting/batman/BatmanMain.h \
+  base/QueueBase.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h
 $O/networklayer/manetrouting/dsdv/DSDV_2.o: networklayer/manetrouting/dsdv/DSDV_2.cc \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/manetrouting/dsdv/DSDVhello_m.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/IPv4Route.h \
   networklayer/manetrouting/dsdv/DSDV_2.h \
-  networklayer/manetrouting/dsdv/DSDVhello_m.h
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/InterfaceToken.h \
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotificationBoard.h \
+  networklayer/ipv4/RoutingTable.h \
+  base/INETDefs.h \
+  base/ILifecycle.h \
+  networklayer/contract/IPSocket.h \
+  networklayer/common/IInterfaceTable.h
 $O/networklayer/manetrouting/dsdv/DSDVhello_m.o: networklayer/manetrouting/dsdv/DSDVhello_m.cc \
-  networklayer/manetrouting/dsdv/DSDVhello_m.h
+  networklayer/manetrouting/dsdv/DSDVhello_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h
 $O/networklayer/manetrouting/dsr/dsr-pkt_omnet.o: networklayer/manetrouting/dsr/dsr-pkt_omnet.cc \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
+  networklayer/manetrouting/base/compatibility_dsr.h \
   networklayer/manetrouting/dsr/dsr-uu/timer.h \
   networklayer/manetrouting/dsr/dsr-pkt_omnet.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h
+  networklayer/ipv4/IPv4Datagram_m.h \
+  util/headerserializers/ipv4/headers/ip.h \
+  base/Compat.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPv4ControlInfo_m.h
 $O/networklayer/manetrouting/dsr/dsr-uu-omnetpp.o: networklayer/manetrouting/dsr/dsr-uu-omnetpp.cc \
-  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
-  networklayer/manetrouting/dsr/dsr-uu/timer.h \
-  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
-  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
   networklayer/manetrouting/dsr/dsr-pkt_omnet.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
+  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
+  util/headerserializers/ipv4/headers/ip.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
+  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h \
   networklayer/manetrouting/dsr/dsr-uu/tbl.h \
   networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/manetrouting/base/ControlManetRouting_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
   networklayer/manetrouting/dsr/dsr-uu/path-cache.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
   networklayer/manetrouting/dsr/dsr-uu-omnetpp.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
-  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/dsr/dsr-uu/timer.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPSocket.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
   networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h
+  networklayer/manetrouting/base/compatibility_dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h
 $O/networklayer/manetrouting/dsr/dsr-uu/dsr-ack.o: networklayer/manetrouting/dsr/dsr-uu/dsr-ack.cc \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-dev.h \
-  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
-  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
-  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
-  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
-  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/timer.h \
   networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h
-$O/networklayer/manetrouting/dsr/dsr-uu/dsr-io.o: networklayer/manetrouting/dsr/dsr-uu/dsr-io.cc \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/dsr/dsr-pkt_omnet.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/manetrouting/base/ManetAddress.h \
   networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
-  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-dev.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
   networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
-  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
-  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
-  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rtc.h \
+  util/headerserializers/ipv4/headers/ip.h \
   networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
   networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
-  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/timer.h
-$O/networklayer/manetrouting/dsr/dsr-uu/dsr-opt.o: networklayer/manetrouting/dsr/dsr-uu/dsr-opt.cc \
   networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
+  linklayer/contract/MACAddress.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/IPv4Route.h \
   networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
-  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
   networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
   networklayer/manetrouting/dsr/dsr-uu/tbl.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
-  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/timer.h \
-  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h
-$O/networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.o: networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.cc \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
-  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
-  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/InterfaceToken.h \
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/base/ControlManetRouting_m.h \
+  networklayer/contract/IPv4ControlInfo.h \
   networklayer/manetrouting/dsr/dsr-uu/neigh.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
-  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
-  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
-  networklayer/manetrouting/dsr/dsr-uu/timer.h
-$O/networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.o: networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.cc \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
   networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
   networklayer/manetrouting/dsr/dsr-uu/dsr-dev.h \
-  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
-  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
-  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/timer.h \
-  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
-  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
-  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
   networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
-  networklayer/manetrouting/dsr/dsr-uu/neigh.h
-$O/networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.o: networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.cc \
-  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-dev.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
-  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
-  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
-  networklayer/manetrouting/dsr/dsr-uu/timer.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
-  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
-  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h
-$O/networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.o: networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.cc \
-  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
-  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
-  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
-  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/timer.h \
-  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-dev.h \
-  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr.h
-$O/networklayer/manetrouting/dsr/dsr-uu/dsr-srt.o: networklayer/manetrouting/dsr/dsr-uu/dsr-srt.cc \
-  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
-  networklayer/manetrouting/dsr/dsr-uu/timer.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
-  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
-  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
-  networklayer/manetrouting/dsr/dsr-uu/link-cache.h
-$O/networklayer/manetrouting/dsr/dsr-uu/link-cache.o: networklayer/manetrouting/dsr/dsr-uu/link-cache.cc \
-  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
-  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rtc.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
-  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
-  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
-  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/timer.h \
-  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
-  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h
-$O/networklayer/manetrouting/dsr/dsr-uu/maint-buf.o: networklayer/manetrouting/dsr/dsr-uu/maint-buf.cc \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
-  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
-  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
-  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
-  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
-  networklayer/manetrouting/dsr/dsr-uu/timer.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-dev.h \
-  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h
-$O/networklayer/manetrouting/dsr/dsr-uu/neigh.o: networklayer/manetrouting/dsr/dsr-uu/neigh.cc \
-  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
-  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
-  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/timer.h \
-  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
-  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
-  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/tbl.h
-$O/networklayer/manetrouting/dsr/dsr-uu/path-cache.o: networklayer/manetrouting/dsr/dsr-uu/path-cache.cc \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rtc.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
-  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
-  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
-  networklayer/manetrouting/dsr/dsr-uu/timer.h \
-  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
-  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
-  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
+  networklayer/manetrouting/dsr/dsr-uu-omnetpp.h \
+  base/NotificationBoard.h \
   networklayer/manetrouting/dsr/dsr-uu/path-cache.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
+  networklayer/manetrouting/base/compatibility_dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dsr/dsr-uu/timer.h
+$O/networklayer/manetrouting/dsr/dsr-uu/dsr-io.o: networklayer/manetrouting/dsr/dsr-uu/dsr-io.cc \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/manetrouting/dsr/dsr-pkt_omnet.h \
+  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
+  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  util/headerserializers/ipv4/headers/ip.h \
   networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr.h
-$O/networklayer/manetrouting/dsr/dsr-uu/send-buf.o: networklayer/manetrouting/dsr/dsr-uu/send-buf.cc \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
   networklayer/manetrouting/dsr/dsr-uu/tbl.h \
   networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
-  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
-  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
-  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
-  networklayer/manetrouting/dsr/dsr-uu/timer.h \
-  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/base/ControlManetRouting_m.h \
+  base/INotifiable.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
   networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-dev.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
+  networklayer/manetrouting/dsr/dsr-uu/path-cache.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rtc.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/dsr/dsr-uu-omnetpp.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dsr/dsr-uu/timer.h \
+  networklayer/manetrouting/base/compatibility_dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h
+$O/networklayer/manetrouting/dsr/dsr-uu/dsr-opt.o: networklayer/manetrouting/dsr/dsr-uu/dsr-opt.cc \
+  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
+  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
+  util/headerserializers/ipv4/headers/ip.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/contract/IPv6Address.h \
   networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/manetrouting/dsr/dsr-pkt_omnet.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
+  networklayer/manetrouting/dsr/dsr-uu/timer.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
+  networklayer/manetrouting/base/compatibility_dsr.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/dsr/dsr-uu-omnetpp.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dsr/dsr-uu/path-cache.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/manetrouting/base/ControlManetRouting_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h
+$O/networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.o: networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.cc \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/manetrouting/dsr/dsr-pkt_omnet.h \
+  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
+  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
+  util/headerserializers/ipv4/headers/ip.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
+  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/base/ControlManetRouting_m.h \
+  base/INotifiable.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
+  networklayer/manetrouting/dsr/dsr-uu/path-cache.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/dsr/dsr-uu-omnetpp.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dsr/dsr-uu/timer.h \
+  networklayer/manetrouting/base/compatibility_dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h
+$O/networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.o: networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.cc \
+  networklayer/manetrouting/dsr/dsr-uu/path-cache.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dsr/dsr-uu-omnetpp.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dsr/dsr-uu/timer.h \
+  networklayer/manetrouting/base/compatibility_dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/base/ControlManetRouting_m.h \
+  base/INotifiable.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-dev.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
+  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/manetrouting/dsr/dsr-pkt_omnet.h \
+  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
+  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  util/headerserializers/ipv4/headers/ip.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
+  networklayer/contract/IPv6Address.h
+$O/networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.o: networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.cc \
+  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-dev.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/INotifiable.h \
+  networklayer/manetrouting/base/ControlManetRouting_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
   networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
   networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
-  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
+  networklayer/manetrouting/base/compatibility_dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/timer.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/dsr/dsr-uu-omnetpp.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dsr/dsr-uu/path-cache.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  util/headerserializers/ipv4/headers/ip.h \
   networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
+  networklayer/manetrouting/dsr/dsr-pkt_omnet.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
   networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
-  networklayer/manetrouting/dsr/dsr-uu/dsr.h
+  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/IRoutingTable.h
+$O/networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.o: networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.cc \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
+  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
+  networklayer/manetrouting/dsr/dsr-pkt_omnet.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
+  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
+  util/headerserializers/ipv4/headers/ip.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dsr/dsr-uu/path-cache.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/dsr/dsr-uu-omnetpp.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
+  networklayer/manetrouting/base/compatibility_dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/timer.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
+  base/INotifiable.h \
+  networklayer/manetrouting/base/ControlManetRouting_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-dev.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
+  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h
+$O/networklayer/manetrouting/dsr/dsr-uu/dsr-srt.o: networklayer/manetrouting/dsr/dsr-uu/dsr-srt.cc \
+  networklayer/manetrouting/dsr/dsr-pkt_omnet.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
+  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
+  util/headerserializers/ipv4/headers/ip.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
+  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
+  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
+  base/INotifiable.h \
+  networklayer/manetrouting/base/ControlManetRouting_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
+  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dsr/dsr-uu/path-cache.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/dsr/dsr-uu-omnetpp.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
+  networklayer/manetrouting/base/compatibility_dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/timer.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h
+$O/networklayer/manetrouting/dsr/dsr-uu/link-cache.o: networklayer/manetrouting/dsr/dsr-uu/link-cache.cc \
+  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
+  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
+  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  util/headerserializers/ipv4/headers/ip.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/dsr/dsr-pkt_omnet.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
+  networklayer/manetrouting/base/compatibility_dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dsr/dsr-uu/timer.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
+  networklayer/manetrouting/dsr/dsr-uu/path-cache.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
+  networklayer/manetrouting/dsr/dsr-uu-omnetpp.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rtc.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/base/ControlManetRouting_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h
+$O/networklayer/manetrouting/dsr/dsr-uu/maint-buf.o: networklayer/manetrouting/dsr/dsr-uu/maint-buf.cc \
+  networklayer/manetrouting/dsr/dsr-uu/timer.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
+  networklayer/manetrouting/base/compatibility_dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dsr/dsr-uu/path-cache.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/dsr/dsr-uu-omnetpp.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-dev.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/manetrouting/base/ControlManetRouting_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
+  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
+  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
+  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
+  util/headerserializers/ipv4/headers/ip.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/dsr/dsr-pkt_omnet.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/dsr/dsr-uu/send-buf.h
+$O/networklayer/manetrouting/dsr/dsr-uu/neigh.o: networklayer/manetrouting/dsr/dsr-uu/neigh.cc \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/manetrouting/dsr/dsr-pkt_omnet.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
+  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
+  util/headerserializers/ipv4/headers/ip.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
+  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
+  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/manetrouting/base/ControlManetRouting_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dsr/dsr-uu/path-cache.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/dsr/dsr-uu-omnetpp.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/dsr/dsr-uu/timer.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
+  networklayer/manetrouting/base/compatibility_dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h
+$O/networklayer/manetrouting/dsr/dsr-uu/path-cache.o: networklayer/manetrouting/dsr/dsr-uu/path-cache.cc \
+  base/INETDefs.h \
+  networklayer/manetrouting/dsr/dsr-uu/path-cache.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/dsr/dsr-uu-omnetpp.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rtc.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/dsr/dsr-uu/timer.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
+  networklayer/manetrouting/base/compatibility_dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
+  networklayer/manetrouting/base/ControlManetRouting_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
+  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
+  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/manetrouting/dsr/dsr-pkt_omnet.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
+  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
+  util/headerserializers/ipv4/headers/ip.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h
+$O/networklayer/manetrouting/dsr/dsr-uu/send-buf.o: networklayer/manetrouting/dsr/dsr-uu/send-buf.cc \
+  base/INETDefs.h \
+  networklayer/manetrouting/dsr/dsr-uu/path-cache.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-opt.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/dsr/dsr-uu-omnetpp.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-ack.h \
+  networklayer/manetrouting/base/compatibility_dsr.h \
+  networklayer/manetrouting/dsr/dsr-uu/timer.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-io.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-pkt.h \
+  base/INotifiable.h \
+  networklayer/manetrouting/base/ControlManetRouting_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rrep.h \
+  networklayer/manetrouting/dsr/dsr-uu/neigh.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/manetrouting/dsr/dsr-uu/ns-agent.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/link-cache.h \
+  networklayer/manetrouting/dsr/dsr-uu/tbl.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr_list.h \
+  networklayer/manetrouting/dsr/dsr-uu/maint-buf.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/manetrouting/dsr/dsr-pkt_omnet.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/dsr/dsr-uu/send-buf.h \
+  networklayer/manetrouting/dsr/dsr-uu/debug_dsr.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rreq.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-rerr.h \
+  util/headerserializers/ipv4/headers/ip.h \
+  networklayer/manetrouting/dsr/dsr-uu/dsr-srt.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h
 $O/networklayer/manetrouting/dymo/dymo_msg_struct.o: networklayer/manetrouting/dymo/dymo_msg_struct.cc \
-  networklayer/manetrouting/dymo/dymo_msg_struct.h
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/dymo/dymo_msg_struct.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPvXAddress.h
 $O/networklayer/manetrouting/dymo/dymo_packet_queue_omnet.o: networklayer/manetrouting/dymo/dymo_packet_queue_omnet.cc \
-  networklayer/manetrouting/dymo/dymoum/dymo_socket.h \
-  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymo_um_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_nb.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_rerr.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymo_packet_queue_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_uerr.h \
-  networklayer/manetrouting/dymo/dymoum/blacklist.h \
   networklayer/manetrouting/dymo/dymoum/dymo_hello.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
   networklayer/manetrouting/dymo/dymoum/icmp_socket.h \
-  networklayer/manetrouting/dymo/dymo_msg_struct.h \
-  networklayer/manetrouting/dymo/dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/pending_rreq.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_timeout.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_generic.h
-$O/networklayer/manetrouting/dymo/dymo_um_omnet.o: networklayer/manetrouting/dymo/dymo_um_omnet.cc \
-  networklayer/manetrouting/dymo/dymoum/blacklist.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_uerr.h \
-  networklayer/manetrouting/dymo/dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymo_packet_queue_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/pending_rreq.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_timeout.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
   networklayer/manetrouting/dymo/dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/icmp_socket.h \
-  networklayer/manetrouting/dymo/dymo_msg_struct.h \
-  networklayer/manetrouting/dymo/dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_hello.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_nb.h \
+  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
   networklayer/manetrouting/dymo/dymo_um_omnet.h \
+  networklayer/arp/ARP.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/base/compatibility.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
   networklayer/manetrouting/dymo/dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_socket.h \
+  networklayer/manetrouting/dymo/dymoum/dlist.h \
+  networklayer/manetrouting/dymo/dymo_packet_queue_omnet.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_uerr.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
   networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/dymo/dymo_msg_struct.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_timeout.h \
+  base/NotifierConsts.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/ipv4/ICMP.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_socket.h \
+  networklayer/manetrouting/dymo/dymoum/blacklist.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
   networklayer/manetrouting/dymo/dymoum/dymo_rerr.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/dymo/dymoum/rtable.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/dymo/dymoum/pending_rreq.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_nb.h \
+  base/Coord.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  linklayer/contract/MACAddress.h \
   networklayer/manetrouting/dymo/dymoum/dymo_re.h
-$O/networklayer/manetrouting/dymo/dymoum/blacklist.o: networklayer/manetrouting/dymo/dymoum/blacklist.cc \
-  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/blacklist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
-  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h
-$O/networklayer/manetrouting/dymo/dymoum/debug_dymo.o: networklayer/manetrouting/dymo/dymoum/debug_dymo.cc \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/defs_dymo.h
-$O/networklayer/manetrouting/dymo/dymoum/dymo_generic.o: networklayer/manetrouting/dymo/dymoum/dymo_generic.cc \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
+$O/networklayer/manetrouting/dymo/dymo_um_omnet.o: networklayer/manetrouting/dymo/dymo_um_omnet.cc \
+  networklayer/ipv4/IPv4FragBuf.h \
   networklayer/manetrouting/dymo/dymoum/dymo_rerr.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
-  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
   networklayer/manetrouting/dymo/dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_hello.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
-  networklayer/manetrouting/dymo/dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_uerr.h
-$O/networklayer/manetrouting/dymo/dymoum/dymo_hello.o: networklayer/manetrouting/dymo/dymoum/dymo_hello.cc \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
   networklayer/manetrouting/dymo/dymoum/dymo_nb.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
-  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_socket.h \
-  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_hello.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h
-$O/networklayer/manetrouting/dymo/dymoum/dymo_nb.o: networklayer/manetrouting/dymo/dymoum/dymo_nb.cc \
-  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_timeout.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
-  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_nb.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h
-$O/networklayer/manetrouting/dymo/dymoum/dymo_re.o: networklayer/manetrouting/dymo/dymoum/dymo_re.cc \
-  networklayer/manetrouting/dymo/dymoum/dymo_timeout.h \
   networklayer/manetrouting/dymo/dymoum/pending_rreq.h \
+  transport/udp/UDPPacket_m.h \
+  base/Coord.h \
+  networklayer/manetrouting/dymo/dymo_msg_struct.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_timeout.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  networklayer/manetrouting/dymo/dymoum/blacklist.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_socket.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_re.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/udp/UDPPacket.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
+  networklayer/manetrouting/base/ControlManetRouting_m.h \
   networklayer/manetrouting/dymo/dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
+  networklayer/manetrouting/dymo/dymo_um_omnet.h \
+  networklayer/arp/ARP.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_hello.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
   networklayer/manetrouting/dymo/dymoum/icmp_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/blacklist.h \
-  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
-  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
-  networklayer/manetrouting/dymo/dymoum/timer_queue.h
-$O/networklayer/manetrouting/dymo/dymoum/dymo_rerr.o: networklayer/manetrouting/dymo/dymoum/dymo_rerr.cc \
-  networklayer/manetrouting/dymo/dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
-  networklayer/manetrouting/dymo/dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
-  networklayer/manetrouting/dymo/dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_rerr.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
   networklayer/manetrouting/dymo/dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_socket.h
-$O/networklayer/manetrouting/dymo/dymoum/dymo_socket.o: networklayer/manetrouting/dymo/dymoum/dymo_socket.cc \
-  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_socket.h \
-  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/dymo/dymo_packet_queue_omnet.h \
   networklayer/manetrouting/dymo/dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h
-$O/networklayer/manetrouting/dymo/dymoum/dymo_timeout.o: networklayer/manetrouting/dymo/dymoum/dymo_timeout.cc \
-  networklayer/manetrouting/dymo/dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/blacklist.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_netlink.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
-  networklayer/manetrouting/dymo/dymoum/pending_rreq.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_timeout.h \
-  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_nb.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h
-$O/networklayer/manetrouting/dymo/dymoum/dymo_uerr.o: networklayer/manetrouting/dymo/dymoum/dymo_uerr.cc \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_socket.h \
-  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
-  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/rtable.h \
   networklayer/manetrouting/dymo/dymoum/dymo_uerr.h \
-  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/base/compatibility.h
+$O/networklayer/manetrouting/dymo/dymoum/blacklist.o: networklayer/manetrouting/dymo/dymoum/blacklist.cc \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
+  networklayer/manetrouting/base/compatibility.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/dlist.h
-$O/networklayer/manetrouting/dymo/dymoum/icmp_socket.o: networklayer/manetrouting/dymo/dymoum/icmp_socket.cc \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
   networklayer/manetrouting/dymo/dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/blacklist.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
   networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/contract/IPvXAddress.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/icmp_socket.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  base/QueueBase.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  linklayer/contract/MACAddress.h \
+  base/NotifierConsts.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
-  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h
-$O/networklayer/manetrouting/dymo/dymoum/pending_rreq.o: networklayer/manetrouting/dymo/dymoum/pending_rreq.cc \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
-  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/ipv4/ICMP.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/dymo/dymoum/blacklist.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/base/ManetAddress.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  base/Coord.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h
+$O/networklayer/manetrouting/dymo/dymoum/debug_dymo.o: networklayer/manetrouting/dymo/dymoum/debug_dymo.cc \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/INotifiable.h \
+  networklayer/arp/ARP.h \
+  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
+  networklayer/manetrouting/base/compatibility.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  base/NotifierConsts.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
+  networklayer/ipv4/ICMP.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
+  base/Coord.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h
+$O/networklayer/manetrouting/dymo/dymoum/dymo_generic.o: networklayer/manetrouting/dymo/dymoum/dymo_generic.cc \
+  base/ILifecycle.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_uerr.h \
+  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
+  networklayer/manetrouting/dymo/dymoum/dlist.h \
+  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_hello.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  base/INotifiable.h \
+  networklayer/arp/ARP.h \
+  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_generic.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
+  networklayer/contract/IPvXAddress.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
+  base/QueueBase.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_re.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/dymo/dymoum/rtable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_rerr.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
+  base/Coord.h
+$O/networklayer/manetrouting/dymo/dymoum/dymo_hello.o: networklayer/manetrouting/dymo/dymoum/dymo_hello.cc \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
+  base/QueueBase.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_re.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/dymo/dymoum/rtable.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  base/Coord.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_nb.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_socket.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
+  base/NotifierConsts.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
+  networklayer/manetrouting/dymo/dymoum/dlist.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_generic.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_hello.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h
+$O/networklayer/manetrouting/dymo/dymoum/dymo_nb.o: networklayer/manetrouting/dymo/dymoum/dymo_nb.cc \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
+  networklayer/manetrouting/dymo/dymoum/dlist.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
+  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
+  networklayer/common/InterfaceEntry.h \
+  linklayer/contract/MACAddress.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/QueueBase.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
+  networklayer/ipv4/ICMP.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_timeout.h \
+  base/Coord.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_nb.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
+  networklayer/ipv4/IPv4FragBuf.h
+$O/networklayer/manetrouting/dymo/dymoum/dymo_re.o: networklayer/manetrouting/dymo/dymoum/dymo_re.cc \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
+  base/NotifierConsts.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_timeout.h \
+  networklayer/manetrouting/base/MeshControlInfo_m.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/dymo/dymoum/blacklist.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_socket.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/dymo/dymoum/rtable.h \
+  networklayer/manetrouting/dymo/dymoum/pending_rreq.h \
+  base/Coord.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
+  base/QueueBase.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_re.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/manetrouting/dymo/dymoum/icmp_socket.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_generic.h \
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
+  networklayer/manetrouting/dymo/dymoum/dlist.h \
+  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/dymo/dymoum/debug_dymo.h
+$O/networklayer/manetrouting/dymo/dymoum/dymo_rerr.o: networklayer/manetrouting/dymo/dymoum/dymo_rerr.cc \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
   networklayer/manetrouting/dymo/dymoum/dlist.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_generic.h \
   networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
-  networklayer/manetrouting/dymo/dymoum/pending_rreq.h \
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h
-$O/networklayer/manetrouting/dymo/dymoum/rtable.o: networklayer/manetrouting/dymo/dymoum/rtable.cc \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  base/QueueBase.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_re.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_socket.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_rerr.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/dymo/dymoum/rtable.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  base/Coord.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h
+$O/networklayer/manetrouting/dymo/dymoum/dymo_socket.o: networklayer/manetrouting/dymo/dymoum/dymo_socket.cc \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_socket.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/dymo/dymoum/rtable.h \
+  base/Coord.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
-  networklayer/manetrouting/dymo/dymoum/k_route.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
+  base/QueueBase.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_re.h \
   networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_generic.h \
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
+  networklayer/manetrouting/dymo/dymoum/dlist.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/dymo/dymoum/debug_dymo.h
+$O/networklayer/manetrouting/dymo/dymoum/dymo_timeout.o: networklayer/manetrouting/dymo/dymoum/dymo_timeout.cc \
+  networklayer/manetrouting/dymo/dymoum/dymo_timeout.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/dymo/dymoum/blacklist.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/dymo/dymoum/rtable.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/dymo/dymoum/pending_rreq.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_nb.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
+  base/Coord.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_re.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_netlink.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
+  networklayer/arp/ARP.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dymo/dymoum/dlist.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h
+$O/networklayer/manetrouting/dymo/dymoum/dymo_uerr.o: networklayer/manetrouting/dymo/dymoum/dymo_uerr.cc \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_socket.h \
+  networklayer/contract/IPv6Address.h \
+  base/Coord.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
+  networklayer/manetrouting/dymo/dymoum/rtable.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_re.h \
+  base/QueueBase.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_generic.h \
+  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
+  base/ILifecycle.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
+  networklayer/manetrouting/dymo/dymoum/dlist.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
+  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_uerr.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h
+$O/networklayer/manetrouting/dymo/dymoum/icmp_socket.o: networklayer/manetrouting/dymo/dymoum/icmp_socket.cc \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
+  base/Coord.h \
+  networklayer/manetrouting/dymo/dymoum/blacklist.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
+  base/QueueBase.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
+  networklayer/contract/IPvXAddress.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
+  base/INotifiable.h \
+  networklayer/arp/ARP.h \
+  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/dymo/dymoum/icmp_socket.h \
+  networklayer/contract/IPv4Address.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
   networklayer/manetrouting/dymo/dymoum/timer_queue.h \
+  base/INETDefs.h \
   networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
+  networklayer/manetrouting/dymo/dymoum/dlist.h \
   networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h
+$O/networklayer/manetrouting/dymo/dymoum/pending_rreq.o: networklayer/manetrouting/dymo/dymoum/pending_rreq.cc \
+  networklayer/manetrouting/dymo/dymoum/pending_rreq.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
+  base/Coord.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  networklayer/ipv4/ICMP.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
+  base/NotifierConsts.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
+  base/QueueBase.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
+  networklayer/arp/ARP.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
+  networklayer/manetrouting/dymo/dymoum/dlist.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h
+$O/networklayer/manetrouting/dymo/dymoum/rtable.o: networklayer/manetrouting/dymo/dymoum/rtable.cc \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/dymo/dymoum/debug_dymo.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
+  networklayer/manetrouting/dymo/dymoum/dlist.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/manetrouting/dymo/dymoum/dymo_netlink.h \
+  linklayer/contract/MACAddress.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/QueueBase.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/dymo/dymoum/k_route.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
+  base/NotifierConsts.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
   networklayer/manetrouting/dymo/dymoum/dymo_timeout.h \
+  base/Coord.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
   networklayer/manetrouting/dymo/dymoum/pending_rreq.h \
   networklayer/manetrouting/dymo/dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
-  networklayer/manetrouting/dymo/dymoum/dymo_netlink.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/defs_dymo.h
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h
 $O/networklayer/manetrouting/dymo/dymoum/timer_queue.o: networklayer/manetrouting/dymo/dymoum/timer_queue.cc \
+  linklayer/contract/MACAddress.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/QueueBase.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
-  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_re.h \
-  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/pending_rreq.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/debug_dymo.h \
+  networklayer/contract/IPvXAddress.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_nb.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
-  networklayer/manetrouting/dymo/dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
+  networklayer/common/InterfaceEntry.h \
+  base/Coord.h \
   networklayer/manetrouting/dymo/dymoum/../dymoum/dlist.h \
-  networklayer/manetrouting/dymo/dymoum/defs_dymo.h
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_uerr.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_rerr.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/ipv4/ICMP.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/blacklist.h \
+  networklayer/manetrouting/dymo/dymoum/dlist.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_hello.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_um_omnet.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dymo/dymoum/timer_queue.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/timer_queue.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_generic.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/icmp_socket.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/dymo_timeout.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/dymo/dymoum/defs_dymo.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/rtable.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_packet_queue_omnet.h \
+  networklayer/manetrouting/dymo/dymoum/../dymo_msg_struct.h \
+  networklayer/manetrouting/dymo/dymoum/../dymoum/defs_dymo.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/ICMPMessage_m.h
 $O/networklayer/manetrouting/dymo_fau/DYMO.o: networklayer/manetrouting/dymo_fau/DYMO.cc \
-  networklayer/manetrouting/dymo_fau/DYMO.h \
-  networklayer/manetrouting/dymo_fau/DYMO_Timer.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RERR_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RoutingEntry.h \
-  networklayer/manetrouting/dymo_fau/DYMO_TokenBucket.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RM_m.h \
   networklayer/manetrouting/dymo_fau/DYMO_PacketBBMessage_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RoutingTable.h \
-  networklayer/manetrouting/dymo_fau/DYMO_OutstandingRREQList.h \
+  base/ILifecycle.h \
   networklayer/manetrouting/dymo_fau/DYMO_RREQ_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_AddressBlock.h \
-  networklayer/manetrouting/dymo_fau/DYMO_UERR_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RREP_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_Timeout_m.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dymo_fau/DYMO_Timer.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RM_m.h \
+  networklayer/manetrouting/base/compatibility.h \
   networklayer/manetrouting/dymo_fau/DYMO_Packet_m.h \
+  networklayer/manetrouting/dymo_fau/DYMO_Timeout_m.h \
+  base/INETDefs.h \
+  networklayer/ipv4/RoutingTable.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RoutingEntry.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/dymo_fau/DYMO_UERR_m.h \
+  networklayer/manetrouting/dymo_fau/DYMO_TokenBucket.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/dymo_fau/DYMO_OutstandingRREQList.h \
+  networklayer/manetrouting/dymo_fau/DYMO.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  base/INotifiable.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RERR_m.h \
+  networklayer/arp/ARP.h \
+  networklayer/manetrouting/base/ControlManetRouting_m.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  transport/contract/UDPSocket.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  transport/udp/UDPPacket.h \
+  networklayer/contract/IPvXAddress.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RREP_m.h \
+  networklayer/ipv4/ICMPAccess.h \
+  networklayer/manetrouting/dymo_fau/DYMO_DataQueue.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPv6Address.h \
   networklayer/manetrouting/dymo_fau/InspectorHelpers.h \
-  networklayer/manetrouting/dymo_fau/DYMO_DataQueue.h
+  networklayer/ipv4/RoutingTableAccess.h \
+  transport/contract/UDPControlInfo_m.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/dymo_fau/DYMO_AddressBlock.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  transport/udp/UDPPacket_m.h \
+  base/Coord.h \
+  networklayer/common/InterfaceTable.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RoutingTable.h
 $O/networklayer/manetrouting/dymo_fau/DYMO_DataQueue.o: networklayer/manetrouting/dymo_fau/DYMO_DataQueue.cc \
-  networklayer/manetrouting/dymo_fau/DYMO_DataQueue.h
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/ipv4/RoutingTable.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/common/InterfaceTable.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/ipv4/ICMPAccess.h \
+  networklayer/manetrouting/dymo_fau/DYMO_DataQueue.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/arp/IARPCache.h
 $O/networklayer/manetrouting/dymo_fau/DYMO_OutstandingRREQList.o: networklayer/manetrouting/dymo_fau/DYMO_OutstandingRREQList.cc \
   networklayer/manetrouting/dymo_fau/DYMO_Timer.h \
+  networklayer/manetrouting/dymo_fau/DYMO_Timeout_m.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
   networklayer/manetrouting/dymo_fau/DYMO_OutstandingRREQList.h \
-  networklayer/manetrouting/dymo_fau/DYMO_Timeout_m.h
+  networklayer/contract/IPv4Address.h \
+  base/INotifiable.h \
+  base/ModuleAccess.h \
+  base/Compat.h \
+  base/NotifierConsts.h
 $O/networklayer/manetrouting/dymo_fau/DYMO_PacketBBMessage_m.o: networklayer/manetrouting/dymo_fau/DYMO_PacketBBMessage_m.cc \
   networklayer/manetrouting/dymo_fau/DYMO_PacketBBMessage_m.h
 $O/networklayer/manetrouting/dymo_fau/DYMO_Packet_m.o: networklayer/manetrouting/dymo_fau/DYMO_Packet_m.cc \
@@ -3128,1040 +8350,4191 @@ $O/networklayer/manetrouting/dymo_fau/DYMO_Packet_m.o: networklayer/manetrouting
 $O/networklayer/manetrouting/dymo_fau/DYMO_RERR_m.o: networklayer/manetrouting/dymo_fau/DYMO_RERR_m.cc \
   networklayer/manetrouting/dymo_fau/DYMO_RERR_m.h \
   networklayer/manetrouting/dymo_fau/DYMO_PacketBBMessage_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_AddressBlock.h \
-  networklayer/manetrouting/dymo_fau/InspectorHelpers.h
+  networklayer/manetrouting/dymo_fau/InspectorHelpers.h \
+  networklayer/manetrouting/dymo_fau/DYMO_AddressBlock.h
 $O/networklayer/manetrouting/dymo_fau/DYMO_RM_m.o: networklayer/manetrouting/dymo_fau/DYMO_RM_m.cc \
   networklayer/manetrouting/dymo_fau/InspectorHelpers.h \
   networklayer/manetrouting/dymo_fau/DYMO_AddressBlock.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RERR_m.h \
   networklayer/manetrouting/dymo_fau/DYMO_PacketBBMessage_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RM_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RERR_m.h
+  networklayer/manetrouting/dymo_fau/DYMO_RM_m.h
 $O/networklayer/manetrouting/dymo_fau/DYMO_RREP_m.o: networklayer/manetrouting/dymo_fau/DYMO_RREP_m.cc \
+  networklayer/manetrouting/dymo_fau/DYMO_RM_m.h \
   networklayer/manetrouting/dymo_fau/DYMO_PacketBBMessage_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RREP_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_AddressBlock.h \
-  networklayer/manetrouting/dymo_fau/InspectorHelpers.h \
   networklayer/manetrouting/dymo_fau/DYMO_RERR_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RM_m.h
+  networklayer/manetrouting/dymo_fau/DYMO_RREP_m.h \
+  networklayer/manetrouting/dymo_fau/InspectorHelpers.h \
+  networklayer/manetrouting/dymo_fau/DYMO_AddressBlock.h
 $O/networklayer/manetrouting/dymo_fau/DYMO_RREQ_m.o: networklayer/manetrouting/dymo_fau/DYMO_RREQ_m.cc \
-  networklayer/manetrouting/dymo_fau/DYMO_AddressBlock.h \
   networklayer/manetrouting/dymo_fau/DYMO_RREQ_m.h \
   networklayer/manetrouting/dymo_fau/DYMO_PacketBBMessage_m.h \
-  networklayer/manetrouting/dymo_fau/InspectorHelpers.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RM_m.h \
   networklayer/manetrouting/dymo_fau/DYMO_RERR_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RM_m.h
+  networklayer/manetrouting/dymo_fau/DYMO_AddressBlock.h \
+  networklayer/manetrouting/dymo_fau/InspectorHelpers.h
 $O/networklayer/manetrouting/dymo_fau/DYMO_RoutingEntry.o: networklayer/manetrouting/dymo_fau/DYMO_RoutingEntry.cc \
-  networklayer/manetrouting/dymo_fau/DYMO_RERR_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_Timer.h \
-  networklayer/manetrouting/dymo_fau/DYMO.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RoutingEntry.h \
-  networklayer/manetrouting/dymo_fau/DYMO_TokenBucket.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RM_m.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
   networklayer/manetrouting/dymo_fau/DYMO_RREP_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_AddressBlock.h \
-  networklayer/manetrouting/dymo_fau/DYMO_UERR_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_Timeout_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RREQ_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_OutstandingRREQList.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RoutingTable.h \
-  networklayer/manetrouting/dymo_fau/DYMO_PacketBBMessage_m.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  networklayer/ipv4/ICMPAccess.h \
   networklayer/manetrouting/dymo_fau/DYMO_DataQueue.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
   networklayer/manetrouting/dymo_fau/InspectorHelpers.h \
-  networklayer/manetrouting/dymo_fau/DYMO_Packet_m.h
-$O/networklayer/manetrouting/dymo_fau/DYMO_RoutingTable.o: networklayer/manetrouting/dymo_fau/DYMO_RoutingTable.cc \
-  networklayer/manetrouting/dymo_fau/DYMO_RM_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RoutingEntry.h \
-  networklayer/manetrouting/dymo_fau/DYMO_TokenBucket.h \
-  networklayer/manetrouting/dymo_fau/DYMO.h \
-  networklayer/manetrouting/dymo_fau/DYMO_Timer.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RERR_m.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RoutingTable.h \
+  networklayer/common/InterfaceTable.h \
+  base/Coord.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/dymo_fau/DYMO_AddressBlock.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
   networklayer/manetrouting/dymo_fau/DYMO_Packet_m.h \
-  networklayer/manetrouting/dymo_fau/InspectorHelpers.h \
-  networklayer/manetrouting/dymo_fau/DYMO_DataQueue.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RM_m.h \
+  networklayer/manetrouting/dymo_fau/DYMO_Timer.h \
+  networklayer/common/IInterfaceTable.h \
   networklayer/manetrouting/dymo_fau/DYMO_PacketBBMessage_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RoutingTable.h \
-  networklayer/manetrouting/dymo_fau/DYMO_OutstandingRREQList.h \
+  base/ILifecycle.h \
   networklayer/manetrouting/dymo_fau/DYMO_RREQ_m.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/ipv4/RoutingTable.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RoutingEntry.h \
   networklayer/manetrouting/dymo_fau/DYMO_Timeout_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_AddressBlock.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/manetrouting/dymo_fau/DYMO.h \
+  networklayer/manetrouting/dymo_fau/DYMO_OutstandingRREQList.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/ICMPMessage_m.h \
   networklayer/manetrouting/dymo_fau/DYMO_UERR_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RREP_m.h
+  networklayer/manetrouting/dymo_fau/DYMO_TokenBucket.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RERR_m.h \
+  base/INotifiable.h \
+  networklayer/arp/ARP.h
+$O/networklayer/manetrouting/dymo_fau/DYMO_RoutingTable.o: networklayer/manetrouting/dymo_fau/DYMO_RoutingTable.cc \
+  networklayer/ipv4/ICMPAccess.h \
+  networklayer/manetrouting/dymo_fau/DYMO_DataQueue.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RREP_m.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/dymo_fau/DYMO_AddressBlock.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  base/Coord.h \
+  networklayer/common/InterfaceTable.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RoutingTable.h \
+  networklayer/manetrouting/dymo_fau/InspectorHelpers.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  networklayer/manetrouting/dymo_fau/DYMO_Timeout_m.h \
+  base/INETDefs.h \
+  networklayer/ipv4/RoutingTable.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RoutingEntry.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/dymo_fau/DYMO_PacketBBMessage_m.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RREQ_m.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/dymo_fau/DYMO_Timer.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RM_m.h \
+  networklayer/manetrouting/dymo_fau/DYMO_Packet_m.h \
+  networklayer/manetrouting/base/compatibility.h \
+  base/INotifiable.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RERR_m.h \
+  networklayer/arp/ARP.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/manetrouting/dymo_fau/DYMO_TokenBucket.h \
+  networklayer/manetrouting/dymo_fau/DYMO_UERR_m.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/dymo_fau/DYMO.h \
+  networklayer/manetrouting/dymo_fau/DYMO_OutstandingRREQList.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h
 $O/networklayer/manetrouting/dymo_fau/DYMO_Timeout_m.o: networklayer/manetrouting/dymo_fau/DYMO_Timeout_m.cc \
   networklayer/manetrouting/dymo_fau/DYMO_Timeout_m.h
 $O/networklayer/manetrouting/dymo_fau/DYMO_Timer.o: networklayer/manetrouting/dymo_fau/DYMO_Timer.cc \
   networklayer/manetrouting/dymo_fau/DYMO_Timer.h \
-  networklayer/manetrouting/dymo_fau/DYMO_Timeout_m.h
-$O/networklayer/manetrouting/dymo_fau/DYMO_TokenBucket.o: networklayer/manetrouting/dymo_fau/DYMO_TokenBucket.cc \
-  networklayer/manetrouting/dymo_fau/DYMO_DataQueue.h \
-  networklayer/manetrouting/dymo_fau/DYMO_Packet_m.h \
-  networklayer/manetrouting/dymo_fau/InspectorHelpers.h \
   networklayer/manetrouting/dymo_fau/DYMO_Timeout_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_UERR_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_AddressBlock.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RREP_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_PacketBBMessage_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RoutingTable.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RREQ_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_OutstandingRREQList.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RM_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_TokenBucket.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RoutingEntry.h \
+  base/INETDefs.h \
+  base/Compat.h
+$O/networklayer/manetrouting/dymo_fau/DYMO_TokenBucket.o: networklayer/manetrouting/dymo_fau/DYMO_TokenBucket.cc \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
   networklayer/manetrouting/dymo_fau/DYMO_RERR_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_Timer.h
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/dymo_fau/DYMO_UERR_m.h \
+  networklayer/manetrouting/dymo_fau/DYMO_TokenBucket.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/dymo_fau/DYMO_OutstandingRREQList.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RoutingEntry.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/ipv4/RoutingTable.h \
+  networklayer/manetrouting/dymo_fau/DYMO_Timeout_m.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RREQ_m.h \
+  networklayer/manetrouting/dymo_fau/DYMO_PacketBBMessage_m.h \
+  networklayer/manetrouting/dymo_fau/DYMO_Packet_m.h \
+  networklayer/manetrouting/dymo_fau/DYMO_Timer.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RM_m.h \
+  networklayer/manetrouting/dymo_fau/DYMO_AddressBlock.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RoutingTable.h \
+  networklayer/common/InterfaceTable.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/dymo_fau/InspectorHelpers.h \
+  base/QueueBase.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/manetrouting/dymo_fau/DYMO_DataQueue.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RREP_m.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h
 $O/networklayer/manetrouting/dymo_fau/DYMO_UERR_m.o: networklayer/manetrouting/dymo_fau/DYMO_UERR_m.cc \
   networklayer/manetrouting/dymo_fau/DYMO_UERR_m.h \
   networklayer/manetrouting/dymo_fau/DYMO_PacketBBMessage_m.h
 $O/networklayer/manetrouting/dymo_fau/InspectorHelpers.o: networklayer/manetrouting/dymo_fau/InspectorHelpers.cc \
-  networklayer/manetrouting/dymo_fau/DYMO_AddressBlock.h \
-  networklayer/manetrouting/dymo_fau/DYMO_PacketBBMessage_m.h \
-  networklayer/manetrouting/dymo_fau/InspectorHelpers.h \
   networklayer/manetrouting/dymo_fau/DYMO_RERR_m.h \
-  networklayer/manetrouting/dymo_fau/DYMO_RM_m.h
+  networklayer/manetrouting/dymo_fau/DYMO_PacketBBMessage_m.h \
+  networklayer/manetrouting/dymo_fau/DYMO_RM_m.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/dymo_fau/InspectorHelpers.h \
+  base/Compat.h \
+  networklayer/manetrouting/dymo_fau/DYMO_AddressBlock.h
 $O/networklayer/manetrouting/olsr/OLSR.o: networklayer/manetrouting/olsr/OLSR.cc \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  transport/udp/UDPPacket.h \
+  networklayer/contract/IPvXAddress.h \
+  util/opp_utils.h \
+  transport/udp/UDPPacket_m.h \
+  base/Coord.h \
   networklayer/manetrouting/olsr/OLSRpkt_m.h \
-  networklayer/manetrouting/olsr/OLSR_state.h \
-  networklayer/manetrouting/olsr/OLSR_repositories.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
   networklayer/manetrouting/olsr/OLSR.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
+  networklayer/manetrouting/olsr/OLSR_state.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
   networklayer/manetrouting/olsr/OLSR_ETX_parameter.h \
-  networklayer/manetrouting/olsr/OLSR_rtable.h
+  networklayer/manetrouting/base/compatibility.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/olsr/OLSR_repositories.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/INotifiable.h \
+  networklayer/arp/ARP.h \
+  networklayer/manetrouting/olsr/OLSR_rtable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage_m.h
 $O/networklayer/manetrouting/olsr/OLSROPT.o: networklayer/manetrouting/olsr/OLSROPT.cc \
-  networklayer/manetrouting/olsr/OLSRpkt_m.h \
-  networklayer/manetrouting/olsr/OLSR_state.h \
+  networklayer/manetrouting/base/compatibility.h \
   networklayer/manetrouting/olsr/OLSR_repositories.h \
-  networklayer/manetrouting/olsr/OLSR.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
   networklayer/manetrouting/olsr/OLSR_ETX_parameter.h \
+  base/INETDefs.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/manetrouting/olsr/OLSROPT.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPProtocolId_m.h \
   networklayer/manetrouting/olsr/OLSR_rtable.h \
-  networklayer/manetrouting/olsr/OLSROPT.h
+  networklayer/arp/ARP.h \
+  base/INotifiable.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  util/FWMath.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/udp/UDPPacket.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  linklayer/contract/MACAddress.h \
+  base/QueueBase.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  networklayer/manetrouting/olsr/OLSR.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/olsr/OLSR_state.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
+  networklayer/manetrouting/olsr/OLSRpkt_m.h \
+  base/Coord.h \
+  transport/udp/UDPPacket_m.h \
+  util/opp_utils.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4InterfaceData.h
 $O/networklayer/manetrouting/olsr/OLSR_ETX.o: networklayer/manetrouting/olsr/OLSR_ETX.cc \
-  networklayer/manetrouting/olsr/OLSR_state.h \
-  networklayer/manetrouting/olsr/OLSR_repositories.h \
-  networklayer/manetrouting/olsr/OLSR.h \
-  networklayer/manetrouting/olsr/OLSR_ETX.h \
-  networklayer/manetrouting/olsr/OLSR_ETX_repositories.h \
-  networklayer/manetrouting/olsr/OLSRpkt_m.h \
+  linklayer/contract/MACAddress.h \
   networklayer/manetrouting/olsr/OLSR_ETX_state.h \
-  networklayer/manetrouting/olsr/OLSR_ETX_parameter.h \
-  networklayer/manetrouting/olsr/OLSR_rtable.h \
-  networklayer/manetrouting/olsr/OLSR_ETX_dijkstra.h
-$O/networklayer/manetrouting/olsr/OLSR_ETX_dijkstra.o: networklayer/manetrouting/olsr/OLSR_ETX_dijkstra.cc
-$O/networklayer/manetrouting/olsr/OLSR_ETX_state.o: networklayer/manetrouting/olsr/OLSR_ETX_state.cc
-$O/networklayer/manetrouting/olsr/OLSR_rtable.o: networklayer/manetrouting/olsr/OLSR_rtable.cc \
-  networklayer/manetrouting/olsr/OLSR_ETX_parameter.h \
-  networklayer/manetrouting/olsr/OLSR_rtable.h \
-  networklayer/manetrouting/olsr/OLSR.h \
-  networklayer/manetrouting/olsr/OLSR_repositories.h \
-  networklayer/manetrouting/olsr/OLSR_state.h \
-  networklayer/manetrouting/olsr/OLSRpkt_m.h
-$O/networklayer/manetrouting/olsr/OLSR_state.o: networklayer/manetrouting/olsr/OLSR_state.cc \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  util/FWMath.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/manetrouting/olsr/OLSR_ETX_repositories.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/udp/UDPPacket.h \
+  transport/udp/UDPPacket_m.h \
+  util/opp_utils.h \
+  base/Coord.h \
   networklayer/manetrouting/olsr/OLSRpkt_m.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/manetrouting/olsr/OLSR_ETX_dijkstra.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
   networklayer/manetrouting/olsr/OLSR.h \
-  networklayer/manetrouting/olsr/OLSR_repositories.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
   networklayer/manetrouting/olsr/OLSR_state.h \
-  networklayer/manetrouting/olsr/OLSR_rtable.h \
-  networklayer/manetrouting/olsr/OLSR_ETX_parameter.h
-$O/networklayer/manetrouting/olsr/OLSRpkt_m.o: networklayer/manetrouting/olsr/OLSRpkt_m.cc \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
   networklayer/manetrouting/olsr/OLSR_ETX_parameter.h \
-  networklayer/manetrouting/olsr/OLSRpkt_m.h
+  base/INETDefs.h \
+  networklayer/manetrouting/olsr/OLSR_ETX.h \
+  networklayer/manetrouting/base/compatibility.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/olsr/OLSR_repositories.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/INotifiable.h \
+  networklayer/arp/ARP.h \
+  networklayer/manetrouting/olsr/OLSR_rtable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage_m.h
+$O/networklayer/manetrouting/olsr/OLSR_ETX_dijkstra.o: networklayer/manetrouting/olsr/OLSR_ETX_dijkstra.cc \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/INotifiable.h \
+  networklayer/arp/ARP.h \
+  networklayer/manetrouting/olsr/OLSR_rtable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/manetrouting/olsr/OLSR_ETX.h \
+  networklayer/manetrouting/base/compatibility.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/olsr/OLSR_repositories.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/olsr/OLSR_ETX_parameter.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/manetrouting/olsr/OLSR_ETX_dijkstra.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/olsr/OLSR.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  networklayer/manetrouting/olsr/OLSR_state.h \
+  util/opp_utils.h \
+  base/Coord.h \
+  networklayer/manetrouting/olsr/OLSRpkt_m.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  networklayer/manetrouting/olsr/OLSR_ETX_repositories.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/olsr/OLSR_ETX_state.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h
+$O/networklayer/manetrouting/olsr/OLSR_ETX_state.o: networklayer/manetrouting/olsr/OLSR_ETX_state.cc \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/manetrouting/olsr/OLSR_ETX_state.h \
+  networklayer/manetrouting/olsr/OLSR_ETX_repositories.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  util/opp_utils.h \
+  base/Coord.h \
+  networklayer/manetrouting/olsr/OLSRpkt_m.h \
+  networklayer/manetrouting/olsr/OLSR_state.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/olsr/OLSR.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  networklayer/manetrouting/olsr/OLSR_ETX_parameter.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/olsr/OLSR_repositories.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/olsr/OLSR_ETX.h \
+  networklayer/manetrouting/base/compatibility.h \
+  base/INotifiable.h \
+  networklayer/arp/ARP.h \
+  networklayer/manetrouting/olsr/OLSR_rtable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h
+$O/networklayer/manetrouting/olsr/OLSR_rtable.o: networklayer/manetrouting/olsr/OLSR_rtable.cc \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  util/FWMath.h \
+  networklayer/arp/IARPCache.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/olsr/OLSRpkt_m.h \
+  util/opp_utils.h \
+  base/Coord.h \
+  networklayer/manetrouting/olsr/OLSR_state.h \
+  networklayer/manetrouting/olsr/OLSR.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/olsr/OLSR_ETX_parameter.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  networklayer/manetrouting/olsr/OLSR_repositories.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/manetrouting/olsr/OLSR_rtable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
+  networklayer/arp/ARP.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h
+$O/networklayer/manetrouting/olsr/OLSR_state.o: networklayer/manetrouting/olsr/OLSR_state.cc \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/QueueBase.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/ProtocolMap.h \
+  networklayer/arp/IARPCache.h \
+  util/FWMath.h \
+  base/AbstractQueue.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/olsr/OLSRpkt_m.h \
+  util/opp_utils.h \
+  base/Coord.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/manetrouting/olsr/OLSR.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/manetrouting/olsr/OLSR_state.h \
+  base/NotificationBoard.h \
+  base/ReassemblyBuffer.h \
+  networklayer/manetrouting/base/ManetNetfilterHook.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/olsr/OLSR_ETX_parameter.h \
+  networklayer/manetrouting/base/compatibility.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/manetrouting/olsr/OLSR_repositories.h \
+  base/ILifecycle.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/manetrouting/olsr/OLSR_rtable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
+  networklayer/arp/ARP.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/manetrouting/base/ManetRoutingBase.h \
+  networklayer/ipv4/ICMPMessage_m.h
+$O/networklayer/manetrouting/olsr/OLSRpkt_m.o: networklayer/manetrouting/olsr/OLSRpkt_m.cc \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/manetrouting/olsr/OLSRpkt_m.h \
+  networklayer/manetrouting/base/ManetAddress.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  base/INETDefs.h \
+  networklayer/manetrouting/olsr/OLSR_ETX_parameter.h \
+  networklayer/contract/IPv4Address.h
 $O/networklayer/mpls/LIBTable.o: networklayer/mpls/LIBTable.cc \
-  networklayer/mpls/LIBTable.h \
-  networklayer/mpls/ConstType.h
-$O/networklayer/mpls/MPLS.o: networklayer/mpls/MPLS.cc \
-  networklayer/mpls/MPLSPacket.h \
+  networklayer/ipv4/IRoutingTable.h \
   networklayer/mpls/ConstType.h \
   networklayer/mpls/LIBTable.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  base/Compat.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  util/XMLUtils.h \
+  base/INETDefs.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/contract/IPv4Address.h
+$O/networklayer/mpls/MPLS.o: networklayer/mpls/MPLS.cc \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/mpls/ConstType.h \
+  networklayer/rsvp_te/IntServ.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/mpls/LIBTable.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
   networklayer/mpls/LIBTableAccess.h \
+  networklayer/mpls/MPLSPacket.h \
+  networklayer/mpls/MPLS.h \
+  transport/tcp_common/TCPSegment_m.h \
+  transport/tcp_common/TCPSegment.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  base/ByteArray_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/INETDefs.h \
+  transport/contract/TCPCommand_m.h \
+  base/NotificationBoard.h \
+  networklayer/ldp/LDP.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/rsvp_te/IntServ_m.h \
+  base/ILifecycle.h \
+  networklayer/ldp/LDPPacket_m.h \
   networklayer/mpls/IClassifier.h \
-  networklayer/mpls/MPLS.h
+  base/ByteArray.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/rsvp_te/Utils.h \
+  base/INotifiable.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  transport/contract/UDPSocket.h \
+  networklayer/common/InterfaceTableAccess.h \
+  transport/contract/TCPSocket.h \
+  transport/contract/TCPSocketMap.h \
+  networklayer/contract/IPv4Address.h
 $O/networklayer/mpls/MPLSPacket.o: networklayer/mpls/MPLSPacket.cc \
-  networklayer/mpls/MPLSPacket.h
+  networklayer/mpls/MPLSPacket.h \
+  base/Compat.h \
+  base/INETDefs.h
 $O/networklayer/ospfv2/OSPFConfigReader.o: networklayer/ospfv2/OSPFConfigReader.cc \
-  networklayer/ospfv2/OSPFConfigReader.h \
-  networklayer/ospfv2/OSPFPacket_m.h
-$O/networklayer/ospfv2/OSPFPacket_m.o: networklayer/ospfv2/OSPFPacket_m.cc \
-  networklayer/ospfv2/OSPFPacket_m.h
-$O/networklayer/ospfv2/OSPFRouting.o: networklayer/ospfv2/OSPFRouting.cc \
-  networklayer/ospfv2/OSPFConfigReader.h \
-  networklayer/ospfv2/OSPFRouting.h \
-  networklayer/ospfv2/OSPFPacket_m.h
-$O/networklayer/ospfv2/interface/OSPFInterface.o: networklayer/ospfv2/interface/OSPFInterface.cc \
-  networklayer/ospfv2/interface/OSPFInterface.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStateDown.h \
-  networklayer/ospfv2/interface/OSPFInterfaceState.h
-$O/networklayer/ospfv2/interface/OSPFInterfaceState.o: networklayer/ospfv2/interface/OSPFInterfaceState.cc \
-  networklayer/ospfv2/interface/OSPFInterfaceStateBackup.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStateDesignatedRouter.h \
-  networklayer/ospfv2/interface/OSPFInterface.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStateNotDesignatedRouter.h \
-  networklayer/ospfv2/interface/OSPFInterfaceState.h
-$O/networklayer/ospfv2/interface/OSPFInterfaceStateBackup.o: networklayer/ospfv2/interface/OSPFInterfaceStateBackup.cc \
-  networklayer/ospfv2/interface/OSPFInterfaceStateDown.h \
-  networklayer/ospfv2/interface/OSPFInterfaceState.h \
-  networklayer/ospfv2/interface/OSPFInterface.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStateLoopback.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStateBackup.h
-$O/networklayer/ospfv2/interface/OSPFInterfaceStateDesignatedRouter.o: networklayer/ospfv2/interface/OSPFInterfaceStateDesignatedRouter.cc \
-  networklayer/ospfv2/interface/OSPFInterfaceStateDesignatedRouter.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStateLoopback.h \
-  networklayer/ospfv2/interface/OSPFInterface.h \
-  networklayer/ospfv2/interface/OSPFInterfaceState.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStateDown.h
-$O/networklayer/ospfv2/interface/OSPFInterfaceStateDown.o: networklayer/ospfv2/interface/OSPFInterfaceStateDown.cc \
-  networklayer/ospfv2/interface/OSPFInterfaceStateLoopback.h \
-  networklayer/ospfv2/interface/OSPFInterface.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStateWaiting.h \
-  networklayer/ospfv2/interface/OSPFInterfaceState.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStateDown.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStateNotDesignatedRouter.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStatePointToPoint.h
-$O/networklayer/ospfv2/interface/OSPFInterfaceStateLoopback.o: networklayer/ospfv2/interface/OSPFInterfaceStateLoopback.cc \
-  networklayer/ospfv2/interface/OSPFInterfaceStateDown.h \
-  networklayer/ospfv2/interface/OSPFInterfaceState.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStateLoopback.h \
-  networklayer/ospfv2/interface/OSPFInterface.h
-$O/networklayer/ospfv2/interface/OSPFInterfaceStateNotDesignatedRouter.o: networklayer/ospfv2/interface/OSPFInterfaceStateNotDesignatedRouter.cc \
-  networklayer/ospfv2/interface/OSPFInterfaceState.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStateDown.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStateNotDesignatedRouter.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStateLoopback.h \
-  networklayer/ospfv2/interface/OSPFInterface.h
-$O/networklayer/ospfv2/interface/OSPFInterfaceStatePointToPoint.o: networklayer/ospfv2/interface/OSPFInterfaceStatePointToPoint.cc \
-  networklayer/ospfv2/interface/OSPFInterfaceStateDown.h \
-  networklayer/ospfv2/interface/OSPFInterfaceState.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStatePointToPoint.h \
-  networklayer/ospfv2/interface/OSPFInterface.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStateLoopback.h
-$O/networklayer/ospfv2/interface/OSPFInterfaceStateWaiting.o: networklayer/ospfv2/interface/OSPFInterfaceStateWaiting.cc \
-  networklayer/ospfv2/interface/OSPFInterfaceStateLoopback.h \
-  networklayer/ospfv2/interface/OSPFInterface.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStateWaiting.h \
-  networklayer/ospfv2/interface/OSPFInterfaceState.h \
-  networklayer/ospfv2/interface/OSPFInterfaceStateDown.h
-$O/networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.o: networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.cc \
-  networklayer/ospfv2/messagehandler/IMessageHandler.h \
-  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h
-$O/networklayer/ospfv2/messagehandler/HelloHandler.o: networklayer/ospfv2/messagehandler/HelloHandler.cc \
-  networklayer/ospfv2/messagehandler/IMessageHandler.h \
-  networklayer/ospfv2/messagehandler/HelloHandler.h
-$O/networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.o: networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.cc \
-  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
-  networklayer/ospfv2/messagehandler/IMessageHandler.h
-$O/networklayer/ospfv2/messagehandler/LinkStateRequestHandler.o: networklayer/ospfv2/messagehandler/LinkStateRequestHandler.cc \
-  networklayer/ospfv2/messagehandler/IMessageHandler.h \
-  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h
-$O/networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.o: networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.cc \
-  networklayer/ospfv2/messagehandler/IMessageHandler.h \
-  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h
-$O/networklayer/ospfv2/messagehandler/MessageHandler.o: networklayer/ospfv2/messagehandler/MessageHandler.cc \
+  networklayer/common/IInterfaceTable.h \
   networklayer/ospfv2/messagehandler/HelloHandler.h \
-  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
-  networklayer/ospfv2/messagehandler/MessageHandler.h \
   networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  util/XMLUtils.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  base/NotificationBoard.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  util/PatternMatcher.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/ospfv2/OSPFConfigReader.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/interface/OSPFInterface.h
+$O/networklayer/ospfv2/OSPFPacket_m.o: networklayer/ospfv2/OSPFPacket_m.cc \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  base/Compat.h
+$O/networklayer/ospfv2/OSPFRouting.o: networklayer/ospfv2/OSPFRouting.cc \
+  base/ILifecycle.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPSocket.h \
+  base/NodeOperations.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/OSPFRouting.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  base/LifecycleOperation.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/ospfv2/OSPFConfigReader.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ospfv2/OSPFTimer.h
+$O/networklayer/ospfv2/interface/OSPFInterface.o: networklayer/ospfv2/interface/OSPFInterface.cc \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateDown.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  base/NotificationBoard.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/ospfv2/interface/OSPFInterfaceState.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h
+$O/networklayer/ospfv2/interface/OSPFInterfaceState.o: networklayer/ospfv2/interface/OSPFInterfaceState.cc \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/ospfv2/interface/OSPFInterfaceState.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateNotDesignatedRouter.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateDesignatedRouter.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateBackup.h
+$O/networklayer/ospfv2/interface/OSPFInterfaceStateBackup.o: networklayer/ospfv2/interface/OSPFInterfaceStateBackup.cc \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateDown.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateBackup.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/ospfv2/interface/OSPFInterfaceState.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateLoopback.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/contract/IPvXAddressResolver.h
+$O/networklayer/ospfv2/interface/OSPFInterfaceStateDesignatedRouter.o: networklayer/ospfv2/interface/OSPFInterfaceStateDesignatedRouter.cc \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/ospfv2/interface/OSPFInterfaceState.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateLoopback.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateDown.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateDesignatedRouter.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h
+$O/networklayer/ospfv2/interface/OSPFInterfaceStateDown.o: networklayer/ospfv2/interface/OSPFInterfaceStateDown.cc \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStatePointToPoint.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateDown.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateNotDesignatedRouter.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateWaiting.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateLoopback.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/ospfv2/interface/OSPFInterfaceState.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h
+$O/networklayer/ospfv2/interface/OSPFInterfaceStateLoopback.o: networklayer/ospfv2/interface/OSPFInterfaceStateLoopback.cc \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/ospfv2/interface/OSPFInterfaceState.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateLoopback.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateDown.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h
+$O/networklayer/ospfv2/interface/OSPFInterfaceStateNotDesignatedRouter.o: networklayer/ospfv2/interface/OSPFInterfaceStateNotDesignatedRouter.cc \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPv4ControlInfo.h \
   networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
   networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateLoopback.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/interface/OSPFInterfaceState.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/router/LSA.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateDown.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateNotDesignatedRouter.h
+$O/networklayer/ospfv2/interface/OSPFInterfaceStatePointToPoint.o: networklayer/ospfv2/interface/OSPFInterfaceStatePointToPoint.cc \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateLoopback.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/interface/OSPFInterfaceState.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/router/LSA.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateDown.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStatePointToPoint.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h
+$O/networklayer/ospfv2/interface/OSPFInterfaceStateWaiting.o: networklayer/ospfv2/interface/OSPFInterfaceStateWaiting.cc \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/ospfv2/interface/OSPFInterfaceState.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateWaiting.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateLoopback.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/interface/OSPFInterfaceStateDown.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h
+$O/networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.o: networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.cc \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/router/LSA.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h
+$O/networklayer/ospfv2/messagehandler/HelloHandler.o: networklayer/ospfv2/messagehandler/HelloHandler.cc \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h
+$O/networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.o: networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.cc \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPvXAddressResolver.h \
   networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h
+$O/networklayer/ospfv2/messagehandler/LinkStateRequestHandler.o: networklayer/ospfv2/messagehandler/LinkStateRequestHandler.cc \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/router/LSA.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  base/Compat.h
+$O/networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.o: networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.cc \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/common/InterfaceEntry.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h
+$O/networklayer/ospfv2/messagehandler/MessageHandler.o: networklayer/ospfv2/messagehandler/MessageHandler.cc \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/common/InterfaceTableAccess.h
 $O/networklayer/ospfv2/neighbor/OSPFNeighbor.o: networklayer/ospfv2/neighbor/OSPFNeighbor.cc \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/contract/IPv4Address.h \
   networklayer/ospfv2/neighbor/OSPFNeighborStateDown.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/router/LSA.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
   networklayer/ospfv2/neighbor/OSPFNeighborState.h \
-  networklayer/ospfv2/neighbor/OSPFNeighbor.h
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h
 $O/networklayer/ospfv2/neighbor/OSPFNeighborState.o: networklayer/ospfv2/neighbor/OSPFNeighborState.cc \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
   networklayer/ospfv2/neighbor/OSPFNeighborState.h \
-  networklayer/ospfv2/neighbor/OSPFNeighbor.h
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h
 $O/networklayer/ospfv2/neighbor/OSPFNeighborStateAttempt.o: networklayer/ospfv2/neighbor/OSPFNeighborStateAttempt.cc \
-  networklayer/ospfv2/neighbor/OSPFNeighborState.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateInit.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateDown.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
   networklayer/ospfv2/neighbor/OSPFNeighborStateAttempt.h \
-  networklayer/ospfv2/neighbor/OSPFNeighbor.h
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborState.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateInit.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateDown.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h
 $O/networklayer/ospfv2/neighbor/OSPFNeighborStateDown.o: networklayer/ospfv2/neighbor/OSPFNeighborStateDown.cc \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateInit.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborState.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
   networklayer/ospfv2/neighbor/OSPFNeighborStateAttempt.h \
-  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborState.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/router/LSA.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/contract/IPv4Address.h \
   networklayer/ospfv2/neighbor/OSPFNeighborStateDown.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateInit.h
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h
 $O/networklayer/ospfv2/neighbor/OSPFNeighborStateExchange.o: networklayer/ospfv2/neighbor/OSPFNeighborStateExchange.cc \
-  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateExchangeStart.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateInit.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h \
   networklayer/ospfv2/neighbor/OSPFNeighborState.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateExchange.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateDown.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/router/LSA.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateExchangeStart.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
   networklayer/ospfv2/neighbor/OSPFNeighborStateFull.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateDown.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPvXAddressResolver.h \
   networklayer/ospfv2/neighbor/OSPFNeighborStateLoading.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
   networklayer/ospfv2/neighbor/OSPFNeighborStateTwoWay.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateInit.h
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateExchange.h
 $O/networklayer/ospfv2/neighbor/OSPFNeighborStateExchangeStart.o: networklayer/ospfv2/neighbor/OSPFNeighborStateExchangeStart.cc \
-  networklayer/ospfv2/neighbor/OSPFNeighborState.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
   networklayer/ospfv2/neighbor/OSPFNeighborStateExchange.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateDown.h \
+  networklayer/contract/IPProtocolId_m.h \
   networklayer/ospfv2/neighbor/OSPFNeighborStateTwoWay.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateInit.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateDown.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateExchangeStart.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/router/LSA.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/common/IInterfaceTable.h \
   networklayer/ospfv2/neighbor/OSPFNeighbor.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateExchangeStart.h
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateInit.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborState.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h
 $O/networklayer/ospfv2/neighbor/OSPFNeighborStateFull.o: networklayer/ospfv2/neighbor/OSPFNeighborStateFull.cc \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateExchangeStart.h \
-  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateInit.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
   networklayer/ospfv2/neighbor/OSPFNeighborState.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateTwoWay.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateDown.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
   networklayer/ospfv2/neighbor/OSPFNeighborStateFull.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateInit.h
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateExchangeStart.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateDown.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateTwoWay.h \
+  networklayer/contract/IPProtocolId_m.h
 $O/networklayer/ospfv2/neighbor/OSPFNeighborStateInit.o: networklayer/ospfv2/neighbor/OSPFNeighborStateInit.cc \
-  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateExchangeStart.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborState.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateDown.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPProtocolId_m.h \
   networklayer/ospfv2/neighbor/OSPFNeighborStateTwoWay.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateInit.h
-$O/networklayer/ospfv2/neighbor/OSPFNeighborStateLoading.o: networklayer/ospfv2/neighbor/OSPFNeighborStateLoading.cc \
-  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateDown.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
   networklayer/ospfv2/neighbor/OSPFNeighborStateExchangeStart.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
   networklayer/ospfv2/neighbor/OSPFNeighborStateInit.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateFull.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateDown.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateTwoWay.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateLoading.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
   networklayer/ospfv2/neighbor/OSPFNeighborState.h
-$O/networklayer/ospfv2/neighbor/OSPFNeighborStateTwoWay.o: networklayer/ospfv2/neighbor/OSPFNeighborStateTwoWay.cc \
-  networklayer/ospfv2/neighbor/OSPFNeighborState.h \
+$O/networklayer/ospfv2/neighbor/OSPFNeighborStateLoading.o: networklayer/ospfv2/neighbor/OSPFNeighborStateLoading.cc \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
   networklayer/ospfv2/neighbor/OSPFNeighborStateInit.h \
-  networklayer/ospfv2/neighbor/OSPFNeighborStateTwoWay.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborState.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/contract/IPv4Address.h \
   networklayer/ospfv2/neighbor/OSPFNeighborStateDown.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateLoading.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateTwoWay.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateFull.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateExchangeStart.h
+$O/networklayer/ospfv2/neighbor/OSPFNeighborStateTwoWay.o: networklayer/ospfv2/neighbor/OSPFNeighborStateTwoWay.cc \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
   networklayer/ospfv2/neighbor/OSPFNeighborStateExchangeStart.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateDown.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateTwoWay.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborState.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ospfv2/neighbor/OSPFNeighborStateInit.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
   networklayer/ospfv2/neighbor/OSPFNeighbor.h
 $O/networklayer/ospfv2/router/ASExternalLSA.o: networklayer/ospfv2/router/ASExternalLSA.cc \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPvXAddress.h \
   networklayer/ospfv2/router/OSPFcommon.h \
-  networklayer/ospfv2/router/LSA.h
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h
 $O/networklayer/ospfv2/router/LSA.o: networklayer/ospfv2/router/LSA.cc \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
   networklayer/ospfv2/router/LSA.h \
-  networklayer/ospfv2/router/OSPFcommon.h
+  networklayer/ospfv2/OSPFPacket_m.h
 $O/networklayer/ospfv2/router/NetworkLSA.o: networklayer/ospfv2/router/NetworkLSA.cc \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
   networklayer/ospfv2/router/OSPFcommon.h \
-  networklayer/ospfv2/router/LSA.h
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/router/LSA.h \
+  networklayer/ospfv2/OSPFPacket_m.h
 $O/networklayer/ospfv2/router/OSPFArea.o: networklayer/ospfv2/router/OSPFArea.cc \
-  networklayer/ospfv2/router/OSPFArea.h \
+  base/INETDefs.h \
   networklayer/ospfv2/router/LSA.h \
-  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/ospfv2/router/OSPFArea.h \
   networklayer/ospfv2/router/OSPFRouter.h \
-  networklayer/ospfv2/router/OSPFcommon.h
-$O/networklayer/ospfv2/router/OSPFRouter.o: networklayer/ospfv2/router/OSPFRouter.cc \
-  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ospfv2/OSPFTimer.h \
   networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
-  networklayer/ospfv2/router/LSA.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h
+$O/networklayer/ospfv2/router/OSPFRouter.o: networklayer/ospfv2/router/OSPFRouter.cc \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/ospfv2/messagehandler/DatabaseDescriptionHandler.h \
+  networklayer/ospfv2/interface/OSPFInterface.h \
+  networklayer/ospfv2/neighbor/OSPFNeighbor.h \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  networklayer/ospfv2/OSPFTimer.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ospfv2/messagehandler/MessageHandler.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
   networklayer/ospfv2/router/OSPFcommon.h \
-  networklayer/ospfv2/router/OSPFRouter.h
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ospfv2/messagehandler/LinkStateUpdateHandler.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ospfv2/messagehandler/IMessageHandler.h \
+  networklayer/ospfv2/messagehandler/LinkStateAcknowledgementHandler.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ospfv2/messagehandler/LinkStateRequestHandler.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/ospfv2/messagehandler/HelloHandler.h \
+  networklayer/ospfv2/router/OSPFArea.h \
+  networklayer/ospfv2/router/OSPFRouter.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/ospfv2/router/LSA.h \
+  base/INETDefs.h
 $O/networklayer/ospfv2/router/OSPFRoutingTableEntry.o: networklayer/ospfv2/router/OSPFRoutingTableEntry.cc \
+  networklayer/ospfv2/router/OSPFRoutingTableEntry.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPvXAddress.h \
   networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPv4Address.h \
   networklayer/ospfv2/router/LSA.h \
-  networklayer/ospfv2/router/OSPFRoutingTableEntry.h
+  base/INETDefs.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/common/IInterfaceTable.h
 $O/networklayer/ospfv2/router/RouterLSA.o: networklayer/ospfv2/router/RouterLSA.cc \
+  networklayer/contract/IPvXAddress.h \
   networklayer/ospfv2/router/OSPFcommon.h \
-  networklayer/ospfv2/router/LSA.h
-$O/networklayer/ospfv2/router/SummaryLSA.o: networklayer/ospfv2/router/SummaryLSA.cc \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
   networklayer/ospfv2/router/LSA.h \
-  networklayer/ospfv2/router/OSPFcommon.h
+  base/INETDefs.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPv4Address.h
+$O/networklayer/ospfv2/router/SummaryLSA.o: networklayer/ospfv2/router/SummaryLSA.cc \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
+  networklayer/ospfv2/router/LSA.h \
+  networklayer/ospfv2/OSPFPacket_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ospfv2/router/OSPFcommon.h \
+  networklayer/contract/IPvXAddress.h
 $O/networklayer/routing/aodv/AODVControlPackets_m.o: networklayer/routing/aodv/AODVControlPackets_m.cc \
-  networklayer/routing/aodv/AODVControlPackets_m.h
+  base/Compat.h \
+  networklayer/routing/aodv/AODVControlPackets_m.h \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h
 $O/networklayer/routing/aodv/AODVRouteData.o: networklayer/routing/aodv/AODVRouteData.cc \
+  base/INETDefs.h \
+  networklayer/contract/IPv4Address.h \
+  base/Compat.h \
   networklayer/routing/aodv/AODVRouteData.h
 $O/networklayer/routing/aodv/AODVRouting.o: networklayer/routing/aodv/AODVRouting.cc \
+  transport/udp/UDPPacket.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  base/LifecycleOperation.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/routing/aodv/AODVControlPackets_m.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h \
   networklayer/routing/aodv/AODVRouteData.h \
+  base/NotifierConsts.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  transport/contract/UDPControlInfo_m.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  transport/udp/UDPPacket_m.h \
+  networklayer/contract/IPSocket.h \
+  networklayer/common/IInterfaceTable.h \
+  base/NodeOperations.h \
+  base/ILifecycle.h \
+  transport/contract/UDPControlInfo.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
   networklayer/routing/aodv/AODVRouting.h \
-  networklayer/routing/aodv/AODVControlPackets_m.h
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/InterfaceToken.h \
+  transport/contract/UDPSocket.h \
+  networklayer/common/InterfaceTableAccess.h
 $O/networklayer/routing/dymo/DYMORouteData.o: networklayer/routing/dymo/DYMORouteData.cc \
+  networklayer/ipv4/IPv4Route.h \
   networklayer/routing/dymo/DYMOdefs.h \
-  networklayer/routing/dymo/DYMORouteData.h
+  base/Compat.h \
+  base/INETDefs.h \
+  networklayer/routing/dymo/DYMORouteData.h \
+  networklayer/contract/IPv4Address.h
 $O/networklayer/routing/dymo/DYMO_m.o: networklayer/routing/dymo/DYMO_m.cc \
   networklayer/routing/dymo/DYMOdefs.h \
-  networklayer/routing/dymo/DYMO_m.h
-$O/networklayer/routing/dymo/xDYMO.o: networklayer/routing/dymo/xDYMO.cc \
+  base/Compat.h \
+  base/INETDefs.h \
   networklayer/routing/dymo/DYMO_m.h \
-  networklayer/routing/dymo/xDYMO.h \
+  networklayer/contract/IPv4Address.h
+$O/networklayer/routing/dymo/xDYMO.o: networklayer/routing/dymo/xDYMO.cc \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  base/LifecycleOperation.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  transport/udp/UDPPacket.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h \
+  transport/contract/UDPControlInfo_m.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
   networklayer/routing/dymo/DYMOdefs.h \
-  networklayer/routing/dymo/DYMORouteData.h
+  transport/udp/UDPPacket_m.h \
+  base/NodeOperations.h \
+  networklayer/contract/IPSocket.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/routing/dymo/DYMORouteData.h \
+  base/ILifecycle.h \
+  transport/contract/UDPControlInfo.h \
+  networklayer/routing/dymo/xDYMO.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  base/NotificationBoard.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/routing/dymo/DYMO_m.h
 $O/networklayer/routing/gpsr/GPSR.o: networklayer/routing/gpsr/GPSR.cc \
-  networklayer/routing/gpsr/GPSR.h \
+  base/Compat.h \
+  networklayer/common/INetfilter.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  transport/udp/UDPPacket_m.h \
+  base/Coord.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  util/FWMath.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  base/LifecycleOperation.h \
+  status/NodeStatus.h \
+  transport/udp/UDPPacket.h \
+  networklayer/contract/IPvXAddress.h \
+  linklayer/contract/MACAddress.h \
   networklayer/routing/gpsr/GPSRDefs.h \
   networklayer/routing/gpsr/GPSR_m.h \
-  networklayer/routing/gpsr/PositionTable.h
+  networklayer/routing/gpsr/GPSR.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPProtocolId_m.h \
+  base/INotifiable.h \
+  base/NodeOperations.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPSocket.h \
+  base/ILifecycle.h \
+  base/NotificationBoard.h \
+  networklayer/routing/gpsr/PositionTable.h \
+  base/INETDefs.h \
+  mobility/contract/IMobility.h
 $O/networklayer/routing/gpsr/GPSR_m.o: networklayer/routing/gpsr/GPSR_m.cc \
+  networklayer/routing/gpsr/GPSR_m.h \
   networklayer/routing/gpsr/GPSRDefs.h \
-  networklayer/routing/gpsr/GPSR_m.h
+  util/FWMath.h \
+  networklayer/contract/IPvXAddress.h \
+  base/Coord.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  base/INETDefs.h \
+  networklayer/contract/IPv4Address.h
 $O/networklayer/routing/gpsr/PositionTable.o: networklayer/routing/gpsr/PositionTable.cc \
-  networklayer/routing/gpsr/PositionTable.h
+  networklayer/routing/gpsr/PositionTable.h \
+  base/INETDefs.h \
+  networklayer/contract/IPv4Address.h \
+  util/FWMath.h \
+  networklayer/contract/IPvXAddress.h \
+  base/Coord.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h
 $O/networklayer/routing/rip/RIPPacket_m.o: networklayer/routing/rip/RIPPacket_m.cc \
-  networklayer/routing/rip/RIPPacket_m.h
-$O/networklayer/routing/rip/RIPRouting.o: networklayer/routing/rip/RIPRouting.cc \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
   networklayer/routing/rip/RIPPacket_m.h \
-  networklayer/routing/rip/RIPRouting.h
+  base/INETDefs.h \
+  networklayer/contract/IPv4Address.h
+$O/networklayer/routing/rip/RIPRouting.o: networklayer/routing/rip/RIPRouting.cc \
+  networklayer/common/InterfaceMatcher.h \
+  networklayer/routing/rip/RIPPacket_m.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  transport/contract/UDPControlInfo_m.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  base/LifecycleOperation.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/routing/rip/RIPRouting.h \
+  base/INotifiable.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  transport/contract/UDPSocket.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  transport/udp/UDP.h \
+  networklayer/common/IInterfaceTable.h \
+  base/NodeOperations.h \
+  base/ILifecycle.h \
+  transport/contract/UDPControlInfo.h
 $O/networklayer/rsvp_te/IntServ_m.o: networklayer/rsvp_te/IntServ_m.cc \
-  networklayer/rsvp_te/IntServ_m.h
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
+  networklayer/rsvp_te/IntServ_m.h \
+  base/Compat.h
 $O/networklayer/rsvp_te/RSVP.o: networklayer/rsvp_te/RSVP.cc \
+  networklayer/rsvp_te/RSVPPacket_m.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/ted/TEDAccess.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/mpls/LIBTableAccess.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
   networklayer/rsvp_te/RSVPHello_m.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
   networklayer/rsvp_te/RSVPPathMsg_m.h \
-  networklayer/rsvp_te/RSVPPacket_m.h \
-  networklayer/rsvp_te/SignallingMsg_m.h \
-  networklayer/rsvp_te/RSVPPathMsg.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  base/LifecycleOperation.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ted/TED_m.h \
+  networklayer/ipv4/IRoutingTable.h \
+  util/common.h \
   networklayer/rsvp_te/IntServ.h \
-  networklayer/rsvp_te/RSVPPacket.h \
-  networklayer/rsvp_te/RSVPResvMsg.h \
+  networklayer/mpls/ConstType.h \
   networklayer/rsvp_te/RSVPResvMsg_m.h \
-  networklayer/rsvp_te/Utils.h \
-  networklayer/rsvp_te/RSVPHelloMsg.h \
-  networklayer/rsvp_te/IntServ_m.h \
+  linklayer/contract/MACAddress.h \
+  base/IScriptable.h \
+  networklayer/mpls/LIBTable.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/rsvp_te/SignallingMsg_m.h \
+  networklayer/contract/IPv4ControlInfo.h \
   networklayer/rsvp_te/IRSVPClassifier.h \
-  networklayer/rsvp_te/RSVP.h
-$O/networklayer/rsvp_te/RSVPHello_m.o: networklayer/rsvp_te/RSVPHello_m.cc \
+  networklayer/rsvp_te/RSVP.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/rsvp_te/Utils.h \
+  base/INotifiable.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/rsvp_te/RSVPResvMsg.h \
+  base/NodeOperations.h \
+  networklayer/contract/IPSocket.h \
+  networklayer/common/IInterfaceTable.h \
   networklayer/rsvp_te/IntServ_m.h \
+  base/ILifecycle.h \
+  networklayer/rsvp_te/RSVPHelloMsg.h \
+  networklayer/mpls/IClassifier.h \
+  networklayer/rsvp_te/RSVPPathMsg.h \
+  networklayer/rsvp_te/RSVPPacket.h \
+  util/XMLUtils.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  networklayer/ted/TED.h
+$O/networklayer/rsvp_te/RSVPHello_m.o: networklayer/rsvp_te/RSVPHello_m.cc \
   networklayer/rsvp_te/RSVPHello_m.h \
   networklayer/rsvp_te/RSVPPacket_m.h \
-  networklayer/rsvp_te/RSVPPacket.h
-$O/networklayer/rsvp_te/RSVPPacket_m.o: networklayer/rsvp_te/RSVPPacket_m.cc \
+  base/Compat.h \
+  base/INETDefs.h \
+  networklayer/rsvp_te/RSVPPacket.h \
   networklayer/rsvp_te/IntServ_m.h \
+  networklayer/contract/IPv4Address.h
+$O/networklayer/rsvp_te/RSVPPacket_m.o: networklayer/rsvp_te/RSVPPacket_m.cc \
+  networklayer/contract/IPv4Address.h \
+  networklayer/rsvp_te/IntServ_m.h \
+  base/INETDefs.h \
+  base/Compat.h \
   networklayer/rsvp_te/RSVPPacket_m.h
 $O/networklayer/rsvp_te/RSVPPathMsg_m.o: networklayer/rsvp_te/RSVPPathMsg_m.cc \
+  base/Compat.h \
+  networklayer/rsvp_te/RSVPPacket_m.h \
   networklayer/rsvp_te/RSVPPathMsg_m.h \
-  networklayer/rsvp_te/RSVPPacket_m.h \
   networklayer/rsvp_te/IntServ.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/rsvp_te/IntServ_m.h \
   networklayer/rsvp_te/RSVPPacket.h \
-  networklayer/rsvp_te/IntServ_m.h
+  base/INETDefs.h
 $O/networklayer/rsvp_te/RSVPResvMsg_m.o: networklayer/rsvp_te/RSVPResvMsg_m.cc \
-  networklayer/rsvp_te/RSVPPacket_m.h \
   networklayer/rsvp_te/IntServ.h \
-  networklayer/rsvp_te/RSVPPacket.h \
   networklayer/rsvp_te/RSVPResvMsg_m.h \
-  networklayer/rsvp_te/IntServ_m.h
+  base/Compat.h \
+  networklayer/rsvp_te/RSVPPacket_m.h \
+  networklayer/rsvp_te/RSVPPacket.h \
+  networklayer/rsvp_te/IntServ_m.h \
+  base/INETDefs.h \
+  networklayer/contract/IPv4Address.h
 $O/networklayer/rsvp_te/SignallingMsg_m.o: networklayer/rsvp_te/SignallingMsg_m.cc \
   networklayer/rsvp_te/IntServ_m.h \
+  base/INETDefs.h \
+  networklayer/contract/IPv4Address.h \
   networklayer/rsvp_te/SignallingMsg_m.h \
-  networklayer/rsvp_te/IntServ.h
-$O/networklayer/rsvp_te/SimpleClassifier.o: networklayer/rsvp_te/SimpleClassifier.cc \
-  networklayer/rsvp_te/IntServ_m.h \
-  networklayer/rsvp_te/SimpleClassifier.h \
-  networklayer/rsvp_te/RSVPResvMsg_m.h \
-  networklayer/rsvp_te/RSVPHelloMsg.h \
-  networklayer/rsvp_te/RSVP.h \
-  networklayer/rsvp_te/IRSVPClassifier.h \
-  networklayer/rsvp_te/RSVPPacket.h \
   networklayer/rsvp_te/IntServ.h \
-  networklayer/rsvp_te/RSVPPathMsg.h \
-  networklayer/rsvp_te/RSVPPacket_m.h \
-  networklayer/rsvp_te/SignallingMsg_m.h \
-  networklayer/rsvp_te/RSVPHello_m.h \
-  networklayer/rsvp_te/RSVPPathMsg_m.h \
+  base/Compat.h
+$O/networklayer/rsvp_te/SimpleClassifier.o: networklayer/rsvp_te/SimpleClassifier.cc \
+  networklayer/rsvp_te/RSVP.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/rsvp_te/IRSVPClassifier.h \
+  base/INotifiable.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/rsvp_te/RSVPAccess.h \
   networklayer/rsvp_te/RSVPResvMsg.h \
-  networklayer/rsvp_te/RSVPAccess.h
+  networklayer/rsvp_te/SimpleClassifier.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/rsvp_te/SignallingMsg_m.h \
+  util/XMLUtils.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  networklayer/rsvp_te/IntServ_m.h \
+  base/ILifecycle.h \
+  networklayer/rsvp_te/RSVPHelloMsg.h \
+  networklayer/rsvp_te/RSVPPacket.h \
+  networklayer/mpls/IClassifier.h \
+  networklayer/rsvp_te/RSVPPathMsg.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/mpls/LIBTableAccess.h \
+  networklayer/rsvp_te/RSVPHello_m.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/rsvp_te/RSVPPacket_m.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/mpls/ConstType.h \
+  networklayer/rsvp_te/IntServ.h \
+  networklayer/rsvp_te/RSVPResvMsg_m.h \
+  base/IScriptable.h \
+  networklayer/mpls/LIBTable.h \
+  networklayer/rsvp_te/RSVPPathMsg_m.h \
+  networklayer/ipv4/IPv4Route.h
 $O/networklayer/rsvp_te/Utils.o: networklayer/rsvp_te/Utils.cc \
+  base/Compat.h \
   networklayer/rsvp_te/IntServ.h \
   networklayer/rsvp_te/Utils.h \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
   networklayer/rsvp_te/IntServ_m.h
 $O/networklayer/ted/LinkStatePacket_m.o: networklayer/ted/LinkStatePacket_m.cc \
+  networklayer/ted/TED_m.h \
   networklayer/ted/LinkStatePacket_m.h \
-  networklayer/ted/TED_m.h
+  base/Compat.h \
+  base/INETDefs.h \
+  networklayer/contract/IPv4Address.h
 $O/networklayer/ted/LinkStateRouting.o: networklayer/ted/LinkStateRouting.cc \
+  networklayer/ipv4/IPv4InterfaceData.h \
   networklayer/ted/LinkStateRouting.h \
   networklayer/ted/TEDAccess.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/rsvp_te/IntServ.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ted/TED_m.h \
   networklayer/ted/LinkStatePacket_m.h \
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
   networklayer/ted/TED.h \
-  networklayer/ted/TED_m.h
+  networklayer/rsvp_te/IntServ_m.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/contract/IPSocket.h
 $O/networklayer/ted/TED.o: networklayer/ted/TED.cc \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/ted/TED_m.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  base/LifecycleOperation.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/rsvp_te/IntServ.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/rsvp_te/IntServ_m.h \
+  base/ILifecycle.h \
+  base/NodeOperations.h \
+  networklayer/common/IInterfaceTable.h \
+  base/NotificationBoard.h \
   networklayer/ted/TED.h \
-  networklayer/ted/TED_m.h
+  base/INETDefs.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h
 $O/networklayer/ted/TED_m.o: networklayer/ted/TED_m.cc \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
+  base/Compat.h \
   networklayer/ted/TED_m.h
 $O/networklayer/xmipv6/BindingCache.o: networklayer/xmipv6/BindingCache.cc \
+  base/INETDefs.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
   networklayer/xmipv6/BindingCache.h
 $O/networklayer/xmipv6/BindingUpdateList.o: networklayer/xmipv6/BindingUpdateList.cc \
-  networklayer/xmipv6/BindingUpdateList.h
-$O/networklayer/xmipv6/MobilityHeader.o: networklayer/xmipv6/MobilityHeader.cc \
-  networklayer/xmipv6/MobilityHeader.h \
-  networklayer/xmipv6/MobilityHeader_m.h
-$O/networklayer/xmipv6/MobilityHeader_m.o: networklayer/xmipv6/MobilityHeader_m.cc \
-  networklayer/xmipv6/MobilityHeader_m.h
-$O/networklayer/xmipv6/xMIPv6.o: networklayer/xmipv6/xMIPv6.cc \
-  networklayer/xmipv6/MobilityHeader_m.h \
-  networklayer/xmipv6/BindingCache.h \
-  networklayer/xmipv6/BindingCacheAccess.h \
-  networklayer/xmipv6/xMIPv6.h \
-  networklayer/xmipv6/BindingUpdateListAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  base/INotifiable.h \
+  base/NotificationBoard.h \
   networklayer/xmipv6/BindingUpdateList.h \
-  networklayer/xmipv6/MobilityHeader.h
+  base/INETDefs.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv6/IPv6InterfaceData.h \
+  networklayer/common/InterfaceEntry.h
+$O/networklayer/xmipv6/MobilityHeader.o: networklayer/xmipv6/MobilityHeader.cc \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv6/IPv6ExtensionHeaders_m.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  base/INETDefs.h \
+  networklayer/xmipv6/MobilityHeader.h \
+  base/Compat.h \
+  networklayer/xmipv6/MobilityHeader_m.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  networklayer/ipv6/IPv6ExtensionHeaders.h
+$O/networklayer/xmipv6/MobilityHeader_m.o: networklayer/xmipv6/MobilityHeader_m.cc \
+  base/Compat.h \
+  networklayer/xmipv6/MobilityHeader_m.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  networklayer/ipv6/IPv6ExtensionHeaders.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv6/IPv6ExtensionHeaders_m.h \
+  base/INETDefs.h \
+  networklayer/ipv6/IPv6Datagram_m.h
+$O/networklayer/xmipv6/xMIPv6.o: networklayer/xmipv6/xMIPv6.cc \
+  networklayer/ipv6/RoutingTable6Access.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  networklayer/xmipv6/BindingCache.h \
+  networklayer/ipv6/IPv6InterfaceData.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv6/IPv6ExtensionHeaders.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/icmpv6/IPv6NeighbourCache.h \
+  base/NotifierConsts.h \
+  networklayer/xmipv6/MobilityHeader_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
+  networklayer/icmpv6/IPv6NDMessage_m.h \
+  networklayer/icmpv6/IPv6NeighbourDiscovery.h \
+  networklayer/xmipv6/BindingUpdateListAccess.h \
+  networklayer/ipv6tunneling/IPv6Tunneling.h \
+  networklayer/xmipv6/BindingCacheAccess.h \
+  networklayer/icmpv6/ICMPv6Message_m.h \
+  base/ILifecycle.h \
+  networklayer/ipv6tunneling/IPv6TunnelingAccess.h \
+  networklayer/icmpv6/IPv6NeighbourDiscoveryAccess.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/xmipv6/BindingUpdateList.h \
+  base/NotificationBoard.h \
+  networklayer/ipv6/IPv6ExtensionHeaders_m.h \
+  networklayer/xmipv6/MobilityHeader.h \
+  base/INETDefs.h \
+  networklayer/xmipv6/xMIPv6.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ipv6/RoutingTable6.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h
 $O/status/NodeStatus.o: status/NodeStatus.cc \
-  status/NodeStatus.h
+  status/NodeStatus.h \
+  base/LifecycleOperation.h \
+  base/Compat.h \
+  base/ILifecycle.h \
+  base/NodeOperations.h \
+  base/INETDefs.h \
+  base/ModuleAccess.h
 $O/transport/contract/SCTPCommand_m.o: transport/contract/SCTPCommand_m.cc \
   transport/contract/SCTPCommand.h \
-  transport/contract/SCTPCommand_m.h
+  networklayer/contract/IPv4Address.h \
+  transport/contract/SCTPCommand_m.h \
+  base/INETDefs.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  networklayer/contract/IPvXAddress.h
 $O/transport/contract/SCTPSocket.o: transport/contract/SCTPSocket.cc \
-  transport/contract/SCTPCommand.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
   transport/contract/SCTPSocket.h \
-  transport/contract/SCTPCommand_m.h
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv4Address.h \
+  transport/contract/SCTPCommand_m.h \
+  transport/contract/UDPSocket.h \
+  transport/contract/SCTPCommand.h \
+  transport/sctp/SCTP.h \
+  base/INETDefs.h
 $O/transport/contract/TCPCommand_m.o: transport/contract/TCPCommand_m.cc \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
   transport/contract/TCPCommand_m.h
 $O/transport/contract/TCPSocket.o: transport/contract/TCPSocket.cc \
   transport/contract/TCPSocket.h \
-  transport/contract/TCPCommand_m.h
-$O/transport/contract/TCPSocketMap.o: transport/contract/TCPSocketMap.cc \
-  transport/contract/TCPSocket.h \
+  networklayer/contract/IPv4Address.h \
   transport/contract/TCPCommand_m.h \
-  transport/contract/TCPSocketMap.h
+  base/INETDefs.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  networklayer/contract/IPvXAddress.h
+$O/transport/contract/TCPSocketMap.o: transport/contract/TCPSocketMap.cc \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/contract/TCPSocket.h \
+  transport/contract/TCPSocketMap.h \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
+  transport/contract/TCPCommand_m.h
 $O/transport/contract/UDPControlInfo_m.o: transport/contract/UDPControlInfo_m.cc \
-  transport/contract/UDPControlInfo_m.h
-$O/transport/contract/UDPSocket.o: transport/contract/UDPSocket.cc \
-  transport/contract/UDPControlInfo.h \
+  base/INETDefs.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv6Address.h \
   transport/contract/UDPControlInfo_m.h \
-  transport/contract/UDPSocket.h
+  base/Compat.h
+$O/transport/contract/UDPSocket.o: transport/contract/UDPSocket.cc \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  transport/contract/UDPControlInfo_m.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  transport/contract/UDPControlInfo.h \
+  networklayer/common/IInterfaceTable.h \
+  transport/contract/UDPSocket.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/INotifiable.h \
+  networklayer/contract/IPv4Address.h
 $O/transport/rtp/RTCP.o: transport/rtp/RTCP.cc \
-  transport/rtp/RTCPPacket3.h \
-  transport/rtp/reports_m.h \
-  transport/rtp/RTCPPacket2.h \
-  transport/rtp/RTCPPacket.h \
-  transport/rtp/RTPParticipantInfo.h \
-  transport/rtp/RTPInnerPacket.h \
-  transport/rtp/RTPSenderControlMessage_m.h \
-  transport/rtp/RTPReceiverInfo.h \
-  transport/rtp/RTCPPacket1_m.h \
-  transport/rtp/RTCPPacket3_m.h \
   transport/rtp/RTPPacket_m.h \
-  transport/rtp/sdes.h \
-  transport/rtp/RTPParticipantInfo_m.h \
-  transport/rtp/RTPPacket.h \
   transport/rtp/reports.h \
-  transport/rtp/RTPSenderStatusMessage_m.h \
-  transport/rtp/RTPSenderInfo.h \
-  transport/rtp/RTPInnerPacket_m.h \
+  transport/rtp/RTPSenderControlMessage_m.h \
+  transport/rtp/RTCPPacket.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  base/LifecycleOperation.h \
+  transport/rtp/RTPPacket.h \
+  transport/contract/UDPControlInfo_m.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  transport/rtp/RTCPPacket2_m.h \
+  transport/rtp/reports_m.h \
   transport/rtp/RTCP.h \
   transport/rtp/RTCPPacket1.h \
-  transport/rtp/RTCPPacket2_m.h
-$O/transport/rtp/RTCPPacket.o: transport/rtp/RTCPPacket.cc \
+  transport/rtp/RTPParticipantInfo.h \
+  base/INETDefs.h \
   transport/rtp/sdes.h \
-  transport/rtp/RTCPPacket3_m.h \
-  transport/rtp/RTCPPacket1_m.h \
-  transport/rtp/RTCPPacket.h \
   transport/rtp/RTCPPacket2.h \
-  transport/rtp/reports_m.h \
+  transport/rtp/RTPInnerPacket.h \
+  transport/rtp/RTPParticipantInfo_m.h \
+  transport/rtp/RTPInnerPacket_m.h \
+  transport/rtp/RTPReceiverInfo.h \
+  base/ILifecycle.h \
+  base/ModuleAccess.h \
+  transport/rtp/RTPSenderInfo.h \
+  transport/contract/UDPSocket.h \
+  transport/rtp/RTCPPacket1_m.h \
+  networklayer/contract/IPv4Address.h \
   transport/rtp/RTCPPacket3.h \
-  transport/rtp/RTCPPacket2_m.h \
+  transport/rtp/RTCPPacket3_m.h \
+  transport/rtp/RTPSenderStatusMessage_m.h
+$O/transport/rtp/RTCPPacket.o: transport/rtp/RTCPPacket.cc \
+  base/INETDefs.h \
+  transport/rtp/sdes.h \
+  transport/rtp/RTCPPacket2.h \
   transport/rtp/RTCPPacket1.h \
-  transport/rtp/reports.h
+  transport/rtp/RTCPPacket1_m.h \
+  transport/rtp/RTCPPacket3.h \
+  transport/rtp/RTCPPacket3_m.h \
+  transport/rtp/reports.h \
+  transport/rtp/RTCPPacket.h \
+  transport/rtp/reports_m.h \
+  base/Compat.h \
+  transport/rtp/RTCPPacket2_m.h
 $O/transport/rtp/RTCPPacket1_m.o: transport/rtp/RTCPPacket1_m.cc \
   transport/rtp/RTCPPacket1_m.h
 $O/transport/rtp/RTCPPacket2_m.o: transport/rtp/RTCPPacket2_m.cc \
   transport/rtp/reports_m.h \
-  transport/rtp/sdes.h \
-  transport/rtp/RTCPPacket1_m.h \
-  transport/rtp/reports.h \
+  base/Compat.h \
   transport/rtp/RTCPPacket2_m.h \
+  transport/rtp/reports.h \
+  transport/rtp/RTCPPacket1_m.h \
+  transport/rtp/sdes.h \
+  base/INETDefs.h \
   transport/rtp/RTCPPacket1.h
 $O/transport/rtp/RTCPPacket3_m.o: transport/rtp/RTCPPacket3_m.cc \
   transport/rtp/RTCPPacket1_m.h \
   transport/rtp/RTCPPacket3_m.h \
-  transport/rtp/sdes.h \
-  transport/rtp/reports_m.h \
-  transport/rtp/RTCPPacket2.h \
   transport/rtp/RTCPPacket1.h \
+  base/INETDefs.h \
+  transport/rtp/RTCPPacket2.h \
+  transport/rtp/sdes.h \
   transport/rtp/RTCPPacket2_m.h \
+  base/Compat.h \
+  transport/rtp/reports_m.h \
   transport/rtp/reports.h
 $O/transport/rtp/RTP.o: transport/rtp/RTP.cc \
-  transport/rtp/RTPPacket_m.h \
-  transport/rtp/RTP.h \
-  transport/rtp/RTPSenderControlMessage_m.h \
+  transport/rtp/RTPInnerPacket_m.h \
+  base/ILifecycle.h \
   transport/rtp/RTPInterfacePacket_m.h \
   transport/rtp/RTPInnerPacket.h \
+  base/INETDefs.h \
+  transport/rtp/RTPSenderStatusMessage_m.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
   transport/rtp/RTPProfile.h \
-  transport/rtp/RTPInnerPacket_m.h \
-  transport/rtp/RTPSenderStatusMessage_m.h \
-  transport/rtp/RTPPacket.h
-$O/transport/rtp/RTPInnerPacket.o: transport/rtp/RTPInnerPacket.cc \
-  transport/rtp/RTPInnerPacket_m.h \
-  transport/rtp/RTPSenderStatusMessage_m.h \
+  transport/contract/UDPSocket.h \
+  networklayer/common/InterfaceEntry.h \
+  base/LifecycleOperation.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
   transport/rtp/RTPPacket.h \
-  transport/rtp/RTPInnerPacket.h \
-  transport/rtp/RTPPacket_m.h \
-  transport/rtp/RTPSenderControlMessage_m.h
-$O/transport/rtp/RTPInnerPacket_m.o: transport/rtp/RTPInnerPacket_m.cc \
   transport/rtp/RTPSenderControlMessage_m.h \
+  transport/rtp/RTP.h \
+  networklayer/ipv4/IPv4Route.h \
+  transport/rtp/RTPPacket_m.h \
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h \
+  transport/contract/UDPControlInfo_m.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h
+$O/transport/rtp/RTPInnerPacket.o: transport/rtp/RTPInnerPacket.cc \
+  networklayer/contract/IPv4Address.h \
+  transport/rtp/RTPSenderStatusMessage_m.h \
+  transport/rtp/RTPInnerPacket.h \
+  transport/rtp/RTPInnerPacket_m.h \
+  base/INETDefs.h \
+  base/Compat.h \
+  transport/rtp/RTPSenderControlMessage_m.h \
+  transport/rtp/RTPPacket.h \
+  transport/rtp/RTPPacket_m.h
+$O/transport/rtp/RTPInnerPacket_m.o: transport/rtp/RTPInnerPacket_m.cc \
+  transport/rtp/RTPSenderStatusMessage_m.h \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
+  transport/rtp/RTPInnerPacket_m.h \
+  base/Compat.h \
   transport/rtp/RTPPacket_m.h \
   transport/rtp/RTPPacket.h \
-  transport/rtp/RTPInnerPacket_m.h \
-  transport/rtp/RTPSenderStatusMessage_m.h
-$O/transport/rtp/RTPInterfacePacket_m.o: transport/rtp/RTPInterfacePacket_m.cc \
-  transport/rtp/RTPSenderStatusMessage_m.h \
-  transport/rtp/RTPInterfacePacket_m.h \
   transport/rtp/RTPSenderControlMessage_m.h
+$O/transport/rtp/RTPInterfacePacket_m.o: transport/rtp/RTPInterfacePacket_m.cc \
+  transport/rtp/RTPSenderControlMessage_m.h \
+  base/Compat.h \
+  base/INETDefs.h \
+  transport/rtp/RTPInterfacePacket_m.h \
+  networklayer/contract/IPv4Address.h \
+  transport/rtp/RTPSenderStatusMessage_m.h
 $O/transport/rtp/RTPPacket.o: transport/rtp/RTPPacket.cc \
+  base/INETDefs.h \
+  base/Compat.h \
   transport/rtp/RTPPacket_m.h \
   transport/rtp/RTPPacket.h
 $O/transport/rtp/RTPPacket_m.o: transport/rtp/RTPPacket_m.cc \
+  base/INETDefs.h \
+  base/Compat.h \
   transport/rtp/RTPPacket_m.h
 $O/transport/rtp/RTPParticipantInfo.o: transport/rtp/RTPParticipantInfo.cc \
+  transport/rtp/RTPParticipantInfo_m.h \
   transport/rtp/sdes.h \
-  transport/rtp/RTPPacket_m.h \
+  base/INETDefs.h \
   transport/rtp/RTPParticipantInfo.h \
-  transport/rtp/reports_m.h \
-  transport/rtp/reports.h \
+  networklayer/contract/IPv4Address.h \
   transport/rtp/RTPPacket.h \
-  transport/rtp/RTPParticipantInfo_m.h
+  transport/rtp/reports.h \
+  transport/rtp/RTPPacket_m.h \
+  transport/rtp/reports_m.h \
+  base/Compat.h
 $O/transport/rtp/RTPParticipantInfo_m.o: transport/rtp/RTPParticipantInfo_m.cc \
-  transport/rtp/RTPParticipantInfo_m.h
+  base/Compat.h \
+  base/INETDefs.h \
+  transport/rtp/RTPParticipantInfo_m.h \
+  networklayer/contract/IPv4Address.h
 $O/transport/rtp/RTPPayloadReceiver.o: transport/rtp/RTPPayloadReceiver.cc \
-  transport/rtp/RTPInnerPacket_m.h \
-  transport/rtp/RTPSenderStatusMessage_m.h \
-  transport/rtp/RTPPacket.h \
+  transport/rtp/RTPPacket_m.h \
   transport/rtp/RTPPayloadReceiver.h \
-  transport/rtp/RTPPacket_m.h \
-  transport/rtp/RTPSenderControlMessage_m.h \
-  transport/rtp/RTPInnerPacket.h
-$O/transport/rtp/RTPPayloadSender.o: transport/rtp/RTPPayloadSender.cc \
   transport/rtp/RTPPacket.h \
+  transport/rtp/RTPSenderControlMessage_m.h \
+  base/Compat.h \
+  base/INETDefs.h \
   transport/rtp/RTPInnerPacket_m.h \
-  transport/rtp/RTPSenderStatusMessage_m.h \
-  transport/rtp/RTPSenderControlMessage_m.h \
-  transport/rtp/RTPPayloadSender.h \
-  transport/rtp/RTPPacket_m.h \
-  transport/rtp/RTPInterfacePacket_m.h \
-  transport/rtp/RTPInnerPacket.h
-$O/transport/rtp/RTPProfile.o: transport/rtp/RTPProfile.cc \
-  transport/rtp/RTPPacket_m.h \
-  transport/rtp/RTPPayloadSender.h \
-  transport/rtp/RTPSenderControlMessage_m.h \
   transport/rtp/RTPInnerPacket.h \
-  transport/rtp/RTPProfile.h \
   transport/rtp/RTPSenderStatusMessage_m.h \
+  networklayer/contract/IPv4Address.h
+$O/transport/rtp/RTPPayloadSender.o: transport/rtp/RTPPayloadSender.cc \
+  transport/rtp/RTPInterfacePacket_m.h \
   transport/rtp/RTPInnerPacket_m.h \
-  transport/rtp/RTPPayloadReceiver.h \
-  transport/rtp/RTPPacket.h
-$O/transport/rtp/RTPReceiverInfo.o: transport/rtp/RTPReceiverInfo.cc \
-  transport/rtp/sdes.h \
-  transport/rtp/RTPReceiverInfo.h \
-  transport/rtp/RTPPacket_m.h \
-  transport/rtp/reports_m.h \
-  transport/rtp/RTPParticipantInfo.h \
-  transport/rtp/reports.h \
+  transport/rtp/RTPInnerPacket.h \
+  base/INETDefs.h \
+  transport/rtp/RTPSenderStatusMessage_m.h \
+  networklayer/contract/IPv4Address.h \
+  transport/rtp/RTPPayloadSender.h \
   transport/rtp/RTPPacket.h \
-  transport/rtp/RTPParticipantInfo_m.h
+  transport/rtp/RTPSenderControlMessage_m.h \
+  transport/rtp/RTPPacket_m.h \
+  base/Compat.h
+$O/transport/rtp/RTPProfile.o: transport/rtp/RTPProfile.cc \
+  base/Compat.h \
+  transport/rtp/RTPPacket.h \
+  transport/rtp/RTPSenderControlMessage_m.h \
+  transport/rtp/RTPPacket_m.h \
+  transport/rtp/RTPPayloadReceiver.h \
+  transport/rtp/RTPSenderStatusMessage_m.h \
+  networklayer/contract/IPv4Address.h \
+  transport/rtp/RTPPayloadSender.h \
+  transport/rtp/RTPProfile.h \
+  transport/rtp/RTPInnerPacket_m.h \
+  transport/rtp/RTPInnerPacket.h \
+  base/INETDefs.h
+$O/transport/rtp/RTPReceiverInfo.o: transport/rtp/RTPReceiverInfo.cc \
+  transport/rtp/RTPReceiverInfo.h \
+  transport/rtp/RTPParticipantInfo_m.h \
+  base/INETDefs.h \
+  transport/rtp/sdes.h \
+  transport/rtp/RTPParticipantInfo.h \
+  networklayer/contract/IPv4Address.h \
+  transport/rtp/RTPPacket.h \
+  transport/rtp/RTPPacket_m.h \
+  transport/rtp/reports.h \
+  transport/rtp/reports_m.h \
+  base/Compat.h
 $O/transport/rtp/RTPSenderControlMessage_m.o: transport/rtp/RTPSenderControlMessage_m.cc \
+  base/INETDefs.h \
+  base/Compat.h \
   transport/rtp/RTPSenderControlMessage_m.h
 $O/transport/rtp/RTPSenderInfo.o: transport/rtp/RTPSenderInfo.cc \
-  transport/rtp/RTPParticipantInfo_m.h \
-  transport/rtp/reports.h \
-  transport/rtp/RTPPacket.h \
+  networklayer/contract/IPv4Address.h \
   transport/rtp/RTPSenderInfo.h \
-  transport/rtp/reports_m.h \
+  transport/rtp/RTPParticipantInfo_m.h \
   transport/rtp/RTPParticipantInfo.h \
+  transport/rtp/sdes.h \
+  base/INETDefs.h \
+  base/Compat.h \
+  transport/rtp/reports_m.h \
+  transport/rtp/RTPPacket.h \
   transport/rtp/RTPPacket_m.h \
-  transport/rtp/sdes.h
+  transport/rtp/reports.h
 $O/transport/rtp/RTPSenderStatusMessage_m.o: transport/rtp/RTPSenderStatusMessage_m.cc \
-  transport/rtp/RTPSenderStatusMessage_m.h
+  base/Compat.h \
+  transport/rtp/RTPSenderStatusMessage_m.h \
+  base/INETDefs.h
 $O/transport/rtp/reports.o: transport/rtp/reports.cc \
   transport/rtp/reports_m.h \
   transport/rtp/reports.h
 $O/transport/rtp/reports_m.o: transport/rtp/reports_m.cc \
   transport/rtp/reports_m.h
 $O/transport/rtp/sdes.o: transport/rtp/sdes.cc \
-  transport/rtp/sdes.h
+  base/INETDefs.h \
+  transport/rtp/sdes.h \
+  base/Compat.h
 $O/transport/rtp/profiles/avprofile/RTPAVProfile.o: transport/rtp/profiles/avprofile/RTPAVProfile.cc \
-  transport/rtp/profiles/avprofile/RTPAVProfile.h
+  transport/rtp/RTPProfile.h \
+  transport/rtp/profiles/avprofile/RTPAVProfile.h \
+  base/INETDefs.h \
+  base/Compat.h
 $O/transport/rtp/profiles/avprofile/RTPAVProfilePayload32Receiver.o: transport/rtp/profiles/avprofile/RTPAVProfilePayload32Receiver.cc \
   transport/rtp/profiles/avprofile/RTPMpegPacket_m.h \
-  transport/rtp/profiles/avprofile/RTPAVProfilePayload32Receiver.h
+  transport/rtp/profiles/avprofile/RTPAVProfilePayload32Receiver.h \
+  base/INETDefs.h \
+  base/Compat.h \
+  transport/rtp/RTPPacket.h \
+  transport/rtp/RTPPayloadReceiver.h \
+  transport/rtp/RTPPacket_m.h
 $O/transport/rtp/profiles/avprofile/RTPAVProfilePayload32Sender.o: transport/rtp/profiles/avprofile/RTPAVProfilePayload32Sender.cc \
+  base/Compat.h \
   transport/rtp/profiles/avprofile/RTPAVProfilePayload32Sender.h \
-  transport/rtp/profiles/avprofile/RTPMpegPacket_m.h
+  transport/rtp/RTPSenderControlMessage_m.h \
+  transport/rtp/RTPPacket.h \
+  transport/rtp/RTPPacket_m.h \
+  transport/rtp/RTPPayloadSender.h \
+  networklayer/contract/IPv4Address.h \
+  transport/rtp/RTPSenderStatusMessage_m.h \
+  transport/rtp/RTPInnerPacket.h \
+  transport/rtp/profiles/avprofile/RTPMpegPacket_m.h \
+  transport/rtp/RTPInnerPacket_m.h \
+  base/INETDefs.h
 $O/transport/rtp/profiles/avprofile/RTPMpegPacket_m.o: transport/rtp/profiles/avprofile/RTPMpegPacket_m.cc \
   transport/rtp/profiles/avprofile/RTPMpegPacket_m.h
 $O/transport/sctp/SCTP.o: transport/sctp/SCTP.cc \
-  transport/sctp/SCTPQueue.h \
-  transport/sctp/SCTPMessage.h \
-  transport/sctp/SCTPMessage_m.h \
-  transport/sctp/SCTPGapList.h \
+  transport/contract/SCTPCommand_m.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPv4Address.h \
+  transport/contract/SCTPCommand.h \
   transport/sctp/SCTPSendStream.h \
-  transport/sctp/SCTPReceiveStream.h \
+  base/INotifiable.h \
+  transport/sctp/SCTPMessage.h \
+  networklayer/contract/IPProtocolId_m.h \
+  transport/contract/UDPSocket.h \
+  transport/sctp/SCTPGapList.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  base/ILifecycle.h \
+  networklayer/contract/IPSocket.h \
+  networklayer/common/IInterfaceTable.h \
   transport/sctp/SCTP.h \
-  transport/sctp/SCTPAssociation.h
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
+  transport/sctp/SCTPReceiveStream.h \
+  networklayer/contract/IPv6Address.h \
+  transport/sctp/SCTPMessage_m.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  transport/contract/UDPControlInfo_m.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/common/InterfaceTable.h \
+  transport/sctp/SCTPQueue.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  transport/sctp/SCTPAssociation.h \
+  linklayer/contract/MACAddress.h
 $O/transport/sctp/SCTPAlg.o: transport/sctp/SCTPAlg.cc \
-  transport/sctp/SCTPAlgorithm.h \
-  transport/sctp/SCTPAssociation.h \
-  transport/sctp/SCTP.h \
-  transport/sctp/SCTPMessage_m.h \
-  transport/sctp/SCTPGapList.h \
-  transport/sctp/SCTPSendStream.h \
   transport/sctp/SCTPReceiveStream.h \
-  transport/sctp/SCTPMessage.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  transport/sctp/SCTPMessage_m.h \
+  networklayer/contract/IPv6Address.h \
   transport/sctp/SCTPQueue.h \
-  transport/sctp/SCTPAlg.h
-$O/transport/sctp/SCTPAssociationAddIP.o: transport/sctp/SCTPAssociationAddIP.cc \
-  transport/sctp/SCTPQueue.h \
-  transport/sctp/SCTP.h \
+  networklayer/common/InterfaceTable.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
   transport/sctp/SCTPAssociation.h \
-  transport/sctp/SCTPMessage.h \
-  transport/sctp/SCTPGapList.h \
+  linklayer/contract/MACAddress.h \
+  transport/sctp/SCTPAlg.h \
+  networklayer/contract/IPv4Address.h \
   transport/sctp/SCTPSendStream.h \
+  base/INotifiable.h \
+  transport/sctp/SCTPMessage.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
+  transport/contract/UDPSocket.h \
+  transport/sctp/SCTPGapList.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h \
+  transport/sctp/SCTP.h \
+  transport/sctp/SCTPAlgorithm.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h
+$O/transport/sctp/SCTPAssociationAddIP.o: transport/sctp/SCTPAssociationAddIP.cc \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  transport/sctp/SCTP.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  transport/contract/UDPSocket.h \
+  transport/sctp/SCTPGapList.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/INotifiable.h \
+  transport/sctp/SCTPSendStream.h \
+  transport/sctp/SCTPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  linklayer/contract/MACAddress.h \
+  util/common.h \
+  networklayer/ipv4/IRoutingTable.h \
+  transport/sctp/SCTPAssociation.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  transport/sctp/SCTPQueue.h \
+  networklayer/common/InterfaceTable.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
   transport/sctp/SCTPMessage_m.h \
   transport/sctp/SCTPReceiveStream.h
 $O/transport/sctp/SCTPAssociationBase.o: transport/sctp/SCTPAssociationBase.cc \
-  transport/sctp/SCTPQueue.h \
-  transport/sctp/SCTPReceiveStream.h \
-  transport/sctp/SCTPMessage_m.h \
-  transport/sctp/SCTPGapList.h \
-  transport/sctp/SCTPSendStream.h \
-  transport/sctp/SCTPMessage.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h \
   transport/sctp/SCTP.h \
+  transport/sctp/SCTPAlgorithm.h \
+  transport/sctp/SCTPMessage.h \
+  transport/contract/SCTPCommand.h \
+  base/INotifiable.h \
+  transport/sctp/SCTPSendStream.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv6/RoutingTable6.h \
+  transport/sctp/SCTPGapList.h \
+  transport/contract/UDPSocket.h \
+  networklayer/common/InterfaceTableAccess.h \
+  transport/contract/SCTPCommand_m.h \
+  networklayer/contract/IPv4Address.h \
   transport/sctp/SCTPAssociation.h \
-  transport/sctp/SCTPAlgorithm.h
+  networklayer/ipv4/IRoutingTable.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ipv6/RoutingTable6Access.h \
+  networklayer/ipv4/IPv4Route.h \
+  transport/sctp/SCTPQueue.h \
+  networklayer/common/InterfaceTable.h \
+  transport/sctp/SCTPReceiveStream.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
+  transport/sctp/SCTPMessage_m.h
 $O/transport/sctp/SCTPAssociationEventProc.o: transport/sctp/SCTPAssociationEventProc.cc \
+  networklayer/common/InterfaceTable.h \
   transport/sctp/SCTPQueue.h \
-  transport/sctp/SCTPAssociation.h \
-  transport/sctp/SCTP.h \
-  transport/sctp/SCTPAlgorithm.h \
   transport/sctp/SCTPMessage_m.h \
-  transport/sctp/SCTPGapList.h \
-  transport/sctp/SCTPSendStream.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
   transport/sctp/SCTPReceiveStream.h \
-  transport/sctp/SCTPMessage.h
+  linklayer/contract/MACAddress.h \
+  transport/sctp/SCTPAssociation.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  transport/sctp/SCTPGapList.h \
+  transport/contract/UDPSocket.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  transport/sctp/SCTPMessage.h \
+  transport/sctp/SCTPSendStream.h \
+  transport/contract/SCTPCommand.h \
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/contract/IPv4Address.h \
+  transport/contract/SCTPCommand_m.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  transport/sctp/SCTPAlgorithm.h \
+  transport/sctp/SCTP.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h
 $O/transport/sctp/SCTPAssociationRcvMessage.o: transport/sctp/SCTPAssociationRcvMessage.cc \
-  transport/sctp/SCTPAlgorithm.h \
-  transport/sctp/SCTPAssociation.h \
-  transport/sctp/SCTP.h \
-  transport/sctp/SCTPMessage.h \
-  transport/sctp/SCTPReceiveStream.h \
-  transport/sctp/SCTPSendStream.h \
-  transport/sctp/SCTPGapList.h \
+  networklayer/contract/IPv6Address.h \
   transport/sctp/SCTPMessage_m.h \
-  transport/sctp/SCTPQueue.h
+  base/NotifierConsts.h \
+  base/Compat.h \
+  transport/sctp/SCTPReceiveStream.h \
+  networklayer/common/InterfaceTable.h \
+  transport/sctp/SCTPQueue.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/ipv6/IPv6InterfaceData.h \
+  linklayer/contract/MACAddress.h \
+  transport/sctp/SCTPAssociation.h \
+  util/common.h \
+  networklayer/contract/IPv4Address.h \
+  transport/contract/SCTPCommand_m.h \
+  networklayer/common/InterfaceTableAccess.h \
+  transport/sctp/SCTPGapList.h \
+  transport/contract/UDPSocket.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  transport/sctp/SCTPMessage.h \
+  transport/contract/SCTPCommand.h \
+  base/INotifiable.h \
+  transport/sctp/SCTPSendStream.h \
+  networklayer/contract/IPProtocolId_m.h \
+  transport/sctp/SCTPAlgorithm.h \
+  transport/sctp/SCTP.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h
 $O/transport/sctp/SCTPAssociationSendAll.o: transport/sctp/SCTPAssociationSendAll.cc \
-  transport/sctp/SCTPAssociation.h \
-  transport/sctp/SCTP.h \
-  transport/sctp/SCTPAlgorithm.h \
-  transport/sctp/SCTPReceiveStream.h \
   transport/sctp/SCTPGapList.h \
-  transport/sctp/SCTPSendStream.h \
-  transport/sctp/SCTPMessage_m.h \
+  transport/contract/UDPSocket.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
   transport/sctp/SCTPMessage.h \
-  transport/sctp/SCTPQueue.h
+  base/INotifiable.h \
+  transport/contract/SCTPCommand.h \
+  transport/sctp/SCTPSendStream.h \
+  networklayer/contract/IPv4Address.h \
+  transport/contract/SCTPCommand_m.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  transport/sctp/SCTPAlgorithm.h \
+  transport/sctp/SCTP.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/common/InterfaceTable.h \
+  transport/sctp/SCTPQueue.h \
+  transport/sctp/SCTPMessage_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  transport/sctp/SCTPReceiveStream.h \
+  linklayer/contract/MACAddress.h \
+  transport/sctp/SCTPAssociation.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h
 $O/transport/sctp/SCTPAssociationStreamReset.o: transport/sctp/SCTPAssociationStreamReset.cc \
   transport/sctp/SCTPQueue.h \
-  transport/sctp/SCTP.h \
-  transport/sctp/SCTPAssociation.h \
-  transport/sctp/SCTPReceiveStream.h \
-  transport/sctp/SCTPSendStream.h \
-  transport/sctp/SCTPGapList.h \
+  networklayer/common/InterfaceTable.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/contract/IPv6Address.h \
   transport/sctp/SCTPMessage_m.h \
-  transport/sctp/SCTPMessage.h
+  transport/sctp/SCTPReceiveStream.h \
+  linklayer/contract/MACAddress.h \
+  transport/sctp/SCTPAssociation.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  transport/contract/UDPSocket.h \
+  transport/sctp/SCTPGapList.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/INotifiable.h \
+  transport/contract/SCTPCommand.h \
+  transport/sctp/SCTPSendStream.h \
+  transport/sctp/SCTPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  transport/contract/SCTPCommand_m.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  transport/sctp/SCTP.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h
 $O/transport/sctp/SCTPAssociationUtil.o: transport/sctp/SCTPAssociationUtil.cc \
+  networklayer/ipv4/IRoutingTable.h \
+  transport/sctp/SCTPAssociation.h \
+  util/common.h \
+  networklayer/ipv6/IPv6InterfaceData.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/ipv6/RoutingTable6Access.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/common/InterfaceTable.h \
   transport/sctp/SCTPQueue.h \
-  transport/sctp/SCTPSendStream.h \
-  transport/sctp/SCTPGapList.h \
-  transport/sctp/SCTPMessage_m.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
   transport/sctp/SCTPReceiveStream.h \
-  transport/sctp/SCTPMessage.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  transport/sctp/SCTPMessage_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  transport/contract/UDPControlInfo_m.h \
+  networklayer/ipv4/RoutingTable.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
   transport/sctp/SCTPAlgorithm.h \
-  transport/sctp/SCTPAssociation.h \
-  transport/sctp/SCTP.h
+  transport/sctp/SCTP.h \
+  transport/sctp/SCTPMessage.h \
+  transport/sctp/SCTPSendStream.h \
+  transport/contract/SCTPCommand.h \
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv6/RoutingTable6.h \
+  transport/sctp/SCTPGapList.h \
+  transport/contract/UDPSocket.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  transport/contract/SCTPCommand_m.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPv4Address.h
 $O/transport/sctp/SCTPCCFunctions.o: transport/sctp/SCTPCCFunctions.cc \
+  networklayer/common/InterfaceTable.h \
   transport/sctp/SCTPQueue.h \
-  transport/sctp/SCTPAssociation.h \
-  transport/sctp/SCTP.h \
-  transport/sctp/SCTPMessage.h \
   transport/sctp/SCTPReceiveStream.h \
+  networklayer/contract/IPv6Address.h \
   transport/sctp/SCTPMessage_m.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  transport/sctp/SCTPAssociation.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/sctp/SCTPSendStream.h \
+  base/INotifiable.h \
+  transport/sctp/SCTPMessage.h \
+  networklayer/common/InterfaceTableAccess.h \
+  transport/contract/UDPSocket.h \
   transport/sctp/SCTPGapList.h \
-  transport/sctp/SCTPSendStream.h
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  transport/sctp/SCTP.h
 $O/transport/sctp/SCTPGapList.o: transport/sctp/SCTPGapList.cc \
-  transport/sctp/SCTPQueue.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
   transport/sctp/SCTP.h \
-  transport/sctp/SCTPAssociation.h \
-  transport/sctp/SCTPMessage.h \
-  transport/sctp/SCTPReceiveStream.h \
-  transport/sctp/SCTPSendStream.h \
-  transport/sctp/SCTPMessage_m.h \
-  transport/sctp/SCTPGapList.h
-$O/transport/sctp/SCTPMessage.o: transport/sctp/SCTPMessage.cc \
-  transport/sctp/SCTP.h \
-  transport/sctp/SCTPAssociation.h \
-  transport/sctp/SCTPMessage.h \
-  transport/sctp/SCTPReceiveStream.h \
-  transport/sctp/SCTPSendStream.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/common/InterfaceTableAccess.h \
+  transport/contract/UDPSocket.h \
   transport/sctp/SCTPGapList.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  base/INotifiable.h \
+  transport/sctp/SCTPSendStream.h \
+  transport/sctp/SCTPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  linklayer/contract/MACAddress.h \
+  transport/sctp/SCTPAssociation.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceTable.h \
+  transport/sctp/SCTPQueue.h \
+  networklayer/contract/IPv6Address.h \
   transport/sctp/SCTPMessage_m.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  transport/sctp/SCTPReceiveStream.h
+$O/transport/sctp/SCTPMessage.o: transport/sctp/SCTPMessage.cc \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  transport/sctp/SCTP.h \
+  base/INETDefs.h \
+  base/NotificationBoard.h \
+  networklayer/contract/IPv4Address.h \
+  base/INotifiable.h \
+  transport/sctp/SCTPSendStream.h \
+  transport/sctp/SCTPMessage.h \
+  networklayer/common/InterfaceTableAccess.h \
+  transport/contract/UDPSocket.h \
+  transport/sctp/SCTPGapList.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/sctp/SCTPAssociation.h \
+  linklayer/contract/MACAddress.h \
+  transport/sctp/SCTPReceiveStream.h \
+  transport/sctp/SCTPMessage_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  networklayer/common/InterfaceTable.h \
   transport/sctp/SCTPQueue.h
 $O/transport/sctp/SCTPMessage_m.o: transport/sctp/SCTPMessage_m.cc \
-  transport/sctp/SCTPMessage_m.h
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv6Address.h \
+  transport/sctp/SCTPMessage_m.h \
+  base/Compat.h \
+  base/INETDefs.h \
+  networklayer/contract/IPv4Address.h
 $O/transport/sctp/SCTPNatHook.o: transport/sctp/SCTPNatHook.cc \
-  transport/sctp/SCTPMessage.h \
-  transport/sctp/SCTPReceiveStream.h \
+  base/ProtocolMap.h \
+  networklayer/ipv4/ICMPAccess.h \
+  base/QueueBase.h \
+  networklayer/ipv4/IRoutingTable.h \
+  transport/sctp/SCTPAssociation.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPvXAddress.h \
   transport/sctp/SCTPNatHook.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/ipv4/IPv4Route.h \
+  base/AbstractQueue.h \
+  networklayer/arp/IARPCache.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/ipv4/IPv4FragBuf.h \
+  networklayer/common/InterfaceTable.h \
+  transport/sctp/SCTPQueue.h \
+  transport/sctp/SCTPReceiveStream.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  networklayer/contract/IPv6Address.h \
   transport/sctp/SCTPMessage_m.h \
-  transport/sctp/SCTPGapList.h \
-  transport/sctp/SCTPSendStream.h \
-  transport/sctp/SCTP.h \
-  transport/sctp/SCTPAssociation.h \
+  base/NotifierConsts.h \
+  networklayer/ipv4/ICMP.h \
+  networklayer/common/INetfilter.h \
+  base/Compat.h \
+  base/INETDefs.h \
+  base/ReassemblyBuffer.h \
+  base/NotificationBoard.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
   transport/sctp/SCTPNatTable.h \
-  transport/sctp/SCTPQueue.h
+  transport/sctp/SCTP.h \
+  transport/sctp/SCTPMessage.h \
+  base/INotifiable.h \
+  transport/sctp/SCTPSendStream.h \
+  networklayer/contract/IPProtocolId_m.h \
+  transport/sctp/SCTPGapList.h \
+  transport/contract/UDPSocket.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/IPv4.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h
 $O/transport/sctp/SCTPNatTable.o: transport/sctp/SCTPNatTable.cc \
-  transport/sctp/SCTPQueue.h \
+  networklayer/common/InterfaceTableAccess.h \
+  transport/sctp/SCTPGapList.h \
+  transport/contract/UDPSocket.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  transport/sctp/SCTPMessage.h \
+  base/INotifiable.h \
+  transport/sctp/SCTPSendStream.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
   transport/sctp/SCTPNatTable.h \
-  transport/sctp/SCTPMessage_m.h \
-  transport/sctp/SCTPSendStream.h \
-  transport/sctp/SCTPGapList.h \
-  transport/sctp/SCTPReceiveStream.h \
-  transport/sctp/SCTPMessage.h \
   transport/sctp/SCTP.h \
-  transport/sctp/SCTPAssociation.h
-$O/transport/sctp/SCTPQueue.o: transport/sctp/SCTPQueue.cc \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  networklayer/common/InterfaceTable.h \
   transport/sctp/SCTPQueue.h \
-  transport/sctp/SCTPGapList.h \
+  networklayer/contract/IPv6Address.h \
   transport/sctp/SCTPMessage_m.h \
-  transport/sctp/SCTPSendStream.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
   transport/sctp/SCTPReceiveStream.h \
+  linklayer/contract/MACAddress.h \
+  transport/sctp/SCTPAssociation.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h
+$O/transport/sctp/SCTPQueue.o: transport/sctp/SCTPQueue.cc \
+  networklayer/contract/IPv4Address.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  networklayer/common/InterfaceTableAccess.h \
+  transport/sctp/SCTPGapList.h \
+  transport/contract/UDPSocket.h \
   transport/sctp/SCTPMessage.h \
-  transport/sctp/SCTPAssociation.h \
-  transport/sctp/SCTP.h
-$O/transport/sctp/SCTPReceiveStream.o: transport/sctp/SCTPReceiveStream.cc \
-  transport/sctp/SCTPAssociation.h \
+  transport/sctp/SCTPSendStream.h \
+  base/INotifiable.h \
   transport/sctp/SCTP.h \
-  transport/sctp/SCTPMessage.h \
-  transport/sctp/SCTPReceiveStream.h \
-  transport/sctp/SCTPSendStream.h \
-  transport/sctp/SCTPGapList.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
   transport/sctp/SCTPMessage_m.h \
+  transport/sctp/SCTPReceiveStream.h \
+  transport/sctp/SCTPQueue.h \
+  networklayer/common/InterfaceTable.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h \
+  linklayer/contract/MACAddress.h \
+  transport/sctp/SCTPAssociation.h
+$O/transport/sctp/SCTPReceiveStream.o: transport/sctp/SCTPReceiveStream.cc \
+  transport/sctp/SCTP.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  networklayer/contract/IPv4Address.h \
+  transport/sctp/SCTPGapList.h \
+  transport/contract/UDPSocket.h \
+  networklayer/common/InterfaceTableAccess.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  transport/sctp/SCTPMessage.h \
+  transport/sctp/SCTPSendStream.h \
+  base/INotifiable.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h \
+  linklayer/contract/MACAddress.h \
+  transport/sctp/SCTPAssociation.h \
+  networklayer/contract/IPv6Address.h \
+  transport/sctp/SCTPMessage_m.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  transport/sctp/SCTPReceiveStream.h \
+  networklayer/common/InterfaceTable.h \
   transport/sctp/SCTPQueue.h
 $O/transport/sctp/SCTPSSFunctions.o: transport/sctp/SCTPSSFunctions.cc \
-  transport/sctp/SCTPQueue.h \
-  transport/sctp/SCTPMessage.h \
-  transport/sctp/SCTPReceiveStream.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceTableAccess.h \
+  transport/contract/UDPSocket.h \
   transport/sctp/SCTPGapList.h \
+  transport/sctp/SCTPSendStream.h \
+  base/INotifiable.h \
+  transport/sctp/SCTPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  transport/sctp/SCTP.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h \
+  transport/sctp/SCTPQueue.h \
+  networklayer/common/InterfaceTable.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
   transport/sctp/SCTPMessage_m.h \
-  transport/sctp/SCTPSendStream.h \
-  transport/sctp/SCTP.h \
-  transport/sctp/SCTPAssociation.h
-$O/transport/sctp/SCTPSendStream.o: transport/sctp/SCTPSendStream.cc \
-  transport/sctp/SCTPSendStream.h \
-  transport/sctp/SCTP.h \
+  networklayer/contract/IPv6Address.h \
+  transport/sctp/SCTPReceiveStream.h \
+  linklayer/contract/MACAddress.h \
   transport/sctp/SCTPAssociation.h \
-  transport/sctp/SCTPQueue.h
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPvXAddress.h
+$O/transport/sctp/SCTPSendStream.o: transport/sctp/SCTPSendStream.cc \
+  transport/sctp/SCTPAssociation.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/sctp/SCTPQueue.h \
+  base/Compat.h \
+  networklayer/contract/IPv6Address.h \
+  base/INETDefs.h \
+  transport/sctp/SCTP.h \
+  transport/contract/UDPSocket.h \
+  transport/sctp/SCTPSendStream.h \
+  networklayer/contract/IPv4Address.h
 $O/transport/tcp/TCP.o: transport/tcp/TCP.cc \
+  base/ILifecycle.h \
+  networklayer/icmpv6/ICMPv6Message_m.h \
+  networklayer/contract/IPSocket.h \
+  base/NodeOperations.h \
+  transport/tcp/queues/TCPByteStreamSendQueue.h \
+  base/ByteArray.h \
+  transport/tcp/TCPConnection.h \
+  base/ByteArrayBuffer.h \
+  transport/contract/TCPCommand_m.h \
+  base/INETDefs.h \
+  transport/tcp/TCPReceiveQueue.h \
+  transport/tcp/queues/TCPVirtualDataRcvQueue.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPProtocolId_m.h \
+  transport/tcp/TCPSendQueue.h \
+  base/ModuleAccess.h \
   transport/tcp/TCP.h \
-  transport/tcp/TCPConnection.h
+  base/LifecycleOperation.h \
+  networklayer/contract/IPvXAddress.h \
+  status/NodeStatus.h \
+  transport/tcp/queues/TCPByteStreamRcvQueue.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
+  transport/tcp_common/TCPSegment_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArray_m.h \
+  base/Compat.h \
+  transport/tcp/queues/TCPMsgBasedRcvQueue.h \
+  transport/tcp/queues/TCPMsgBasedSendQueue.h \
+  transport/tcp_common/TCPSegment.h \
+  transport/tcp/queues/TCPVirtualDataSendQueue.h
 $O/transport/tcp/TCPConnectionBase.o: transport/tcp/TCPConnectionBase.cc \
-  transport/tcp/TCPReceiveQueue.h \
-  transport/tcp/TCPConnection.h \
-  transport/tcp/TCP.h \
+  networklayer/contract/IPv4Address.h \
   transport/tcp/TCPSACKRexmitQueue.h \
   transport/tcp/TCPSendQueue.h \
-  transport/tcp/TCPAlgorithm.h
+  base/ILifecycle.h \
+  transport/tcp/TCPConnection.h \
+  base/ByteArray.h \
+  transport/tcp/TCPAlgorithm.h \
+  base/INETDefs.h \
+  transport/tcp/TCPReceiveQueue.h \
+  transport/contract/TCPCommand_m.h \
+  transport/tcp_common/TCPSegment_m.h \
+  base/Compat.h \
+  transport/tcp_common/TCPSegment.h \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArray_m.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/tcp/TCP.h
 $O/transport/tcp/TCPConnectionEventProc.o: transport/tcp/TCPConnectionEventProc.cc \
-  transport/tcp/TCPReceiveQueue.h \
-  transport/tcp/TCPConnection.h \
+  transport/tcp_common/TCPSegment_m.h \
+  transport/tcp_common/TCPSegment.h \
+  base/Compat.h \
+  base/ByteArray_m.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPvXAddress.h \
   transport/tcp/TCP.h \
   transport/tcp/TCPSendQueue.h \
-  transport/tcp/TCPAlgorithm.h
+  networklayer/contract/IPv4Address.h \
+  transport/tcp/TCPReceiveQueue.h \
+  base/INETDefs.h \
+  transport/contract/TCPCommand_m.h \
+  base/ILifecycle.h \
+  transport/tcp/TCPAlgorithm.h \
+  transport/tcp/TCPConnection.h \
+  base/ByteArray.h
 $O/transport/tcp/TCPConnectionRcvSegment.o: transport/tcp/TCPConnectionRcvSegment.cc \
-  transport/tcp/TCPConnection.h \
-  transport/tcp/TCPReceiveQueue.h \
-  transport/tcp/TCPSendQueue.h \
-  transport/tcp/TCPSACKRexmitQueue.h \
+  base/ILifecycle.h \
   transport/tcp/TCPAlgorithm.h \
-  transport/tcp/TCP.h
+  transport/tcp/TCPConnection.h \
+  base/ByteArray.h \
+  transport/tcp/TCPReceiveQueue.h \
+  base/INETDefs.h \
+  transport/contract/TCPCommand_m.h \
+  networklayer/contract/IPv4Address.h \
+  transport/tcp/TCPSACKRexmitQueue.h \
+  transport/tcp/TCPSendQueue.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/tcp/TCP.h \
+  transport/tcp_common/TCPSegment_m.h \
+  transport/tcp_common/TCPSegment.h \
+  base/Compat.h \
+  base/ByteArray_m.h \
+  networklayer/contract/IPv6Address.h
 $O/transport/tcp/TCPConnectionSackUtil.o: transport/tcp/TCPConnectionSackUtil.cc \
+  transport/tcp_common/TCPSegment_m.h \
+  transport/tcp_common/TCPSegment.h \
+  base/Compat.h \
+  base/ByteArray_m.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/contract/IPvXAddress.h \
   transport/tcp/TCP.h \
   transport/tcp/TCPSACKRexmitQueue.h \
   transport/tcp/TCPSendQueue.h \
-  transport/tcp/TCPAlgorithm.h \
+  networklayer/contract/IPv4Address.h \
   transport/tcp/TCPReceiveQueue.h \
-  transport/tcp/TCPConnection.h
-$O/transport/tcp/TCPConnectionUtil.o: transport/tcp/TCPConnectionUtil.cc \
+  base/INETDefs.h \
+  transport/contract/TCPCommand_m.h \
+  base/ILifecycle.h \
+  transport/tcp/TCPAlgorithm.h \
   transport/tcp/TCPConnection.h \
-  transport/tcp/TCPReceiveQueue.h \
-  transport/tcp/TCPAlgorithm.h \
+  base/ByteArray.h
+$O/transport/tcp/TCPConnectionUtil.o: transport/tcp/TCPConnectionUtil.cc \
+  transport/tcp_common/TCPSegment.h \
+  base/Compat.h \
+  base/ByteArray_m.h \
+  networklayer/contract/IPv6Address.h \
+  transport/tcp_common/TCPSegment_m.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  transport/tcp/TCP.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPv4ControlInfo.h \
   transport/tcp/TCPSendQueue.h \
+  networklayer/contract/IPProtocolId_m.h \
   transport/tcp/TCPSACKRexmitQueue.h \
-  transport/tcp/TCP.h
+  transport/tcp/TCPAlgorithm.h \
+  base/ByteArray.h \
+  transport/tcp/TCPConnection.h \
+  base/ILifecycle.h \
+  transport/tcp/TCPReceiveQueue.h \
+  base/INETDefs.h \
+  transport/contract/TCPCommand_m.h
 $O/transport/tcp/TCPSACKRexmitQueue.o: transport/tcp/TCPSACKRexmitQueue.cc \
   transport/tcp/TCP.h \
-  transport/tcp/TCPSACKRexmitQueue.h \
-  transport/tcp/TCPConnection.h
-$O/transport/tcp/flavours/DumbTCP.o: transport/tcp/flavours/DumbTCP.cc \
-  transport/tcp/flavours/DumbTCP.h
-$O/transport/tcp/flavours/TCPBaseAlg.o: transport/tcp/flavours/TCPBaseAlg.cc \
-  transport/tcp/flavours/TCPBaseAlg.h
-$O/transport/tcp/flavours/TCPNewReno.o: transport/tcp/flavours/TCPNewReno.cc \
-  transport/tcp/flavours/TCPNewReno.h \
-  transport/tcp/flavours/TCPTahoeRenoFamily.h \
-  transport/tcp/flavours/TCPBaseAlg.h
-$O/transport/tcp/flavours/TCPNoCongestionControl.o: transport/tcp/flavours/TCPNoCongestionControl.cc \
-  transport/tcp/flavours/TCPBaseAlg.h \
-  transport/tcp/flavours/TCPNoCongestionControl.h
-$O/transport/tcp/flavours/TCPReno.o: transport/tcp/flavours/TCPReno.cc \
-  transport/tcp/flavours/TCPReno.h \
-  transport/tcp/flavours/TCPBaseAlg.h \
-  transport/tcp/flavours/TCPTahoeRenoFamily.h
-$O/transport/tcp/flavours/TCPSegmentTransmitInfoList.o: transport/tcp/flavours/TCPSegmentTransmitInfoList.cc \
-  transport/tcp/flavours/TCPBaseAlg.h \
-  transport/tcp/flavours/TCPSegmentTransmitInfoList.h
-$O/transport/tcp/flavours/TCPTahoe.o: transport/tcp/flavours/TCPTahoe.cc \
-  transport/tcp/flavours/TCPTahoe.h \
-  transport/tcp/flavours/TCPTahoeRenoFamily.h \
-  transport/tcp/flavours/TCPBaseAlg.h
-$O/transport/tcp/flavours/TCPTahoeRenoFamily.o: transport/tcp/flavours/TCPTahoeRenoFamily.cc \
-  transport/tcp/flavours/TCPTahoeRenoFamily.h \
-  transport/tcp/flavours/TCPBaseAlg.h
-$O/transport/tcp/flavours/TCPVegas.o: transport/tcp/flavours/TCPVegas.cc \
-  transport/tcp/flavours/TCPSegmentTransmitInfoList.h \
-  transport/tcp/flavours/TCPVegas.h \
-  transport/tcp/flavours/TCPBaseAlg.h
-$O/transport/tcp/flavours/TCPWestwood.o: transport/tcp/flavours/TCPWestwood.cc \
-  transport/tcp/flavours/TCPSegmentTransmitInfoList.h \
-  transport/tcp/flavours/TCPBaseAlg.h \
-  transport/tcp/flavours/TCPWestwood.h
-$O/transport/tcp/queues/TCPByteStreamRcvQueue.o: transport/tcp/queues/TCPByteStreamRcvQueue.cc \
-  transport/tcp/queues/TCPByteStreamRcvQueue.h \
-  transport/tcp/queues/TCPVirtualDataRcvQueue.h
-$O/transport/tcp/queues/TCPByteStreamSendQueue.o: transport/tcp/queues/TCPByteStreamSendQueue.cc \
-  transport/tcp/queues/TCPByteStreamSendQueue.h
-$O/transport/tcp/queues/TCPMsgBasedRcvQueue.o: transport/tcp/queues/TCPMsgBasedRcvQueue.cc \
-  transport/tcp/queues/TCPMsgBasedRcvQueue.h \
-  transport/tcp/queues/TCPVirtualDataRcvQueue.h
-$O/transport/tcp/queues/TCPMsgBasedSendQueue.o: transport/tcp/queues/TCPMsgBasedSendQueue.cc \
-  transport/tcp/queues/TCPMsgBasedSendQueue.h
-$O/transport/tcp/queues/TCPVirtualDataRcvQueue.o: transport/tcp/queues/TCPVirtualDataRcvQueue.cc \
-  transport/tcp/queues/TCPVirtualDataRcvQueue.h
-$O/transport/tcp/queues/TCPVirtualDataSendQueue.o: transport/tcp/queues/TCPVirtualDataSendQueue.cc \
-  transport/tcp/queues/TCPVirtualDataSendQueue.h
-$O/transport/tcp_common/TCPSegment.o: transport/tcp_common/TCPSegment.cc \
+  networklayer/contract/IPvXAddress.h \
   transport/tcp_common/TCPSegment_m.h \
-  transport/tcp_common/TCPSegment.h
-$O/transport/tcp_common/TCPSegment_m.o: transport/tcp_common/TCPSegment_m.cc \
-  transport/tcp_common/TCPSegment_m.h
-$O/transport/tcp_common/TCPSpoof.o: transport/tcp_common/TCPSpoof.cc \
-  transport/tcp_common/TCPSpoof.h \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArray_m.h \
+  base/Compat.h \
+  transport/tcp_common/TCPSegment.h \
+  transport/contract/TCPCommand_m.h \
+  base/INETDefs.h \
+  base/ILifecycle.h \
+  transport/tcp/TCPConnection.h \
+  base/ByteArray.h \
+  transport/tcp/TCPSACKRexmitQueue.h \
+  networklayer/contract/IPv4Address.h
+$O/transport/tcp/flavours/DumbTCP.o: transport/tcp/flavours/DumbTCP.cc \
+  transport/tcp/flavours/DumbTCP.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/tcp/TCP.h \
+  transport/tcp_common/TCPSegment.h \
+  base/Compat.h \
+  base/ByteArray_m.h \
+  networklayer/contract/IPv6Address.h \
+  transport/tcp_common/TCPSegment_m.h \
+  base/INETDefs.h \
+  transport/contract/TCPCommand_m.h \
+  transport/tcp/TCPAlgorithm.h \
+  base/ByteArray.h \
+  transport/tcp/TCPConnection.h \
+  base/ILifecycle.h \
+  networklayer/contract/IPv4Address.h
+$O/transport/tcp/flavours/TCPBaseAlg.o: transport/tcp/flavours/TCPBaseAlg.cc \
+  base/INETDefs.h \
+  transport/contract/TCPCommand_m.h \
+  base/ILifecycle.h \
+  transport/tcp/flavours/TCPBaseAlg.h \
+  transport/tcp/TCPAlgorithm.h \
+  transport/tcp/TCPConnection.h \
+  base/ByteArray.h \
+  transport/tcp/TCPSACKRexmitQueue.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/tcp/TCP.h \
+  transport/tcp_common/TCPSegment_m.h \
+  transport/tcp_common/TCPSegment.h \
+  base/Compat.h \
+  base/ByteArray_m.h \
+  networklayer/contract/IPv6Address.h
+$O/transport/tcp/flavours/TCPNewReno.o: transport/tcp/flavours/TCPNewReno.cc \
+  transport/tcp/TCP.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/tcp/flavours/TCPNewReno.h \
+  transport/tcp_common/TCPSegment_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArray_m.h \
+  base/Compat.h \
+  transport/tcp_common/TCPSegment.h \
+  transport/contract/TCPCommand_m.h \
+  base/INETDefs.h \
+  transport/tcp/flavours/TCPTahoeRenoFamily.h \
+  base/ILifecycle.h \
+  base/ByteArray.h \
+  transport/tcp/TCPConnection.h \
+  transport/tcp/TCPAlgorithm.h \
+  transport/tcp/flavours/TCPBaseAlg.h \
+  networklayer/contract/IPv4Address.h
+$O/transport/tcp/flavours/TCPNoCongestionControl.o: transport/tcp/flavours/TCPNoCongestionControl.cc \
+  networklayer/contract/IPvXAddress.h \
+  transport/tcp/TCP.h \
+  base/Compat.h \
+  transport/tcp_common/TCPSegment.h \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArray_m.h \
+  transport/tcp_common/TCPSegment_m.h \
+  transport/tcp/flavours/TCPNoCongestionControl.h \
+  transport/tcp/flavours/TCPBaseAlg.h \
+  base/ByteArray.h \
+  transport/tcp/TCPConnection.h \
+  transport/tcp/TCPAlgorithm.h \
+  base/ILifecycle.h \
+  base/INETDefs.h \
+  transport/contract/TCPCommand_m.h \
+  networklayer/contract/IPv4Address.h
+$O/transport/tcp/flavours/TCPReno.o: transport/tcp/flavours/TCPReno.cc \
+  transport/tcp/TCP.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/tcp/flavours/TCPReno.h \
+  base/ByteArray_m.h \
+  networklayer/contract/IPv6Address.h \
+  transport/tcp_common/TCPSegment.h \
+  base/Compat.h \
+  transport/tcp_common/TCPSegment_m.h \
+  transport/tcp/TCPAlgorithm.h \
+  transport/tcp/TCPConnection.h \
+  base/ByteArray.h \
+  transport/tcp/flavours/TCPBaseAlg.h \
+  base/ILifecycle.h \
+  transport/tcp/flavours/TCPTahoeRenoFamily.h \
+  transport/contract/TCPCommand_m.h \
+  base/INETDefs.h \
+  networklayer/contract/IPv4Address.h
+$O/transport/tcp/flavours/TCPSegmentTransmitInfoList.o: transport/tcp/flavours/TCPSegmentTransmitInfoList.cc \
+  networklayer/contract/IPv4Address.h \
+  transport/contract/TCPCommand_m.h \
+  base/INETDefs.h \
+  base/ILifecycle.h \
+  base/ByteArray.h \
+  transport/tcp/TCPConnection.h \
+  transport/tcp/TCPAlgorithm.h \
+  transport/tcp/flavours/TCPBaseAlg.h \
+  transport/tcp_common/TCPSegment_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArray_m.h \
+  base/Compat.h \
+  transport/tcp_common/TCPSegment.h \
+  transport/tcp/flavours/TCPSegmentTransmitInfoList.h \
+  transport/tcp/TCP.h \
+  networklayer/contract/IPvXAddress.h
+$O/transport/tcp/flavours/TCPTahoe.o: transport/tcp/flavours/TCPTahoe.cc \
+  base/Compat.h \
+  transport/tcp_common/TCPSegment.h \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArray_m.h \
+  transport/tcp_common/TCPSegment_m.h \
+  transport/tcp/flavours/TCPTahoe.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/tcp/TCP.h \
+  networklayer/contract/IPv4Address.h \
+  transport/tcp/flavours/TCPBaseAlg.h \
+  base/ByteArray.h \
+  transport/tcp/TCPConnection.h \
+  transport/tcp/TCPAlgorithm.h \
+  base/ILifecycle.h \
+  transport/tcp/flavours/TCPTahoeRenoFamily.h \
+  base/INETDefs.h \
+  transport/contract/TCPCommand_m.h
+$O/transport/tcp/flavours/TCPTahoeRenoFamily.o: transport/tcp/flavours/TCPTahoeRenoFamily.cc \
+  networklayer/contract/IPv4Address.h \
+  transport/tcp/flavours/TCPTahoeRenoFamily.h \
+  transport/contract/TCPCommand_m.h \
+  base/INETDefs.h \
+  base/ByteArray.h \
+  transport/tcp/TCPConnection.h \
+  transport/tcp/TCPAlgorithm.h \
+  transport/tcp/flavours/TCPBaseAlg.h \
+  base/ILifecycle.h \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArray_m.h \
+  base/Compat.h \
+  transport/tcp_common/TCPSegment.h \
+  transport/tcp_common/TCPSegment_m.h \
+  transport/tcp/TCP.h \
+  networklayer/contract/IPvXAddress.h
+$O/transport/tcp/flavours/TCPVegas.o: transport/tcp/flavours/TCPVegas.cc \
+  networklayer/contract/IPv4Address.h \
+  transport/tcp/flavours/TCPVegas.h \
+  transport/tcp/flavours/TCPBaseAlg.h \
+  transport/tcp/TCPAlgorithm.h \
+  base/ByteArray.h \
+  transport/tcp/TCPConnection.h \
+  base/ILifecycle.h \
+  base/INETDefs.h \
+  transport/contract/TCPCommand_m.h \
+  transport/tcp_common/TCPSegment.h \
+  base/Compat.h \
+  base/ByteArray_m.h \
+  networklayer/contract/IPv6Address.h \
+  transport/tcp_common/TCPSegment_m.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/tcp/TCP.h \
+  transport/tcp/flavours/TCPSegmentTransmitInfoList.h
+$O/transport/tcp/flavours/TCPWestwood.o: transport/tcp/flavours/TCPWestwood.cc \
+  transport/contract/TCPCommand_m.h \
+  base/INETDefs.h \
+  base/ILifecycle.h \
+  transport/tcp/TCPAlgorithm.h \
+  base/ByteArray.h \
+  transport/tcp/TCPConnection.h \
+  transport/tcp/flavours/TCPBaseAlg.h \
+  networklayer/contract/IPv4Address.h \
+  transport/tcp/flavours/TCPSegmentTransmitInfoList.h \
+  transport/tcp/TCP.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/tcp_common/TCPSegment_m.h \
+  base/ByteArray_m.h \
+  networklayer/contract/IPv6Address.h \
+  transport/tcp/flavours/TCPWestwood.h \
+  transport/tcp_common/TCPSegment.h \
+  base/Compat.h
+$O/transport/tcp/queues/TCPByteStreamRcvQueue.o: transport/tcp/queues/TCPByteStreamRcvQueue.cc \
+  transport/tcp/queues/TCPVirtualDataRcvQueue.h \
+  networklayer/contract/IPv4Address.h \
+  base/ILifecycle.h \
+  base/ByteArray.h \
+  transport/tcp/TCPConnection.h \
+  base/INETDefs.h \
+  transport/tcp/TCPReceiveQueue.h \
+  transport/contract/TCPCommand_m.h \
+  base/ByteArrayMessage.h \
+  transport/tcp_common/TCPSegment_m.h \
+  base/Compat.h \
+  transport/tcp_common/TCPSegment.h \
+  base/ByteArrayMessage_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArray_m.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/tcp/queues/TCPByteStreamRcvQueue.h \
+  transport/tcp/TCP.h
+$O/transport/tcp/queues/TCPByteStreamSendQueue.o: transport/tcp/queues/TCPByteStreamSendQueue.cc \
+  base/ByteArray_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArrayMessage_m.h \
+  transport/tcp_common/TCPSegment.h \
+  base/Compat.h \
+  transport/tcp_common/TCPSegment_m.h \
+  transport/tcp/TCP.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv4Address.h \
+  transport/tcp/TCPSendQueue.h \
+  transport/tcp/TCPConnection.h \
+  base/ByteArray.h \
+  transport/tcp/queues/TCPByteStreamSendQueue.h \
+  base/ILifecycle.h \
+  base/ByteArrayMessage.h \
+  transport/contract/TCPCommand_m.h \
+  base/ByteArrayBuffer.h \
+  base/INETDefs.h
+$O/transport/tcp/queues/TCPMsgBasedRcvQueue.o: transport/tcp/queues/TCPMsgBasedRcvQueue.cc \
+  transport/tcp_common/TCPSegment_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArray_m.h \
+  transport/tcp/queues/TCPMsgBasedRcvQueue.h \
+  base/Compat.h \
+  transport/tcp_common/TCPSegment.h \
+  transport/tcp/TCP.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/tcp/queues/TCPVirtualDataRcvQueue.h \
+  networklayer/contract/IPv4Address.h \
+  base/ILifecycle.h \
+  base/ByteArray.h \
+  transport/tcp/TCPConnection.h \
+  transport/contract/TCPCommand_m.h \
+  base/INETDefs.h \
+  transport/tcp/TCPReceiveQueue.h
+$O/transport/tcp/queues/TCPMsgBasedSendQueue.o: transport/tcp/queues/TCPMsgBasedSendQueue.cc \
+  transport/tcp/TCPSendQueue.h \
+  networklayer/contract/IPv4Address.h \
+  base/INETDefs.h \
+  transport/contract/TCPCommand_m.h \
+  transport/tcp/TCPConnection.h \
+  base/ByteArray.h \
+  base/ILifecycle.h \
+  base/Compat.h \
+  transport/tcp/queues/TCPMsgBasedSendQueue.h \
+  transport/tcp_common/TCPSegment.h \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArray_m.h \
+  transport/tcp_common/TCPSegment_m.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/tcp/TCP.h
+$O/transport/tcp/queues/TCPVirtualDataRcvQueue.o: transport/tcp/queues/TCPVirtualDataRcvQueue.cc \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArray_m.h \
+  base/Compat.h \
+  transport/tcp_common/TCPSegment.h \
+  transport/tcp_common/TCPSegment_m.h \
+  transport/tcp/TCP.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv4Address.h \
+  transport/tcp/queues/TCPVirtualDataRcvQueue.h \
+  base/ByteArray.h \
+  transport/tcp/TCPConnection.h \
+  base/ILifecycle.h \
+  transport/contract/TCPCommand_m.h \
+  base/INETDefs.h \
+  transport/tcp/TCPReceiveQueue.h
+$O/transport/tcp/queues/TCPVirtualDataSendQueue.o: transport/tcp/queues/TCPVirtualDataSendQueue.cc \
+  networklayer/contract/IPv4Address.h \
+  transport/tcp/TCPSendQueue.h \
+  transport/tcp/TCPConnection.h \
+  base/ByteArray.h \
+  base/ILifecycle.h \
+  base/INETDefs.h \
+  transport/contract/TCPCommand_m.h \
+  base/Compat.h \
+  transport/tcp_common/TCPSegment.h \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArray_m.h \
+  transport/tcp_common/TCPSegment_m.h \
+  transport/tcp/queues/TCPVirtualDataSendQueue.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/tcp/TCP.h
+$O/transport/tcp_common/TCPSegment.o: transport/tcp_common/TCPSegment.cc \
+  base/ByteArray.h \
+  base/INETDefs.h \
+  base/ByteArray_m.h \
+  base/Compat.h \
   transport/tcp_common/TCPSegment.h \
   transport/tcp_common/TCPSegment_m.h
+$O/transport/tcp_common/TCPSegment_m.o: transport/tcp_common/TCPSegment_m.cc \
+  base/Compat.h \
+  base/ByteArray_m.h \
+  transport/tcp_common/TCPSegment_m.h \
+  base/INETDefs.h \
+  base/ByteArray.h
+$O/transport/tcp_common/TCPSpoof.o: transport/tcp_common/TCPSpoof.cc \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
+  transport/tcp_common/TCPSegment_m.h \
+  base/ByteArray_m.h \
+  networklayer/contract/IPv6Address.h \
+  transport/tcp_common/TCPSegment.h \
+  base/Compat.h \
+  transport/tcp_common/TCPSpoof.h \
+  base/ByteArray.h \
+  base/INETDefs.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPProtocolId_m.h
 $O/transport/udp/UDP.o: transport/udp/UDP.cc \
   transport/udp/UDPPacket_m.h \
-  transport/udp/UDP.h \
-  transport/udp/UDPPacket.h
+  networklayer/ipv4/IPv4InterfaceData.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/contract/IPv6Address.h \
+  networklayer/ipv4/RoutingTableAccess.h \
+  transport/contract/UDPControlInfo_m.h \
+  base/Compat.h \
+  networklayer/ipv4/ICMP.h \
+  base/NotifierConsts.h \
+  networklayer/icmpv6/ICMPv6Access.h \
+  networklayer/contract/IPv6ControlInfo_m.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  networklayer/ipv6/IPv6InterfaceData.h \
+  linklayer/contract/MACAddress.h \
+  networklayer/ipv4/ICMPAccess.h \
+  networklayer/ipv4/IRoutingTable.h \
+  networklayer/ipv4/IPv4Route.h \
+  networklayer/contract/IPv6ControlInfo.h \
+  networklayer/common/InterfaceEntry.h \
+  networklayer/contract/IPv4ControlInfo_m.h \
+  base/LifecycleOperation.h \
+  status/NodeStatus.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/udp/UDPPacket.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/common/InterfaceToken.h \
+  base/ModuleAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/INotifiable.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/contract/IPv4ControlInfo.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  networklayer/ipv4/RoutingTable.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  transport/contract/UDPControlInfo.h \
+  networklayer/icmpv6/ICMPv6.h \
+  networklayer/icmpv6/ICMPv6Message_m.h \
+  base/ILifecycle.h \
+  base/NodeOperations.h \
+  networklayer/contract/IPSocket.h \
+  networklayer/common/IInterfaceTable.h \
+  transport/udp/UDP.h
 $O/transport/udp/UDPPacket_m.o: transport/udp/UDPPacket_m.cc \
-  transport/udp/UDPPacket_m.h
+  base/INETDefs.h \
+  transport/udp/UDPPacket_m.h \
+  base/Compat.h
 $O/util/Delayer.o: util/Delayer.cc \
-  util/Delayer.h
+  util/Delayer.h \
+  base/INETDefs.h \
+  base/Compat.h
 $O/util/Macho.o: util/Macho.cc \
   util/Macho.h
 $O/util/MessageChecker.o: util/MessageChecker.cc \
-  util/MessageChecker.h
+  base/INETDefs.h \
+  util/MessageChecker.h \
+  base/Compat.h
 $O/util/NetAnimTrace.o: util/NetAnimTrace.cc \
-  util/NetAnimTrace.h
+  util/FWMath.h \
+  base/Coord.h \
+  base/Compat.h \
+  util/NetAnimTrace.h \
+  mobility/contract/IMobility.h \
+  base/INETDefs.h \
+  base/ModuleAccess.h
 $O/util/OrdinalBasedDropper.o: util/OrdinalBasedDropper.cc \
-  util/OrdinalBasedDropper.h
+  base/Compat.h \
+  util/OrdinalBasedDropper.h \
+  base/INETDefs.h
 $O/util/OrdinalBasedDuplicator.o: util/OrdinalBasedDuplicator.cc \
-  util/OrdinalBasedDuplicator.h
+  util/OrdinalBasedDuplicator.h \
+  base/Compat.h \
+  base/INETDefs.h
 $O/util/PacketDump.o: util/PacketDump.cc \
-  ./networklayer/contract/IPvXAddress.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/common/Minimal.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/transport/HomaConfigDepot.h \
-  ./networklayer/contract/IPv4Address.h \
+  transport/sctp/SCTPGapList.h \
+  transport/contract/UDPSocket.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  networklayer/common/InterfaceToken.h \
+  transport/sctp/SCTPMessage.h \
+  base/INotifiable.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/common/Minimal.h \
+  transport/sctp/SCTPSendStream.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/arp/ARPPacket_m.h \
   util/PacketDump.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/transport/HomaPkt_m.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/transport/HomaPkt_m.h \
+  ./networklayer/contract/IPvXAddress.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  base/NotificationBoard.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  base/INETDefs.h \
+  base/ByteArray.h \
+  transport/sctp/SCTP.h \
+  ./networklayer/contract/IPv4Address.h \
+  base/ILifecycle.h \
+  networklayer/common/IInterfaceTable.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/transport/HomaPkt.h \
+  networklayer/common/InterfaceTable.h \
+  transport/udp/UDPPacket_m.h \
+  transport/sctp/SCTPQueue.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  base/ByteArray_m.h \
+  transport/sctp/SCTPMessage_m.h \
+  networklayer/contract/IPv6Address.h \
+  transport/tcp_common/TCPSegment.h \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  transport/sctp/SCTPReceiveStream.h \
+  transport/tcp_common/TCPSegment_m.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  linklayer/contract/MACAddress.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/transport/HomaConfigDepot.h \
+  transport/sctp/SCTPAssociation.h \
   ./networklayer/contract/IPv6Address.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/transport/HomaPkt.h
+  networklayer/contract/IPvXAddress.h \
+  networklayer/common/InterfaceEntry.h
 $O/util/PatternMatcher.o: util/PatternMatcher.cc \
+  base/Compat.h \
+  base/INETDefs.h \
   util/PatternMatcher.h
 $O/util/PcapDump.o: util/PcapDump.cc \
-  util/PcapDump.h
+  networklayer/ipv6/IPv6Datagram.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  transport/udp/UDPPacket_m.h \
+  util/headerserializers/ipv4/IPv4Serializer.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  base/INETDefs.h \
+  util/PcapDump.h \
+  networklayer/contract/IPv4Address.h \
+  util/headerserializers/ipv6/IPv6Serializer.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4Datagram.h
 $O/util/PcapRecorder.o: util/PcapRecorder.cc \
-  ./networklayer/contract/IPv4Address.h \
-  ./networklayer/contract/IPvXAddress.h \
+  ./networklayer/contract/IPv6Address.h \
   util/PcapRecorder.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/common/Minimal.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/transport/HomaConfigDepot.h \
-  util/PcapDump.h \
-  ./networklayer/contract/IPv6Address.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/transport/HomaPkt.h \
-  util/PacketDump.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/transport/HomaPkt_m.h
-$O/util/TCPDump.o: util/TCPDump.cc \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/transport/HomaPkt_m.h \
-  util/PacketDump.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/transport/HomaPkt.h \
-  util/PcapDump.h \
-  ./networklayer/contract/IPv6Address.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/common/Minimal.h \
-  ./networklayer/contract/IPvXAddress.h \
-  /bigdisk/mimic/3_simulate/common/homatransport/src/transport/HomaConfigDepot.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/transport/HomaConfigDepot.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
   ./networklayer/contract/IPv4Address.h \
-  util/TCPDump.h
+  /bigdisk/mimic/3_simulate/homatransport/src/transport/HomaPkt.h \
+  util/PcapDump.h \
+  base/INETDefs.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  networklayer/contract/IPv4Address.h \
+  util/PacketDump.h \
+  ./networklayer/contract/IPvXAddress.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/transport/HomaPkt_m.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/common/Minimal.h \
+  networklayer/contract/IPProtocolId_m.h
+$O/util/TCPDump.o: util/TCPDump.cc \
+  networklayer/ipv4/IPv4Datagram.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/common/Minimal.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/contract/IPv4Address.h \
+  util/PacketDump.h \
+  ./networklayer/contract/IPvXAddress.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/transport/HomaPkt_m.h \
+  util/PcapDump.h \
+  base/INETDefs.h \
+  ./networklayer/contract/IPv4Address.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/transport/HomaPkt.h \
+  util/TCPDump.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  base/Compat.h \
+  /bigdisk/mimic/3_simulate/homatransport/src/transport/HomaConfigDepot.h \
+  ./networklayer/contract/IPv6Address.h
 $O/util/ThruputMeter.o: util/ThruputMeter.cc \
-  util/ThruputMeter.h
+  base/INETDefs.h \
+  util/ThruputMeter.h \
+  base/Compat.h
 $O/util/ThruputMeteringChannel.o: util/ThruputMeteringChannel.cc \
-  util/ThruputMeteringChannel.h
+  base/Compat.h \
+  util/ThruputMeteringChannel.h \
+  base/INETDefs.h
 $O/util/XMLUtils.o: util/XMLUtils.cc \
-  util/XMLUtils.h
+  util/XMLUtils.h \
+  base/INETDefs.h \
+  networklayer/contract/IPvXAddressResolver.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/contract/IPv6Address.h \
+  base/Compat.h
 $O/util/common.o: util/common.cc \
-  util/common.h
+  base/Compat.h \
+  util/common.h \
+  base/INETDefs.h
 $O/util/int128.o: util/int128.cc \
+  base/INETDefs.h \
+  base/Compat.h \
   util/int128.h
 $O/util/opp_utils.o: util/opp_utils.cc \
+  base/INETDefs.h \
+  base/Compat.h \
   util/opp_utils.h
 $O/util/headerserializers/TCPIPchecksum.o: util/headerserializers/TCPIPchecksum.cc \
-  util/headerserializers/TCPIPchecksum.h
+  base/INETDefs.h \
+  util/headerserializers/TCPIPchecksum.h \
+  base/Compat.h
 $O/util/headerserializers/ipv4/ICMPSerializer.o: util/headerserializers/ipv4/ICMPSerializer.cc \
-  util/headerserializers/ipv4/IPv4Serializer.h \
+  util/headerserializers/ipv4/headers/ip_icmp.h \
+  util/headerserializers/TCPIPchecksum.h \
+  util/headerserializers/headers/defs.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  util/headerserializers/headers/bsdint.h \
   util/headerserializers/ipv4/ICMPSerializer.h \
+  base/Compat.h \
   util/headerserializers/ipv4/headers/ip.h \
-  util/headerserializers/ipv4/headers/ip_icmp.h
+  base/INETDefs.h \
+  util/headerserializers/headers/in_systm.h \
+  applications/pingapp/PingPayload_m.h \
+  util/headerserializers/ipv4/IPv4Serializer.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  util/headerserializers/headers/in.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/contract/IPv4Address.h
 $O/util/headerserializers/ipv4/IGMPSerializer.o: util/headerserializers/ipv4/IGMPSerializer.cc \
-  util/headerserializers/ipv4/IPv4Serializer.h \
+  networklayer/ipv4/IGMPMessage_m.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  util/headerserializers/headers/bsdint.h \
+  base/Compat.h \
   util/headerserializers/ipv4/headers/ip.h \
-  util/headerserializers/ipv4/headers/igmp.h \
-  util/headerserializers/ipv4/IGMPSerializer.h
-$O/util/headerserializers/ipv4/IPv4Serializer.o: util/headerserializers/ipv4/IPv4Serializer.cc \
+  util/headerserializers/TCPIPchecksum.h \
+  util/headerserializers/headers/defs.h \
   util/headerserializers/ipv4/IGMPSerializer.h \
-  util/headerserializers/ipv4/headers/ip.h \
-  util/headerserializers/ipv4/ICMPSerializer.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  util/headerserializers/headers/in.h \
+  networklayer/contract/IPv4Address.h \
+  util/headerserializers/ipv4/headers/igmp.h \
+  base/INETDefs.h \
+  util/headerserializers/headers/in_systm.h \
   util/headerserializers/ipv4/IPv4Serializer.h
-$O/util/headerserializers/ipv6/IPv6Serializer.o: util/headerserializers/ipv6/IPv6Serializer.cc \
-  util/headerserializers/ipv6/headers/ip6.h \
-  util/headerserializers/ipv6/IPv6Serializer.h
-$O/util/headerserializers/sctp/SCTPSerializer.o: util/headerserializers/sctp/SCTPSerializer.cc \
-  util/headerserializers/sctp/headers/sctp.h \
-  util/headerserializers/sctp/SCTPSerializer.h
-$O/util/headerserializers/tcp/TCPSerializer.o: util/headerserializers/tcp/TCPSerializer.cc \
+$O/util/headerserializers/ipv4/IPv4Serializer.o: util/headerserializers/ipv4/IPv4Serializer.cc \
+  util/headerserializers/headers/in_systm.h \
+  util/headerserializers/tcp/headers/tcp.h \
+  util/headerserializers/ipv4/IPv4Serializer.h \
+  base/ByteArray.h \
+  base/INETDefs.h \
+  util/headerserializers/sctp/SCTPSerializer.h \
+  util/headerserializers/headers/in.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/contract/IPv4Address.h \
+  transport/sctp/SCTPMessage.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  util/headerserializers/ipv4/IGMPSerializer.h \
+  transport/udp/UDPPacket.h \
+  networklayer/contract/IPvXAddress.h \
+  util/headerserializers/headers/defs.h \
+  util/headerserializers/TCPIPchecksum.h \
+  transport/tcp_common/TCPSegment_m.h \
+  base/ByteArray_m.h \
+  transport/sctp/SCTPMessage_m.h \
+  networklayer/contract/IPv6Address.h \
+  transport/tcp_common/TCPSegment.h \
+  base/Compat.h \
+  util/headerserializers/ipv4/headers/ip.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
   util/headerserializers/tcp/TCPSerializer.h \
-  util/headerserializers/tcp/headers/tcp.h
+  networklayer/ipv4/IGMPMessage_m.h \
+  util/headerserializers/headers/bsdint.h \
+  transport/udp/UDPPacket_m.h \
+  util/headerserializers/udp/UDPSerializer.h \
+  util/headerserializers/ipv4/ICMPSerializer.h
+$O/util/headerserializers/ipv6/IPv6Serializer.o: util/headerserializers/ipv6/IPv6Serializer.cc \
+  networklayer/contract/IPProtocolId_m.h \
+  transport/sctp/SCTPMessage.h \
+  util/headerserializers/headers/in.h \
+  networklayer/contract/IPv4Address.h \
+  util/headerserializers/ipv6/IPv6Serializer.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  base/INETDefs.h \
+  util/headerserializers/sctp/SCTPSerializer.h \
+  util/headerserializers/tcp/headers/tcp.h \
+  util/headerserializers/headers/in_systm.h \
+  base/ByteArray.h \
+  util/headerserializers/tcp/TCPSerializer.h \
+  util/headerserializers/udp/UDPSerializer.h \
+  transport/udp/UDPPacket_m.h \
+  transport/tcp_common/TCPSegment_m.h \
+  base/Compat.h \
+  transport/tcp_common/TCPSegment.h \
+  transport/sctp/SCTPMessage_m.h \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArray_m.h \
+  util/headerserializers/TCPIPchecksum.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  util/headerserializers/headers/defs.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/udp/UDPPacket.h \
+  util/headerserializers/ipv6/headers/ip6.h
+$O/util/headerserializers/sctp/SCTPSerializer.o: util/headerserializers/sctp/SCTPSerializer.cc \
+  base/NotifierConsts.h \
+  base/Compat.h \
+  util/headerserializers/ipv4/headers/ip.h \
+  networklayer/contract/IPv6Address.h \
+  transport/sctp/SCTPMessage_m.h \
+  transport/sctp/SCTPReceiveStream.h \
+  transport/sctp/SCTPQueue.h \
+  networklayer/common/InterfaceTable.h \
+  util/headerserializers/headers/bsdint.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  networklayer/contract/IPvXAddress.h \
+  util/headerserializers/headers/defs.h \
+  networklayer/common/InterfaceEntry.h \
+  linklayer/contract/MACAddress.h \
+  transport/sctp/SCTPAssociation.h \
+  networklayer/contract/IPv4Address.h \
+  util/headerserializers/headers/in.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  base/ModuleAccess.h \
+  util/headerserializers/sctp/headers/sctp.h \
+  networklayer/common/InterfaceToken.h \
+  transport/sctp/SCTPGapList.h \
+  transport/contract/UDPSocket.h \
+  networklayer/common/InterfaceTableAccess.h \
+  networklayer/contract/IPProtocolId_m.h \
+  transport/sctp/SCTPMessage.h \
+  base/INotifiable.h \
+  transport/sctp/SCTPSendStream.h \
+  transport/sctp/SCTP.h \
+  util/headerserializers/ipv4/IPv4Serializer.h \
+  networklayer/common/IInterfaceTable.h \
+  base/ILifecycle.h \
+  util/headerserializers/headers/in_systm.h \
+  util/headerserializers/sctp/SCTPSerializer.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h
+$O/util/headerserializers/tcp/TCPSerializer.o: util/headerserializers/tcp/TCPSerializer.cc \
+  util/headerserializers/headers/in.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/contract/IPProtocolId_m.h \
+  util/headerserializers/tcp/headers/tcp.h \
+  util/headerserializers/headers/in_systm.h \
+  base/ByteArray.h \
+  base/INETDefs.h \
+  transport/tcp_common/TCPSegment_m.h \
+  transport/tcp_common/TCPSegment.h \
+  base/Compat.h \
+  base/ByteArray_m.h \
+  networklayer/contract/IPv6Address.h \
+  util/headerserializers/tcp/TCPSerializer.h \
+  util/headerserializers/headers/bsdint.h \
+  networklayer/contract/IPvXAddress.h \
+  util/headerserializers/headers/defs.h \
+  util/headerserializers/TCPIPchecksum.h
 $O/util/headerserializers/udp/UDPSerializer.o: util/headerserializers/udp/UDPSerializer.cc \
   util/headerserializers/udp/headers/udp.h \
-  util/headerserializers/udp/UDPSerializer.h
-$O/util/messageprinters/InetPacketBytesPrinter.o: util/messageprinters/InetPacketBytesPrinter.cc
-$O/util/messageprinters/InetPacketPrinter.o: util/messageprinters/InetPacketPrinter.cc
-$O/util/messageprinters/InetPacketPrinter2.o: util/messageprinters/InetPacketPrinter2.cc
+  util/headerserializers/headers/in.h \
+  base/ByteArray.h \
+  util/headerserializers/headers/in_systm.h \
+  base/ByteArrayMessage.h \
+  base/INETDefs.h \
+  base/ByteArray_m.h \
+  base/ByteArrayMessage_m.h \
+  base/Compat.h \
+  transport/udp/UDPPacket_m.h \
+  util/headerserializers/headers/bsdint.h \
+  util/headerserializers/udp/UDPSerializer.h \
+  transport/udp/UDPPacket.h \
+  util/headerserializers/headers/defs.h \
+  util/headerserializers/TCPIPchecksum.h
+$O/util/messageprinters/InetPacketBytesPrinter.o: util/messageprinters/InetPacketBytesPrinter.cc \
+  base/INETDefs.h \
+  base/Compat.h
+$O/util/messageprinters/InetPacketPrinter.o: util/messageprinters/InetPacketPrinter.cc \
+  base/ByteArray.h \
+  applications/pingapp/PingPayload_m.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  base/INETDefs.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  networklayer/contract/IPProtocolId_m.h \
+  networklayer/contract/IPvXAddress.h \
+  transport/udp/UDPPacket.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  base/Compat.h \
+  transport/tcp_common/TCPSegment.h \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArray_m.h \
+  transport/tcp_common/TCPSegment_m.h \
+  transport/udp/UDPPacket_m.h \
+  networklayer/ipv4/IPv4Datagram_m.h
+$O/util/messageprinters/InetPacketPrinter2.o: util/messageprinters/InetPacketPrinter2.cc \
+  util/FWMath.h \
+  transport/udp/UDPPacket.h \
+  networklayer/contract/IPvXAddress.h \
+  networklayer/ipv6/IPv6Datagram.h \
+  linklayer/ethernet/EtherFrame.h \
+  linklayer/contract/MACAddress.h \
+  linklayer/radio/ModulationType.h \
+  networklayer/contract/IPv6Address.h \
+  base/ByteArray_m.h \
+  base/Compat.h \
+  transport/tcp_common/TCPSegment.h \
+  linklayer/ieee80211/mac/Ieee80211Frame_m.h \
+  transport/tcp_common/TCPSegment_m.h \
+  transport/udp/UDPPacket_m.h \
+  base/Coord.h \
+  networklayer/routing/rip/RIPPacket_m.h \
+  networklayer/ipv4/IPv4Datagram_m.h \
+  base/ByteArray.h \
+  applications/pingapp/PingPayload_m.h \
+  base/INETDefs.h \
+  linklayer/contract/Ieee802Ctrl_m.h \
+  networklayer/ipv6/IPv6Datagram_m.h \
+  networklayer/ipv4/ICMPMessage.h \
+  networklayer/contract/IPv4Address.h \
+  networklayer/arp/ARPPacket_m.h \
+  linklayer/radio/AirFrame_m.h \
+  networklayer/ipv4/ICMPMessage_m.h \
+  linklayer/ieee80211/mac/Ieee80211Consts.h \
+  networklayer/ipv4/IPv4Datagram.h \
+  linklayer/ethernet/EtherFrame_m.h \
+  linklayer/ethernet/Ethernet.h \
+  networklayer/contract/IPProtocolId_m.h
 $O/world/annotations/AnnotationDummy.o: world/annotations/AnnotationDummy.cc \
+  base/INETDefs.h \
+  base/Compat.h \
   ./world/annotations/AnnotationDummy.h
 $O/world/annotations/AnnotationManager.o: world/annotations/AnnotationManager.cc \
-  ./world/annotations/AnnotationManager.h
+  base/ModuleAccess.h \
+  base/INETDefs.h \
+  ./world/annotations/AnnotationManager.h \
+  base/Compat.h \
+  base/Coord.h \
+  util/FWMath.h
 $O/world/httptools/HttpController.o: world/httptools/HttpController.cc \
+  applications/httptools/HttpMessages_m.h \
+  base/Compat.h \
+  applications/httptools/HttpEventMessages_m.h \
+  applications/httptools/HttpUtils.h \
+  applications/httptools/HttpRandom.h \
+  base/INETDefs.h \
   world/httptools/HttpController.h
 $O/world/obstacles/Obstacle.o: world/obstacles/Obstacle.cc \
-  ./world/obstacles/Obstacle.h \
-  ./world/annotations/AnnotationManager.h
-$O/world/obstacles/ObstacleControl.o: world/obstacles/ObstacleControl.cc \
+  base/ModuleAccess.h \
+  base/INETDefs.h \
   ./world/annotations/AnnotationManager.h \
+  base/Compat.h \
+  base/Coord.h \
+  ./world/obstacles/Obstacle.h \
+  util/FWMath.h
+$O/world/obstacles/ObstacleControl.o: world/obstacles/ObstacleControl.cc \
+  base/Coord.h \
   ./world/obstacles/ObstacleControl.h \
-  ./world/obstacles/Obstacle.h
+  ./world/annotations/AnnotationManager.h \
+  base/Compat.h \
+  ./world/obstacles/Obstacle.h \
+  util/FWMath.h \
+  base/ModuleAccess.h \
+  base/INETDefs.h
 $O/world/radio/ChannelAccess.o: world/radio/ChannelAccess.cc \
+  util/FWMath.h \
+  world/radio/ChannelAccess.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  base/Coord.h \
+  base/BasicModule.h \
+  base/NotificationBoard.h \
+  mobility/contract/IMobility.h \
+  base/INETDefs.h \
+  base/ModuleAccess.h \
   world/radio/IChannelControl.h \
-  world/radio/ChannelAccess.h
+  base/INotifiable.h
 $O/world/radio/ChannelControl.o: world/radio/ChannelControl.cc \
+  base/INETDefs.h \
   world/radio/IChannelControl.h \
-  world/radio/ChannelControl.h
+  linklayer/radio/AirFrame_m.h \
+  linklayer/radio/ModulationType.h \
+  util/FWMath.h \
+  world/radio/ChannelControl.h \
+  base/Coord.h \
+  base/Compat.h
 $O/world/radio/IdealChannelModel.o: world/radio/IdealChannelModel.cc \
+  util/FWMath.h \
+  world/radio/IdealChannelModelAccess.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  base/Coord.h \
+  linklayer/contract/RadioState.h \
+  base/ILifecycle.h \
+  base/BasicModule.h \
+  linklayer/radio/IdealRadio.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  linklayer/radio/IdealAirFrame_m.h \
+  base/ModuleAccess.h \
+  base/INotifiable.h \
   world/radio/IdealChannelModel.h
 $O/world/radio/IdealChannelModelAccess.o: world/radio/IdealChannelModelAccess.cc \
+  base/ModuleAccess.h \
+  base/INotifiable.h \
   world/radio/IdealChannelModel.h \
+  base/BasicModule.h \
+  base/NotificationBoard.h \
+  base/INETDefs.h \
+  mobility/contract/IMobility.h \
+  base/Compat.h \
+  base/NotifierConsts.h \
+  base/Coord.h \
+  util/FWMath.h \
   world/radio/IdealChannelModelAccess.h
 $O/world/scenario/ScenarioManager.o: world/scenario/ScenarioManager.cc \
-  world/scenario/ScenarioManager.h
+  base/Compat.h \
+  world/scenario/ScenarioManager.h \
+  base/IScriptable.h \
+  base/INETDefs.h
 $O/world/traci/TraCIScenarioManager.o: world/traci/TraCIScenarioManager.cc \
+  ./mobility/single/TraCIMobility.h \
+  base/Coord.h \
   ./world/traci/TraCIScenarioManager.h \
+  base/Compat.h \
+  util/FWMath.h \
+  base/ModuleAccess.h \
   ./world/traci/TraCIConstants.h \
-  ./mobility/single/TraCIMobility.h
+  mobility/common/MobilityBase.h \
+  base/INETDefs.h \
+  mobility/contract/IMobility.h
 $O/world/traci/TraCIScenarioManagerLaunchd.o: world/traci/TraCIScenarioManagerLaunchd.cc \
+  base/INETDefs.h \
+  base/ModuleAccess.h \
+  ./world/traci/TraCIConstants.h \
+  util/FWMath.h \
   ./world/traci/TraCIScenarioManagerLaunchd.h \
+  base/Coord.h \
   ./world/traci/TraCIScenarioManager.h \
-  ./world/traci/TraCIConstants.h
+  base/Compat.h
