@@ -686,6 +686,9 @@ void IPv4::reassembleAndDeliverFinish(IPv4Datagram *datagram)
             }
         }
 
+        // QZ: debug
+        // mapping.iterateOutputGateForProtocol();
+
         EV << "Transport protocol ID=" << protocol << " not connected, discarding packet\n";
         int inputInterfaceId = getSourceInterfaceFrom(datagram)->getInterfaceId();
         icmpAccess.get()->sendErrorMessage(datagram, inputInterfaceId, ICMP_DESTINATION_UNREACHABLE, ICMP_DU_PROTOCOL_UNREACHABLE);

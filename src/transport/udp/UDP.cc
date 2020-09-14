@@ -118,6 +118,7 @@ UDP::~UDP()
 
 void UDP::initialize(int stage)
 {
+    // std::cout << "QZ: UDP (module ID " << getFullPath() << ") is initializing for stage " << stage << std::endl;
     cSimpleModule::initialize(stage);
 
     if (stage == 0)
@@ -146,6 +147,7 @@ void UDP::initialize(int stage)
     {
         IPSocket ipSocket(gate("ipOut"));
         ipSocket.registerProtocol(IP_PROT_UDP);
+        // std::cout << "QZ: UDP is registering to ipOut" << std::endl;
         ipSocket.setOutputGate(gate("ipv6Out"));
         ipSocket.registerProtocol(IP_PROT_UDP);
 

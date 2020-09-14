@@ -52,6 +52,9 @@ class INET_API ProtocolMapping
 
     /** find output gate index for protocol ID and returns it. Throws an error if not found. */
     int getOutputGateForProtocol(int protocol) const;
+    
+    /** QZ: debug Homa */
+    void iterateOutputGateForProtocol() const;
 };
 
 #endif

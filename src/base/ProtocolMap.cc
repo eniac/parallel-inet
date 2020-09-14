@@ -83,3 +83,10 @@ void ProtocolMapping::addProtocolMapping(int protocol, int gateIndex)
     else
         throw cRuntimeError("The protocol %d should not register to gate index=%d because it already registered to gate index=%d.", protocol, gateIndex, registered);
 }
+
+void ProtocolMapping::iterateOutputGateForProtocol() const
+{
+    for (Entries::const_iterator i=entries.begin(); i!=entries.end(); ++i)
+        std::cout << "ProtoGateMapping: protocol = " << i->protocolNumber << ", gateIndex = " << i->outGateIndex << std::endl;
+}
+
