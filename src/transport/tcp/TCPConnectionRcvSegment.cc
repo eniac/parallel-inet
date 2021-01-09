@@ -1076,6 +1076,24 @@ TCPEventCode TCPConnection::processSegmentInSynSent(TCPSegment *tcpseg, IPvXAddr
             tcpAlgorithm->established(true);
             sendEstabIndicationToApp();
 
+            // ECN
+            if (state->ecnSynSent) {
+                if (tcpHeader->getEceBit() && !tcpHeader->getCwrBit()) {
+                    state->ect = true;
+                    EV << "ECN-setup SYN-ACK packet was received... ECN is enabled.\n";
+                }
+                else {
+                    state->ect = false;
+                    EV << "non-ECN-setup SYN-ACK packet was received... ECN is disabled.\n";
+                }
+                state->ecnSynSent = false;
+            }
+            else {
+                state->ect = false;
+                if (tcpHeader->getEceBit() && !tcpHeader->getCwrBit())
+                    EV << "ECN-setup SYN-ACK packet was received... ECN is disabled.\n";
+            }
+
             // This will trigger transition to ESTABLISHED. Timers and notifying
             // app will be taken care of in stateEntered().
             return TCP_E_RCV_SYN_ACK;
