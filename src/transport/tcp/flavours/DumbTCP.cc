@@ -134,11 +134,11 @@ void DumbTCP::rttMeasurementCompleteUsingTS(uint32 echoedTS)
 {
 }
 
-bool DumbTcp::shouldMarkAck()
+bool DumbTCP::shouldMarkAck()
 {
     return false;
 }
 
-void DumbTcp::processEcnInEstablished()
+void DumbTCP::processEcnInEstablished()
 {
 }
