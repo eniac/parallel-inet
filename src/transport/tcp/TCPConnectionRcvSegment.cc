@@ -206,6 +206,12 @@ TCPEventCode TCPConnection::processSegment1stThru8th(TCPSegment *tcpseg)
         return TCP_E_IGNORE;
     }
 
+    // ECN
+    if (tcpHeader->getCwrBit() == true) {
+        tcpEV << "Received CWR... Leaving ecnEcho State\n";
+        state->ecnEchoState = false;
+    }
+
     //
     // RFC 793: second check the RST bit,
     //
@@ -865,6 +871,13 @@ TCPEventCode TCPConnection::processSegmentInListen(TCPSegment *tcpseg, IPvXAddre
             readHeaderOptions(tcpseg);
 
         state->ack_now = true;
+
+        // QZ: ECN
+        if (tcpseg->getEceBit() == true && tcpseg->getCwrBit() == true) {
+            state->endPointIsWillingECN = true;
+            tcpEV << "ECN-setup SYN packet received\n";
+        }
+
         sendSynAck();
         startSynRexmitTimer();
 
@@ -1078,20 +1091,20 @@ TCPEventCode TCPConnection::processSegmentInSynSent(TCPSegment *tcpseg, IPvXAddr
 
             // ECN
             if (state->ecnSynSent) {
-                if (tcpHeader->getEceBit() && !tcpHeader->getCwrBit()) {
+                if (tcpseg->getEceBit() && !tcpseg->getCwrBit()) {
                     state->ect = true;
-                    EV << "ECN-setup SYN-ACK packet was received... ECN is enabled.\n";
+                    tcpEV << "ECN-setup SYN-ACK packet was received... ECN is enabled.\n";
                 }
                 else {
                     state->ect = false;
-                    EV << "non-ECN-setup SYN-ACK packet was received... ECN is disabled.\n";
+                    tcpEV << "non-ECN-setup SYN-ACK packet was received... ECN is disabled.\n";
                 }
                 state->ecnSynSent = false;
             }
             else {
                 state->ect = false;
-                if (tcpHeader->getEceBit() && !tcpHeader->getCwrBit())
-                    EV << "ECN-setup SYN-ACK packet was received... ECN is disabled.\n";
+                if (tcpseg->getEceBit() && !tcpseg->getCwrBit())
+                    tcpEV << "ECN-setup SYN-ACK packet was received... ECN is disabled.\n";
             }
 
             // This will trigger transition to ESTABLISHED. Timers and notifying
@@ -1190,6 +1203,17 @@ TCPEventCode TCPConnection::processRstInSynReceived(TCPSegment *tcpseg)
 bool TCPConnection::processAckInEstabEtc(TCPSegment *tcpseg)
 {
     tcpEV2 << "Processing ACK in a data transfer state\n";
+
+    int payloadLength = tcpseg->getByteLength() - B(tcpseg->getHeaderLength()).get();
+
+    // ECN
+    TCPStateVariables *state = getState();
+    if (state && state->ect) {
+        if (tcpseg->getEceBit() == true)
+            tcpEV << "Received packet with ECE\n";
+
+        state->gotEce = tcpseg->getEceBit();
+    }
 
     //
     //"

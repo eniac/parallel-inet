@@ -274,7 +274,7 @@ void TCPNewReno::receivedDuplicateAck()
 {
     TCPTahoeRenoFamily::receivedDuplicateAck();
 
-    if (state->dupacks == DUPTHRESH) // DUPTHRESH = 3
+    if (state->dupacks == state->dupthresh) // DUPTHRESH = 3. QZ
     {
         if (!state->lossRecovery)
         {
@@ -293,7 +293,7 @@ void TCPNewReno::receivedDuplicateAck()
             //      ack_number - 1 > recover;"
             if (state->snd_una - 1 > state->recover)
             {
-                tcpEV << "NewReno on dupAcks == DUPTHRESH(=3): perform Fast Retransmit, and enter Fast Recovery:";
+                tcpEV << "NewReno on dupAcks == DUPTHRESH(=" << state->dupthresh << "): perform Fast Retransmit, and enter Fast Recovery:";
 
                 // RFC 3782, page 4:
                 // "1A) Invoking Fast Retransmit:
@@ -330,7 +330,7 @@ void TCPNewReno::receivedDuplicateAck()
             }
             else
             {
-                tcpEV << "NewReno on dupAcks == DUPTHRESH(=3): not invoking Fast Retransmit and Fast Recovery\n";
+                tcpEV << "NewReno on dupAcks == DUPTHRESH(=" << state->dupthresh << "): not invoking Fast Retransmit and Fast Recovery\n";
 
                 // RFC 3782, page 4:
                 // "1B) Not invoking Fast Retransmit:
@@ -340,9 +340,9 @@ void TCPNewReno::receivedDuplicateAck()
                 // subsequent duplicate ACKs."
             }
         }
-        tcpEV << "NewReno on dupAcks == DUPTHRESH(=3): TCP is already in Fast Recovery procedure\n";
+        tcpEV << "NewReno on dupAcks == DUPTHRESH(=" << state->dupthresh << "): TCP is already in Fast Recovery procedure\n";
     }
-    else if (state->dupacks > DUPTHRESH) // DUPTHRESH = 3
+    else if (state->dupacks > state->dupthresh) // DUPTHRESH = 3. QZ
     {
         if (state->lossRecovery)
         {
@@ -357,7 +357,7 @@ void TCPNewReno::receivedDuplicateAck()
             if (cwndVector)
                 cwndVector->record(state->snd_cwnd);
 
-            tcpEV << "NewReno on dupAcks > DUPTHRESH(=3): Fast Recovery: inflating cwnd by SMSS, new cwnd=" << state->snd_cwnd << "\n";
+            tcpEV << "NewReno on dupAcks > DUPTHRESH(=" << state->dupthresh << "): Fast Recovery: inflating cwnd by SMSS, new cwnd=" << state->snd_cwnd << "\n";
 
             // RFC 3782, page 5:
             // "4) Fast Recovery, continued:
