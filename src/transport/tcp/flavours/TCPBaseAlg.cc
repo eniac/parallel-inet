@@ -702,7 +702,7 @@ void TCPBaseAlg::restartRexmitTimer()
     startRexmitTimer();
 }
 
-bool TcpBaseAlg::shouldMarkAck()
+bool TCPBaseAlg::shouldMarkAck()
 {
     // rfc-3168, pages 19-20:
     // When TCP receives a CE data packet at the destination end-system, the
@@ -732,7 +732,7 @@ bool TcpBaseAlg::shouldMarkAck()
     return false;
 }
 
-void TcpBaseAlg::processEcnInEstablished()
+void TCPBaseAlg::processEcnInEstablished()
 {
 
 }

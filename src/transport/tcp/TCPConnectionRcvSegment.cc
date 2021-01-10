@@ -207,7 +207,7 @@ TCPEventCode TCPConnection::processSegment1stThru8th(TCPSegment *tcpseg)
     }
 
     // ECN
-    if (tcpHeader->getCwrBit() == true) {
+    if (tcpseg->getCwrBit() == true) {
         tcpEV << "Received CWR... Leaving ecnEcho State\n";
         state->ecnEchoState = false;
     }
@@ -1204,7 +1204,7 @@ bool TCPConnection::processAckInEstabEtc(TCPSegment *tcpseg)
 {
     tcpEV2 << "Processing ACK in a data transfer state\n";
 
-    int payloadLength = tcpseg->getByteLength() - B(tcpseg->getHeaderLength()).get();
+    int payloadLength = tcpseg->getByteLength() - tcpseg->getHeaderLength(); // QZ: removed B(header length) here
 
     // ECN
     TCPStateVariables *state = getState();

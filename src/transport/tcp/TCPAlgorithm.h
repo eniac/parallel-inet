@@ -183,6 +183,18 @@ class INET_API TCPAlgorithm : public cObject
      */
     virtual void rttMeasurementCompleteUsingTS(uint32 echoedTS) = 0;
 
+    // QZ: added for ECN
+    /**
+     * Called before sending ACK. Determines whether to set ECE bit.
+     */
+    virtual bool shouldMarkAck() = 0;
+
+    /**
+     * Called before processing segment in established state.
+     * This function process ECN marks.
+     */
+    virtual void processEcnInEstablished() = 0;
+
 };
 
 #endif
