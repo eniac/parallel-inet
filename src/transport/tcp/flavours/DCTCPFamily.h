@@ -28,8 +28,8 @@ class INET_API DCTCPFamilyStateVariables : public TCPTahoeRenoFamilyStateVariabl
 {
   public:
     DCTCPFamilyStateVariables();
-    virtual std::string str() const override;
-    virtual std::string detailedInfo() const override;
+    virtual std::string info() const;
+    virtual std::string detailedInfo() const;
 
     // DCTCP
     bool dctcp_ce;

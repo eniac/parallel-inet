@@ -30,10 +30,10 @@ DCTCPFamilyStateVariables::DCTCPFamilyStateVariables()
     dctcp_gamma = 0.0625; // 1/16 (backup 0.16) TODO make it NED parameter;
 }
 
-std::string DCTCPFamilyStateVariables::str() const
+std::string DCTCPFamilyStateVariables::info() const
 {
     std::stringstream out;
-    out << TCPTahoeRenoFamilyStateVariables::str();
+    out << TCPTahoeRenoFamilyStateVariables::info();
     out << " dctcp_alpha=" << dctcp_alpha;
     out << " dctcp_windEnd=" << dctcp_windEnd;
     out << " dctcp_bytesAcked=" << dctcp_bytesAcked;
