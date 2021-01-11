@@ -161,6 +161,11 @@ void TCPConnection::printSegmentBrief(TCPSegment *tcpseg)
 
     if (tcpseg->getUrgBit())  tcpEV << "urg " << tcpseg->getUrgentPointer() << " ";
 
+    // QZ
+    if (tcpseg->getEceBit())  tcpEV << "Ece ";
+
+    if (tcpseg->getCwrBit())  tcpEV << "Cwr ";
+
     if (tcpseg->getHeaderLength() > TCP_HEADER_OCTETS) // Header options present? TCP_HEADER_OCTETS = 20
     {
         tcpEV << "options ";

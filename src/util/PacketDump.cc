@@ -709,6 +709,10 @@ void PacketDump::tcpDump(bool l2r, const char *label, TCPSegment *tcpseg,
     if (tcpseg->getRstBit()) {flags = true; out << "R ";}
     if (tcpseg->getSynBit()) {flags = true; out << "S ";}
     if (tcpseg->getFinBit()) {flags = true; out << "F ";}
+    // QZ
+    if (tcpseg->getEceBit()) {flags = true; out << "E ";}
+    if (tcpseg->getCwrBit()) {flags = true; out << "C ";}
+
     if (!flags) {out << ". ";}
 
     // data-seqno

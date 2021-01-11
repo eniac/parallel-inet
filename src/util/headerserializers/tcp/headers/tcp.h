@@ -27,7 +27,12 @@
 #  define TH_PUSH   0x08
 #  define TH_ACK    0x10
 #  define TH_URG    0x20
-#define TH_FLAGS    0x3F
+// QZ
+#  define TH_ECE     0x40
+#  define TH_CWR     0x80
+
+// #define TH_FLAGS    0x3F // QZ
+#define TH_FLAGS    0xFF // QZ
 
 struct tcphdr
   {

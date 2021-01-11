@@ -709,6 +709,8 @@ cPacket *IPv4::decapsulate(IPv4Datagram *datagram)
     controlInfo->setTypeOfService(datagram->getTypeOfService());
     controlInfo->setInterfaceId(fromIE ? fromIE->getInterfaceId() : -1);
     controlInfo->setTimeToLive(datagram->getTimeToLive());
+    // QZ
+    controlInfo->setExplicitCongestionNotification(datagram->getExplicitCongestionNotification());
 
     // original IPv4 datagram might be needed in upper layers to send back ICMP error message
     controlInfo->setOrigDatagram(datagram);
@@ -846,6 +848,9 @@ IPv4Datagram *IPv4::encapsulate(cPacket *transportPacket, IPv4ControlInfo *contr
         ttl = defaultTimeToLive;
     datagram->setTimeToLive(ttl);
     datagram->setTransportProtocol(controlInfo->getProtocol());
+
+    // QZ
+    datagram->setExplicitCongestionNotification(controlInfo->getExplicitCongestionNotification());
 
     // setting IPv4 options is currently not supported
 

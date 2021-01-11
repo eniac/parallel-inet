@@ -160,12 +160,16 @@ void TCP::handleMessage(cMessage *msg)
 
             // get src/dest addresses
             IPvXAddress srcAddr, destAddr;
+            
+            // QZ: get ecn
+            int ecn = 0;
 
             if (dynamic_cast<IPv4ControlInfo *>(tcpseg->getControlInfo()) != NULL)
             {
                 IPv4ControlInfo *controlInfo = (IPv4ControlInfo *)tcpseg->removeControlInfo();
                 srcAddr = controlInfo->getSrcAddr();
                 destAddr = controlInfo->getDestAddr();
+                ecn = controlInfo->getExplicitCongestionNotification(); // QZ
                 delete controlInfo;
             }
             else if (dynamic_cast<IPv6ControlInfo *>(tcpseg->getControlInfo()) != NULL)
@@ -173,6 +177,7 @@ void TCP::handleMessage(cMessage *msg)
                 IPv6ControlInfo *controlInfo = (IPv6ControlInfo *)tcpseg->removeControlInfo();
                 srcAddr = controlInfo->getSrcAddr();
                 destAddr = controlInfo->getDestAddr();
+                ecn = controlInfo->getExplicitCongestionNotification(); // QZ
                 delete controlInfo;
             }
             else
@@ -180,10 +185,20 @@ void TCP::handleMessage(cMessage *msg)
                 error("(%s)%s arrived without control info", tcpseg->getClassName(), tcpseg->getName());
             }
 
+            ASSERT(ecn != -1); // QZ
+
             // process segment
             TCPConnection *conn = findConnForSegment(tcpseg, srcAddr, destAddr);
             if (conn)
             {
+                TCPStateVariables *state = conn->getState();
+                if (state && state->ect) {
+                    // This may be true only in receiver side. According to RFC 3168, page 20:
+                    // pure acknowledgement packets (e.g., packets that do not contain
+                    // any accompanying data) MUST be sent with the not-ECT codepoint.
+                    state->gotCeIndication = (ecn == 3);
+                }
+
                 bool ret = conn->processTCPSegment(tcpseg, srcAddr, destAddr);
                 if (!ret)
                     removeConnection(conn);
