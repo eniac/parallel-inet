@@ -18,7 +18,32 @@
 
 #include "AlgorithmicMarkerBase.h"
 
-void AlgorithmicMarkerBase::processPacket(cPacket *packet)
+void AlgorithmicMarkerBase::initialize()
 {
+    numGates = gateSize("out");
+    for (int i = 0; i < numGates; ++i)
+    {
+        cGate *outGate = gate("out", i);
+        cGate *connectedGate = outGate->getPathEndGate();
+        if (!connectedGate)
+            throw cRuntimeError("ThresholdDropper out gate %d is not connected", i);
+        IQueueAccess *outModule = dynamic_cast<IQueueAccess*>(connectedGate->getOwnerModule());
+        if (!outModule)
+            throw cRuntimeError("ThresholdDropper out gate %d should be connected a simple module implementing IQueueAccess", i);
+        outQueues.push_back(outModule);
+        outQueueSet.insert(outModule);
+    }
+}
+
+void AlgorithmicMarkerBase::handleMessage(cMessage *msg)
+{
+    cPacket *packet = check_and_cast<cPacket*>(msg);
     markPacket(packet);
+    sendOut(packet);
+}
+
+void AlgorithmicMarkerBase::sendOut(cPacket *packet)
+{
+    int index = packet->getArrivalGate()->getIndex();
+    send(packet, "out", index);
 }

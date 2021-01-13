@@ -18,7 +18,7 @@
 #ifndef __INET_ECNTAG_H
 #define __INET_ECNTAG_H
 
-enum IPECNCode {
+enum IPEcnCode {
   IP_ECN_NOT_ECT = 0,
   IP_ECN_ECT_1 = 1,
   IP_ECN_ECT_0 = 2,

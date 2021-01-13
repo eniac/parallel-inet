@@ -21,6 +21,9 @@
 
 #include "INETDefs.h"
 #include "AlgorithmicMarkerBase.h"
+#include "EcnTag.h"
+#include "IPv4ControlInfo.h"
+#include "IPv6ControlInfo.h"
 
 /**
  * Implementation of Random Early Detection (RED).
@@ -28,18 +31,33 @@
 class REDMarker : public AlgorithmicMarkerBase
 {
   protected:
-    double wq;
-    double *minths;
-    double *maxths;
-    double *maxps;
+    enum RedResult { QUEUE_FULL, RANDOMLY_ABOVE_LIMIT, RANDOMLY_BELOW_LIMIT, ABOVE_MAX_LIMIT, BELOW_MIN_LIMIT };
 
-    double avg;
+  protected:
+    double wq = 0.0;
+    double minth = NaN;
+    double maxth = NaN;
+    double maxp = NaN;
+    double pkrate = NaN;
+    double count = NaN;
+
+    double avg = 0.0;
+    simtime_t q_time;
+
+    int packetCapacity = -1;
+    bool useEcn = false;
+    bool markNext = false;
 
   public:
-    REDMarker() : wq(0), minths(NULL), maxths(NULL), maxps(NULL), avg(0.0) {}
+    REDMarker() {}
   protected:
     virtual ~REDMarker();
+    virtual void initialize();
+    virtual RedResult doRandomEarlyDetection(const cPacket *packet);
+    virtual IPEcnCode getEcn(const cPacket *packet);
+    virtual void setEcn(cPacket *packet, IPEcnCode);
     virtual void markPacket(cPacket *packet);
+    virtual void sendOut(cPacket *packet);
 };
 
 #endif

@@ -35,8 +35,13 @@ class INET_API AlgorithmicMarkerBase : public cSimpleModule, public IQueueAccess
       AlgorithmicMarkerBase() : numGates(0) {};
       virtual ~AlgorithmicMarkerBase() {};
     protected:
-      virtual void processPacket(cPacket* packet);
+      virtual void initialize();
+      virtual void handleMessage(cMessage *msg);
       virtual void markPacket(cPacket *packet) = 0;
+      virtual void sendOut(cPacket *packet);
+
+      virtual int getLength() const;
+      virtual int getByteLength() const;
 };
 
 #endif
