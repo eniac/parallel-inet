@@ -47,3 +47,19 @@ void AlgorithmicMarkerBase::sendOut(cPacket *packet)
     int index = packet->getArrivalGate()->getIndex();
     send(packet, "out", index);
 }
+
+int AlgorithmicMarkerBase::getLength() const
+{
+    int len = 0;
+    for (std::set<IQueueAccess*>::const_iterator it = outQueueSet.begin(); it != outQueueSet.end(); ++it)
+        len += (*it)->getLength();
+    return len;
+}
+
+int AlgorithmicMarkerBase::getByteLength() const
+{
+    int len = 0;
+    for (std::set<IQueueAccess*>::const_iterator it = outQueueSet.begin(); it != outQueueSet.end(); ++it)
+        len += (*it)->getByteLength();
+    return len;
+}

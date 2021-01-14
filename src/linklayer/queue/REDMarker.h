@@ -25,6 +25,8 @@
 #include "IPv4ControlInfo.h"
 #include "IPv6ControlInfo.h"
 
+static double const NaN = 0.0 / 0.0;
+
 /**
  * Implementation of Random Early Detection (RED).
  */

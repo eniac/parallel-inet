@@ -75,9 +75,9 @@ int TCPSerializer::serialize(const TCPSegment *tcpseg,
     if (tcpseg->getUrgBit())
         flags |= TH_URG;
     // QZ
-    if (tcpHeader->getEceBit())
+    if (tcpseg->getEceBit())
         flags |= TH_ECE;
-    if (tcpHeader->getCwrBit())
+    if (tcpseg->getCwrBit())
         flags |= TH_CWR;
     // tcp->th_flags = (TH_FLAGS & flags); // QZ
     tcp->th_flags = flags; // QZ

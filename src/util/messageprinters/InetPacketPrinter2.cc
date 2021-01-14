@@ -318,8 +318,8 @@ std::string InetPacketPrinter2::formatTCPPacket(TCPSegment *tcpSeg) const
     if (tcpSeg->getSynBit()) { flags = true; os << " S"; }
     if (tcpSeg->getFinBit()) { flags = true; os << " F"; }
     // QZ
-    if (tcpseg->getEceBit()) {flags = true; out << " E";}
-    if (tcpseg->getCwrBit()) {flags = true; out << " C";}
+    if (tcpSeg->getEceBit()) { flags = true; os << " E";}
+    if (tcpSeg->getCwrBit()) { flags = true; os << " C";}
     if (!flags) { os << " ."; }
 
     // data-seqno

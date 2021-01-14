@@ -87,7 +87,7 @@ REDMarker::RedResult REDMarker::doRandomEarlyDetection(const cPacket *packet)
             return RANDOMLY_BELOW_LIMIT;
     }
     else if (avg >= maxth) {
-        EV_DEBUG << "Average queue length (" << avg << ") >= maxth (" maxth << ")\n";
+        EV_DEBUG << "Average queue length (" << avg << ") >= maxth (" << maxth << ")\n";
         count = 0;
         return ABOVE_MAX_LIMIT;
     }
@@ -157,7 +157,6 @@ void REDMarker::markPacket(cPacket *packet)
             return;
         default:
             throw cRuntimeError("Unknown RED result");
-    }
     }
 }
 

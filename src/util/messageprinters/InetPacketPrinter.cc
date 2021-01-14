@@ -132,8 +132,8 @@ void InetPacketPrinter::printTCPPacket(std::ostream& os, IPvXAddress srcAddr, IP
     if (tcpSeg->getSynBit()) { flags = true; os << "S "; }
     if (tcpSeg->getFinBit()) { flags = true; os << "F "; }
     // QZ
-    if (tcpseg->getEceBit()) { flags = true; os << "E ";}
-    if (tcpseg->getCwrBit()) { flags = true; os << "C ";}
+    if (tcpSeg->getEceBit()) { flags = true; os << "E ";}
+    if (tcpSeg->getCwrBit()) { flags = true; os << "C ";}
     if (!flags) { os << ". "; }
 
     // data-seqno
