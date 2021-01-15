@@ -373,6 +373,7 @@ void TCPConnection::configureStateVariables()
     long advertisedWindowPar = tcpMain->par("advertisedWindow").longValue();
     state->ws_support = tcpMain->par("windowScalingSupport"); // if set, this means that current host supports WS (RFC 1323)
     state->ecnWillingness = tcpMain->par("ecnWillingness"); // if set, current host is willing to use ECN. QZ
+    // std::cout << "ecnWillingness=" << state->ecnWillingness << std::endl;
     if (!state->ws_support && (advertisedWindowPar > TCP_MAX_WIN || advertisedWindowPar <= 0))
         throw cRuntimeError("Invalid advertisedWindow parameter: %ld", advertisedWindowPar);
 
@@ -497,6 +498,7 @@ void TCPConnection::sendSyn()
         tcpseg->setCwrBit(true);
         state->ecnSynSent = true;
         tcpEV << "ECN-setup SYN packet sent\n";
+        // std::cout << "Send: Setting EceBit in Syn..." << std::endl;
     }
     else {
         // rfc 3168 page 16:
@@ -534,6 +536,7 @@ void TCPConnection::sendSynAck()
         tcpseg->setEceBit(true);
         tcpseg->setCwrBit(false);
         tcpEV << "ECN-setup SYN-ACK packet sent\n";
+        // std::cout << "Send: Setting EceBit in SynAck..." << std::endl;
     }
     else {
         tcpseg->setEceBit(false);
@@ -631,6 +634,7 @@ void TCPConnection::sendAck()
         if (tcpAlgorithm->shouldMarkAck()) {
             tcpseg->setEceBit(true);
             tcpEV << "In ecnEcho state... send ACK with ECE bit set\n";
+            // std::cout << "Send: Setting EceBit in Ack..." << std::endl;
         }
     }
 

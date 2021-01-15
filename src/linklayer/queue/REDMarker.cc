@@ -17,6 +17,9 @@
 //
 
 #include "REDMarker.h"
+#include "EtherFrame.h"
+#include "IPv4Datagram.h"
+#include "Ieee802Ctrl_m.h"
 #include "opp_utils.h"
 
 Define_Module(REDMarker);
@@ -53,6 +56,8 @@ void REDMarker::initialize()
         throw cRuntimeError("Warning: packetCapacity < maxth. Setting capacity to maxth");
         packetCapacity = maxth;
     }
+
+    // std::cout << "REDMarker initialized with wq=" << wq << " minth=" << minth << " maxth=" << maxth << " maxp=" << maxp << " pkrate=" << pkrate << " useEcn=" << useEcn << " packetCapacity=" << packetCapacity << std::endl;
 }
 
 REDMarker::RedResult REDMarker::doRandomEarlyDetection(const cPacket *packet)
@@ -101,31 +106,26 @@ REDMarker::RedResult REDMarker::doRandomEarlyDetection(const cPacket *packet)
 IPEcnCode REDMarker::getEcn(const cPacket *packet)
 {
     IPEcnCode ecn = IP_ECN_NOT_ECT;
-    if (dynamic_cast<IPv4ControlInfo *>(packet->getControlInfo()) != NULL)
-    {
-        IPv4ControlInfo *ctrl = (IPv4ControlInfo *)packet->getControlInfo();
-        ecn = static_cast<IPEcnCode>(ctrl->getExplicitCongestionNotification());
-    }
-    else if (dynamic_cast<IPv6ControlInfo *>(packet->getControlInfo()) != NULL)
-    {
-        IPv6ControlInfo *ctrl = (IPv6ControlInfo *)packet->getControlInfo();
-        ecn = static_cast<IPEcnCode>(ctrl->getExplicitCongestionNotification());
+    if (dynamic_cast<const EtherFrame *>(packet) != NULL) {
+        // std::cout << "EtherFrame!!" << std::endl;
+        const IPv4Datagram *ipv4pkt = dynamic_cast<IPv4Datagram *>(packet->getEncapsulatedPacket());
+        if (ipv4pkt != NULL) {
+            // std::cout << "ether packet from IPv4, ECN = " << ipv4pkt->getExplicitCongestionNotification() << std::endl;
+            ecn = static_cast<IPEcnCode>(ipv4pkt->getExplicitCongestionNotification());
+        }
     }
     return ecn;
 }
 
 void REDMarker::setEcn(cPacket *packet, IPEcnCode ecn)
 {
-    if (dynamic_cast<IPv4ControlInfo *>(packet->getControlInfo()) != NULL)
-    {
-        IPv4ControlInfo *ctrl = (IPv4ControlInfo *)packet->getControlInfo();
-        ctrl->setExplicitCongestionNotification(ecn);
-    }
-    else if (dynamic_cast<IPv6ControlInfo *>(packet->getControlInfo()) != NULL)
-    {
-        IPv6ControlInfo *ctrl = (IPv6ControlInfo *)packet->getControlInfo();
-        ctrl->setExplicitCongestionNotification(ecn);
-    }
+    cPacket *higherlayerpkt = packet->decapsulate();
+    IPv4Datagram *ipv4pkt = check_and_cast<IPv4Datagram *>(higherlayerpkt); // guaranteed to be IPv4 packet
+    ipv4pkt->setExplicitCongestionNotification(ecn);
+    packet->encapsulate(ipv4pkt);
+
+    // Test
+    // std::cout << "Setting ECN = " << ecn << ", getting ECN = " << getEcn(packet) << std::endl;
 }
 
 void REDMarker::markPacket(cPacket *packet)
@@ -137,6 +137,7 @@ void REDMarker::markPacket(cPacket *packet)
             if (useEcn) {
                 IPEcnCode ecn = getEcn(packet);
                 if (ecn != IP_ECN_NOT_ECT) {
+                    // std::cout << "Marking the packet! Its ecn = " << ecn << std::endl;
                     // if next packet should be marked and it is not
                     if (markNext && ecn != IP_ECN_CE) {
                         setEcn(packet, IP_ECN_CE);

@@ -873,6 +873,11 @@ TCPEventCode TCPConnection::processSegmentInListen(TCPSegment *tcpseg, IPvXAddre
         state->ack_now = true;
 
         // QZ: ECN
+        /*
+        if (tcpseg->getEceBit()) {
+            std::cout << "Recv: getEceBit()=" << tcpseg->getEceBit() << " in processSegmentInListen" << std::endl;
+        }
+        */
         if (tcpseg->getEceBit() == true && tcpseg->getCwrBit() == true) {
             state->endPointIsWillingECN = true;
             tcpEV << "ECN-setup SYN packet received\n";
@@ -1090,6 +1095,11 @@ TCPEventCode TCPConnection::processSegmentInSynSent(TCPSegment *tcpseg, IPvXAddr
             sendEstabIndicationToApp();
 
             // ECN
+            /*
+            if (tcpseg->getEceBit()) {
+                std::cout << "Recv: getEceBit()=" << tcpseg->getEceBit() << " in processSegmentInSynSent" << std::endl;
+            }
+            */
             if (state->ecnSynSent) {
                 if (tcpseg->getEceBit() && !tcpseg->getCwrBit()) {
                     state->ect = true;
@@ -1208,6 +1218,11 @@ bool TCPConnection::processAckInEstabEtc(TCPSegment *tcpseg)
 
     // ECN
     TCPStateVariables *state = getState();
+    /*
+    if (tcpseg->getEceBit()) {
+        std::cout << "Recv: getEceBit()=" << tcpseg->getEceBit() << " in processAckInEstabEtc" << std::endl;
+    }
+    */
     if (state && state->ect) {
         if (tcpseg->getEceBit() == true)
             tcpEV << "Received packet with ECE\n";

@@ -186,6 +186,11 @@ void TCP::handleMessage(cMessage *msg)
             }
 
             ASSERT(ecn != -1); // QZ
+            /*
+            if (ecn == 3) {
+                std::cout << "TCP: ecn == 3" << std::endl;
+            }
+            */
 
             // process segment
             TCPConnection *conn = findConnForSegment(tcpseg, srcAddr, destAddr);
