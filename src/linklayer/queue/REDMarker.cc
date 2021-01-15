@@ -19,7 +19,6 @@
 #include "REDMarker.h"
 #include "EtherFrame.h"
 #include "IPv4Datagram.h"
-#include "Ieee802Ctrl_m.h"
 #include "opp_utils.h"
 
 Define_Module(REDMarker);
