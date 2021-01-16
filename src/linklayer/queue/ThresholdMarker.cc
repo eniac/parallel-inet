@@ -79,20 +79,10 @@ void ThresholdMarker::markPacket(cPacket *packet)
 {
     if (getLength() >= K) {
         if (useEcn) {
-                IPEcnCode ecn = getEcn(packet);
-                if (ecn != IP_ECN_NOT_ECT) {
-                    setEcn(packet, IP_ECN_CE);
-                }
+            IPEcnCode ecn = getEcn(packet);
+            if (ecn != IP_ECN_NOT_ECT) {
+                setEcn(packet, IP_ECN_CE);
             }
         }
     }
-}
-
-void ThresholdMarker::sendOut(cPacket *packet)
-{
-    int index = packet->getArrivalGate()->getIndex();
-    send(packet, "out", index);
-    int queueLength = getLength();
-    if (queueLength == 0)
-        q_time = simTime();
 }

@@ -44,7 +44,6 @@ class ThresholdMarker : public AlgorithmicMarkerBase
     virtual void setEcn(cPacket *packet, IPEcnCode);
     virtual bool shouldDrop(cPacket *packet);
     virtual void markPacket(cPacket *packet);
-    virtual void sendOut(cPacket *packet);
 };
 
 #endif
