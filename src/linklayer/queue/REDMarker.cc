@@ -127,6 +127,14 @@ void REDMarker::setEcn(cPacket *packet, IPEcnCode ecn)
     // std::cout << "Setting ECN = " << ecn << ", getting ECN = " << getEcn(packet) << std::endl;
 }
 
+bool REDMarker::shouldDrop(cPacket *packet)
+{
+    if (getLength() >= packetCapacity) {
+        return true;
+    }
+    return false;
+}
+
 void REDMarker::markPacket(cPacket *packet)
 {
     RedResult lastResult = doRandomEarlyDetection(packet);

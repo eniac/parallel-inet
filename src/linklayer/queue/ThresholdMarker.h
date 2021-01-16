@@ -28,32 +28,18 @@ static double const NaN = 0.0 / 0.0;
 /**
  * Implementation of Random Early Detection (RED).
  */
-class REDMarker : public AlgorithmicMarkerBase
+class ThresholdMarker : public AlgorithmicMarkerBase
 {
   protected:
-    enum RedResult { QUEUE_FULL, RANDOMLY_ABOVE_LIMIT, RANDOMLY_BELOW_LIMIT, ABOVE_MAX_LIMIT, BELOW_MIN_LIMIT };
-
-  protected:
-    double wq = 0.0;
-    double minth = NaN;
-    double maxth = NaN;
-    double maxp = NaN;
-    double pkrate = NaN;
-    double count = NaN;
-
-    double avg = 0.0;
-    simtime_t q_time;
-
+    double K = NaN;
     int packetCapacity = -1;
     bool useEcn = false;
-    bool markNext = false;
 
   public:
-    REDMarker() {}
+    ThresholdMarker() {}
   protected:
-    virtual ~REDMarker();
+    virtual ~ThresholdMarker();
     virtual void initialize();
-    virtual RedResult doRandomEarlyDetection(const cPacket *packet);
     virtual IPEcnCode getEcn(const cPacket *packet);
     virtual void setEcn(cPacket *packet, IPEcnCode);
     virtual bool shouldDrop(cPacket *packet);

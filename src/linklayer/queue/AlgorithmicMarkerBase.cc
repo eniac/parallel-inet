@@ -38,8 +38,18 @@ void AlgorithmicMarkerBase::initialize()
 void AlgorithmicMarkerBase::handleMessage(cMessage *msg)
 {
     cPacket *packet = check_and_cast<cPacket*>(msg);
-    markPacket(packet);
-    sendOut(packet);
+    if (shouldDrop(packet)) {
+        dropPacket(packet);
+    } else {
+        markPacket(packet);
+        sendOut(packet);
+    }
+}
+
+void AlgorithmicMarkerBase::dropPacket(cPacket *packet)
+{
+    // TODO statistics
+    delete packet;
 }
 
 void AlgorithmicMarkerBase::sendOut(cPacket *packet)

@@ -37,6 +37,8 @@ class INET_API AlgorithmicMarkerBase : public cSimpleModule, public IQueueAccess
     protected:
       virtual void initialize();
       virtual void handleMessage(cMessage *msg);
+      virtual bool shouldDrop(cPacket *packet) = 0;
+      virtual void dropPacket(cPacket *packet);
       virtual void markPacket(cPacket *packet) = 0;
       virtual void sendOut(cPacket *packet);
 

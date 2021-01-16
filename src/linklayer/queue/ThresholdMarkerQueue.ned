@@ -19,20 +19,20 @@
 package inet.linklayer.queue;
 
 import inet.linklayer.queue.FIFOQueue;
-import inet.linklayer.queue.REDMarker;
+import inet.linklayer.queue.ThresholdMarker;
 import inet.linklayer.IOutputQueue;
 
-module REDMarkerQueue like IOutputQueue
+module ThresholdMarkerQueue like IOutputQueue
 {
     gates:
         input in;
         output out;
 
     submodules:
-        red: REDMarker;
+        marker: ThresholdMarker;
         fifo: FIFOQueue;
     connections:
-        in --> red.in[0];
-        red.out[0] --> fifo.in++;
+        in --> marker.in[0];
+        marker.out[0] --> fifo.in++;
         fifo.out --> out;
 }
