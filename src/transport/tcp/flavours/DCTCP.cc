@@ -240,6 +240,8 @@ bool DCTCP::shouldMarkAck()
 {
     // RFC 8257 3.2 page 6
     // When sending an ACK, the ECE flag MUST be set if and only if DCTCP.CE is true.
+    // if (state->dctcp_ce)
+    //    std::cout << "DCTCP: mark the ACK" << std::endl;
     return state->dctcp_ce;
 }
 

@@ -134,6 +134,10 @@ bool TCPConnection::hasEnoughSpaceForSegmentInReceiveQueue(TCPSegment *tcpseg)
 
 TCPEventCode TCPConnection::processSegment1stThru8th(TCPSegment *tcpseg)
 {
+    // QZ: adding ECN
+    // Delegates additional processing of ECN to the algorithm
+    tcpAlgorithm->processEcnInEstablished();
+
     //
     // RFC 793: first check sequence number
     //
