@@ -464,23 +464,12 @@ void PacketDump::udpDump(bool l2r, const char *label, UDPPacket* udppkt,
     out << buf;
 
 #ifndef WITH_UDP
-    if (l2r)
-        out << "[UDP] "<< srcAddr << " > " << destAddr << ": ";
-    else
-        out << "[UDP] "<< destAddr << " < " << srcAddr << ": ";
+    out << "[UDP] "<< srcAddr << " > " << destAddr << ": ";
 #else
     // seq and time (not part of the tcpdump format)
     // src/dest
-    if (l2r)
-    {
-        out << srcAddr << "." << udppkt->getSourcePort() << " > ";
-        out << destAddr << "." << udppkt->getDestinationPort() << ": ";
-    }
-    else
-    {
-        out << destAddr << "." << udppkt->getDestinationPort() << " < ";
-        out << srcAddr << "." << udppkt->getSourcePort() << ": ";
-    }
+    out << srcAddr << "." << udppkt->getSourcePort() << " > ";
+    out << destAddr << "." << udppkt->getDestinationPort() << ": ";
 
     //out << endl;
     out << "UDP: length=" << udppkt->getByteLength() - 8 << endl;
@@ -512,10 +501,7 @@ void PacketDump::homaDump(bool l2r, const char *label, UDPPacket* udppkt, HomaPk
     out << buf;
 
 #ifndef WITH_UDP
-    if (l2r)
         out << "[Homa] "<< srcAddr << " > " << destAddr << ": ";
-    else
-        out << "[Homa] "<< destAddr << " < " << srcAddr << ": ";
 #else
     // seq and time (not part of the tcpdump format)
     // always src to dst
@@ -684,36 +670,26 @@ void PacketDump::tcpDump(bool l2r, const char *label, TCPSegment *tcpseg,
     out << buf;
 
 #ifndef WITH_TCP_COMMON
-    if (l2r)
-        out << srcAddr << " > " << destAddr << ": ";
-    else
-        out << destAddr << " < " << srcAddr << ": ";
+    out << srcAddr << " > " << destAddr << ": ";
 #else
     // src/dest ports
-    if (l2r)
-    {
-        out << srcAddr << "." << tcpseg->getSrcPort() << " > ";
-        out << destAddr << "." << tcpseg->getDestPort() << ": ";
-    }
-    else
-    {
-        out << destAddr << "." << tcpseg->getDestPort() << " < ";
-        out << srcAddr << "." << tcpseg->getSrcPort() << ": ";
-    }
+    out << srcAddr << "." << tcpseg->getSrcPort() << " > ";
+    out << destAddr << "." << tcpseg->getDestPort() << ": ";
 
     // flags
     bool flags = false;
-    if (tcpseg->getUrgBit()) {flags = true; out << "U ";}
-    if (tcpseg->getAckBit()) {flags = true; out << "A ";}
-    if (tcpseg->getPshBit()) {flags = true; out << "P ";}
-    if (tcpseg->getRstBit()) {flags = true; out << "R ";}
-    if (tcpseg->getSynBit()) {flags = true; out << "S ";}
-    if (tcpseg->getFinBit()) {flags = true; out << "F ";}
+    if (tcpseg->getUrgBit()) {flags = true; out << "U";}
+    if (tcpseg->getAckBit()) {flags = true; out << "A";}
+    if (tcpseg->getPshBit()) {flags = true; out << "P";}
+    if (tcpseg->getRstBit()) {flags = true; out << "R";}
+    if (tcpseg->getSynBit()) {flags = true; out << "S";}
+    if (tcpseg->getFinBit()) {flags = true; out << "F";}
     // QZ
-    if (tcpseg->getEceBit()) {flags = true; out << "E ";}
-    if (tcpseg->getCwrBit()) {flags = true; out << "C ";}
+    if (tcpseg->getEceBit()) {flags = true; out << "E";}
+    if (tcpseg->getCwrBit()) {flags = true; out << "C";}
 
     if (!flags) {out << ". ";}
+    else {out << " ";}
 
     // data-seqno
     if (tcpseg->getPayloadLength()>0 || tcpseg->getSynBit())
