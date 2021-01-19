@@ -28,7 +28,7 @@ import inet.linklayer.IOutputQueue;
 simple DropTailQueue like IOutputQueue
 {
     parameters:
-        int frameCapacity = default(0);
+        int frameCapacity = default(100);
         string queueName = default("l2queue"); // name of the inner cQueue object, used in the 'q' tag of the display string
         string transportType = default(""); // <Behnam> can be "HomaTransport" or "PseudoIdealTransport".
                                             // Determines which priority scheduling function should be used.
