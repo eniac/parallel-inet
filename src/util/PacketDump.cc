@@ -405,7 +405,8 @@ void PacketDump::dumpPacket(bool l2r, cPacket *msg)
 #ifdef WITH_TCP_COMMON
     if (dynamic_cast<TCPSegment *>(msg))
     {
-        tcpDump(l2r, "", (TCPSegment *)msg, std::string(l2r ? "A" : "B"), std::string(l2r ? "B" : "A"));
+        tcpDump(l2r, "", (TCPSegment *)msg, 0, std::string(l2r ? "A" : "B"),
+                std::string(l2r ? "B" : "A"));
     }
     else
 #endif
@@ -558,7 +559,9 @@ void PacketDump::dumpIPv4(bool l2r, const char *label, IPv4Datagram *dgram, cons
     if (dynamic_cast<TCPSegment *>(encapmsg))
     {
          // if TCP, dump as TCP
-         tcpDump(l2r, label, (TCPSegment *)encapmsg, dgram->getSrcAddress().str(),
+         tcpDump(l2r, label, (TCPSegment *)encapmsg,
+                 dgram->getExplicitCongestionNotification(),
+                 dgram->getSrcAddress().str(),
                  dgram->getDestAddress().str(), comment);
     }
     else
@@ -627,7 +630,9 @@ void PacketDump::dumpIPv6(bool l2r, const char *label, IPv6Datagram *dgram, cons
     if (dynamic_cast<TCPSegment *>(encapmsg))
     {
          // if TCP, dump as TCP
-         tcpDump(l2r, label, (TCPSegment *)encapmsg, dgram->getSrcAddress().str(),
+         tcpDump(l2r, label, (TCPSegment *)encapmsg,
+                 dgram->getExplicitCongestionNotification(),
+                 dgram->getSrcAddress().str(),
                  dgram->getDestAddress().str(), comment);
     }
     else
@@ -660,7 +665,8 @@ void PacketDump::dumpIPv6(bool l2r, const char *label, IPv6Datagram *dgram, cons
 }
 
 void PacketDump::tcpDump(bool l2r, const char *label, TCPSegment *tcpseg,
-        const std::string& srcAddr, const std::string& destAddr, const char *comment)
+        const int ecn, const std::string& srcAddr,
+        const std::string& destAddr, const char *comment)
 {
      std::ostream& out = *outp;
 
@@ -708,6 +714,9 @@ void PacketDump::tcpDump(bool l2r, const char *label, TCPSegment *tcpseg,
     // urgent
     if (tcpseg->getUrgBit())
         out << "urg " << tcpseg->getUrgentPointer() << " ";
+
+    // ecn
+    out << "ecn " << ecn << " ";
 
     // options present?
     if (tcpseg->getHeaderLength() > 20)

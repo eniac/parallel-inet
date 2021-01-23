@@ -110,8 +110,9 @@ class INET_API PacketDump
         /**
          * Dumps info about the given TCP segment.
          */
-        void tcpDump(bool l2r, const char *label, TCPSegment *tcpseg, const std::string& srcAddr,
-                const std::string& destAddr, const char *comment = NULL);
+        void tcpDump(bool l2r, const char *label, TCPSegment *tcpseg,
+                     const int ecn, const std::string& srcAddr,
+                     const std::string& destAddr, const char *comment = NULL);
 
         /**
          * Dumps info about the given UDP packet.
