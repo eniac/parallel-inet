@@ -65,7 +65,7 @@ void PacketDump::sctpDump(const char *label, SCTPMessage *sctpmsg,
 
     // seq and time (not part of the tcpdump format)
     char buf[30];
-    sprintf(buf, "[%.3f%s] ", simulation.getSimTime().dbl(), label);
+    sprintf(buf, "[%.6f%s] ", simulation.getSimTime().dbl(), label);
     out << buf;
 
 #ifndef WITH_SCTP
@@ -375,7 +375,7 @@ void PacketDump::dump(const char *label, const char *msg)
     // seq and time (not part of the tcpdump format)
     char buf[30];
 
-    sprintf(buf, "[%.3f%s] ", simulation.getSimTime().dbl(), label);
+    sprintf(buf, "[%.6f%s] ", simulation.getSimTime().dbl(), label);
     out << buf << msg << endl;
 }
 
@@ -541,7 +541,7 @@ void PacketDump::dumpARP(bool l2r, const char *label, ARPPacket *dgram, const ch
 #ifdef WITH_IPv4
     std::ostream& out = *outp;
     char buf[30];
-    sprintf(buf, "[%.3f%s] ", simulation.getSimTime().dbl(), label);
+    sprintf(buf, "[%.6f%s] ", simulation.getSimTime().dbl(), label);
     out << buf << " src: " << dgram->getSrcIPAddress() << ", " << dgram->getSrcMACAddress()
             << "; dest: " << dgram->getDestIPAddress() << ", " << dgram->getDestMACAddress() << endl;
 #endif
@@ -594,7 +594,7 @@ void PacketDump::dumpIPv4(bool l2r, const char *label, IPv4Datagram *dgram, cons
     {
          // some other packet, dump what we can
          // seq and time (not part of the tcpdump format)
-         sprintf(buf, "[%.3f%s] ", SIMTIME_DBL(simTime()), label);
+         sprintf(buf, "[%.6f%s] ", SIMTIME_DBL(simTime()), label);
          out << buf;
 
          // packet class and name
@@ -607,7 +607,7 @@ void PacketDump::dumpIPv4(bool l2r, const char *label, IPv4Datagram *dgram, cons
          out << endl;
     }
 #else
-    sprintf(buf, "[%.3f%s] ", SIMTIME_DBL(simTime()), label);
+    sprintf(buf, "[%.6f%s] ", SIMTIME_DBL(simTime()), label);
     out << buf << "[IPv4]";
 
     // comment
@@ -640,7 +640,7 @@ void PacketDump::dumpIPv6(bool l2r, const char *label, IPv6Datagram *dgram, cons
     {
          // some other packet, dump what we can
          // seq and time (not part of the tcpdump format)
-         sprintf(buf, "[%.3f%s] ", SIMTIME_DBL(simTime()), label);
+         sprintf(buf, "[%.6f%s] ", SIMTIME_DBL(simTime()), label);
          out << buf;
 
          // packet class and name
@@ -653,7 +653,7 @@ void PacketDump::dumpIPv6(bool l2r, const char *label, IPv6Datagram *dgram, cons
          out << endl;
     }
 #else
-    sprintf(buf, "[%.3f%s] ", SIMTIME_DBL(simTime()), label);
+    sprintf(buf, "[%.6f%s] ", SIMTIME_DBL(simTime()), label);
     out << buf << "[IPv4]";
 
     // comment
@@ -672,7 +672,7 @@ void PacketDump::tcpDump(bool l2r, const char *label, TCPSegment *tcpseg,
 
     // seq and time (not part of the tcpdump format)
     char buf[30];
-    sprintf(buf, "[%.3f%s] ", SIMTIME_DBL(simTime()), label);
+    sprintf(buf, "[%.6f%s] ", SIMTIME_DBL(simTime()), label);
     out << buf;
 
 #ifndef WITH_TCP_COMMON
