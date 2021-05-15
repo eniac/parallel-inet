@@ -211,9 +211,12 @@ simple TCP like ITCP
         bool timestampSupport = default(false); // Timestamps (RFC 1323) support (header option) (TS will be enabled for a connection if both endpoints support it)
         int mss = default(536); // Maximum Segment Size (RFC 793) (header option)
         string tcpAlgorithmClass = default("TCPReno"); // TCPReno/TCPTahoe/TCPNewReno/TCPNoCongestionControl/DumbTCP
+        int dupthresh = default(3); // used for TcpTahoe, TcpReno and SACK (RFC 3517) DO NOT change unless you really know what you are doing. QZ: added for DCTCP
         bool recordStats = default(true); // recording of seqNum etc. into output vectors enabled/disabled
         string sendQueueClass = default("");    // Obsolete!!!
         string receiveQueueClass = default(""); // Obsolete!!!
+        bool ecnWillingness = default(false);	// true if willing to use ECN. QZ: added for DCTCP
+        double dctcpGamma = default(0.0625); // A fixed estimation gain for calculating dctcp_alpha (RFC 8257 4.2). QZ: added for DCTCP
         @display("i=block/wheelbarrow");
     gates:
         input appIn[] @labels(TCPCommand/down);

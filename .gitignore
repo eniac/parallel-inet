@@ -3,3 +3,4 @@
 *.o
 src/out
 src/libinet.so
+.vscode/settings.json

@@ -89,6 +89,10 @@ class INET_API DumbTCP : public TCPAlgorithm
 
     virtual void rttMeasurementCompleteUsingTS(uint32 echoedTS);
 
+    virtual bool shouldMarkAck();
+
+    virtual void processEcnInEstablished();
+
 };
 
 #endif

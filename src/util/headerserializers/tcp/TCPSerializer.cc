@@ -74,7 +74,13 @@ int TCPSerializer::serialize(const TCPSegment *tcpseg,
         flags |= TH_ACK;
     if (tcpseg->getUrgBit())
         flags |= TH_URG;
-    tcp->th_flags = (TH_FLAGS & flags);
+    // QZ
+    if (tcpseg->getEceBit())
+        flags |= TH_ECE;
+    if (tcpseg->getCwrBit())
+        flags |= TH_CWR;
+    // tcp->th_flags = (TH_FLAGS & flags); // QZ
+    tcp->th_flags = flags; // QZ
     tcp->th_win = htons(tcpseg->getWindow());
     tcp->th_urp = htons(tcpseg->getUrgentPointer());
 
@@ -172,6 +178,9 @@ void TCPSerializer::parse(const unsigned char *buf, unsigned int bufsize, TCPSeg
     tcpseg->setPshBit((flags & TH_PUSH) == TH_PUSH);
     tcpseg->setAckBit((flags & TH_ACK) == TH_ACK);
     tcpseg->setUrgBit((flags & TH_URG) == TH_URG);
+    // QZ
+    tcpseg->setEceBit((flags & TH_ECE) == TH_ECE);
+    tcpseg->setCwrBit((flags & TH_CWR) == TH_CWR);
 
     tcpseg->setWindow(ntohs(tcp->th_win));
     // Checksum (header checksum): modelled by cMessage::hasBitError()

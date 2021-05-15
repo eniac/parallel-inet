@@ -281,7 +281,7 @@ void TCPVegas::receivedDataAck(uint32 firstSeqAcked)
             // TCPConnection::retransmitOneSegment will fail: ASSERT(bytes!=0), line 839), because bytes = snd_max-snd_una
             if (expired && (state->snd_max - state->snd_una > 0))
             {
-                state->dupacks = DUPTHRESH;
+                state->dupacks = state->dupthresh; // QZ
                 tcpEV << "Vegas: retransmission (v_rtt_timeout) " << "\n";
                 conn->retransmitOneSegment(false); //retransmit one segment from snd_una
             }
@@ -315,7 +315,7 @@ void TCPVegas::receivedDuplicateAck()
     bool expired = found && ((currentTime - tSent) >= state->v_rtt_timeout);
 
     // rtx if Vegas timeout || 3 dupacks
-    if (expired || state->dupacks == DUPTHRESH)
+    if (expired || state->dupacks == state->dupthresh) // QZ
     { //DUPTHRESH = 3
         uint32 win = std::min(state->snd_cwnd, state->snd_wnd);
         state->v_worried = std::min((uint32) 2 * state->snd_mss, state->snd_nxt - state->snd_una);
@@ -352,10 +352,10 @@ void TCPVegas::receivedDuplicateAck()
         conn->retransmitOneSegment(false);
 
         if (found && num_transmits == 1)
-            state->dupacks = DUPTHRESH;
+            state->dupacks = state->dupthresh; // QZ
     }
     //else if dupacks > duphtresh, cwnd+1
-    else if (state->dupacks > DUPTHRESH)
+    else if (state->dupacks > state->dupthresh) // QZ
     { // DUPTHRESH = 3
         state->snd_cwnd += state->snd_mss;
         if (cwndVector) cwndVector->record(state->snd_cwnd);

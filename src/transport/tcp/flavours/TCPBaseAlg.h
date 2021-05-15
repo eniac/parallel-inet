@@ -197,6 +197,10 @@ class INET_API TCPBaseAlg : public TCPAlgorithm
     virtual void segmentRetransmitted(uint32 fromseq, uint32 toseq);
 
     virtual void restartRexmitTimer();
+
+    virtual bool shouldMarkAck();
+
+    virtual void processEcnInEstablished();
 };
 
 #endif

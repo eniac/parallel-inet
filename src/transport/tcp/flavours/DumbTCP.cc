@@ -133,3 +133,12 @@ void DumbTCP::restartRexmitTimer()
 void DumbTCP::rttMeasurementCompleteUsingTS(uint32 echoedTS)
 {
 }
+
+bool DumbTCP::shouldMarkAck()
+{
+    return false;
+}
+
+void DumbTCP::processEcnInEstablished()
+{
+}

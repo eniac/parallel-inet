@@ -134,6 +134,10 @@ bool TCPConnection::hasEnoughSpaceForSegmentInReceiveQueue(TCPSegment *tcpseg)
 
 TCPEventCode TCPConnection::processSegment1stThru8th(TCPSegment *tcpseg)
 {
+    // QZ: adding ECN
+    // Delegates additional processing of ECN to the algorithm
+    tcpAlgorithm->processEcnInEstablished();
+
     //
     // RFC 793: first check sequence number
     //
@@ -204,6 +208,12 @@ TCPEventCode TCPConnection::processSegment1stThru8th(TCPSegment *tcpseg)
             rcvNASegVector->record(state->rcv_naseg);
 
         return TCP_E_IGNORE;
+    }
+
+    // ECN
+    if (tcpseg->getCwrBit() == true) {
+        tcpEV << "Received CWR... Leaving ecnEcho State\n";
+        state->ecnEchoState = false;
     }
 
     //
@@ -865,6 +875,18 @@ TCPEventCode TCPConnection::processSegmentInListen(TCPSegment *tcpseg, IPvXAddre
             readHeaderOptions(tcpseg);
 
         state->ack_now = true;
+
+        // QZ: ECN
+        /*
+        if (tcpseg->getEceBit()) {
+            std::cout << "Recv: getEceBit()=" << tcpseg->getEceBit() << " in processSegmentInListen" << std::endl;
+        }
+        */
+        if (tcpseg->getEceBit() == true && tcpseg->getCwrBit() == true) {
+            state->endPointIsWillingECN = true;
+            tcpEV << "ECN-setup SYN packet received\n";
+        }
+
         sendSynAck();
         startSynRexmitTimer();
 
@@ -1076,6 +1098,29 @@ TCPEventCode TCPConnection::processSegmentInSynSent(TCPSegment *tcpseg, IPvXAddr
             tcpAlgorithm->established(true);
             sendEstabIndicationToApp();
 
+            // ECN
+            /*
+            if (tcpseg->getEceBit()) {
+                std::cout << "Recv: getEceBit()=" << tcpseg->getEceBit() << " in processSegmentInSynSent" << std::endl;
+            }
+            */
+            if (state->ecnSynSent) {
+                if (tcpseg->getEceBit() && !tcpseg->getCwrBit()) {
+                    state->ect = true;
+                    tcpEV << "ECN-setup SYN-ACK packet was received... ECN is enabled.\n";
+                }
+                else {
+                    state->ect = false;
+                    tcpEV << "non-ECN-setup SYN-ACK packet was received... ECN is disabled.\n";
+                }
+                state->ecnSynSent = false;
+            }
+            else {
+                state->ect = false;
+                if (tcpseg->getEceBit() && !tcpseg->getCwrBit())
+                    tcpEV << "ECN-setup SYN-ACK packet was received... ECN is disabled.\n";
+            }
+
             // This will trigger transition to ESTABLISHED. Timers and notifying
             // app will be taken care of in stateEntered().
             return TCP_E_RCV_SYN_ACK;
@@ -1172,6 +1217,22 @@ TCPEventCode TCPConnection::processRstInSynReceived(TCPSegment *tcpseg)
 bool TCPConnection::processAckInEstabEtc(TCPSegment *tcpseg)
 {
     tcpEV2 << "Processing ACK in a data transfer state\n";
+
+    int payloadLength = tcpseg->getByteLength() - tcpseg->getHeaderLength(); // QZ: removed B(header length) here
+
+    // ECN
+    TCPStateVariables *state = getState();
+    /*
+    if (tcpseg->getEceBit()) {
+        std::cout << "Recv: getEceBit()=" << tcpseg->getEceBit() << " in processAckInEstabEtc" << std::endl;
+    }
+    */
+    if (state && state->ect) {
+        if (tcpseg->getEceBit() == true)
+            tcpEV << "Received packet with ECE\n";
+
+        state->gotEce = tcpseg->getEceBit();
+    }
 
     //
     //"

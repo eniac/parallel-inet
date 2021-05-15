@@ -65,7 +65,7 @@ void PacketDump::sctpDump(const char *label, SCTPMessage *sctpmsg,
 
     // seq and time (not part of the tcpdump format)
     char buf[30];
-    sprintf(buf, "[%.3f%s] ", simulation.getSimTime().dbl(), label);
+    sprintf(buf, "[%.6f%s] ", simulation.getSimTime().dbl(), label);
     out << buf;
 
 #ifndef WITH_SCTP
@@ -375,7 +375,7 @@ void PacketDump::dump(const char *label, const char *msg)
     // seq and time (not part of the tcpdump format)
     char buf[30];
 
-    sprintf(buf, "[%.3f%s] ", simulation.getSimTime().dbl(), label);
+    sprintf(buf, "[%.6f%s] ", simulation.getSimTime().dbl(), label);
     out << buf << msg << endl;
 }
 
@@ -405,7 +405,8 @@ void PacketDump::dumpPacket(bool l2r, cPacket *msg)
 #ifdef WITH_TCP_COMMON
     if (dynamic_cast<TCPSegment *>(msg))
     {
-        tcpDump(l2r, "", (TCPSegment *)msg, std::string(l2r ? "A" : "B"), std::string(l2r ? "B" : "A"));
+        tcpDump(l2r, "", (TCPSegment *)msg, 0, std::string(l2r ? "A" : "B"),
+                std::string(l2r ? "B" : "A"));
     }
     else
 #endif
@@ -464,23 +465,12 @@ void PacketDump::udpDump(bool l2r, const char *label, UDPPacket* udppkt,
     out << buf;
 
 #ifndef WITH_UDP
-    if (l2r)
-        out << "[UDP] "<< srcAddr << " > " << destAddr << ": ";
-    else
-        out << "[UDP] "<< destAddr << " < " << srcAddr << ": ";
+    out << "[UDP] "<< srcAddr << " > " << destAddr << ": ";
 #else
     // seq and time (not part of the tcpdump format)
     // src/dest
-    if (l2r)
-    {
-        out << srcAddr << "." << udppkt->getSourcePort() << " > ";
-        out << destAddr << "." << udppkt->getDestinationPort() << ": ";
-    }
-    else
-    {
-        out << destAddr << "." << udppkt->getDestinationPort() << " < ";
-        out << srcAddr << "." << udppkt->getSourcePort() << ": ";
-    }
+    out << srcAddr << "." << udppkt->getSourcePort() << " > ";
+    out << destAddr << "." << udppkt->getDestinationPort() << ": ";
 
     //out << endl;
     out << "UDP: length=" << udppkt->getByteLength() - 8 << endl;
@@ -512,10 +502,7 @@ void PacketDump::homaDump(bool l2r, const char *label, UDPPacket* udppkt, HomaPk
     out << buf;
 
 #ifndef WITH_UDP
-    if (l2r)
         out << "[Homa] "<< srcAddr << " > " << destAddr << ": ";
-    else
-        out << "[Homa] "<< destAddr << " < " << srcAddr << ": ";
 #else
     // seq and time (not part of the tcpdump format)
     // always src to dst
@@ -554,7 +541,7 @@ void PacketDump::dumpARP(bool l2r, const char *label, ARPPacket *dgram, const ch
 #ifdef WITH_IPv4
     std::ostream& out = *outp;
     char buf[30];
-    sprintf(buf, "[%.3f%s] ", simulation.getSimTime().dbl(), label);
+    sprintf(buf, "[%.6f%s] ", simulation.getSimTime().dbl(), label);
     out << buf << " src: " << dgram->getSrcIPAddress() << ", " << dgram->getSrcMACAddress()
             << "; dest: " << dgram->getDestIPAddress() << ", " << dgram->getDestMACAddress() << endl;
 #endif
@@ -572,7 +559,9 @@ void PacketDump::dumpIPv4(bool l2r, const char *label, IPv4Datagram *dgram, cons
     if (dynamic_cast<TCPSegment *>(encapmsg))
     {
          // if TCP, dump as TCP
-         tcpDump(l2r, label, (TCPSegment *)encapmsg, dgram->getSrcAddress().str(),
+         tcpDump(l2r, label, (TCPSegment *)encapmsg,
+                 dgram->getExplicitCongestionNotification(),
+                 dgram->getSrcAddress().str(),
                  dgram->getDestAddress().str(), comment);
     }
     else
@@ -605,7 +594,7 @@ void PacketDump::dumpIPv4(bool l2r, const char *label, IPv4Datagram *dgram, cons
     {
          // some other packet, dump what we can
          // seq and time (not part of the tcpdump format)
-         sprintf(buf, "[%.3f%s] ", SIMTIME_DBL(simTime()), label);
+         sprintf(buf, "[%.6f%s] ", SIMTIME_DBL(simTime()), label);
          out << buf;
 
          // packet class and name
@@ -618,7 +607,7 @@ void PacketDump::dumpIPv4(bool l2r, const char *label, IPv4Datagram *dgram, cons
          out << endl;
     }
 #else
-    sprintf(buf, "[%.3f%s] ", SIMTIME_DBL(simTime()), label);
+    sprintf(buf, "[%.6f%s] ", SIMTIME_DBL(simTime()), label);
     out << buf << "[IPv4]";
 
     // comment
@@ -641,7 +630,9 @@ void PacketDump::dumpIPv6(bool l2r, const char *label, IPv6Datagram *dgram, cons
     if (dynamic_cast<TCPSegment *>(encapmsg))
     {
          // if TCP, dump as TCP
-         tcpDump(l2r, label, (TCPSegment *)encapmsg, dgram->getSrcAddress().str(),
+         tcpDump(l2r, label, (TCPSegment *)encapmsg,
+                 dgram->getExplicitCongestionNotification(),
+                 dgram->getSrcAddress().str(),
                  dgram->getDestAddress().str(), comment);
     }
     else
@@ -649,7 +640,7 @@ void PacketDump::dumpIPv6(bool l2r, const char *label, IPv6Datagram *dgram, cons
     {
          // some other packet, dump what we can
          // seq and time (not part of the tcpdump format)
-         sprintf(buf, "[%.3f%s] ", SIMTIME_DBL(simTime()), label);
+         sprintf(buf, "[%.6f%s] ", SIMTIME_DBL(simTime()), label);
          out << buf;
 
          // packet class and name
@@ -662,7 +653,7 @@ void PacketDump::dumpIPv6(bool l2r, const char *label, IPv6Datagram *dgram, cons
          out << endl;
     }
 #else
-    sprintf(buf, "[%.3f%s] ", SIMTIME_DBL(simTime()), label);
+    sprintf(buf, "[%.6f%s] ", SIMTIME_DBL(simTime()), label);
     out << buf << "[IPv4]";
 
     // comment
@@ -674,42 +665,37 @@ void PacketDump::dumpIPv6(bool l2r, const char *label, IPv6Datagram *dgram, cons
 }
 
 void PacketDump::tcpDump(bool l2r, const char *label, TCPSegment *tcpseg,
-        const std::string& srcAddr, const std::string& destAddr, const char *comment)
+        const int ecn, const std::string& srcAddr,
+        const std::string& destAddr, const char *comment)
 {
      std::ostream& out = *outp;
 
     // seq and time (not part of the tcpdump format)
     char buf[30];
-    sprintf(buf, "[%.3f%s] ", SIMTIME_DBL(simTime()), label);
+    sprintf(buf, "[%.6f%s] ", SIMTIME_DBL(simTime()), label);
     out << buf;
 
 #ifndef WITH_TCP_COMMON
-    if (l2r)
-        out << srcAddr << " > " << destAddr << ": ";
-    else
-        out << destAddr << " < " << srcAddr << ": ";
+    out << srcAddr << " > " << destAddr << ": ";
 #else
     // src/dest ports
-    if (l2r)
-    {
-        out << srcAddr << "." << tcpseg->getSrcPort() << " > ";
-        out << destAddr << "." << tcpseg->getDestPort() << ": ";
-    }
-    else
-    {
-        out << destAddr << "." << tcpseg->getDestPort() << " < ";
-        out << srcAddr << "." << tcpseg->getSrcPort() << ": ";
-    }
+    out << srcAddr << "." << tcpseg->getSrcPort() << " > ";
+    out << destAddr << "." << tcpseg->getDestPort() << ": ";
 
     // flags
     bool flags = false;
-    if (tcpseg->getUrgBit()) {flags = true; out << "U ";}
-    if (tcpseg->getAckBit()) {flags = true; out << "A ";}
-    if (tcpseg->getPshBit()) {flags = true; out << "P ";}
-    if (tcpseg->getRstBit()) {flags = true; out << "R ";}
-    if (tcpseg->getSynBit()) {flags = true; out << "S ";}
-    if (tcpseg->getFinBit()) {flags = true; out << "F ";}
+    if (tcpseg->getUrgBit()) {flags = true; out << "U";}
+    if (tcpseg->getAckBit()) {flags = true; out << "A";}
+    if (tcpseg->getPshBit()) {flags = true; out << "P";}
+    if (tcpseg->getRstBit()) {flags = true; out << "R";}
+    if (tcpseg->getSynBit()) {flags = true; out << "S";}
+    if (tcpseg->getFinBit()) {flags = true; out << "F";}
+    // QZ
+    if (tcpseg->getEceBit()) {flags = true; out << "E";}
+    if (tcpseg->getCwrBit()) {flags = true; out << "C";}
+
     if (!flags) {out << ". ";}
+    else {out << " ";}
 
     // data-seqno
     if (tcpseg->getPayloadLength()>0 || tcpseg->getSynBit())
@@ -728,6 +714,9 @@ void PacketDump::tcpDump(bool l2r, const char *label, TCPSegment *tcpseg,
     // urgent
     if (tcpseg->getUrgBit())
         out << "urg " << tcpseg->getUrgentPointer() << " ";
+
+    // ecn
+    out << "ecn " << ecn << " ";
 
     // options present?
     if (tcpseg->getHeaderLength() > 20)
