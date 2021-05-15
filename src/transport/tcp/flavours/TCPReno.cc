@@ -90,7 +90,6 @@ void TCPReno::receivedDataAck(uint32 firstSeqAcked)
 {
     TCPTahoeRenoFamily::receivedDataAck(firstSeqAcked);
 
-    // if (state->dupacks >= DUPTHRESH) // DUPTHRESH = 3
     if (state->dupacks >= state->dupthresh)
     {
         //
@@ -258,7 +257,7 @@ void TCPReno::receivedDuplicateAck()
 {
     TCPTahoeRenoFamily::receivedDuplicateAck();
 
-    if (state->dupacks == state->dupthresh) // DUPTHRESH = 3. QZ
+    if (state->dupacks == state->dupthresh)
     {
         tcpEV << "Reno on dupAcks == DUPTHRESH(=" << state->dupthresh << "): perform Fast Retransmit, and enter Fast Recovery:";
 
@@ -353,7 +352,7 @@ void TCPReno::receivedDuplicateAck()
         // try to transmit new segments (RFC 2581)
         sendData(false);
     }
-    else if (state->dupacks > state->dupthresh) // DUPTHRESH = 3. QZ
+    else if (state->dupacks > state->dupthresh)
     {
         //
         // Reno: For each additional duplicate ACK received, increment cwnd by SMSS.

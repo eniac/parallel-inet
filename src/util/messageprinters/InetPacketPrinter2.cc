@@ -317,7 +317,6 @@ std::string InetPacketPrinter2::formatTCPPacket(TCPSegment *tcpSeg) const
     if (tcpSeg->getRstBit()) { flags = true; os << " R"; }
     if (tcpSeg->getSynBit()) { flags = true; os << " S"; }
     if (tcpSeg->getFinBit()) { flags = true; os << " F"; }
-    // QZ
     if (tcpSeg->getEceBit()) { flags = true; os << " E";}
     if (tcpSeg->getCwrBit()) { flags = true; os << " C";}
     if (!flags) { os << " ."; }

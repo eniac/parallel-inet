@@ -465,6 +465,7 @@ void PacketDump::udpDump(bool l2r, const char *label, UDPPacket* udppkt,
     out << buf;
 
 #ifndef WITH_UDP
+    // Note: TODO: Always src > dst for our scripts fix this eventually
     out << "[UDP] "<< srcAddr << " > " << destAddr << ": ";
 #else
     // seq and time (not part of the tcpdump format)
@@ -690,7 +691,6 @@ void PacketDump::tcpDump(bool l2r, const char *label, TCPSegment *tcpseg,
     if (tcpseg->getRstBit()) {flags = true; out << "R";}
     if (tcpseg->getSynBit()) {flags = true; out << "S";}
     if (tcpseg->getFinBit()) {flags = true; out << "F";}
-    // QZ
     if (tcpseg->getEceBit()) {flags = true; out << "E";}
     if (tcpseg->getCwrBit()) {flags = true; out << "C";}
 

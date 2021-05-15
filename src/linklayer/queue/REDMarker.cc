@@ -55,8 +55,6 @@ void REDMarker::initialize()
         throw cRuntimeError("Warning: packetCapacity < maxth. Setting capacity to maxth");
         packetCapacity = maxth;
     }
-
-    // std::cout << "REDMarker initialized with wq=" << wq << " minth=" << minth << " maxth=" << maxth << " maxp=" << maxp << " pkrate=" << pkrate << " useEcn=" << useEcn << " packetCapacity=" << packetCapacity << std::endl;
 }
 
 REDMarker::RedResult REDMarker::doRandomEarlyDetection(const cPacket *packet)
@@ -106,10 +104,8 @@ IPEcnCode REDMarker::getEcn(const cPacket *packet)
 {
     IPEcnCode ecn = IP_ECN_NOT_ECT;
     if (dynamic_cast<const EtherFrame *>(packet) != NULL) {
-        // std::cout << "EtherFrame!!" << std::endl;
         const IPv4Datagram *ipv4pkt = dynamic_cast<IPv4Datagram *>(packet->getEncapsulatedPacket());
         if (ipv4pkt != NULL) {
-            // std::cout << "ether packet from IPv4, ECN = " << ipv4pkt->getExplicitCongestionNotification() << std::endl;
             ecn = static_cast<IPEcnCode>(ipv4pkt->getExplicitCongestionNotification());
         }
     }
@@ -122,9 +118,6 @@ void REDMarker::setEcn(cPacket *packet, IPEcnCode ecn)
     IPv4Datagram *ipv4pkt = check_and_cast<IPv4Datagram *>(higherlayerpkt); // guaranteed to be IPv4 packet
     ipv4pkt->setExplicitCongestionNotification(ecn);
     packet->encapsulate(ipv4pkt);
-
-    // Test
-    // std::cout << "Setting ECN = " << ecn << ", getting ECN = " << getEcn(packet) << std::endl;
 }
 
 bool REDMarker::shouldDrop(cPacket *packet)
@@ -144,7 +137,6 @@ void REDMarker::markPacket(cPacket *packet)
             if (useEcn) {
                 IPEcnCode ecn = getEcn(packet);
                 if (ecn != IP_ECN_NOT_ECT) {
-                    // std::cout << "Marking the packet! Its ecn = " << ecn << std::endl;
                     // if next packet should be marked and it is not
                     if (markNext && ecn != IP_ECN_CE) {
                         setEcn(packet, IP_ECN_CE);

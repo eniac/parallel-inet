@@ -62,3 +62,4 @@ class REDMarker : public AlgorithmicMarkerBase
 };
 
 #endif
+

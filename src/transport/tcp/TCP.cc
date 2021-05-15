@@ -161,7 +161,7 @@ void TCP::handleMessage(cMessage *msg)
             // get src/dest addresses
             IPvXAddress srcAddr, destAddr;
             
-            // QZ: get ecn
+            // get ecn
             int ecn = 0;
 
             if (dynamic_cast<IPv4ControlInfo *>(tcpseg->getControlInfo()) != NULL)
@@ -169,7 +169,7 @@ void TCP::handleMessage(cMessage *msg)
                 IPv4ControlInfo *controlInfo = (IPv4ControlInfo *)tcpseg->removeControlInfo();
                 srcAddr = controlInfo->getSrcAddr();
                 destAddr = controlInfo->getDestAddr();
-                ecn = controlInfo->getExplicitCongestionNotification(); // QZ
+                ecn = controlInfo->getExplicitCongestionNotification();
                 delete controlInfo;
             }
             else if (dynamic_cast<IPv6ControlInfo *>(tcpseg->getControlInfo()) != NULL)
@@ -177,7 +177,7 @@ void TCP::handleMessage(cMessage *msg)
                 IPv6ControlInfo *controlInfo = (IPv6ControlInfo *)tcpseg->removeControlInfo();
                 srcAddr = controlInfo->getSrcAddr();
                 destAddr = controlInfo->getDestAddr();
-                ecn = controlInfo->getExplicitCongestionNotification(); // QZ
+                ecn = controlInfo->getExplicitCongestionNotification();
                 delete controlInfo;
             }
             else
@@ -185,12 +185,7 @@ void TCP::handleMessage(cMessage *msg)
                 error("(%s)%s arrived without control info", tcpseg->getClassName(), tcpseg->getName());
             }
 
-            ASSERT(ecn != -1); // QZ
-            /*
-            if (ecn == 3) {
-                std::cout << "TCP: ecn == 3" << std::endl;
-            }
-            */
+            ASSERT(ecn != -1);
 
             // process segment
             TCPConnection *conn = findConnForSegment(tcpseg, srcAddr, destAddr);

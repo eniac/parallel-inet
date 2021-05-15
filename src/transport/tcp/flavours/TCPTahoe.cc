@@ -123,7 +123,7 @@ void TCPTahoe::receivedDuplicateAck()
 {
     TCPTahoeRenoFamily::receivedDuplicateAck();
 
-    if (state->dupacks == state->dupthresh) // DUPTHRESH = 3. QZ
+    if (state->dupacks == state->dupthresh)
     {
         tcpEV << "Tahoe on dupAcks == DUPTHRESH(=" << state->dupthresh << "): perform Fast Retransmit, and enter Slow Start:\n";
 
