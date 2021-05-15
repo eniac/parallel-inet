@@ -686,9 +686,6 @@ void IPv4::reassembleAndDeliverFinish(IPv4Datagram *datagram)
             }
         }
 
-        // QZ: debug
-        // mapping.iterateOutputGateForProtocol();
-
         EV << "Transport protocol ID=" << protocol << " not connected, discarding packet\n";
         int inputInterfaceId = getSourceInterfaceFrom(datagram)->getInterfaceId();
         icmpAccess.get()->sendErrorMessage(datagram, inputInterfaceId, ICMP_DESTINATION_UNREACHABLE, ICMP_DU_PROTOCOL_UNREACHABLE);
@@ -709,7 +706,6 @@ cPacket *IPv4::decapsulate(IPv4Datagram *datagram)
     controlInfo->setTypeOfService(datagram->getTypeOfService());
     controlInfo->setInterfaceId(fromIE ? fromIE->getInterfaceId() : -1);
     controlInfo->setTimeToLive(datagram->getTimeToLive());
-    // QZ
     controlInfo->setExplicitCongestionNotification(datagram->getExplicitCongestionNotification());
 
     // original IPv4 datagram might be needed in upper layers to send back ICMP error message
@@ -848,8 +844,6 @@ IPv4Datagram *IPv4::encapsulate(cPacket *transportPacket, IPv4ControlInfo *contr
         ttl = defaultTimeToLive;
     datagram->setTimeToLive(ttl);
     datagram->setTransportProtocol(controlInfo->getProtocol());
-
-    // QZ
     datagram->setExplicitCongestionNotification(controlInfo->getExplicitCongestionNotification());
 
     // setting IPv4 options is currently not supported

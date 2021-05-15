@@ -60,3 +60,4 @@ simple ThresholdMarker
         input in[numGates];
         output out[numGates];
 }
+

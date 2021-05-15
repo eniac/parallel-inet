@@ -32,7 +32,7 @@
 #include "TCPReceiveQueue.h"
 #include "TCPAlgorithm.h"
 
-#include "EcnTag.h" // QZ
+#include "EcnTag.h"
 
 //
 // helper functions
@@ -161,7 +161,6 @@ void TCPConnection::printSegmentBrief(TCPSegment *tcpseg)
 
     if (tcpseg->getUrgBit())  tcpEV << "urg " << tcpseg->getUrgentPointer() << " ";
 
-    // QZ
     if (tcpseg->getEceBit())  tcpEV << "Ece ";
 
     if (tcpseg->getCwrBit())  tcpEV << "Cwr ";
@@ -372,8 +371,7 @@ void TCPConnection::configureStateVariables()
     state->dupthresh = tcpMain->par("dupthresh");
     long advertisedWindowPar = tcpMain->par("advertisedWindow").longValue();
     state->ws_support = tcpMain->par("windowScalingSupport"); // if set, this means that current host supports WS (RFC 1323)
-    state->ecnWillingness = tcpMain->par("ecnWillingness"); // if set, current host is willing to use ECN. QZ
-    // std::cout << "ecnWillingness=" << state->ecnWillingness << std::endl;
+    state->ecnWillingness = tcpMain->par("ecnWillingness"); // if set, current host is willing to use ECN.
     if (!state->ws_support && (advertisedWindowPar > TCP_MAX_WIN || advertisedWindowPar <= 0))
         throw cRuntimeError("Invalid advertisedWindow parameter: %ld", advertisedWindowPar);
 
@@ -498,7 +496,6 @@ void TCPConnection::sendSyn()
         tcpseg->setCwrBit(true);
         state->ecnSynSent = true;
         tcpEV << "ECN-setup SYN packet sent\n";
-        // std::cout << "Send: Setting EceBit in Syn..." << std::endl;
     }
     else {
         // rfc 3168 page 16:
@@ -531,12 +528,11 @@ void TCPConnection::sendSynAck()
 
     state->snd_max = state->snd_nxt = state->iss + 1;
 
-    // QZ: ECN
+    // ECN
     if (state->ecnWillingness) {
         tcpseg->setEceBit(true);
         tcpseg->setCwrBit(false);
         tcpEV << "ECN-setup SYN-ACK packet sent\n";
-        // std::cout << "Send: Setting EceBit in SynAck..." << std::endl;
     }
     else {
         tcpseg->setEceBit(false);
@@ -616,7 +612,6 @@ void TCPConnection::sendAck()
     tcpseg->setAckNo(state->rcv_nxt);
     tcpseg->setWindow(updateRcvWnd());
 
-    // QZ
     // rfc-3168, pages 19-20:
     // When TCP receives a CE data packet at the destination end-system, the
     // TCP data receiver sets the ECN-Echo flag in the TCP header of the
@@ -634,7 +629,6 @@ void TCPConnection::sendAck()
         if (tcpAlgorithm->shouldMarkAck()) {
             tcpseg->setEceBit(true);
             tcpEV << "In ecnEcho state... send ACK with ECE bit set\n";
-            // std::cout << "Send: Setting EceBit in Ack..." << std::endl;
         }
     }
 
@@ -916,7 +910,6 @@ bool TCPConnection::sendProbe()
 
 void TCPConnection::retransmitOneSegment(bool called_at_rto)
 {
-    // QZ:
     // rfc-3168, page 20:
     // ECN-capable TCP implementations MUST NOT set either ECT codepoint
     // (ECT(0) or ECT(1)) in the IP header for retransmitted data packets

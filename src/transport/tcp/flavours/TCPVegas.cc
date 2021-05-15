@@ -274,14 +274,14 @@ void TCPVegas::receivedDataAck(uint32 firstSeqAcked)
         {
             state->v_worried -= state->snd_mss;
             const TCPSegmentTransmitInfoList::Item *unaFound = state->regions.get(state->snd_una);
-            //bool expired = unaFound && ((currentTime - unaFound->getLastSentTime()) >= state->v_rtt_timeout);
+            // bool expired = unaFound && ((currentTime - unaFound->getLastSentTime()) >= state->v_rtt_timeout);
             bool expired = unaFound && ((currentTime - unaFound->getFirstSentTime()) >= state->v_rtt_timeout);
 
             // added comprobation to check that received ACK do not acks all outstanding data. If not,
             // TCPConnection::retransmitOneSegment will fail: ASSERT(bytes!=0), line 839), because bytes = snd_max-snd_una
             if (expired && (state->snd_max - state->snd_una > 0))
             {
-                state->dupacks = state->dupthresh; // QZ
+                state->dupacks = state->dupthresh;
                 tcpEV << "Vegas: retransmission (v_rtt_timeout) " << "\n";
                 conn->retransmitOneSegment(false); //retransmit one segment from snd_una
             }
@@ -315,8 +315,8 @@ void TCPVegas::receivedDuplicateAck()
     bool expired = found && ((currentTime - tSent) >= state->v_rtt_timeout);
 
     // rtx if Vegas timeout || 3 dupacks
-    if (expired || state->dupacks == state->dupthresh) // QZ
-    { //DUPTHRESH = 3
+    if (expired || state->dupacks == state->dupthresh)
+    {
         uint32 win = std::min(state->snd_cwnd, state->snd_wnd);
         state->v_worried = std::min((uint32) 2 * state->snd_mss, state->snd_nxt - state->snd_una);
 
@@ -352,11 +352,11 @@ void TCPVegas::receivedDuplicateAck()
         conn->retransmitOneSegment(false);
 
         if (found && num_transmits == 1)
-            state->dupacks = state->dupthresh; // QZ
+            state->dupacks = state->dupthresh;
     }
     //else if dupacks > duphtresh, cwnd+1
-    else if (state->dupacks > state->dupthresh) // QZ
-    { // DUPTHRESH = 3
+    else if (state->dupacks > state->dupthresh)
+    {
         state->snd_cwnd += state->snd_mss;
         if (cwndVector) cwndVector->record(state->snd_cwnd);
     }

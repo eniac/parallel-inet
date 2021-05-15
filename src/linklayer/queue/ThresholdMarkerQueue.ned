@@ -36,3 +36,4 @@ module ThresholdMarkerQueue like IOutputQueue
         marker.out[0] --> fifo.in++;
         fifo.out --> out;
 }
+

@@ -637,7 +637,6 @@ cPacket *IPv6::decapsulate(IPv6Datagram *datagram)
     controlInfo->setTrafficClass(datagram->getTrafficClass());
     controlInfo->setHopLimit(datagram->getHopLimit());
     controlInfo->setInterfaceId(fromIE ? fromIE->getInterfaceId() : -1);
-    // QZ
     controlInfo->setExplicitCongestionNotification(datagram->getExplicitCongestionNotification());
 
     // original IP datagram might be needed in upper layers to send back ICMP error message
@@ -683,8 +682,6 @@ IPv6Datagram *IPv6::encapsulate(cPacket *transportPacket, IPv6ControlInfo *contr
     datagram->setTrafficClass(controlInfo->getTrafficClass());
     datagram->setHopLimit(controlInfo->getHopLimit()>0 ? controlInfo->getHopLimit() : 32); //FIXME use iface hop limit instead of 32?
     datagram->setTransportProtocol(controlInfo->getProtocol());
-    
-    // QZ
     datagram->setExplicitCongestionNotification(controlInfo->getExplicitCongestionNotification());
 
     // #### Move extension headers from ctrlInfo to datagram if present

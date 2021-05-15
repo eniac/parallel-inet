@@ -36,3 +36,4 @@ module REDMarkerQueue like IOutputQueue
         red.out[0] --> fifo.in++;
         fifo.out --> out;
 }
+

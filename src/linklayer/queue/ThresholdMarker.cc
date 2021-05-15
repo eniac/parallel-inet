@@ -38,18 +38,14 @@ void ThresholdMarker::initialize()
         throw cRuntimeError("Warning: packetCapacity < K. Setting capacity to K");
         packetCapacity = K;
     }
-
-    // std::cout << "ThresholdMarker initialized with wq=" << wq << " minth=" << minth << " maxth=" << maxth << " maxp=" << maxp << " pkrate=" << pkrate << " useEcn=" << useEcn << " packetCapacity=" << packetCapacity << std::endl;
 }
 
 IPEcnCode ThresholdMarker::getEcn(const cPacket *packet)
 {
     IPEcnCode ecn = IP_ECN_NOT_ECT;
     if (dynamic_cast<const EtherFrame *>(packet) != NULL) {
-        // std::cout << "EtherFrame!!" << std::endl;
         const IPv4Datagram *ipv4pkt = dynamic_cast<IPv4Datagram *>(packet->getEncapsulatedPacket());
         if (ipv4pkt != NULL) {
-            // std::cout << "ether packet from IPv4, ECN = " << ipv4pkt->getExplicitCongestionNotification() << std::endl;
             ecn = static_cast<IPEcnCode>(ipv4pkt->getExplicitCongestionNotification());
         }
     }
@@ -62,9 +58,6 @@ void ThresholdMarker::setEcn(cPacket *packet, IPEcnCode ecn)
     IPv4Datagram *ipv4pkt = check_and_cast<IPv4Datagram *>(higherlayerpkt); // guaranteed to be IPv4 packet
     ipv4pkt->setExplicitCongestionNotification(ecn);
     packet->encapsulate(ipv4pkt);
-
-    // Test
-    // std::cout << "Setting ECN = " << ecn << ", getting ECN = " << getEcn(packet) << std::endl;
 }
 
 bool ThresholdMarker::shouldDrop(cPacket *packet)
@@ -86,3 +79,4 @@ void ThresholdMarker::markPacket(cPacket *packet)
         }
     }
 }
+

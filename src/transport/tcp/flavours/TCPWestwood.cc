@@ -141,7 +141,7 @@ void TCPWestwood::receivedDataAck(uint32 firstSeqAcked)
 
     // Same behavior of Reno during fast recovery, slow start and cong. avoidance
 
-    if (state->dupacks >= state->dupthresh) // DUPTHRESH = 3. QZ
+    if (state->dupacks >= state->dupthresh)
     {
         //
         // Perform Fast Recovery: set cwnd to ssthresh (deflating the window).
@@ -219,7 +219,7 @@ void TCPWestwood::receivedDuplicateAck()
         recalculateBWE(cumul_ack);
     }   // Closes if w_sendtime != NULL
 
-    if (state->dupacks == state->dupthresh) // DUPTHRESH = 3. QZ
+    if (state->dupacks == state->dupthresh)
     {
         tcpEV << "Westwood on dupAcks == DUPTHRESH(=" << state->dupthresh << "): Faster Retransmit \n";
 
@@ -273,7 +273,7 @@ void TCPWestwood::receivedDuplicateAck()
         sendData(false);
     }
     // Behavior like Reno:
-    else if (state->dupacks > state->dupthresh) // DUPTHRESH = 3. QZ
+    else if (state->dupacks > state->dupthresh)
     {
         // Westwood: like Reno
         state->snd_cwnd += state->snd_mss;
