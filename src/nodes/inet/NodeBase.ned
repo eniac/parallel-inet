@@ -50,7 +50,6 @@ module NodeBase
         int numExtInterfaces = default(0);
         int numRadios = default(0);               // the number of radios in the router. by default no wireless
         int numPcapRecorders = default(0); // no of PcapRecorders.
-        int numFeatureRecorders = default(0); // no of FeatureRecorders.
         string mobilityType = default(numRadios > 0 ? "StationaryMobility" : "");
         string routingFile = default("");
         bool IPForward = default(true);
@@ -102,10 +101,6 @@ module NodeBase
         }
 
         pcapRecorder[numPcapRecorders]: PcapRecorder {
-            @display("p=53,338,r,10");
-        }
-
-        featureRecorder[numFeatureRecorders]: FeatureRecorder {
             @display("p=53,338,r,10");
         }
 
