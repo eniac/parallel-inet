@@ -20,7 +20,7 @@
 //
 
 
-#include "PcapRecorder.h"
+#include "FeatureRecorder.h"
 
 #ifdef WITH_IPv4
 #include "IPv4Datagram.h"
@@ -33,23 +33,23 @@
 
 //----
 
-Define_Module(PcapRecorder);
+Define_Module(FeatureRecorder);
 
-PcapRecorder::~PcapRecorder()
+FeatureRecorder::~FeatureRecorder()
 {
 }
 
-PcapRecorder::PcapRecorder() : cSimpleModule(), pcapDumper()
+FeatureRecorder::FeatureRecorder() : cSimpleModule()
 {
 }
 
-void PcapRecorder::initialize()
+void FeatureRecorder::initialize()
 {
-    const char* file = par("pcapFile");
-    snaplen = this->par("snaplen");
-    dumpBadFrames = par("dumpBadFrames").boolValue();
+    const char* file = par("pdmpFile");
+
+    packetDumpStream = new std::ofstream(file);
     packetDumper.setVerbose(par("verbose").boolValue());
-    packetDumper.setOutStream(EVSTREAM);
+    packetDumper.setOutStream(*packetDumpStream);
     signalList.clear();
 
     {
@@ -90,7 +90,7 @@ void PcapRecorder::initialize()
                     if (!submod->isSubscribed(s->first, this))
                     {
                         submod->subscribe(s->first, this);
-                        EV << "PcapRecorder " << getFullPath() << " subscribed to "
+                        EV << "FeatureRecorder " << getFullPath() << " subscribed to "
                            << submod->getFullPath() << ":" << getSignalName(s->first) << endl;
                     }
                 }
@@ -100,20 +100,17 @@ void PcapRecorder::initialize()
         if (!found)
         {
             EV << "The module " << mname << (isAllIndex ? "[*]" : "")
-                    << " not found for PcapRecorder " << getFullPath() << endl;
+                    << " not found for FeatureRecorder " << getFullPath() << endl;
         }
     }
-
-    if (*file)
-        pcapDumper.openPcap(file, snaplen);
 }
 
-void PcapRecorder::handleMessage(cMessage *msg)
+void FeatureRecorder::handleMessage(cMessage *msg)
 {
     throw cRuntimeError("This module does not handle messages");
 }
 
-void PcapRecorder::receiveSignal(cComponent *source, simsignal_t signalID, cObject *obj)
+void FeatureRecorder::receiveSignal(cComponent *source, simsignal_t signalID, cObject *obj)
 {
     Enter_Method_Silent();
     cPacket *packet = dynamic_cast<cPacket *>(obj);
@@ -126,62 +123,15 @@ void PcapRecorder::receiveSignal(cComponent *source, simsignal_t signalID, cObje
     }
 }
 
-void PcapRecorder::recordPacket(cPacket *msg, bool l2r)
+void FeatureRecorder::recordPacket(cPacket *msg, bool l2r)
 {
-    if (!ev.isDisabled())
-    {
-        EV << "PcapRecorder::recordPacket(" << msg->getFullPath() << ", " << l2r << ")\n";
-        packetDumper.dumpPacket(l2r, msg);
-    }
-
-#if defined(WITH_IPv4) || defined(WITH_IPv6)
-    if (!pcapDumper.isOpen())
-        return;
-
-    bool hasBitError = false;
-
-#ifdef WITH_IPv4
-    IPv4Datagram *ip4Packet = NULL;
-#endif
-#ifdef WITH_IPv6
-    IPv6Datagram *ip6Packet = NULL;
-#endif
-    while (msg)
-    {
-        if (msg->hasBitError())
-            hasBitError = true;
-#ifdef WITH_IPv4
-        if (NULL != (ip4Packet = dynamic_cast<IPv4Datagram *>(msg))) {
-            break;
-        }
-#endif
-#ifdef WITH_IPv6
-        if (NULL != (ip6Packet = dynamic_cast<IPv6Datagram *>(msg))) {
-            break;
-        }
-#endif
-
-        msg = msg->getEncapsulatedPacket();
-    }
-#endif
-#ifdef WITH_IPv4
-    if (ip4Packet && (dumpBadFrames || !hasBitError))
-    {
-        const simtime_t stime = simulation.getSimTime();
-        pcapDumper.writeFrame(stime, ip4Packet);
-    }
-#endif
-#ifdef WITH_IPv6
-    if (ip6Packet && (dumpBadFrames || !hasBitError))
-    {
-        const simtime_t stime = simulation.getSimTime();
-        pcapDumper.writeIPv6Frame(stime, ip6Packet);
-    }
-#endif
+    packetDumper.dumpPacket(l2r, msg);
 }
 
-void PcapRecorder::finish()
+void FeatureRecorder::finish()
 {
      packetDumper.dump("", "pcapRecorder finished");
-     pcapDumper.closePcap();
+     packetDumpStream->close();
+     delete packetDumpStream;
 }
+

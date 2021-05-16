@@ -18,32 +18,30 @@
 // along with this program; if not, see <http://www.gnu.org/licenses/>.
 //
 
-#ifndef __INET_PCAPRECORDER_H
-#define __INET_PCAPRECORDER_H
+#ifndef __INET_FEATURERECORDER_H
+#define __INET_FEATURERECORDER_H
 
 
 #include "INETDefs.h"
 
 #include "PacketDump.h"
-#include "PcapDump.h"
+
+#include <fstream>
 
 
 /**
  * Dumps every packet using the PcapDump and PacketDump classes
  */
-class INET_API PcapRecorder : public cSimpleModule, protected cListener
+class INET_API FeatureRecorder : public cSimpleModule, protected cListener
 {
     protected:
         typedef std::map<simsignal_t,bool> SignalList;
         SignalList signalList;
         PacketDump packetDumper;
-        PcapDump pcapDumper;
-        unsigned int snaplen;
-        unsigned long first, last, space;
-        bool dumpBadFrames;
+        std::ofstream* packetDumpStream;
     public:
-        PcapRecorder();
-        ~PcapRecorder();
+        FeatureRecorder();
+        ~FeatureRecorder();
     protected:
         virtual void initialize();
         virtual void handleMessage(cMessage *msg);
