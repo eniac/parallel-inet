@@ -46,6 +46,7 @@ simple UDPBasicApp like IUDPApp
         string destAddresses = default(""); // list of IP addresses, separated by spaces ("": don't send)
         int destPort;
         volatile int messageLength @unit(B); // length of messages to generate, in bytes
+	string sizeDistribution = default("");
         double startTime @unit(s) = default(this.sendInterval); // application start time (start of the first packet)
         double stopTime @unit(s) = default(-1s);  // time of finishing sending, -1s means forever
         volatile double sendInterval @unit(s); // should usually be a random value, e.g. exponential(1)

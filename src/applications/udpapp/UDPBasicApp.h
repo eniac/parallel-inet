@@ -35,7 +35,7 @@ class INET_API UDPBasicApp : public ApplicationBase
   protected:
     enum SelfMsgKinds { START = 1, SEND, STOP };
     
-    MsgSizeDistributions msgSizeGenerator; //*
+    MsgSizeDistributions *msgSizeGenerator; //*
 
     UDPSocket socket;
     int localPort, destPort;

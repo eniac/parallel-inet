@@ -30,9 +30,8 @@ Define_Module(UDPBasicApp);
 simsignal_t UDPBasicApp::sentPkSignal = registerSignal("sentPk");
 simsignal_t UDPBasicApp::rcvdPkSignal = registerSignal("rcvdPk");
 
-UDPBasicApp::UDPBasicApp()
-: msgSizeGenerator("/bigdisk/mimic/3_simulate/common/homatransport/sizeDistributions/DCTCP_MsgSizeDist.txt", MAX_ETHERNET_PAYLOAD_BYTES - IP_HEADER_SIZE - UDP_HEADER_SIZE, MsgSizeDistributions::InterArrivalDist::EXPONENTIAL, MsgSizeDistributions::DistributionChoice::DCTCP){
-    selfMsg = NULL; //*
+UDPBasicApp::UDPBasicApp() {
+    selfMsg = NULL;
 }
 
 UDPBasicApp::~UDPBasicApp()
@@ -58,11 +57,18 @@ void UDPBasicApp::initialize(int stage)
         if (stopTime >= SIMTIME_ZERO && stopTime < startTime)
             error("Invalid startTime/stopTime parameters");
         selfMsg = new cMessage("sendTimer");
+
+        // TODO: This should really be a new class
+        msgSizeGenerator = new MsgSizeDistributions(par("sizeDistribution"),
+			MAX_ETHERNET_PAYLOAD_BYTES - IP_HEADER_SIZE - UDP_HEADER_SIZE,
+			MsgSizeDistributions::InterArrivalDist::EXPONENTIAL,
+			MsgSizeDistributions::DistributionChoice::DCTCP);
     }
 }
 
 void UDPBasicApp::finish()
 {
+    delete msgSizeGenerator;
     recordScalar("packets sent", numSent);
     recordScalar("packets received", numReceived);
     ApplicationBase::finish();
@@ -122,7 +128,7 @@ void UDPBasicApp::sendPacket()
     int udpMsgBytes;
     int dummyDestHostId;
     double dummyInterArrival;
-    msgSizeGenerator.getSizeAndInterarrival(udpMsgBytes, dummyDestHostId,
+    msgSizeGenerator->getSizeAndInterarrival(udpMsgBytes, dummyDestHostId,
         dummyInterArrival);
     char msgName[32];
     if (udpMsgBytes == 0) {
