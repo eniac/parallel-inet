@@ -1,4 +1,4 @@
-MIMIC_FLAGS=-I${MIMICNET_HOME}/3_simulate/homatransport/src
+MIMIC_FLAGS=-I${MIMICNET_HOME}/simulate/homatransport/src
 
 all: checkmakefiles
 	cd src && $(MAKE)
