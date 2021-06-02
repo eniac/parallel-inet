@@ -16,14 +16,13 @@
 // along with this program; if not, see <http://www.gnu.org/licenses/>.
 //
 
-#ifndef __INET_REDDROPPER_H_
-#define __INET_REDDROPPER_H_
+#ifndef __INET_THRESHOLDMARKER_H_
+#define __INET_THRESHOLDMARKER_H_
 
 #include "INETDefs.h"
 #include "AlgorithmicMarkerBase.h"
 #include "EcnTag.h"
 
-static double const NaN = 0.0 / 0.0;
 
 /**
  * Implementation of Random Early Detection (RED).
@@ -31,7 +30,7 @@ static double const NaN = 0.0 / 0.0;
 class ThresholdMarker : public AlgorithmicMarkerBase
 {
   protected:
-    double K = NaN;
+    int K = -1;
     int packetCapacity = -1;
     bool useEcn = false;
 

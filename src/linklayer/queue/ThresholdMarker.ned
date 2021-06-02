@@ -51,9 +51,9 @@ simple ThresholdMarker
         int numGates = default(1);
 
         string collectionModule = default("");
-        double K = default(50);  // maximum threshold for queue length (=buffer capacity)
+        int K = default(50);  // maximum threshold for queue length (=buffer capacity)
         bool useEcn = default(false); // if enabled, packets are marked with ECN if applicable
-        int packetCapacity = default(int(K)); // packets are dropped if queue length is greater
+        int packetCapacity = default(100); // packets are dropped if queue length is greater
         @display("i=block/downarrow");
 
     gates:
